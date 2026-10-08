@@ -1,0 +1,93 @@
+{
+  "_comment": "Blueprint generation manifest for the migrated MHY_ARCH_GAME module. Idempotent: existing assets are skipped. 'bp:' value prefix = resolve as a Blueprint's generated class (for TSubclassOf).",
+  "blueprints": [
+    {
+      "name": "BP_MHY_ARCH_GAMECharacter",
+      "package_path": "/Game/MHY_ARCH_GAME/Blueprints",
+      "parent_class": "/Script/MHY_ARCH_GAME.MHY_ARCH_GAMECharacter",
+      "kind": "blueprint"
+    },
+    {
+      "name": "BP_MHY_ARCH_GAMEGameMode",
+      "package_path": "/Game/MHY_ARCH_GAME/Blueprints",
+      "parent_class": "/Script/MHY_ARCH_GAME.MHY_ARCH_GAMEGameMode",
+      "kind": "blueprint"
+    },
+    {
+      "name": "BP_MHY_ARCH_GAMEPlayerController",
+      "package_path": "/Game/MHY_ARCH_GAME/Blueprints",
+      "parent_class": "/Script/MHY_ARCH_GAME.MHY_ARCH_GAMEPlayerController",
+      "kind": "blueprint"
+    },
+    {
+      "name": "BP_InteractiveStructure",
+      "package_path": "/Game/MHY_ARCH_GAME/Blueprints",
+      "parent_class": "/Script/MHY_ARCH_GAME.InteractiveStructure",
+      "kind": "blueprint"
+    },
+    {
+      "name": "BP_RevealLightVolume",
+      "package_path": "/Game/MHY_ARCH_GAME/Blueprints",
+      "parent_class": "/Script/MHY_ARCH_GAME.RevealLightVolume",
+      "kind": "blueprint"
+    },
+    {
+      "name": "BP_RevealPlatform",
+      "package_path": "/Game/MHY_ARCH_GAME/Blueprints",
+      "parent_class": "/Script/MHY_ARCH_GAME.RevealPlatform",
+      "kind": "blueprint"
+    },
+    {
+      "name": "BP_ClimbSpot",
+      "package_path": "/Game/MHY_ARCH_GAME/Blueprints",
+      "parent_class": "/Script/MHY_ARCH_GAME.ClimbSpot",
+      "kind": "blueprint"
+    },
+    {
+      "name": "BP_LiquidLightSurface",
+      "package_path": "/Game/MHY_ARCH_GAME/Blueprints",
+      "parent_class": "/Script/MHY_ARCH_GAME.LiquidLightSurface",
+      "kind": "blueprint"
+    },
+    {
+      "name": "BP_TimeShiftAnchor",
+      "package_path": "/Game/MHY_ARCH_GAME/Blueprints",
+      "parent_class": "/Script/MHY_ARCH_GAME.TimeShiftAnchor",
+      "kind": "blueprint"
+    },
+    {
+      "name": "WBP_InteractionPrompt",
+      "package_path": "/Game/MHY_ARCH_GAME/UI",
+      "parent_class": "/Script/MHY_ARCH_GAME.InteractionPromptWidget",
+      "kind": "widget"
+    }
+  ],
+  "wiring": [
+    {
+      "blueprint": "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter",
+      "properties": {
+        "JumpAction": "/Game/Input/Actions/IA_Jump.IA_Jump",
+        "MoveAction": "/Game/Input/Actions/IA_Move.IA_Move",
+        "LookAction": "/Game/Input/Actions/IA_Look.IA_Look",
+        "MouseLookAction": "/Game/Input/Actions/IA_MouseLook.IA_MouseLook"
+      }
+    },
+    {
+      "blueprint": "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController",
+      "properties": {
+        "DefaultMappingContexts": [
+          "/Game/Input/IMC_Default.IMC_Default",
+          "/Game/Input/IMC_MouseLook.IMC_MouseLook"
+        ]
+      }
+    },
+    {
+      "_comment": "The GameMode is a C++ stub, so the Blueprint supplies the classes (Epic template pattern).",
+      "blueprint": "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEGameMode",
+      "properties": {
+        "DefaultPawnClass": "bp:/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter",
+        "PlayerControllerClass": "bp:/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController"
+      }
+    }
+  ]
+}

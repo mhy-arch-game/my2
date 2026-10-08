@@ -1,0 +1,22 @@
+{
+  "created": [],
+  "skipped": [
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEGameMode",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_InteractiveStructure",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_RevealLightVolume",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_RevealPlatform",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_ClimbSpot",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_LiquidLightSurface",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_TimeShiftAnchor",
+    "/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt"
+  ],
+  "failed": [],
+  "wired": [
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEGameMode"
+  ],
+  "wire_failed": []
+}

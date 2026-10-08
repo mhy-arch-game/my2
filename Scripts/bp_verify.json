@@ -1,0 +1,92 @@
+[
+  {
+    "asset": "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.MHY_ARCH_GAMECharacter",
+    "actual_parent": "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter.BP_MHY_ARCH_GAMECharacter_C",
+    "parent_ok": true,
+    "props": {
+      "JumpAction": "<Object '/Game/Input/Actions/IA_Jump.IA_Jump' (0x000001C58211FC00) Class 'InputAction'>",
+      "MoveAction": "<Object '/Game/Input/Actions/IA_Move.IA_Move' (0x000001C58211F600) Class 'InputAction'>",
+      "LookAction": "<Object '/Game/Input/Actions/IA_Look.IA_Look' (0x000001C58211FE40) Class 'InputAction'>",
+      "MouseLookAction": "<Object '/Game/Input/Actions/IA_MouseLook.IA_MouseLook' (0x000001C58211FF00) Class 'InputAction'>"
+    }
+  },
+  {
+    "asset": "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEGameMode",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.MHY_ARCH_GAMEGameMode",
+    "actual_parent": "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEGameMode.BP_MHY_ARCH_GAMEGameMode_C",
+    "parent_ok": true,
+    "props": {
+      "DefaultPawnClass": "<Object '/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter.BP_MHY_ARCH_GAMECharacter_C' (0x000001C6033E9300) Class 'BlueprintGeneratedClass'>",
+      "PlayerControllerClass": "<Object '/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController.BP_MHY_ARCH_GAMEPlayerController_C' (0x000001C6033EBD00) Class 'BlueprintGeneratedClass'>"
+    }
+  },
+  {
+    "asset": "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.MHY_ARCH_GAMEPlayerController",
+    "actual_parent": "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController.BP_MHY_ARCH_GAMEPlayerController_C",
+    "parent_ok": true,
+    "props": {
+      "DefaultMappingContexts": "[\"/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_Default.IMC_Default'\", \"/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_MouseLook.IMC_MouseLook'\"]"
+    }
+  },
+  {
+    "asset": "/Game/MHY_ARCH_GAME/Blueprints/BP_InteractiveStructure",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.InteractiveStructure",
+    "actual_parent": "/Game/MHY_ARCH_GAME/Blueprints/BP_InteractiveStructure.BP_InteractiveStructure_C",
+    "parent_ok": true,
+    "props": {}
+  },
+  {
+    "asset": "/Game/MHY_ARCH_GAME/Blueprints/BP_RevealLightVolume",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.RevealLightVolume",
+    "actual_parent": "/Game/MHY_ARCH_GAME/Blueprints/BP_RevealLightVolume.BP_RevealLightVolume_C",
+    "parent_ok": true,
+    "props": {}
+  },
+  {
+    "asset": "/Game/MHY_ARCH_GAME/Blueprints/BP_RevealPlatform",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.RevealPlatform",
+    "actual_parent": "/Game/MHY_ARCH_GAME/Blueprints/BP_RevealPlatform.BP_RevealPlatform_C",
+    "parent_ok": true,
+    "props": {}
+  },
+  {
+    "asset": "/Game/MHY_ARCH_GAME/Blueprints/BP_ClimbSpot",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.ClimbSpot",
+    "actual_parent": "/Game/MHY_ARCH_GAME/Blueprints/BP_ClimbSpot.BP_ClimbSpot_C",
+    "parent_ok": true,
+    "props": {}
+  },
+  {
+    "asset": "/Game/MHY_ARCH_GAME/Blueprints/BP_LiquidLightSurface",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.LiquidLightSurface",
+    "actual_parent": "/Game/MHY_ARCH_GAME/Blueprints/BP_LiquidLightSurface.BP_LiquidLightSurface_C",
+    "parent_ok": true,
+    "props": {}
+  },
+  {
+    "asset": "/Game/MHY_ARCH_GAME/Blueprints/BP_TimeShiftAnchor",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.TimeShiftAnchor",
+    "actual_parent": "/Game/MHY_ARCH_GAME/Blueprints/BP_TimeShiftAnchor.BP_TimeShiftAnchor_C",
+    "parent_ok": true,
+    "props": {}
+  },
+  {
+    "asset": "/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt",
+    "exists": true,
+    "expected_parent": "/Script/MHY_ARCH_GAME.InteractionPromptWidget",
+    "actual_parent": "/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt.WBP_InteractionPrompt_C",
+    "parent_ok": true,
+    "props": {}
+  }
+]
