@@ -2,9 +2,11 @@
 
 #include "InteractionDetectorComponent.h"
 
+#include "InteractableComponent.h"
 #include "InteractableInterface.h"
 
 #include "EnhancedInputComponent.h"
+#include "GameFramework/Controller.h"
 #include "GameFramework/Pawn.h"
 #include "InputAction.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -48,6 +50,147 @@ void UInteractionDetectorComponent::TickComponent(float DeltaTime, ELevelTick Ti
 	}
 }
 
+void UInteractionDetectorComponent::GetViewPoint(FVector& OutLocation, FRotator& OutRotation) const
+{
+	const AActor* Owner = GetOwner();
+	if (!Owner)
+	{
+		OutLocation = FVector::ZeroVector;
+		OutRotation = FRotator::ZeroRotator;
+		return;
+	}
+
+	OutLocation = Owner->GetActorLocation();
+	OutRotation = Owner->GetActorRotation();
+
+	// Prefer the camera: "aimed at" must mean "under the crosshair". The capsule
+	// forward vector never pitches, so it cannot express looking up or down.
+	if (const APawn* Pawn = Cast<APawn>(Owner))
+	{
+		if (const AController* Controller = Pawn->GetController())
+		{
+			Controller->GetPlayerViewPoint(OutLocation, OutRotation);
+		}
+	}
+}
+
+UInteractableComponent* UInteractionDetectorComponent::FindInteractableComponent(AActor* Target) const
+{
+	return Target ? Target->FindComponentByClass<UInteractableComponent>() : nullptr;
+}
+
+bool UInteractionDetectorComponent::IsInteractableTarget(AActor* Target) const
+{
+	if (!Target)
+	{
+		return false;
+	}
+
+	if (Target->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
+	{
+		return true;
+	}
+
+	return FindInteractableComponent(Target) != nullptr;
+}
+
+bool UInteractionDetectorComponent::QueryCanInteract(AActor* Target) const
+{
+	if (!Target)
+	{
+		return false;
+	}
+
+	if (Target->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
+	{
+		return IInteractableInterface::Execute_CanInteract(Target, GetOwner());
+	}
+
+	if (const UInteractableComponent* Component = FindInteractableComponent(Target))
+	{
+		return Component->CanInteract(GetOwner());
+	}
+
+	return false;
+}
+
+void UInteractionDetectorComponent::QueryOnInteract(AActor* Target)
+{
+	if (!Target)
+	{
+		return;
+	}
+
+	if (Target->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
+	{
+		IInteractableInterface::Execute_OnInteract(Target, GetOwner());
+		return;
+	}
+
+	if (UInteractableComponent* Component = FindInteractableComponent(Target))
+	{
+		Component->NotifyInteract(GetOwner());
+	}
+}
+
+FText UInteractionDetectorComponent::QueryPrompt(AActor* Target) const
+{
+	if (!Target)
+	{
+		return FText::GetEmpty();
+	}
+
+	if (Target->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
+	{
+		return IInteractableInterface::Execute_GetInteractionPrompt(Target);
+	}
+
+	if (const UInteractableComponent* Component = FindInteractableComponent(Target))
+	{
+		return Component->GetInteractionPrompt();
+	}
+
+	return FText::GetEmpty();
+}
+
+void UInteractionDetectorComponent::QueryFocusBegin(AActor* Target)
+{
+	if (!Target)
+	{
+		return;
+	}
+
+	if (Target->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
+	{
+		IInteractableInterface::Execute_OnFocusBegin(Target, GetOwner());
+		return;
+	}
+
+	if (UInteractableComponent* Component = FindInteractableComponent(Target))
+	{
+		Component->NotifyFocusGained(GetOwner());
+	}
+}
+
+void UInteractionDetectorComponent::QueryFocusEnd(AActor* Target)
+{
+	if (!Target)
+	{
+		return;
+	}
+
+	if (Target->GetClass()->ImplementsInterface(UInteractableInterface::StaticClass()))
+	{
+		IInteractableInterface::Execute_OnFocusEnd(Target, GetOwner());
+		return;
+	}
+
+	if (UInteractableComponent* Component = FindInteractableComponent(Target))
+	{
+		Component->NotifyFocusLost(GetOwner());
+	}
+}
+
 void UInteractionDetectorComponent::TryInteract()
 {
 	AActor* Target = FocusedActor;
@@ -56,33 +199,26 @@ void UInteractionDetectorComponent::TryInteract()
 		return;
 	}
 
-	if (IInteractableInterface* Interactable = Cast<IInteractableInterface>(Target))
+	if (!QueryCanInteract(Target))
 	{
-		if (Interactable->CanInteract(GetOwner()))
-		{
-			Interactable->OnInteract(GetOwner());
-			// Focus may need refreshing after the interaction changed the state.
-			RefreshFocus();
-		}
+		return;
 	}
+
+	QueryOnInteract(Target);
+
+	// The interaction may have changed the state (e.g. Locked), so re-evaluate
+	// the focus immediately instead of waiting for the next poll.
+	RefreshFocus();
 }
 
 FText UInteractionDetectorComponent::GetCurrentPrompt() const
 {
-	if (FocusedActor)
-	{
-		if (const IInteractableInterface* Interactable = Cast<IInteractableInterface>(FocusedActor))
-		{
-			return Interactable->GetInteractionPrompt();
-		}
-	}
-	return FText::GetEmpty();
+	return QueryPrompt(FocusedActor);
 }
 
 void UInteractionDetectorComponent::RefreshFocus()
 {
-	AActor* Owner = GetOwner();
-	if (!Owner)
+	if (!GetOwner())
 	{
 		return;
 	}
@@ -108,6 +244,7 @@ void UInteractionDetectorComponent::GatherCandidates(TArray<AActor*>& OutCandida
 
 	if (PickMode == EInteractionPickMode::SphereOverlap)
 	{
+		// Nearby: centred on the pawn, because "close enough" is about the body.
 		UKismetSystemLibrary::SphereOverlapActors(
 			this,
 			Owner->GetActorLocation(),
@@ -119,18 +256,22 @@ void UInteractionDetectorComponent::GatherCandidates(TArray<AActor*>& OutCandida
 	}
 	else
 	{
-		const FVector Start = Owner->GetActorLocation();
-		const FVector End = Start + Owner->GetActorForwardVector() * TraceDistance;
+		// Aimed: traced from the view point so it follows the crosshair.
+		FVector ViewLocation;
+		FRotator ViewRotation;
+		GetViewPoint(ViewLocation, ViewRotation);
+
+		const FVector End = ViewLocation + ViewRotation.Vector() * TraceDistance;
 
 		FHitResult Hit;
 		const bool bHit = UKismetSystemLibrary::LineTraceSingle(
 			this,
-			Start,
+			ViewLocation,
 			End,
 			UEngineTypes::ConvertToTraceType(ECC_Visibility),
 			false,
 			IgnoredActors,
-			EDrawDebugTrace::None,
+			bDrawDebug ? EDrawDebugTrace::ForDuration : EDrawDebugTrace::None,
 			Hit,
 			true);
 
@@ -166,29 +307,27 @@ float UInteractionDetectorComponent::ScoreCandidate(AActor* Candidate) const
 		return -FLT_MAX;
 	}
 
-	IInteractableInterface* Interactable = Cast<IInteractableInterface>(Candidate);
-	if (!Interactable || !Interactable->CanInteract(GetOwner()))
+	// Must actually be interactable right now.
+	if (!IsInteractableTarget(Candidate) || !QueryCanInteract(Candidate))
 	{
 		return -FLT_MAX;
 	}
 
-	const AActor* Owner = GetOwner();
-	if (!Owner)
-	{
-		return -FLT_MAX;
-	}
+	FVector ViewLocation;
+	FRotator ViewRotation;
+	GetViewPoint(ViewLocation, ViewRotation);
 
-	const FVector ToCandidate = Candidate->GetActorLocation() - Owner->GetActorLocation();
+	const FVector ToCandidate = Candidate->GetActorLocation() - ViewLocation;
 	const float Distance = ToCandidate.Size();
-	const float Dot = FVector::DotProduct(Owner->GetActorForwardVector(), ToCandidate.GetSafeNormal());
+	const float Dot = FVector::DotProduct(ViewRotation.Vector(), ToCandidate.GetSafeNormal());
 
-	// Reject candidates behind the player when facing is required.
-	if (bRequireFacing && Dot <= 0.0f)
+	// Reject anything the player is not aiming at closely enough.
+	if (bRequireFacing && Dot < MinFacingCosine)
 	{
 		return -FLT_MAX;
 	}
 
-	// Facing dominates, distance breaks ties.
+	// Aiming dominates, distance breaks ties.
 	return Dot * 1000.0f - Distance;
 }
 
@@ -201,20 +340,14 @@ void UInteractionDetectorComponent::SetFocusedActor(AActor* NewFocus)
 
 	if (FocusedActor)
 	{
-		if (IInteractableInterface* OldInteractable = Cast<IInteractableInterface>(FocusedActor))
-		{
-			OldInteractable->OnFocusEnd(GetOwner());
-		}
+		QueryFocusEnd(FocusedActor);
 	}
 
 	FocusedActor = NewFocus;
 
 	if (FocusedActor)
 	{
-		if (IInteractableInterface* NewInteractable = Cast<IInteractableInterface>(FocusedActor))
-		{
-			NewInteractable->OnFocusBegin(GetOwner());
-		}
+		QueryFocusBegin(FocusedActor);
 	}
 
 	OnFocusChanged.Broadcast(FocusedActor, GetCurrentPrompt());

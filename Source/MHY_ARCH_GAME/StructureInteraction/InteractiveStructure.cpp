@@ -151,14 +151,14 @@ void AInteractiveStructure::ApplyState(bool bInstant)
 	}
 }
 
-bool AInteractiveStructure::CanInteract(AActor* Interactor) const
+bool AInteractiveStructure::CanInteract_Implementation(AActor* Interactor)
 {
 	return CurrentState != EStructureState::Locked && CurrentState != EStructureState::Disabled;
 }
 
-void AInteractiveStructure::OnInteract(AActor* Interactor)
+void AInteractiveStructure::OnInteract_Implementation(AActor* Interactor)
 {
-	if (!CanInteract(Interactor))
+	if (!CanInteract_Implementation(Interactor))
 	{
 		return;
 	}
@@ -172,12 +172,12 @@ void AInteractiveStructure::OnInteract(AActor* Interactor)
 	}
 }
 
-FText AInteractiveStructure::GetInteractionPrompt() const
+FText AInteractiveStructure::GetInteractionPrompt_Implementation()
 {
 	return InteractPrompt;
 }
 
-void AInteractiveStructure::OnFocusBegin(AActor* Interactor)
+void AInteractiveStructure::OnFocusBegin_Implementation(AActor* Interactor)
 {
 	if (VisualComponent)
 	{
@@ -185,7 +185,7 @@ void AInteractiveStructure::OnFocusBegin(AActor* Interactor)
 	}
 }
 
-void AInteractiveStructure::OnFocusEnd(AActor* Interactor)
+void AInteractiveStructure::OnFocusEnd_Implementation(AActor* Interactor)
 {
 	if (VisualComponent)
 	{

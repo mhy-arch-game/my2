@@ -1,0 +1,11 @@
+{
+  "created": [
+    "/Game/Input/IMC_Interaction"
+  ],
+  "skipped": [],
+  "failed": [],
+  "notes": [
+    "added IA_Interact -> E",
+    "IMC added to DefaultMappingContexts"
+  ]
+}

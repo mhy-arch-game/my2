@@ -27,7 +27,7 @@
 
 | # | 资产 | 类型 | 建议路径 | 用途 / 备注 |
 |---|---|---|---|---|
-| 1 | **`IA_Interact`** | Input Action | `/Game/Input/Actions/` | ⚠️ **当前不存在**，但被 `StructureInteraction` 与 `InteractionLogic` 文档引用 |
+| 1 | ~~**`IA_Interact`**~~ | Input Action | `/Game/Input/Actions/` | ✅ **已由脚本创建**，并已建 `IMC_Interaction`（`IA_Interact → E`）接到玩家控制器 |
 | 2 | **`IA_TimeShift`** | Input Action | `/Game/Input/Actions/` | `UTimeShiftInputComponent.SwitchAction`（也可复用现有 IA） |
 | 3 | **攀爬蒙太奇** | Anim Montage | `/Game/MHY_ARCH_GAME/Anims/` | 需带 Root Motion + `AnimNotifyState_MotionWarping` |
 | 4 | **`M_LiquidGlowFlow`** | Material | `/Game/LiquidLight/Materials/` | LiquidLight 的流动材质（步骤见 `Docs/LiquidLight.md` §2.1） |
@@ -143,6 +143,71 @@
 | Travel | `bTeleport Owner` | ✔ |
 | Travel | `Mapping Mode` | `Layout Origin`（默认，适合两套布局一一对应） |
 | Travel | `Auto Collect Radius` | 800 |
+
+---
+
+## 4.6 交互系统：接口 + 组件，两条路径（★ 本轮已实现）
+
+"靠近且对准一个可交互物 → 按键 → 执行该物体自己的逻辑" 已经实现，采用**双通道**设计，目标只需二选一：
+
+| 路径 | 怎么用 | 适用 |
+|---|---|---|
+| **A. 实现接口** `IInteractableInterface` | 在**类**上实现（C++ 或**蓝图**都可以） | 一类对象共享同一套交互逻辑 |
+| **B. 挂组件** `UInteractableComponent` | 拖到**具体实例**上，在 `On Interact Requested` 里写逻辑 | 不想改类，或每个实例逻辑都不同 |
+
+> 关键改动：`IInteractableInterface` 已从 `NotBlueprintable` 改为 **`Blueprintable`**，5 个方法改为
+> `BlueprintNativeEvent`，因此**任何蓝图都能直接实现这个接口**，不需要写 C++。
+> （C++ 实现者改为覆盖 `_Implementation`，`AInteractiveStructure` 已同步。）
+
+### 接口的 5 个方法（在"被交互物体"上实现）
+
+| 方法 | 作用 |
+|---|---|
+| `CanInteract(Interactor)` | 现在能否交互；返回 false 则不会被聚焦 |
+| `OnInteract(Interactor)` | 按下交互键时执行 —— **每个物体在这里写自己的逻辑** |
+| `GetInteractionPrompt()` | HUD 提示文案 |
+| `OnFocusBegin(Interactor)` | 成为聚焦目标（可开高亮） |
+| `OnFocusEnd(Interactor)` | 失去聚焦（关高亮） |
+
+### 探测逻辑（`UInteractionDetectorComponent`，挂在玩家身上）
+
+- 每 `Update Interval`（默认 0.1s）搜索一次；
+- `Pick Mode` = `Sphere Overlap`：以**玩家为圆心** `Interaction Radius`（默认 250）实现"靠近"；
+- `Pick Mode` = `Line Trace`：从**相机视点**沿视线打 `Trace Distance`（默认 400）实现"对准"（天然带遮挡语义）；
+- `bRequire Facing` + `Min Facing Cosine` 控制"对准"的严格度：`0.0`=前方半球，`0.5`≈60°，`0.9`≈25°；
+- 评分 = `朝向点积 × 1000 − 距离`（对准优先，距离次之）；
+- ⚠️ **瞄准已改为使用相机视点**（`AController::GetPlayerViewPoint`），不再用角色胶囊的朝向 ——
+  胶囊 forward 永远不俯仰，无法表达"抬头/低头对准"。
+
+### 输入（已接线，无需手建）
+
+| 资产 | 状态 |
+|---|---|
+| `IA_Interact` | ✅ 已创建（Input Action，Boolean） |
+| `IMC_Interaction` | ✅ 已创建，含 `IA_Interact → E` |
+| `BP_MHY_ARCH_GAMEPlayerController.DefaultMappingContexts` | ✅ 已包含 `IMC_Interaction` |
+
+所以**只要在探测器组件上把 `Interact Action` 设为 `IA_Interact`**，按 E 就能交互。
+
+### 给一个新物体加交互
+
+**路径 B（最快，零 C++）**
+1. 打开该物体的蓝图 → **Add Component → `Interactable`**（`UInteractableComponent`）；
+2. 设 `Interaction Prompt`（例如"开门"）；
+3. 事件图表里选中该组件 → **On Interact Requested** → 接你自己的逻辑（开门 / 拾取 / 播音效…）；
+4. 想要高亮：接 **On Focus Gained / On Focus Lost**。
+
+> 同一个组件类，不同实例绑不同逻辑 —— 这正是"不同物体不同交互逻辑"。
+
+**路径 A（一类对象共享逻辑）**
+1. 蓝图 → **Class Settings → Interfaces → Add → `Interactable`**；
+2. 在 **Interfaces** 分类下实现 `On Interact` 与 `Get Interaction Prompt`（`Can Interact` 默认返回 true）。
+
+### 最小验证
+
+1. 在 `BP_MHY_ARCH_GAMECharacter` 上挂 `Interaction Detector`（§3），`Interact Action` = `IA_Interact`；
+2. 把 `Pick Mode` 设 `Line Trace`、勾 `bDraw Debug`；
+3. PIE 里用准星对准 `BP_InteractiveStructure` → 应有绿色调试线；按 **E** → 结构开合。
 
 ---
 
@@ -269,7 +334,7 @@
 
 | # | 缺口 | 影响 |
 |---|---|---|
-| 1 | `IA_Interact` **不存在**（文档引用但资产缺失） | 交互系统无法触发，**阻塞** |
+| 1 | ~~`IA_Interact` 不存在~~ | ✅ **已解决**：`Scripts/create_interact_input.py` + `create_interact_mapping.py` 建好 `IA_Interact` 与 `IMC_Interaction`（E 键） |
 | 2 | `IA_TimeShift` 不存在 | 时空切换无输入（可复用现有 IA 规避） |
 | 3 | `Docs/LightReveal.md` **未随迁移提供** | 我按头文件推断的 §5.5 可能与你原设计有出入 |
 | 4 | 角色 Mesh / AnimBP 未指定 | 角色不可见（§4.1） |
