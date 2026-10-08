@@ -14,9 +14,6 @@ public class MHY_ARCH_GAME : ModuleRules
 			"Engine",
 			"InputCore",
 			"EnhancedInput",
-			"AIModule",
-			"StateTreeModule",
-			"GameplayStateTreeModule",
 			"UMG",
 			"Slate",
 			"MotionWarping",
@@ -36,20 +33,7 @@ public class MHY_ARCH_GAME : ModuleRules
 			"MHY_ARCH_GAME/StructureInteraction",
 			"MHY_ARCH_GAME/StructureInteraction/Interfaces",
 			"MHY_ARCH_GAME/TimeShift",
-			"MHY_ARCH_GAME/TimeShift/Interfaces",
-			"MHY_ARCH_GAME/Variant_Platforming",
-			"MHY_ARCH_GAME/Variant_Platforming/Animation",
-			"MHY_ARCH_GAME/Variant_Combat",
-			"MHY_ARCH_GAME/Variant_Combat/AI",
-			"MHY_ARCH_GAME/Variant_Combat/Animation",
-			"MHY_ARCH_GAME/Variant_Combat/Gameplay",
-			"MHY_ARCH_GAME/Variant_Combat/Interfaces",
-			"MHY_ARCH_GAME/Variant_Combat/UI",
-			"MHY_ARCH_GAME/Variant_SideScrolling",
-			"MHY_ARCH_GAME/Variant_SideScrolling/AI",
-			"MHY_ARCH_GAME/Variant_SideScrolling/Gameplay",
-			"MHY_ARCH_GAME/Variant_SideScrolling/Interfaces",
-			"MHY_ARCH_GAME/Variant_SideScrolling/UI"
+			"MHY_ARCH_GAME/TimeShift/Interfaces"
 		});
 
 		// Uncomment if you are using Slate UI
