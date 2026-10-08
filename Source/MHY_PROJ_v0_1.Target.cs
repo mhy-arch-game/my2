@@ -8,6 +8,6 @@ public class MHY_PROJ_v0_1Target : TargetRules
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V6;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_7;
-		ExtraModuleNames.Add("MHY_PROJ_v0_1");
+		ExtraModuleNames.Add("MHY_ARCH_GAME");
 	}
 }

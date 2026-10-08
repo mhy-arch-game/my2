@@ -5,7 +5,7 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "MHY_PROJ_v0_1",
+			"Name": "MHY_ARCH_GAME",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
@@ -20,6 +20,10 @@
 		},
 		{
 			"Name": "GameplayStateTree",
+			"Enabled": true
+		},
+		{
+			"Name": "MotionWarping",
 			"Enabled": true
 		},
 		{
