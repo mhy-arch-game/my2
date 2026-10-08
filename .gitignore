@@ -72,3 +72,10 @@ Plugins/**/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Oversize 4K source textures: 128 MB each (4096x4096x8B uncompressed RGBA16F).
+# They exceed GitHub's 100 MB per-file limit, so any commit containing them is
+# rejected on push. Kept on disk locally, deliberately not tracked.
+/Content/texture/plastered_wall_02_nor_gl_4k.uasset
+/Content/texture/checkered_pavement_tiles_nor_gl_4k.uasset
+/Content/texture/plastered_wall_02_rough_4k.uasset
