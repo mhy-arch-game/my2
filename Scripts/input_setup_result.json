@@ -1,0 +1,11 @@
+{
+  "created": [
+    "/Game/Input/Actions/IA_Interact"
+  ],
+  "skipped": [],
+  "failed": [],
+  "notes": [
+    "/Game/Input/Actions/IA_Interact created with factory=None",
+    "IA_Interact value_type = BOOLEAN"
+  ]
+}
