@@ -30,6 +30,7 @@ public class MHY_ARCH_GAME : ModuleRules
 			"MHY_ARCH_GAME/LightReveal/Interfaces",
 			"MHY_ARCH_GAME/LiquidLight",
 			"MHY_ARCH_GAME/OverlapPassage",
+			"MHY_ARCH_GAME/GravityZone",
 			"MHY_ARCH_GAME/StructureInteraction",
 			"MHY_ARCH_GAME/StructureInteraction/Interfaces",
 			"MHY_ARCH_GAME/TimeShift",

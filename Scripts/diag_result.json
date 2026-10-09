@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "gamemode:/Game/FirstPerson/Blueprints/BP_FirstPersonGameMode": {
+      "DefaultPawnClass": "<Object '/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter.BP_FirstPersonCharacter_C' (0x0000029E5806EE00) Class 'BlueprintGeneratedClass'>",
+      "PlayerControllerClass": "<Object '/Game/FirstPerson/Blueprints/BP_FirstPersonPlayerController.BP_FirstPersonPlayerController_C' (0x0000029E5806CB00) Class 'BlueprintGeneratedClass'>",
+      "HUDClass": "<Object '/Script/Engine.HUD' (0x00007FF42E45DC38) Class 'Class'>",
+      "GameStateClass": "<Object '/Script/Engine.GameStateBase' (0x00007FF42E46A1A8) Class 'Class'>"
+    },
+    "gamemode:/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEGameMode": {
+      "DefaultPawnClass": "<Object '/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter.BP_MHY_ARCH_GAMECharacter_C' (0x0000029E5C523800) Class 'BlueprintGeneratedClass'>",
+      "PlayerControllerClass": "<Object '/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController.BP_MHY_ARCH_GAMEPlayerController_C' (0x0000029E5C526900) Class 'BlueprintGeneratedClass'>",
+      "HUDClass": "<Object '/Script/Engine.HUD' (0x00007FF42E45DC38) Class 'Class'>",
+      "GameStateClass": "<Object '/Script/Engine.GameStateBase' (0x00007FF42E46A1A8) Class 'Class'>"
+    },
+    "IMC_Interaction": {
+      "mappings": [
+        {
+          "action": "<Object '/Game/Input/Actions/IA_Interact.IA_Interact' (0x0000029E54FDE7C0) Class 'InputAction'>",
+          "key": "<Struct 'Key' (0x0000029E5B7AA228) {}>",
+          "key_name": "E",
+          "triggers": "[]",
+          "modifiers": "[]"
+        }
+      ]
+    },
+    "controller:/Game/FirstPerson/Blueprints/BP_FirstPersonPlayerController": {
+      "DefaultMappingContexts": "ERR:Exception(\"PlayerController: Failed to find property 'DefaultMappingContexts' for attribute 'DefaultMappingContexts' on 'BP_FirstPersonPlayerController_C'\")",
+      "MobileExcludedMappingContexts": "ERR:Exception(\"PlayerController: Failed to find property 'MobileExcludedMappingContexts' for attribute 'MobileExcludedMappingContexts' on 'BP_FirstPersonPlayerController_C'\")",
+      "bForceTouchControls": "ERR:Exception(\"PlayerController: Failed to find property 'bForceTouchControls' for attribute 'bForceTouchControls' on 'BP_FirstPersonPlayerController_C'\")"
+    },
+    "controller:/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController": {
+      "DefaultMappingContexts": "[\"/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_Default.IMC_Default'\", \"/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_MouseLook.IMC_MouseLook'\", \"/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_Interaction.IMC_Interaction'\"]",
+      "MobileExcludedMappingContexts": "[]",
+      "bForceTouchControls": "False"
+    },
+    "detector": {
+      "count": 0,
+      "components": []
+    },
+    "door": {
+      "count": 0,
+      "components": []
+    }
+  }
+}

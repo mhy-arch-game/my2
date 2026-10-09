@@ -1,0 +1,12 @@
+{
+  "notes": [
+    "added IA_Interact -> E to IMC_Default"
+  ],
+  "failed": [],
+  "IMC_Default_mappings": [
+    {
+      "action": "<Object '/Game/Input/Actions/IA_Interact.IA_Interact' (0x0000022EC28587C0) Class 'InputAction'>",
+      "key_name": "E"
+    }
+  ]
+}

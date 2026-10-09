@@ -7,9 +7,12 @@
 
 #include "Components/PrimitiveComponent.h"
 #include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "Engine/LocalPlayer.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/Pawn.h"
 #include "InputAction.h"
+#include "InputMappingContext.h"
 #include "Kismet/KismetMaterialLibrary.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Materials/MaterialParameterCollection.h"
@@ -18,6 +21,8 @@ UInteractionDetectorComponent::UInteractionDetectorComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 	PrimaryComponentTick.bStartWithTickEnabled = true;
+
+	InteractKey = EKeys::E;
 
 	// Typical scene object types an interactable may use.
 	ProbeObjectTypes.Add(EObjectTypeQuery::ObjectTypeQuery1); // WorldStatic
@@ -32,6 +37,7 @@ void UInteractionDetectorComponent::BeginPlay()
 	// Try to bind straight away; if the pawn's input component is not ready yet,
 	// TickComponent will retry until it is.
 	TryBindInput();
+	RegisterInteractContext();
 	RefreshFocus();
 }
 
@@ -51,6 +57,11 @@ void UInteractionDetectorComponent::TickComponent(float DeltaTime, ELevelTick Ti
 	if (!bInputBound)
 	{
 		TryBindInput();
+	}
+
+	if (!bContextRegistered)
+	{
+		RegisterInteractContext();
 	}
 
 	TimeSinceRefresh += DeltaTime;
@@ -291,6 +302,50 @@ void UInteractionDetectorComponent::GatherCandidates(TArray<AActor*>& OutCandida
 			OutCandidates.Add(Hit.GetActor());
 		}
 	}
+
+	// Keep the CURRENT focus alive while it is still a legal target.
+	// Without this, anything that moves out of the picking trace loses focus the
+	// moment it reacts - a door swinging open leaves the crosshair, so the next
+	// key press could never toggle it back to its initial state.
+	AActor* Current = FocusedActor.Get();
+	if (Current && !OutCandidates.Contains(Current) && IsStillValidTarget(Current))
+	{
+		OutCandidates.Add(Current);
+	}
+}
+
+bool UInteractionDetectorComponent::IsStillValidTarget(AActor* Candidate) const
+{
+	if (!Candidate || Candidate == GetOwner())
+	{
+		return false;
+	}
+
+	if (!IsInteractableTarget(Candidate) || !QueryCanInteract(Candidate))
+	{
+		return false;
+	}
+
+	FVector ViewLocation;
+	FRotator ViewRotation;
+	GetViewPoint(ViewLocation, ViewRotation);
+
+	const FVector ToCandidate = Candidate->GetActorLocation() - ViewLocation;
+	const float Distance = ToCandidate.Size();
+
+	// Generous bound covering both picking modes.
+	if (Distance > FMath::Max(TraceDistance, InteractionRadius))
+	{
+		return false;
+	}
+
+	const float Dot = FVector::DotProduct(ViewRotation.Vector(), ToCandidate.GetSafeNormal());
+	if (bRequireFacing && Dot < MinFacingCosine)
+	{
+		return false;
+	}
+
+	return true;
 }
 
 AActor* UInteractionDetectorComponent::PickBestCandidate(const TArray<AActor*>& Candidates) const
@@ -390,6 +445,45 @@ void UInteractionDetectorComponent::TryBindInput()
 			&UInteractionDetectorComponent::HandleInteractInput);
 		bInputBound = true;
 	}
+}
+
+void UInteractionDetectorComponent::RegisterInteractContext()
+{
+	if (bContextRegistered || !bRegisterInteractContext || !InteractAction)
+	{
+		return;
+	}
+
+	const APawn* Pawn = Cast<APawn>(GetOwner());
+	const APlayerController* Controller = Pawn ? Cast<APlayerController>(Pawn->GetController()) : nullptr;
+	ULocalPlayer* LocalPlayer = Controller ? Controller->GetLocalPlayer() : nullptr;
+	if (!LocalPlayer)
+	{
+		// Possession may not have happened yet; TickComponent retries.
+		return;
+	}
+
+	UEnhancedInputLocalPlayerSubsystem* Subsystem =
+		LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
+	if (!Subsystem)
+	{
+		return;
+	}
+
+	if (!RuntimeInteractContext)
+	{
+		// Owned by this component so it stays alive for the session.
+		RuntimeInteractContext = NewObject<UInputMappingContext>(
+			this, TEXT("InteractionRuntimeContext"));
+		RuntimeInteractContext->MapKey(InteractAction, InteractKey);
+	}
+
+	Subsystem->AddMappingContext(RuntimeInteractContext, InteractContextPriority);
+	bContextRegistered = true;
+
+	UE_LOG(LogTemp, Log,
+		TEXT("[Interaction] %s registered runtime interact context (%s -> %s)."),
+		*GetNameSafe(GetOwner()), *InteractKey.ToString(), *GetNameSafe(InteractAction));
 }
 
 void UInteractionDetectorComponent::HandleInteractInput()

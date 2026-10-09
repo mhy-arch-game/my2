@@ -13,7 +13,8 @@ ARevealPlatform::ARevealPlatform()
 
 	SolidBox = CreateDefaultSubobject<UBoxComponent>(TEXT("SolidBox"));
 	RootComponent = SolidBox;
-	SolidBox->SetBoxExtent(FVector(200.0f, 200.0f, 10.0f));
+	// InitBoxExtent: constructor-safe (SetBoxExtent would NewObject a BodySetup here).
+	SolidBox->InitBoxExtent(FVector(200.0f, 200.0f, 10.0f));
 	// Impassable by default: physical collision off (characters fall through / hit nothing).
 	SolidBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	SolidBox->SetCollisionProfileName(TEXT("BlockAllDynamic"));
@@ -23,7 +24,7 @@ ARevealPlatform::ARevealPlatform()
 	DetectorBox = CreateDefaultSubobject<UBoxComponent>(TEXT("DetectorBox"));
 	DetectorBox->SetupAttachment(SolidBox);
 	DetectorBox->SetRelativeLocation(FVector(0.0f, 0.0f, 110.0f)); // center above the surface
-	DetectorBox->SetBoxExtent(FVector(220.0f, 220.0f, 90.0f));
+	DetectorBox->InitBoxExtent(FVector(220.0f, 220.0f, 90.0f));
 	DetectorBox->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
 	DetectorBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	DetectorBox->SetGenerateOverlapEvents(true);

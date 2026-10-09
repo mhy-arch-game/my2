@@ -12,7 +12,8 @@ ARevealLightVolume::ARevealLightVolume()
 
 	LightZone = CreateDefaultSubobject<UBoxComponent>(TEXT("LightZone"));
 	RootComponent = LightZone;
-	LightZone->SetBoxExtent(FVector(300.0f, 300.0f, 200.0f));
+	// InitBoxExtent: constructor-safe (SetBoxExtent would NewObject a BodySetup here).
+	LightZone->InitBoxExtent(FVector(300.0f, 300.0f, 200.0f));
 	LightZone->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
 	LightZone->SetGenerateOverlapEvents(true);
 	LightZone->OnComponentBeginOverlap.AddDynamic(this, &ARevealLightVolume::OnZoneOverlapBegin);

@@ -120,6 +120,24 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Interaction")
 	TObjectPtr<UInputAction> InteractAction;
 
+	/**
+	 * Safety net: register a runtime input mapping context that maps InteractKey
+	 * to InteractAction, so the interact key works even when no Content mapping
+	 * context maps it (a common foot-gun: the mapping only exists on a mapping
+	 * context that the running PlayerController never registers).
+	 * Turn this off once your own IMC / PlayerController maps the action.
+	 */
+	UPROPERTY(EditAnywhere, Category="Interaction|Input")
+	bool bRegisterInteractContext = true;
+
+	/** Key used by the runtime context above (default E). */
+	UPROPERTY(EditAnywhere, Category="Interaction|Input")
+	FKey InteractKey;
+
+	/** Priority of the runtime context. Higher wins over the project contexts. */
+	UPROPERTY(EditAnywhere, Category="Interaction|Input")
+	int32 InteractContextPriority = 0;
+
 	/** Draw the picking trace for debugging. */
 	UPROPERTY(EditAnywhere, Category="Interaction")
 	bool bDrawDebug = false;
@@ -176,6 +194,11 @@ private:
 
 	float TimeSinceRefresh = 0.0f;
 	bool bInputBound = false;
+	bool bContextRegistered = false;
+
+	/** Runtime mapping context that guarantees the interact key is mapped. */
+	UPROPERTY(Transient)
+	TObjectPtr<class UInputMappingContext> RuntimeInteractContext;
 
 	/** Custom-depth state captured when the focus outline was applied. */
 	TArray<FInteractionOutlineBackup> OutlineBackups;
@@ -187,6 +210,7 @@ private:
 	void SetFocusedActor(AActor* NewFocus);
 	void TryBindInput();
 	void HandleInteractInput();
+	void RegisterInteractContext();
 
 	/** View location/rotation (camera when controlled), else the owner's transform. */
 	void GetViewPoint(FVector& OutLocation, FRotator& OutRotation) const;
@@ -200,6 +224,13 @@ private:
 	FText QueryPrompt(AActor* Target) const;
 	void QueryFocusBegin(AActor* Target);
 	void QueryFocusEnd(AActor* Target);
+
+	/**
+	 * Whether Candidate is still a legal target from the current viewpoint
+	 * (interactable + CanInteract + in range + facing). Used to keep the current
+	 * focus alive when it drifts out of the picking trace.
+	 */
+	bool IsStillValidTarget(AActor* Candidate) const;
 
 	// -- focus outline -----------------------------------------------------
 	/** Thicken the outline on Target (captures the previous state first). */
