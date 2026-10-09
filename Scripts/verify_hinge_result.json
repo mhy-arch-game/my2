@@ -1,0 +1,772 @@
+{
+  "doors": [
+    {
+      "label": "active_door",
+      "loc": [
+        -1485.0,
+        -310.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B0248) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B0268) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B0180) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B01E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men2",
+      "loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B3B48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B3B68) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B3A80) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B3AE0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men3",
+      "loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B3548) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B3568) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B3480) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B34E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men4",
+      "loc": [
+        -2390.0,
+        1190.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B2F48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B2F68) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B2E80) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B2EE0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men5",
+      "loc": [
+        -2710.0,
+        1190.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B2348) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B2368) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B2280) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B22E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men6",
+      "loc": [
+        -3090.0,
+        1190.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B1148) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B1168) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B1080) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B10E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men7",
+      "loc": [
+        -2550.0,
+        1030.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B1448) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B1468) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B1380) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B13E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men8",
+      "loc": [
+        -2550.0,
+        790.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B1D48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B1D68) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B1C80) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B1CE0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men9",
+      "loc": [
+        -2710.0,
+        630.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B4D48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B4D68) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B4C80) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B4CE0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men10",
+      "loc": [
+        -3090.0,
+        630.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B5348) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B5368) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B5280) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B52E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men11",
+      "loc": [
+        -3250.0,
+        790.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B5948) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B5968) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B5880) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B58E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men12",
+      "loc": [
+        -3250.0,
+        1350.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B5C48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B5C68) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B5B80) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B5BE0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men13",
+      "loc": [
+        -3250.0,
+        1870.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B6248) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B6268) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B6180) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B61E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men14",
+      "loc": [
+        -3410.0,
+        1190.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B6848) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B6868) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B6780) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B67E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men15",
+      "loc": [
+        -4430.0,
+        2050.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B6E48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B6E68) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B6D80) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B6DE0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men16",
+      "loc": [
+        -5430.0,
+        2890.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B7448) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B7468) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B7380) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B73E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    },
+    {
+      "label": "men17",
+      "loc": [
+        -6430.0,
+        3730.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ],
+      "bUseBuiltInToggle": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001A4860B7A48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001A4860B7A68) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "OpenAngleDegrees": 90.0,
+      "ClosedRelativeTransform": "<Struct 'Transform' (0x000001A4860B7980) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "OpenRelativeTransform": "<Struct 'Transform' (0x000001A4860B79E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "error": "Exception(\"StaticMeshComponent: Failed to find property 'relative_transform' for attribute 'relative_transform' on 'StaticMeshComponent'\")"
+    }
+  ],
+  "frames": [
+    {
+      "label": "menkuang1",
+      "class": "StaticMeshActor",
+      "loc": [
+        -1490.0,
+        -310.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang2",
+      "class": "StaticMeshActor",
+      "loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang3",
+      "class": "StaticMeshActor",
+      "loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ]
+    },
+    {
+      "label": "menkuang4",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2390.0,
+        1190.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang5",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2710.0,
+        1190.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang6",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3090.0,
+        1190.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang7",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2550.0,
+        1030.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang8",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2550.0,
+        790.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang9",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2710.0,
+        630.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang10",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3090.0,
+        630.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang11",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3250.0,
+        790.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang12",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3250.0,
+        1350.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang13",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3250.0,
+        1870.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang14",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3410.0,
+        1190.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang15",
+      "class": "StaticMeshActor",
+      "loc": [
+        -4430.0,
+        2050.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang16",
+      "class": "StaticMeshActor",
+      "loc": [
+        -5430.0,
+        2890.0,
+        100.0
+      ]
+    },
+    {
+      "label": "menkuang17",
+      "class": "StaticMeshActor",
+      "loc": [
+        -6430.0,
+        3730.0,
+        100.0
+      ]
+    }
+  ],
+  "door_count": 17
+}

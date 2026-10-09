@@ -1,0 +1,328 @@
+{
+  "rows": [
+    {
+      "label": "menkuang1",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang2",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang3",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang4",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang5",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang6",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang7",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang8",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang9",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang10",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang11",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang12",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang13",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang14",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang15",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang16",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    },
+    {
+      "label": "menkuang17",
+      "profile": "Custom",
+      "comp.get_collision_response_to_channel": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bi.get_collision_response_to_channel": "<absent>",
+      "resp_type": "CollisionResponse",
+      "resp_props": [
+        "assign",
+        "cast",
+        "copy",
+        "export_text",
+        "get_editor_property",
+        "import_text",
+        "set_editor_properties",
+        "set_editor_property",
+        "static_struct",
+        "to_tuple"
+      ]
+    }
+  ],
+  "door_profile": "BlockAllDynamic"
+}

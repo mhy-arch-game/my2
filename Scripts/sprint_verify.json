@@ -1,0 +1,30 @@
+{
+  "bp": "BP_FirstPersonCharacter",
+  "vars": [
+    "None",
+    "FirstPersonMesh",
+    "FirstPersonCamera",
+    "FirstPersonCamera",
+    "Mesh",
+    "CapsuleComponent",
+    "ArrowComponent",
+    "Climb",
+    "MotionWarping",
+    "InteractionDetector",
+    "CharacterMovement",
+    "MovementAudio",
+    "TimeShiftTravel",
+    "TimeShiftInput",
+    "Sprint"
+  ],
+  "has_sprint": true,
+  "sprint_props": {
+    "SprintSpeed": "650.0",
+    "bHoldToSprint": "True",
+    "bRegisterSprintContext": "True",
+    "bIncludeRightShift": "True",
+    "bRequireForwardInput": "False",
+    "bIgnoreWhenCrouched": "True",
+    "SprintKey": "<Struct 'Key' (0x000001BD47604C00) {}>"
+  }
+}

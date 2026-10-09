@@ -1,0 +1,337 @@
+{
+  "world": "firstvision",
+  "char_bps": {
+    "/Game/FirstPerson/BP_FirstPersonCharacter": "<not found>",
+    "/Game/FirstPerson/BP_FirstPersonPlayerController": "<not found>",
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter": []
+  },
+  "geo": {
+    "active_door": {
+      "class": "active_door_C",
+      "loc": [
+        -1485.0,
+        -310.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "actor_bounds": {
+        "origin": [
+          -1485.22,
+          -309.95,
+          223.93
+        ],
+        "extent": [
+          6.03,
+          56.8,
+          123.93
+        ]
+      },
+      "meshes": [
+        {
+          "name": "DoorMesh",
+          "static_mesh": "/Game/Fab/Modern_Door/Door.Door",
+          "get_collision_enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "get_collision_profile_name": "BlockAllDynamic",
+          "get_collision_object_type": "<CollisionChannel.ECC_WORLD_DYNAMIC: 1>",
+          "world_loc": [
+            -1485.0,
+            -310.0,
+            100.0
+          ],
+          "local_min": [
+            -2.4,
+            -21.83,
+            0.09
+          ],
+          "local_max": [
+            2.23,
+            21.86,
+            95.33
+          ]
+        }
+      ]
+    },
+    "men2": {
+      "class": "active_door_C",
+      "loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "actor_bounds": {
+        "origin": [
+          -1810.22,
+          1190.05,
+          223.93
+        ],
+        "extent": [
+          6.03,
+          56.8,
+          123.93
+        ]
+      },
+      "meshes": [
+        {
+          "name": "DoorMesh",
+          "static_mesh": "/Game/Fab/Modern_Door/Door.Door",
+          "get_collision_enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "get_collision_profile_name": "BlockAllDynamic",
+          "get_collision_object_type": "<CollisionChannel.ECC_WORLD_DYNAMIC: 1>",
+          "world_loc": [
+            -1810.0,
+            1190.0,
+            100.0
+          ],
+          "local_min": [
+            -2.4,
+            -21.83,
+            0.09
+          ],
+          "local_max": [
+            2.23,
+            21.86,
+            95.33
+          ]
+        }
+      ]
+    },
+    "men3": {
+      "class": "active_door_C",
+      "loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "actor_bounds": {
+        "origin": [
+          -8700.22,
+          170.05,
+          1423.93
+        ],
+        "extent": [
+          6.03,
+          56.8,
+          123.93
+        ]
+      },
+      "meshes": [
+        {
+          "name": "DoorMesh",
+          "static_mesh": "/Game/Fab/Modern_Door/Door.Door",
+          "get_collision_enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "get_collision_profile_name": "BlockAllDynamic",
+          "get_collision_object_type": "<CollisionChannel.ECC_WORLD_DYNAMIC: 1>",
+          "world_loc": [
+            -8700.0,
+            170.0,
+            1300.0
+          ],
+          "local_min": [
+            -2.4,
+            -21.83,
+            0.09
+          ],
+          "local_max": [
+            2.23,
+            21.86,
+            95.33
+          ]
+        }
+      ]
+    },
+    "menkuang1": {
+      "class": "StaticMeshActor",
+      "loc": [
+        -1490.0,
+        -310.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "actor_bounds": {
+        "origin": [
+          -1490.0,
+          -310.0,
+          230.0
+        ],
+        "extent": [
+          7.36,
+          71.09,
+          130.0
+        ]
+      },
+      "meshes": [
+        {
+          "name": "StaticMeshComponent0",
+          "static_mesh": "/Game/Fab/Modern_Door/Door_Frame.Door_Frame",
+          "get_collision_enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "get_collision_profile_name": "BlockAll",
+          "get_collision_object_type": "<CollisionChannel.ECC_WORLD_STATIC: 0>",
+          "world_loc": [
+            -1490.0,
+            -310.0,
+            100.0
+          ],
+          "local_min": [
+            -2.83,
+            -27.34,
+            0.0
+          ],
+          "local_max": [
+            2.83,
+            27.34,
+            100.0
+          ]
+        }
+      ]
+    },
+    "menkuang2": {
+      "class": "StaticMeshActor",
+      "loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "actor_bounds": {
+        "origin": [
+          -1810.0,
+          1190.0,
+          230.0
+        ],
+        "extent": [
+          7.36,
+          71.09,
+          130.0
+        ]
+      },
+      "meshes": [
+        {
+          "name": "StaticMeshComponent0",
+          "static_mesh": "/Game/Fab/Modern_Door/Door_Frame.Door_Frame",
+          "get_collision_enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "get_collision_profile_name": "BlockAll",
+          "get_collision_object_type": "<CollisionChannel.ECC_WORLD_STATIC: 0>",
+          "world_loc": [
+            -1810.0,
+            1190.0,
+            100.0
+          ],
+          "local_min": [
+            -2.83,
+            -27.34,
+            0.0
+          ],
+          "local_max": [
+            2.83,
+            27.34,
+            100.0
+          ]
+        }
+      ]
+    },
+    "menkuang3": {
+      "class": "StaticMeshActor",
+      "loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "actor_bounds": {
+        "origin": [
+          -8700.0,
+          170.0,
+          1430.0
+        ],
+        "extent": [
+          7.36,
+          71.09,
+          130.0
+        ]
+      },
+      "meshes": [
+        {
+          "name": "StaticMeshComponent0",
+          "static_mesh": "/Game/Fab/Modern_Door/Door_Frame.Door_Frame",
+          "get_collision_enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "get_collision_profile_name": "BlockAll",
+          "get_collision_object_type": "<CollisionChannel.ECC_WORLD_STATIC: 0>",
+          "world_loc": [
+            -8700.0,
+            170.0,
+            1300.0
+          ],
+          "local_min": [
+            -2.83,
+            -27.34,
+            0.0
+          ],
+          "local_max": [
+            2.83,
+            27.34,
+            100.0
+          ]
+        }
+      ]
+    }
+  },
+  "probe_door": "men2",
+  "fatal": "AttributeError(\"'NoneType' object has no attribute 'actor'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/diag_door_passage.py\", line 216, in <module>\n    main()\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/diag_door_passage.py\", line 190, in main\n    report[\"trace_front_to_back\"] = cast_ray(eye - fwd * 300.0, eye + fwd * 300.0, ignores)\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/diag_door_passage.py\", line 74, in cast_ray\n    \"blocking\": None if hit.actor is None else hit.actor.get_actor_label(),\n                        ^^^^^^^^^\nAttributeError: 'NoneType' object has no attribute 'actor'\n"
+}

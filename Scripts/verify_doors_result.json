@@ -1,0 +1,76 @@
+{
+  "total_actors": 421,
+  "door_instances": 17,
+  "doors": [
+    {
+      "label": "active_door",
+      "name": "active_door_C_1"
+    },
+    {
+      "label": "men10",
+      "name": "active_door_C_9"
+    },
+    {
+      "label": "men11",
+      "name": "active_door_C_10"
+    },
+    {
+      "label": "men12",
+      "name": "active_door_C_11"
+    },
+    {
+      "label": "men13",
+      "name": "active_door_C_12"
+    },
+    {
+      "label": "men14",
+      "name": "active_door_C_13"
+    },
+    {
+      "label": "men15",
+      "name": "active_door_C_14"
+    },
+    {
+      "label": "men16",
+      "name": "active_door_C_15"
+    },
+    {
+      "label": "men17",
+      "name": "active_door_C_16"
+    },
+    {
+      "label": "men2",
+      "name": "active_door_C_0"
+    },
+    {
+      "label": "men3",
+      "name": "active_door_C_2"
+    },
+    {
+      "label": "men4",
+      "name": "active_door_C_3"
+    },
+    {
+      "label": "men5",
+      "name": "active_door_C_4"
+    },
+    {
+      "label": "men6",
+      "name": "active_door_C_5"
+    },
+    {
+      "label": "men7",
+      "name": "active_door_C_6"
+    },
+    {
+      "label": "men8",
+      "name": "active_door_C_7"
+    },
+    {
+      "label": "men9",
+      "name": "active_door_C_8"
+    }
+  ],
+  "men_still_not_door": [],
+  "menkuang_count": 17
+}

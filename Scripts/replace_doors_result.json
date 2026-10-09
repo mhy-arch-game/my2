@@ -1,0 +1,590 @@
+{
+  "apply": true,
+  "reference": {
+    "name": "active_door_C_1",
+    "label": "active_door",
+    "transform": "<Struct 'Transform' (0x00000179400BF780) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -1485.000000, y: -310.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>"
+  },
+  "replaced": [
+    {
+      "label": "men2",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BF780) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -1810.000000, y: 1190.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men3",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFB70) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -8700.000000, y: 170.000000, z: 1300.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men4",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFAE0) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -2390.000000, y: 1190.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men5",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BF780) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -2710.000000, y: 1190.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men6",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFB70) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -3090.000000, y: 1190.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men7",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFAE0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: -2550.000000, y: 1030.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men8",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BF780) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: -2550.000000, y: 790.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men9",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFB70) {rotation: {x: -0.000000, y: 0.000000, z: -0.000000, w: 1.000000}, translation: {x: -2710.000000, y: 630.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men10",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFAE0) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -3090.000000, y: 630.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men11",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BF780) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: -3250.000000, y: 790.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men12",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFB70) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: -3250.000000, y: 1350.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men13",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFAE0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: -3250.000000, y: 1870.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men14",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BF780) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -3410.000000, y: 1190.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men15",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFB70) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -4430.000000, y: 2050.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men16",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BFAE0) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -5430.000000, y: 2890.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    },
+    {
+      "label": "men17",
+      "class": "StaticMeshActor",
+      "transform": "<Struct 'Transform' (0x00000179400BF780) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -6430.000000, y: 3730.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>",
+      "copied_props": [
+        "bEnabled",
+        "InteractionPrompt",
+        "bUseBuiltInToggle",
+        "ToggleComponentNames",
+        "ToggleComponents",
+        "ClosedRelativeTransform",
+        "OpenRelativeTransform",
+        "ToggleDuration",
+        "bStartOpen",
+        "bDisableCollisionWhenOpen",
+        "bToggleLights",
+        "LightComponents",
+        "LightComponentNames"
+      ]
+    }
+  ],
+  "skipped": [],
+  "failed": [
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "bUseAxisRotation",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'bUseAxisRotation' for attribute 'bUseAxisRotation' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationAxis",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationAxis' for attribute 'RotationAxis' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "OpenAngleDegrees",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'OpenAngleDegrees' for attribute 'OpenAngleDegrees' on 'InteractableComponent'\")"
+    },
+    {
+      "prop": "RotationPivot",
+      "error": "Exception(\"InteractableComponent: Failed to find property 'RotationPivot' for attribute 'RotationPivot' on 'InteractableComponent'\")"
+    }
+  ],
+  "total_actors": 421
+}

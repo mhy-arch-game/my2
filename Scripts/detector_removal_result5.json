@@ -1,0 +1,99 @@
+{
+  "vars_before": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "sig_delete_subobject": "x.delete_subobject(context_handle, subobject_to_delete, bp_context=None) -> int32\r\nAttempts to delete the given subobject from its blueprint context\r\n\r\nArgs:\r\n    context_handle (SubobjectDataHandle): The owning context of the subobjects that should be removed\r\n    subobject_to_delete (SubobjectDataHandle): The subobject handles that should be deleted\r\n    bp_context (Blueprint): The blueprint context for the given\r\n\r\nReturns:\r\n    int32: The number of subobjects successfully deleted",
+  "sig_delete_subobjects": "x.delete_subobjects(context_handle, subobjects_to_delete, bp_context=None) -> int32\r\nAttempts to delete the given array of subobjects from their context\r\n\r\nArgs:\r\n    context_handle (SubobjectDataHandle): The owning context of the subobjects that should be removed\r\n    subobjects_to_delete (Array[SubobjectDataHandle]): Array of subobject handles that should be deleted\r\n    bp_context (Blueprint): The blueprint context for the given\r\n\r\nReturns:\r\n    int32: The number of subobjects successfully deleted",
+  "ctx_alt_type": "SubobjectDataHandle",
+  "attempts": [
+    {
+      "form": "delete_subobject(det_h, ctx_h)",
+      "err": "ok",
+      "vars": [
+        "None",
+        "DefaultSceneRoot",
+        "DoorMesh",
+        "DoorMesh",
+        "Interactable",
+        "InteractionDetector"
+      ]
+    },
+    {
+      "form": "delete_subobject(det_h, ctx_alt)",
+      "err": "ok",
+      "vars": [
+        "None",
+        "DefaultSceneRoot",
+        "DoorMesh",
+        "DoorMesh",
+        "Interactable",
+        "InteractionDetector"
+      ]
+    },
+    {
+      "form": "delete_subobject(ctx_h, det_h)",
+      "err": "ok",
+      "vars": [
+        "None",
+        "DefaultSceneRoot",
+        "DoorMesh",
+        "DoorMesh",
+        "Interactable",
+        "InteractionDetector"
+      ]
+    },
+    {
+      "form": "delete_subobject(det_d, ctx_h)",
+      "err": "    TypeError: NativizeStructInstance: Cannot nativize 'SubobjectData' as 'SubobjectDataHandle'",
+      "vars": [
+        "None",
+        "DefaultSceneRoot",
+        "DoorMesh",
+        "DoorMesh",
+        "Interactable",
+        "InteractionDetector"
+      ]
+    },
+    {
+      "form": "delete_subobject(det_d, ctx_d)",
+      "err": "    TypeError: NativizeStructInstance: Cannot nativize 'SubobjectData' as 'SubobjectDataHandle'",
+      "vars": [
+        "None",
+        "DefaultSceneRoot",
+        "DoorMesh",
+        "DoorMesh",
+        "Interactable",
+        "InteractionDetector"
+      ]
+    },
+    {
+      "form": "delete_subobjects([det_h], ctx_alt)",
+      "err": "      Exception: SubobjectDataHandle: Struct has 0 initialization parameters, but the given sequence had 1 elements",
+      "vars": [
+        "None",
+        "DefaultSceneRoot",
+        "DoorMesh",
+        "DoorMesh",
+        "Interactable",
+        "InteractionDetector"
+      ]
+    }
+  ],
+  "vars_after_calls": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "compile_bp": "ok",
+  "save_bp": "ok",
+  "fatal": "AttributeError(\"type object 'EditorAssetLibrary' has no attribute 'unload_asset'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/remove_door_detector5.py\", line 95, in <module>\n    main()\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/remove_door_detector5.py\", line 86, in main\n    report[\"unload\"] = call(unreal.EditorAssetLibrary.unload_asset, BP_PATH)[0]\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: type object 'EditorAssetLibrary' has no attribute 'unload_asset'\n"
+}

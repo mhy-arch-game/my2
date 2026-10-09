@@ -1,0 +1,28 @@
+{
+  "world": "firstvision",
+  "door": "men2",
+  "frame": "menkuang2",
+  "floor_below": null,
+  "floor_below_ignoring_all": null,
+  "front_ignore_door": null,
+  "back_ignore_door": null,
+  "front_multi_ignore_door": [],
+  "back_multi_ignore_door": [],
+  "front_multi_all": [],
+  "back_multi_all": [],
+  "front_hit_door": null,
+  "back_hit_door": null,
+  "capsule_at_door_center_no_door": {
+    "err": "TypeError('box_overlap_actors() takes at most 6 arguments (9 given)')"
+  },
+  "multi_no_door": [],
+  "capsule_at_frame_center_no_door": {
+    "err": "TypeError('box_overlap_actors() takes at most 6 arguments (9 given)')"
+  },
+  "door_collision_restored": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+  "frame_slab_test": null,
+  "frame_mesh_has_simple_collision": null,
+  "frame_mesh": "/Game/Fab/Modern_Door/Door_Frame.Door_Frame",
+  "fatal": "Exception(\"StaticMesh: Failed to find property 'complex_collision' for attribute 'complex_collision' on 'StaticMesh'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/diag_door_passage2.py\", line 174, in <module>\n    main()\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/diag_door_passage2.py\", line 170, in main\n    report[\"frame_mesh_complex_collision\"] = str(sm.get_editor_property(\"complex_collision\"))\n                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nException: StaticMesh: Failed to find property 'complex_collision' for attribute 'complex_collision' on 'StaticMesh'\n"
+}

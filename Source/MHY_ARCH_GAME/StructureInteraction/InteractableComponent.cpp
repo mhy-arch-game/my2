@@ -2,6 +2,7 @@
 
 #include "InteractableComponent.h"
 
+#include "Components/BoxComponent.h"
 #include "Components/LightComponent.h"
 #include "Components/PrimitiveComponent.h"
 #include "Components/SceneComponent.h"
@@ -21,6 +22,12 @@ void UInteractableComponent::BeginPlay()
 	if (bUseBuiltInToggle)
 	{
 		ResolveToggleComponents();
+
+		// Build the proxy while the object still IS at its closed pose.
+		if (bUseInteractionProxy)
+		{
+			CreateInteractionProxy();
+		}
 
 		// Remember the authored collision so closing can restore it exactly.
 		InitialCollision.Reset();
@@ -43,6 +50,11 @@ void UInteractableComponent::BeginPlay()
 		{
 			InitialLightIntensity.Add(Light ? Light->Intensity : 0.0f);
 		}
+	}
+
+	if (bDisableCollisionWhenOpen && CollidersDisabledWhenOpen.Num() > 0)
+	{
+		ResolveExtraColliders();
 	}
 
 	bIsOpen = bStartOpen;
@@ -90,6 +102,97 @@ void UInteractableComponent::ResolveToggleComponents()
 	}
 }
 
+FBox UInteractableComponent::ComputeClosedPoseBounds() const
+{
+	FBox Box(ForceInit);
+
+	const AActor* Owner = GetOwner();
+	if (!Owner || !Owner->GetRootComponent())
+	{
+		return Box;
+	}
+
+	const FTransform RootInverse = Owner->GetRootComponent()->GetComponentTransform().Inverse();
+
+	for (USceneComponent* Component : ToggleComponents)
+	{
+		if (!Component)
+		{
+			continue;
+		}
+
+		// UPrimitiveComponent::Bounds is WORLD space and unambiguous, so map its 8
+		// corners back into the owner's space. (USceneComponent::GetLocalBounds in
+		// 5.7 returns an FBoxSphereBounds instead of Min/Max out-params, and its
+		// scaling is easy to get wrong.)
+		const UPrimitiveComponent* Primitive = Cast<UPrimitiveComponent>(Component);
+		if (!Primitive)
+		{
+			continue;
+		}
+
+		const FBoxSphereBounds World = Primitive->Bounds;
+		const FVector Min = World.Origin - World.BoxExtent;
+		const FVector Max = World.Origin + World.BoxExtent;
+
+		for (int32 Corner = 0; Corner < 8; ++Corner)
+		{
+			const FVector Point(
+				(Corner & 1) ? Max.X : Min.X,
+				(Corner & 2) ? Max.Y : Min.Y,
+				(Corner & 4) ? Max.Z : Min.Z);
+			Box += RootInverse.TransformPosition(Point);
+		}
+	}
+
+	return Box;
+}
+
+void UInteractableComponent::CreateInteractionProxy()
+{
+	AActor* Owner = GetOwner();
+	if (!Owner || !Owner->GetRootComponent() || InteractionProxy || ToggleComponents.Num() == 0)
+	{
+		return;
+	}
+
+	const FBox Box = ComputeClosedPoseBounds();
+	if (!Box.IsValid)
+	{
+		return;
+	}
+
+	FVector Extent = InteractionProxyExtent.IsNearlyZero()
+		? Box.GetExtent()
+		: InteractionProxyExtent;
+	Extent += FVector(InteractionProxyPadding);
+
+	UBoxComponent* Proxy = NewObject<UBoxComponent>(Owner, TEXT("InteractionProxy"), RF_Transient);
+	Proxy->SetupAttachment(Owner->GetRootComponent());
+	Proxy->SetBoxExtent(Extent);
+	Proxy->SetRelativeLocation(Box.GetCenter());
+	Proxy->SetRelativeRotation(FRotator::ZeroRotator);
+
+	// Query-only and pickable by the interaction trace, but deliberately unable to
+	// block anything else - the player must be able to walk straight through it.
+	Proxy->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	Proxy->SetCollisionObjectType(ECC_WorldDynamic);
+	Proxy->SetCollisionResponseToAllChannels(ECR_Ignore);
+	Proxy->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+	Proxy->SetGenerateOverlapEvents(false);
+	Proxy->SetCanEverAffectNavigation(false);
+	Proxy->SetHiddenInGame(true);
+	Proxy->SetVisibility(false);
+	Proxy->RegisterComponent();
+
+	InteractionProxy = Proxy;
+
+	UE_LOG(LogTemp, Log,
+		TEXT("[Interaction] %s: interaction proxy created (extent %s) so the object stays ")
+		TEXT("detectable while toggled."),
+		*GetNameSafe(Owner), *Extent.ToCompactString());
+}
+
 void UInteractableComponent::SetOpen(bool bNewOpen, bool bInstant)
 {
 	if (!bUseBuiltInToggle && !bToggleLights)
@@ -121,6 +224,36 @@ void UInteractableComponent::SetOpen(bool bNewOpen, bool bInstant)
 	ApplyLightState();
 
 	OnToggleChanged.Broadcast(GetOwner(), bIsOpen);
+}
+
+FTransform UInteractableComponent::GetTargetTransform() const
+{
+	if (!bIsOpen)
+	{
+		return ClosedRelativeTransform;
+	}
+
+	if (!bUseAxisRotation)
+	{
+		return OpenRelativeTransform;
+	}
+
+	const FVector Axis = RotationAxis.GetSafeNormal();
+	if (Axis.IsNearlyZero())
+	{
+		// Degenerate axis: fall back to the closed pose rather than spinning wildly.
+		return ClosedRelativeTransform;
+	}
+
+	// Rotate about an axis through a local pivot:
+	//     M = T(P) * R * T(-P)      (applied in this component's own space)
+	// so the component orbits RotationPivot instead of its own origin.
+	const FQuat Rotation(Axis, FMath::DegreesToRadians(OpenAngleDegrees));
+	const FTransform ToPivot(FQuat::Identity, RotationPivot);
+	const FTransform Spin(Rotation, FVector::ZeroVector);
+	const FTransform FromPivot(FQuat::Identity, -RotationPivot);
+
+	return ClosedRelativeTransform * (ToPivot * Spin * FromPivot);
 }
 
 void UInteractableComponent::ResolveLightComponents()
@@ -187,6 +320,34 @@ void UInteractableComponent::ApplyLightState()
 	}
 }
 
+void UInteractableComponent::ResolveExtraColliders()
+{
+	ExtraColliderPrimitives.Reset();
+	ExtraColliderInitialCollision.Reset();
+
+	for (AActor* Actor : CollidersDisabledWhenOpen)
+	{
+		if (!Actor)
+		{
+			continue;
+		}
+
+		TArray<UPrimitiveComponent*> Primitives;
+		Actor->GetComponents<UPrimitiveComponent>(Primitives);
+
+		for (UPrimitiveComponent* Primitive : Primitives)
+		{
+			if (!Primitive)
+			{
+				continue;
+			}
+
+			ExtraColliderPrimitives.Add(Primitive);
+			ExtraColliderInitialCollision.Add(Primitive->GetCollisionEnabled());
+		}
+	}
+}
+
 void UInteractableComponent::ApplyToggleState(bool bInstant)
 {
 	if (!bUseBuiltInToggle)
@@ -194,7 +355,7 @@ void UInteractableComponent::ApplyToggleState(bool bInstant)
 		return;
 	}
 
-	const FTransform& Target = bIsOpen ? OpenRelativeTransform : ClosedRelativeTransform;
+	const FTransform Target = GetTargetTransform();
 
 	if (bInstant)
 	{
@@ -234,6 +395,30 @@ void UInteractableComponent::ApplyToggleState(bool bInstant)
 				Primitive->SetCollisionEnabled(Original);
 			}
 		}
+
+		// Extra actors (e.g. a separately-placed door frame) follow the same rule -
+		// their transform is never touched, only their collision.
+		for (int32 Index = 0; Index < ExtraColliderPrimitives.Num(); ++Index)
+		{
+			UPrimitiveComponent* Primitive = ExtraColliderPrimitives[Index];
+			if (!Primitive)
+			{
+				continue;
+			}
+
+			if (bIsOpen)
+			{
+				Primitive->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			}
+			else
+			{
+				const ECollisionEnabled::Type Original =
+					ExtraColliderInitialCollision.IsValidIndex(Index)
+						? ExtraColliderInitialCollision[Index].GetValue()
+						: ECollisionEnabled::QueryAndPhysics;
+				Primitive->SetCollisionEnabled(Original);
+			}
+		}
 	}
 }
 
@@ -247,7 +432,7 @@ void UInteractableComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 		return;
 	}
 
-	const FTransform& Target = bIsOpen ? OpenRelativeTransform : ClosedRelativeTransform;
+	const FTransform Target = GetTargetTransform();
 	const float Alpha = ToggleDuration > 0.0f
 		? FMath::Clamp(DeltaTime / ToggleDuration, 0.0f, 1.0f)
 		: 1.0f;

@@ -1,0 +1,186 @@
+{
+  "apply": true,
+  "frames": [
+    {
+      "label": "menkuang1",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang2",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang3",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang4",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang5",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang6",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang7",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang8",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang9",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang10",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang11",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang12",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang13",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang14",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang15",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang16",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang17",
+      "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+      "set": "ok",
+      "pawn_after": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    }
+  ],
+  "frame_count": 17,
+  "body_instance_props": [
+    "ignore_analytic_collisions",
+    "notify_rigid_body_collision",
+    "smooth_edge_collisions"
+  ],
+  "pawn_before": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")",
+  "changed": 17,
+  "save_level": true,
+  "after_reload": [
+    {
+      "label": "menkuang1",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang2",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang3",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang4",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang5",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang6",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang7",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang8",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang9",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang10",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang11",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang12",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang13",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang14",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang15",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang16",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    },
+    {
+      "label": "menkuang17",
+      "pawn": "read ERR TypeError(\"'CollisionResponse' object is not iterable\")"
+    }
+  ]
+}

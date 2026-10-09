@@ -1,0 +1,94 @@
+{
+  "frame_count": 17,
+  "level_lib_dirty": [
+    "save_all_dirty_levels"
+  ],
+  "eas_dirty": [
+    "get_dirty_content_packages",
+    "get_dirty_map_packages",
+    "save_current_level",
+    "save_dirty_packages",
+    "save_dirty_packages_with_dialog",
+    "save_map",
+    "save_packages",
+    "save_packages_with_dialog"
+  ],
+  "changed": 17,
+  "after_set": {
+    "profile": "IgnoreOnlyPawn",
+    "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+  },
+  "modify_actor": "ok",
+  "modify_comp": "ok",
+  "save_map": "True",
+  "from_disk": [
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    },
+    {
+      "profile": "IgnoreOnlyPawn",
+      "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+    }
+  ]
+}

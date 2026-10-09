@@ -1,0 +1,20 @@
+{
+  "class_present": true,
+  "new_object": "ok",
+  "defaults": {
+    "LocalAxis": "<Struct 'Vector' (0x0000022E95937B70) {x: 1.000000, y: 0.000000, z: 0.000000}>",
+    "TriggerDistance": "1000.0",
+    "bTriggerOnNegativeSide": "False",
+    "bRequireInsideFirst": "False",
+    "PlayerIndex": "0",
+    "UpdateInterval": "0.05000000074505806",
+    "bDrawDebug": "False",
+    "bIncludeAttachedActors": "True",
+    "bForceCollisionWhenShown": "True",
+    "bStopPollingAfterTrigger": "True"
+  },
+  "has_OnSealed": false,
+  "fn_IsSealed": false,
+  "fn_GetSignedDistance": false,
+  "fn_SealNow": false
+}

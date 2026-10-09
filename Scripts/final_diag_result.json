@@ -1,0 +1,1314 @@
+{
+  "meshes": {
+    "Door": {
+      "get_collision_complexity": "TypeError('get_collision_complexity() takes at most 1 argument (2 given)')",
+      "get_simple_collision_count": "TypeError('get_simple_collision_count() takes at most 1 argument (2 given)')",
+      "get_convex_collision_count": "TypeError('get_convex_collision_count() takes at most 1 argument (2 given)')"
+    },
+    "Door_Frame": {
+      "get_collision_complexity": "TypeError('get_collision_complexity() takes at most 1 argument (2 given)')",
+      "get_simple_collision_count": "TypeError('get_simple_collision_count() takes at most 1 argument (2 given)')",
+      "get_convex_collision_count": "TypeError('get_convex_collision_count() takes at most 1 argument (2 given)')"
+    }
+  },
+  "char_bp": "BP_FirstPersonCharacter",
+  "detectors": [
+    {
+      "pick_mode": "<InteractionPickMode.LINE_TRACE: 1>",
+      "interaction_radius": "250.0",
+      "trace_distance": "400.0",
+      "b_require_facing": "Exception(\"InteractionDetectorComponent: Failed to find property 'b_require_facing' for attribute 'b_require_facing' on 'Interacti",
+      "min_facing_cosine": "0.0",
+      "b_draw_debug": "Exception(\"InteractionDetectorComponent: Failed to find property 'b_draw_debug' for attribute 'b_draw_debug' on 'InteractionDetect",
+      "b_pierce_occluders": "Exception(\"InteractionDetectorComponent: Failed to find property 'b_pierce_occluders' for attribute 'b_pierce_occluders' on 'Inter",
+      "update_interval": "0.10000000149011612",
+      "interact_key": "<Struct 'Key' (0x000001F316269EC8) {}>",
+      "b_register_interact_context": "Exception(\"InteractionDetectorComponent: Failed to find property 'b_register_interact_context' for attribute 'b_register_interact_",
+      "b_apply_focus_outline": "Exception(\"InteractionDetectorComponent: Failed to find property 'b_apply_focus_outline' for attribute 'b_apply_focus_outline' on ",
+      "focus_stickiness_bonus": "150.0",
+      "probe_object_types": "[ObjectTypeQuery1, ObjectTypeQuery2, ObjectTypeQuery3]",
+      "interact_action": "IA_Interact"
+    }
+  ],
+  "doors": {
+    "men2": {
+      "loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "active_door": {
+      "loc": [
+        -1485.0,
+        -310.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men11": {
+      "loc": [
+        -3250.0,
+        790.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men12": {
+      "loc": [
+        -3250.0,
+        1350.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men13": {
+      "loc": [
+        -3250.0,
+        1870.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men14": {
+      "loc": [
+        -3410.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men15": {
+      "loc": [
+        -4430.0,
+        2050.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men16": {
+      "loc": [
+        -5430.0,
+        2890.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men17": {
+      "loc": [
+        -6430.0,
+        3730.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men3": {
+      "loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men4": {
+      "loc": [
+        -2390.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men5": {
+      "loc": [
+        -2710.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men6": {
+      "loc": [
+        -3090.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men7": {
+      "loc": [
+        -2550.0,
+        1030.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men8": {
+      "loc": [
+        -2550.0,
+        790.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men9": {
+      "loc": [
+        -2710.0,
+        630.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    },
+    "men10": {
+      "loc": [
+        -3090.0,
+        630.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "bEnabled": true,
+      "bUseBuiltInToggle": true,
+      "bDisableCollisionWhenOpen": true,
+      "bUseAxisRotation": true,
+      "ToggleComponentNames": [
+        "DoorMesh"
+      ],
+      "pivot": "0.00,-21.83,0.00"
+    }
+  },
+  "frames": {
+    "menkuang1": {
+      "loc": [
+        -1490.0,
+        -310.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang2": {
+      "loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang3": {
+      "loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang4": {
+      "loc": [
+        -2390.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang5": {
+      "loc": [
+        -2710.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang6": {
+      "loc": [
+        -3090.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang7": {
+      "loc": [
+        -2550.0,
+        1030.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        71.09,
+        7.36,
+        130.0
+      ]
+    },
+    "menkuang8": {
+      "loc": [
+        -2550.0,
+        790.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        71.09,
+        7.36,
+        130.0
+      ]
+    },
+    "menkuang9": {
+      "loc": [
+        -2710.0,
+        630.0,
+        100.0
+      ],
+      "yaw": -0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang10": {
+      "loc": [
+        -3090.0,
+        630.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang11": {
+      "loc": [
+        -3250.0,
+        790.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        71.09,
+        7.36,
+        130.0
+      ]
+    },
+    "menkuang12": {
+      "loc": [
+        -3250.0,
+        1350.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        71.09,
+        7.36,
+        130.0
+      ]
+    },
+    "menkuang13": {
+      "loc": [
+        -3250.0,
+        1870.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        71.09,
+        7.36,
+        130.0
+      ]
+    },
+    "menkuang14": {
+      "loc": [
+        -3410.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang15": {
+      "loc": [
+        -4430.0,
+        2050.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang16": {
+      "loc": [
+        -5430.0,
+        2890.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    },
+    "menkuang17": {
+      "loc": [
+        -6430.0,
+        3730.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "bounds_extent": [
+        7.36,
+        71.09,
+        130.0
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "door": "active_door",
+      "frame": "menkuang1",
+      "door_loc": [
+        -1485.0,
+        -310.0,
+        100.0
+      ],
+      "frame_loc": [
+        -1490.0,
+        -310.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men10",
+      "frame": "menkuang10",
+      "door_loc": [
+        -3090.0,
+        630.0,
+        100.0
+      ],
+      "frame_loc": [
+        -3090.0,
+        630.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men11",
+      "frame": "menkuang11",
+      "door_loc": [
+        -3250.0,
+        790.0,
+        100.0
+      ],
+      "frame_loc": [
+        -3250.0,
+        790.0,
+        100.0
+      ],
+      "door_yaw": 90.0,
+      "frame_yaw": 90.0,
+      "door_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "frame_extent": [
+        71.09,
+        7.36,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men12",
+      "frame": "menkuang12",
+      "door_loc": [
+        -3250.0,
+        1350.0,
+        100.0
+      ],
+      "frame_loc": [
+        -3250.0,
+        1350.0,
+        100.0
+      ],
+      "door_yaw": 90.0,
+      "frame_yaw": 90.0,
+      "door_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "frame_extent": [
+        71.09,
+        7.36,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men13",
+      "frame": "menkuang13",
+      "door_loc": [
+        -3250.0,
+        1870.0,
+        100.0
+      ],
+      "frame_loc": [
+        -3250.0,
+        1870.0,
+        100.0
+      ],
+      "door_yaw": 90.0,
+      "frame_yaw": 90.0,
+      "door_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "frame_extent": [
+        71.09,
+        7.36,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men14",
+      "frame": "menkuang14",
+      "door_loc": [
+        -3410.0,
+        1190.0,
+        100.0
+      ],
+      "frame_loc": [
+        -3410.0,
+        1190.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men15",
+      "frame": "menkuang15",
+      "door_loc": [
+        -4430.0,
+        2050.0,
+        100.0
+      ],
+      "frame_loc": [
+        -4430.0,
+        2050.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men16",
+      "frame": "menkuang16",
+      "door_loc": [
+        -5430.0,
+        2890.0,
+        100.0
+      ],
+      "frame_loc": [
+        -5430.0,
+        2890.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men17",
+      "frame": "menkuang17",
+      "door_loc": [
+        -6430.0,
+        3730.0,
+        100.0
+      ],
+      "frame_loc": [
+        -6430.0,
+        3730.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men2",
+      "frame": "menkuang2",
+      "door_loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ],
+      "frame_loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men3",
+      "frame": "menkuang3",
+      "door_loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ],
+      "frame_loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men4",
+      "frame": "menkuang4",
+      "door_loc": [
+        -2390.0,
+        1190.0,
+        100.0
+      ],
+      "frame_loc": [
+        -2390.0,
+        1190.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men5",
+      "frame": "menkuang5",
+      "door_loc": [
+        -2710.0,
+        1190.0,
+        100.0
+      ],
+      "frame_loc": [
+        -2710.0,
+        1190.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men6",
+      "frame": "menkuang6",
+      "door_loc": [
+        -3090.0,
+        1190.0,
+        100.0
+      ],
+      "frame_loc": [
+        -3090.0,
+        1190.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": 0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men7",
+      "frame": "menkuang7",
+      "door_loc": [
+        -2550.0,
+        1030.0,
+        100.0
+      ],
+      "frame_loc": [
+        -2550.0,
+        1030.0,
+        100.0
+      ],
+      "door_yaw": 90.0,
+      "frame_yaw": 90.0,
+      "door_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "frame_extent": [
+        71.09,
+        7.36,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men8",
+      "frame": "menkuang8",
+      "door_loc": [
+        -2550.0,
+        790.0,
+        100.0
+      ],
+      "frame_loc": [
+        -2550.0,
+        790.0,
+        100.0
+      ],
+      "door_yaw": 90.0,
+      "frame_yaw": 90.0,
+      "door_extent": [
+        56.8,
+        6.03,
+        123.93
+      ],
+      "frame_extent": [
+        71.09,
+        7.36,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "door": "men9",
+      "frame": "menkuang9",
+      "door_loc": [
+        -2710.0,
+        630.0,
+        100.0
+      ],
+      "frame_loc": [
+        -2710.0,
+        630.0,
+        100.0
+      ],
+      "door_yaw": 0.0,
+      "frame_yaw": -0.0,
+      "door_extent": [
+        6.03,
+        56.8,
+        123.93
+      ],
+      "frame_extent": [
+        7.36,
+        71.09,
+        130.0
+      ],
+      "delta": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

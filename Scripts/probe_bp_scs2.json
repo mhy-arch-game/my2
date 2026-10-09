@@ -1,0 +1,219 @@
+{
+  "bp": "active_door",
+  "handle_type_methods": [
+    "assign",
+    "cast",
+    "copy",
+    "export_text",
+    "get_editor_property",
+    "import_text",
+    "set_editor_properties",
+    "set_editor_property",
+    "static_struct",
+    "to_tuple"
+  ],
+  "res_len": 6,
+  "res_types": [
+    "SubobjectDataHandle",
+    "SubobjectDataHandle",
+    "SubobjectDataHandle",
+    "SubobjectDataHandle",
+    "SubobjectDataHandle",
+    "SubobjectDataHandle"
+  ],
+  "handle_count": 6,
+  "items": [
+    {
+      "data": {
+        "get_display_name": "<absent>",
+        "get_variable_name": "<absent>",
+        "get_object": "<absent>",
+        "get_component_template": "<absent>",
+        "get_class": "<absent>",
+        "get_data": "<absent>",
+        "get_outer": "<absent>",
+        "get_full_name": "<absent>",
+        "get_children": "<absent>",
+        "is_component": "<absent>",
+        "is_root_component": "<absent>",
+        "get_handle": "<absent>",
+        "get_object_for_blueprint": "<absent>",
+        "get_blueprint": "<absent>",
+        "is_valid": "<absent>",
+        "get_editor_property": "ERR TypeError(\"get_editor_property() missing required argument 'name' (pos 1)\")",
+        "_methods": [
+          "assign",
+          "cast",
+          "copy",
+          "export_text",
+          "get_editor_property",
+          "import_text",
+          "set_editor_properties",
+          "set_editor_property",
+          "static_struct",
+          "to_tuple"
+        ]
+      }
+    },
+    {
+      "data": {
+        "get_display_name": "<absent>",
+        "get_variable_name": "<absent>",
+        "get_object": "<absent>",
+        "get_component_template": "<absent>",
+        "get_class": "<absent>",
+        "get_data": "<absent>",
+        "get_outer": "<absent>",
+        "get_full_name": "<absent>",
+        "get_children": "<absent>",
+        "is_component": "<absent>",
+        "is_root_component": "<absent>",
+        "get_handle": "<absent>",
+        "get_object_for_blueprint": "<absent>",
+        "get_blueprint": "<absent>",
+        "is_valid": "<absent>",
+        "get_editor_property": "ERR TypeError(\"get_editor_property() missing required argument 'name' (pos 1)\")",
+        "_methods": [
+          "assign",
+          "cast",
+          "copy",
+          "export_text",
+          "get_editor_property",
+          "import_text",
+          "set_editor_properties",
+          "set_editor_property",
+          "static_struct",
+          "to_tuple"
+        ]
+      }
+    },
+    {
+      "data": {
+        "get_display_name": "<absent>",
+        "get_variable_name": "<absent>",
+        "get_object": "<absent>",
+        "get_component_template": "<absent>",
+        "get_class": "<absent>",
+        "get_data": "<absent>",
+        "get_outer": "<absent>",
+        "get_full_name": "<absent>",
+        "get_children": "<absent>",
+        "is_component": "<absent>",
+        "is_root_component": "<absent>",
+        "get_handle": "<absent>",
+        "get_object_for_blueprint": "<absent>",
+        "get_blueprint": "<absent>",
+        "is_valid": "<absent>",
+        "get_editor_property": "ERR TypeError(\"get_editor_property() missing required argument 'name' (pos 1)\")",
+        "_methods": [
+          "assign",
+          "cast",
+          "copy",
+          "export_text",
+          "get_editor_property",
+          "import_text",
+          "set_editor_properties",
+          "set_editor_property",
+          "static_struct",
+          "to_tuple"
+        ]
+      }
+    },
+    {
+      "data": {
+        "get_display_name": "<absent>",
+        "get_variable_name": "<absent>",
+        "get_object": "<absent>",
+        "get_component_template": "<absent>",
+        "get_class": "<absent>",
+        "get_data": "<absent>",
+        "get_outer": "<absent>",
+        "get_full_name": "<absent>",
+        "get_children": "<absent>",
+        "is_component": "<absent>",
+        "is_root_component": "<absent>",
+        "get_handle": "<absent>",
+        "get_object_for_blueprint": "<absent>",
+        "get_blueprint": "<absent>",
+        "is_valid": "<absent>",
+        "get_editor_property": "ERR TypeError(\"get_editor_property() missing required argument 'name' (pos 1)\")",
+        "_methods": [
+          "assign",
+          "cast",
+          "copy",
+          "export_text",
+          "get_editor_property",
+          "import_text",
+          "set_editor_properties",
+          "set_editor_property",
+          "static_struct",
+          "to_tuple"
+        ]
+      }
+    },
+    {
+      "data": {
+        "get_display_name": "<absent>",
+        "get_variable_name": "<absent>",
+        "get_object": "<absent>",
+        "get_component_template": "<absent>",
+        "get_class": "<absent>",
+        "get_data": "<absent>",
+        "get_outer": "<absent>",
+        "get_full_name": "<absent>",
+        "get_children": "<absent>",
+        "is_component": "<absent>",
+        "is_root_component": "<absent>",
+        "get_handle": "<absent>",
+        "get_object_for_blueprint": "<absent>",
+        "get_blueprint": "<absent>",
+        "is_valid": "<absent>",
+        "get_editor_property": "ERR TypeError(\"get_editor_property() missing required argument 'name' (pos 1)\")",
+        "_methods": [
+          "assign",
+          "cast",
+          "copy",
+          "export_text",
+          "get_editor_property",
+          "import_text",
+          "set_editor_properties",
+          "set_editor_property",
+          "static_struct",
+          "to_tuple"
+        ]
+      }
+    },
+    {
+      "data": {
+        "get_display_name": "<absent>",
+        "get_variable_name": "<absent>",
+        "get_object": "<absent>",
+        "get_component_template": "<absent>",
+        "get_class": "<absent>",
+        "get_data": "<absent>",
+        "get_outer": "<absent>",
+        "get_full_name": "<absent>",
+        "get_children": "<absent>",
+        "is_component": "<absent>",
+        "is_root_component": "<absent>",
+        "get_handle": "<absent>",
+        "get_object_for_blueprint": "<absent>",
+        "get_blueprint": "<absent>",
+        "is_valid": "<absent>",
+        "get_editor_property": "ERR TypeError(\"get_editor_property() missing required argument 'name' (pos 1)\")",
+        "_methods": [
+          "assign",
+          "cast",
+          "copy",
+          "export_text",
+          "get_editor_property",
+          "import_text",
+          "set_editor_properties",
+          "set_editor_property",
+          "static_struct",
+          "to_tuple"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "bp_entries": [
+    {
+      "get_display_name": "active_door",
+      "get_variable_name": "None",
+      "get_object": "<Object '/Game/bclass_source/active_door.Default__active_door_C' (0x000002BB09B79B00) Class 'active_door_C'>",
+      "is_component": "False",
+      "can_delete": "False"
+    },
+    {
+      "get_display_name": "DefaultSceneRoot_GEN_VARIABLE",
+      "get_variable_name": "DefaultSceneRoot",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:DefaultSceneRoot_GEN_VARIABLE' (0x000002BB09D90000) Class 'SceneComponent'>",
+      "is_component": "True",
+      "can_delete": "False"
+    },
+    {
+      "get_display_name": "DoorMesh_GEN_VARIABLE",
+      "get_variable_name": "DoorMesh",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:DoorMesh_GEN_VARIABLE' (0x000002BB09BB9800) Class 'StaticMeshComponent'>",
+      "is_component": "True",
+      "can_delete": "True"
+    },
+    {
+      "get_display_name": "DoorMesh_GEN_VARIABLE",
+      "get_variable_name": "DoorMesh",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:DoorMesh_GEN_VARIABLE' (0x000002BB09BB9800) Class 'StaticMeshComponent'>",
+      "is_component": "True",
+      "can_delete": "True"
+    },
+    {
+      "get_display_name": "Interactable_GEN_VARIABLE",
+      "get_variable_name": "Interactable",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:Interactable_GEN_VARIABLE' (0x000002BA8EADAB00) Class 'InteractableComponent'>",
+      "is_component": "True",
+      "can_delete": "True"
+    },
+    {
+      "get_display_name": "InteractionDetector_GEN_VARIABLE",
+      "get_variable_name": "InteractionDetector",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:InteractionDetector_GEN_VARIABLE' (0x000002BB09867700) Class 'InteractionDetectorComponent'>",
+      "is_component": "True",
+      "can_delete": "True"
+    }
+  ],
+  "indices": {
+    "detector": 5,
+    "interactable": 4,
+    "mesh": 2
+  },
+  "pivot_source": "DoorMesh template bounds",
+  "bounds": {
+    "min": [
+      -2.4009475708007812,
+      -21.828739166259766,
+      0.09324455261230469
+    ],
+    "max": [
+      2.2337958812713623,
+      21.864587783813477,
+      95.33135223388672
+    ],
+    "extent": [
+      4.6347434520721436,
+      43.69332695007324,
+      95.23810768127441
+    ]
+  },
+  "pivot": [
+    0.0,
+    -21.828739166259766,
+    0.0
+  ],
+  "interactable_template": "<Object '/Game/bclass_source/active_door.active_door_C:Interactable_GEN_VARIABLE' (0x000002BA8EADAB00) Class 'InteractableComponent'>",
+  "bp_hinge_readback": "<Struct 'Vector' (0x000002BA8EADAD68) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+  "delete_attempts": {
+    "delete_subobjects": "ERR TypeError(\"delete_subobjects() required argument 'subobjects_to_delete' (pos 2) not found\")",
+    "delete_subobject": "ERR TypeError(\"delete_subobject() required argument 'subobject_to_delete' (pos 2) not found\")"
+  },
+  "handles_after_1": 6,
+  "vars_after_1": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "handles_after_2": 6,
+  "vars_after_2": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "compile_bp": "ok",
+  "save_bp": "ok",
+  "door_count": 17,
+  "instance_detector_after_bp_edit": 17,
+  "instance_delete_tries": {
+    "delete_from_instance_a": "ERR TypeError(\"SubobjectDataSubsystem: Failed to convert parameter 'subobject_to_delete' when calling function 'SubobjectDataSubsystem.K2_DeleteSubobjectFromInstanc",
+    "delete_from_instance_b": "ERR TypeError(\"SubobjectDataSubsystem: Failed to convert parameter 'context_handle' when calling function 'SubobjectDataSubsystem.K2_DeleteSubobjectFromInstance' on"
+  },
+  "instances_cleaned": 0,
+  "save_level": true,
+  "after_reload": [
+    {
+      "label": "active_door",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men2",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men3",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men4",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men5",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men6",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men7",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men8",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men9",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men10",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men11",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men12",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men13",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men14",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men15",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men16",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men17",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    }
+  ]
+}
