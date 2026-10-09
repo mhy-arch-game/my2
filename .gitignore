@@ -79,3 +79,8 @@ DerivedDataCache/*
 /Content/texture/plastered_wall_02_nor_gl_4k.uasset
 /Content/texture/checkered_pavement_tiles_nor_gl_4k.uasset
 /Content/texture/plastered_wall_02_rough_4k.uasset
+
+# Project documentation lives locally only and is deliberately NOT versioned.
+# The files stay on disk; git simply stops tracking them.
+# Force-add one when it really must be committed: git add -f Docs/<file>.md
+/Docs/

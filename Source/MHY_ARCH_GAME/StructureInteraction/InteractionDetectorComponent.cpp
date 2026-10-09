@@ -5,11 +5,14 @@
 #include "InteractableComponent.h"
 #include "InteractableInterface.h"
 
+#include "Components/PrimitiveComponent.h"
 #include "EnhancedInputComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/Pawn.h"
 #include "InputAction.h"
+#include "Kismet/KismetMaterialLibrary.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Materials/MaterialParameterCollection.h"
 
 UInteractionDetectorComponent::UInteractionDetectorComponent()
 {
@@ -30,6 +33,14 @@ void UInteractionDetectorComponent::BeginPlay()
 	// TickComponent will retry until it is.
 	TryBindInput();
 	RefreshFocus();
+}
+
+void UInteractionDetectorComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	// Never leave custom depth behind once the detector goes away.
+	ClearFocusOutline();
+
+	Super::EndPlay(EndPlayReason);
 }
 
 void UInteractionDetectorComponent::TickComponent(float DeltaTime, ELevelTick TickType,
@@ -338,6 +349,10 @@ void UInteractionDetectorComponent::SetFocusedActor(AActor* NewFocus)
 		return;
 	}
 
+	// Restore the outline BEFORE the old target undoes its own highlight, so the
+	// two systems cannot leave a stale stencil behind.
+	ClearFocusOutline();
+
 	if (FocusedActor)
 	{
 		QueryFocusEnd(FocusedActor);
@@ -348,6 +363,9 @@ void UInteractionDetectorComponent::SetFocusedActor(AActor* NewFocus)
 	if (FocusedActor)
 	{
 		QueryFocusBegin(FocusedActor);
+
+		// The actor the player is aiming at gets the thick outline tier.
+		ApplyFocusOutline(FocusedActor);
 	}
 
 	OnFocusChanged.Broadcast(FocusedActor, GetCurrentPrompt());
@@ -377,4 +395,86 @@ void UInteractionDetectorComponent::TryBindInput()
 void UInteractionDetectorComponent::HandleInteractInput()
 {
 	TryInteract();
+}
+
+// ---------------------------------------------------------------------------
+// Focus outline: the aimed-at actor gets a THICKER outline than the resting one
+// ---------------------------------------------------------------------------
+
+void UInteractionDetectorComponent::PushOutlineThickness(float Thickness)
+{
+	if (!OutlineParameterCollection)
+	{
+		return;
+	}
+
+	if (UWorld* World = GetWorld())
+	{
+		UKismetMaterialLibrary::SetScalarParameterValue(
+			World, OutlineParameterCollection, OutlineThicknessParameter, Thickness);
+	}
+}
+
+void UInteractionDetectorComponent::ApplyFocusOutline(AActor* Target)
+{
+	// Always start from a restored state so backups cannot stack up.
+	ClearFocusOutline();
+
+	if (!bApplyFocusOutline || !Target)
+	{
+		return;
+	}
+
+	TArray<UPrimitiveComponent*> Primitives;
+	Target->GetComponents<UPrimitiveComponent>(Primitives);
+
+	for (UPrimitiveComponent* Primitive : Primitives)
+	{
+		if (!Primitive)
+		{
+			continue;
+		}
+
+		// Hidden collision proxies should not produce a stray outline.
+		if (bOutlineVisiblePrimitivesOnly && !Primitive->IsVisible())
+		{
+			continue;
+		}
+
+		FInteractionOutlineBackup Backup;
+		Backup.Component = Primitive;
+		Backup.bRenderCustomDepth = Primitive->bRenderCustomDepth;
+		Backup.StencilValue = Primitive->CustomDepthStencilValue;
+		OutlineBackups.Add(Backup);
+
+		if (bUseStencilOutline)
+		{
+			// Raise to the focused tier: the outline material branches on the
+			// stencil value to draw a thicker line.
+			Primitive->SetRenderCustomDepth(true);
+			Primitive->SetCustomDepthStencilValue(FocusedOutlineStencil);
+		}
+	}
+
+	PushOutlineThickness(FocusedOutlineThickness);
+}
+
+void UInteractionDetectorComponent::ClearFocusOutline()
+{
+	for (FInteractionOutlineBackup& Backup : OutlineBackups)
+	{
+		if (UPrimitiveComponent* Primitive = Backup.Component.Get())
+		{
+			if (bUseStencilOutline)
+			{
+				Primitive->SetRenderCustomDepth(Backup.bRenderCustomDepth);
+				Primitive->SetCustomDepthStencilValue(Backup.StencilValue);
+			}
+		}
+	}
+
+	OutlineBackups.Reset();
+
+	// Back to the resting (thin) thickness.
+	PushOutlineThickness(RestingOutlineThickness);
 }

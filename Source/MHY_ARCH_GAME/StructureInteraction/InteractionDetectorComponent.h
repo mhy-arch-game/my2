@@ -15,6 +15,17 @@ class UInteractableComponent;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnInteractionFocusChanged, AActor*, FocusActor, FText, Prompt);
 
 /**
+ *  Custom-depth state captured before the focus outline touched a primitive,
+ *  so it can be restored exactly when the actor stops being focused.
+ */
+struct FInteractionOutlineBackup
+{
+	TWeakObjectPtr<class UPrimitiveComponent> Component;
+	bool bRenderCustomDepth = false;
+	int32 StencilValue = 0;
+};
+
+/**
  *  UInteractionDetectorComponent - player-side interaction picking & focus.
  *
  *  Attach to the player Character/Pawn. Periodically searches for the best
@@ -65,6 +76,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 		FActorComponentTickFunction* ThisTickFunction) override;
 
@@ -112,6 +124,51 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Interaction")
 	bool bDrawDebug = false;
 
+	// -- focus outline (outline gets THICKER on the aimed-at actor) --------
+	/** Draw a focus outline on the actor the player is aiming at. */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
+	bool bApplyFocusOutline = true;
+
+	/** Write custom-depth stencil values on the focused actor's primitives. */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
+	bool bUseStencilOutline = true;
+
+	/**
+	 * Stencil value written while the actor is focused.
+	 * Have the outline post-process material branch on the stencil value so this
+	 * tier draws a THICKER line than the resting one (e.g. 1 = thin, 2 = thick).
+	 */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline", meta=(ClampMin="0", ClampMax="255"))
+	int32 FocusedOutlineStencil = 2;
+
+	/**
+	 * Only outline primitives that are currently visible. Keeps hidden collision
+	 * boxes (interaction proxies, detectors) from producing a stray outline.
+	 */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
+	bool bOutlineVisiblePrimitivesOnly = true;
+
+	/**
+	 * Optional material parameter collection used to drive outline thickness
+	 * directly: the outline post-process material reads this scalar. Only one
+	 * actor is focused at a time, so a single global scalar is sufficient.
+	 * Leave empty to rely on the stencil tier alone.
+	 */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
+	TObjectPtr<class UMaterialParameterCollection> OutlineParameterCollection;
+
+	/** Scalar name read by the outline material. */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
+	FName OutlineThicknessParameter = TEXT("OutlineThickness");
+
+	/** Thickness pushed while an actor is focused (thick). */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
+	float FocusedOutlineThickness = 4.0f;
+
+	/** Thickness pushed while nothing is focused (resting / thin). */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
+	float RestingOutlineThickness = 1.5f;
+
 private:
 	/** Currently focused interaction candidate. */
 	UPROPERTY(Transient)
@@ -119,6 +176,9 @@ private:
 
 	float TimeSinceRefresh = 0.0f;
 	bool bInputBound = false;
+
+	/** Custom-depth state captured when the focus outline was applied. */
+	TArray<FInteractionOutlineBackup> OutlineBackups;
 
 	void RefreshFocus();
 	void GatherCandidates(TArray<AActor*>& OutCandidates) const;
@@ -140,4 +200,12 @@ private:
 	FText QueryPrompt(AActor* Target) const;
 	void QueryFocusBegin(AActor* Target);
 	void QueryFocusEnd(AActor* Target);
+
+	// -- focus outline -----------------------------------------------------
+	/** Thicken the outline on Target (captures the previous state first). */
+	void ApplyFocusOutline(AActor* Target);
+	/** Restore every primitive touched by ApplyFocusOutline. */
+	void ClearFocusOutline();
+	/** Push a thickness value into the optional outline parameter collection. */
+	void PushOutlineThickness(float Thickness);
 };
