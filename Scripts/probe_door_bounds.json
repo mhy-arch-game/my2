@@ -1,0 +1,94 @@
+{
+  "total_actors": 421,
+  "door": {
+    "label": "active_door",
+    "class": "active_door_C",
+    "transform": "<Struct 'Transform' (0x000001BBC359BD20) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: -1485.000000, y: -310.000000, z: 100.000000}, scale3d: {x: 2.600000, y: 2.600000, z: 2.600000}}>"
+  },
+  "components": [
+    [
+      "DefaultSceneRoot",
+      "SceneComponent"
+    ],
+    [
+      "BillboardComponent_1",
+      "BillboardComponent"
+    ],
+    [
+      "DoorMesh",
+      "StaticMeshComponent"
+    ],
+    [
+      "InteractionDetector",
+      "InteractionDetectorComponent"
+    ],
+    [
+      "Interactable",
+      "InteractableComponent"
+    ]
+  ],
+  "interactable": {
+    "bEnabled": "True",
+    "bUseBuiltInToggle": "True",
+    "ToggleComponentNames": "[\"DoorMesh\"]",
+    "ToggleComponents": "[]",
+    "ClosedRelativeTransform": "<Struct 'Transform' (0x000001BBDC2A9180) {rotation: {x: 0.000000, y: 0.000000, z: 0.000000, w: 1.000000}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+    "OpenRelativeTransform": "<Struct 'Transform' (0x000001BBDC2A91E0) {rotation: {x: 0.000000, y: -0.000000, z: 0.707107, w: 0.707107}, translation: {x: 0.000000, y: 0.000000, z: 0.000000}, scale3d: {x: 1.000000, y: 1.000000, z: 1.000000}}>",
+    "ToggleDuration": "0.6000000238418579",
+    "bStartOpen": "False",
+    "bDisableCollisionWhenOpen": "True",
+    "bUseAxisRotation": "False",
+    "RotationAxis": "<Struct 'Vector' (0x000001BBDC2A9248) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+    "OpenAngleDegrees": "90.0",
+    "RotationPivot": "<Struct 'Vector' (0x000001BBDC2A9268) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+  },
+  "toggle_names": [
+    "DoorMesh"
+  ],
+  "resolved_toggle": [
+    "DoorMesh",
+    "StaticMeshComponent"
+  ],
+  "toggle_component": {
+    "get_local_bounds": "(<Struct 'Vector' (0x000001BBD34D9C80) {x: -2.400948, y: -21.828739, z: 0.093245}>, <Struct 'Vector' (0x000001BBD34D9D70) {x: 2.233796, y: 21.864588, z: 95.331352}>)",
+    "get_bounds": "<absent>",
+    "get_bounding_box": "<absent>",
+    "get_bounding_box_extent": "<absent>",
+    "get_actor_bounds": "<absent>",
+    "attr:bounds": "ERR AttributeError(\"'StaticMeshComponent' object has no attribute 'bounds'\")",
+    "attr:local_bounds": "ERR AttributeError(\"'StaticMeshComponent' object has no attribute 'local_bounds'\")",
+    "attr:extended_bounds": "ERR AttributeError(\"'StaticMeshComponent' object has no attribute 'extended_bounds'\"",
+    "attr:box_extent": "ERR AttributeError(\"'StaticMeshComponent' object has no attribute 'box_extent'\")",
+    "attr:origin": "ERR AttributeError(\"'StaticMeshComponent' object has no attribute 'origin'\")",
+    "attr:static_mesh": "<Object '/Game/Fab/Modern_Door/Door.Door' (0x000001BBA1DE0800) Class 'StaticMesh'>",
+    "_methods_with_bound_or_extent": [
+      "get_ignore_bounds_for_editor_focus",
+      "get_local_bounds",
+      "set_bounds_scale",
+      "set_ignore_bounds_for_editor_focus",
+      "use_attach_parent_bound"
+    ]
+  },
+  "static_mesh_asset": "Door",
+  "static_mesh": {
+    "get_local_bounds": "<absent>",
+    "get_bounds": "<Struct 'BoxSphereBounds' (0x000001BBD67028C0) {origin: {x: -0.083576, y: 0.017924, z: 47.712298}, box_extent: {x: 2.317372, y: 21.846663, z: 47.619054}, sphere_radius: 52.397785}>",
+    "get_bounding_box": "<Struct 'Box' (0x000001BBD6702900) {min: {x: -2.400948, y: -21.828739, z: 0.093245}, max: {x: 2.233796, y: 21.864588, z: 95.331352}, is_valid: True}>",
+    "get_bounding_box_extent": "<absent>",
+    "get_actor_bounds": "<absent>",
+    "attr:bounds": "ERR AttributeError(\"'StaticMesh' object has no attribute 'bounds'\")",
+    "attr:local_bounds": "ERR AttributeError(\"'StaticMesh' object has no attribute 'local_bounds'\")",
+    "attr:extended_bounds": "ERR AttributeError(\"'StaticMesh' object has no attribute 'extended_bounds'\")",
+    "attr:box_extent": "ERR AttributeError(\"'StaticMesh' object has no attribute 'box_extent'\")",
+    "attr:origin": "ERR AttributeError(\"'StaticMesh' object has no attribute 'origin'\")",
+    "attr:static_mesh": "ERR AttributeError(\"'StaticMesh' object has no attribute 'static_mesh'\")",
+    "_methods_with_bound_or_extent": [
+      "get_bounding_box",
+      "get_bounds"
+    ]
+  },
+  "StaticMesh_methods_with_bound": [
+    "get_bounding_box",
+    "get_bounds"
+  ]
+}

@@ -1,0 +1,645 @@
+{
+  "apply": true,
+  "hinge_edge": "min",
+  "width_axis": "auto",
+  "rotation_axis": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "doors": [
+    {
+      "label": "active_door",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FB048) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FB068) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FB048) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FB068) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men2",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F9E48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F9E68) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F9E48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F9E68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men3",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F9548) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F9568) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F9548) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F9568) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men4",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F8F48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F8F68) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F8F48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F8F68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men5",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F9248) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F9268) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F9248) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F9268) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men6",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F5F48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F5F68) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F5F48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F5F68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men7",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F6E48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F6E68) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F6E48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F6E68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men8",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F7A48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F7A68) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F7A48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F7A68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men9",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F8048) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F8068) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3F8048) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3F8068) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men10",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FB648) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FB668) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FB648) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FB668) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men11",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FBC48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FBC68) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FBC48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FBC68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men12",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FC248) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FC268) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FC248) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FC268) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men13",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FC548) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FC568) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FC548) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FC568) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men14",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FCB48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FCB68) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FCB48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FCB68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men15",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FD148) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FD168) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FD148) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FD168) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men16",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FD748) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FD768) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FD748) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FD768) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    },
+    {
+      "label": "men17",
+      "mesh": "DoorMesh",
+      "bounds_min": [
+        -2.4009475708007812,
+        -21.828739166259766,
+        0.09324455261230469
+      ],
+      "bounds_max": [
+        2.2337958812713623,
+        21.864587783813477,
+        95.33135223388672
+      ],
+      "extent": [
+        4.6347,
+        43.6933,
+        95.2381
+      ],
+      "width_axis": "y",
+      "before": {
+        "bUseAxisRotation": false,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FDD48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FDD68) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+      },
+      "after": {
+        "bUseAxisRotation": true,
+        "RotationAxis": "<Struct 'Vector' (0x000001398E3FDD48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+        "OpenAngleDegrees": 90.0,
+        "RotationPivot": "<Struct 'Vector' (0x000001398E3FDD68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+      },
+      "pivot": [
+        0.0,
+        -21.8287,
+        0.0
+      ]
+    }
+  ],
+  "failed": [],
+  "total_actors": 421,
+  "door_count": 17,
+  "level_saved": true
+}

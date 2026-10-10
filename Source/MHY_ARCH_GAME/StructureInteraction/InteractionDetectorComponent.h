@@ -108,6 +108,39 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Interaction", meta=(ClampMin="-1.0", ClampMax="1.0"))
 	float MinFacingCosine = 0.0f;
 
+	/**
+	 * In LineTrace picking, keep going past a hit that is NOT interactable.
+	 *
+	 * Only the FIRST hit used to become the candidate, so an occluder sitting in
+	 * front of the real target (door frame jamb / rebate, glass, a thin wall)
+	 * swallowed the interaction - while the Kismet debug trace still turned green,
+	 * because green only means "the ray hit something", not "an interactable was
+	 * picked". Turn this off to restore strict "only what the crosshair touches".
+	 */
+	UPROPERTY(EditAnywhere, Category="Interaction")
+	bool bPierceOccluders = true;
+
+	/**
+	 * Safety net for LineTrace picking: when the aimed pick finds NO interactable at
+	 * all, additionally gather candidates with a short sphere overlap around the owner.
+	 *
+	 * Facing is still enforced by ScoreCandidate, so this only rescues an object the
+	 * crosshair is already on but that some unexpected occluder hid from the ray
+	 * (a door frame casing sits ~1.6 cm proud of the door panel on one side).
+	 */
+	UPROPERTY(EditAnywhere, Category="Interaction")
+	bool bFallbackToOverlap = true;
+
+	/**
+	 * Score bonus for keeping the CURRENT focus. Without it a reacting object
+	 * (a door that just swung open, or had its collision switched off) can lose
+	 * the pick to a neighbouring candidate, and the next key press then does
+	 * nothing - the classic "pressed E twice, second time ignored" symptom.
+	 * Raise it if focus still jumps; 0 disables the preference.
+	 */
+	UPROPERTY(EditAnywhere, Category="Interaction", meta=(ClampMin="0.0"))
+	float FocusStickinessBonus = 150.0f;
+
 	/** Seconds between picking refreshes. */
 	UPROPERTY(EditAnywhere, Category="Interaction", meta=(ClampMin="0.0"))
 	float UpdateInterval = 0.1f;
@@ -196,6 +229,15 @@ private:
 	bool bInputBound = false;
 	bool bContextRegistered = false;
 
+	/**
+	 * True only when the owner is a Pawn, i.e. when this player-side component can
+	 * actually do its job. A detector dropped on a door / prop cannot bind input nor
+	 * register a context, so it used to keep ticking anyway - burning a sphere
+	 * overlap every UpdateInterval and stealing the focus outline from the real
+	 * player detector. Such an instance now disables itself and says why.
+	 */
+	bool bPlayerSide = false;
+
 	/** Runtime mapping context that guarantees the interact key is mapped. */
 	UPROPERTY(Transient)
 	TObjectPtr<class UInputMappingContext> RuntimeInteractContext;
@@ -203,14 +245,29 @@ private:
 	/** Custom-depth state captured when the focus outline was applied. */
 	TArray<FInteractionOutlineBackup> OutlineBackups;
 
+	/**
+	 * Last actor reported as "the ray hit this but it is not interactable".
+	 * Only used to keep that report to one line per blocker instead of one per tick.
+	 */
+	UPROPERTY(Transient)
+	TWeakObjectPtr<AActor> LastReportedBlocker;
+
 	void RefreshFocus();
-	void GatherCandidates(TArray<AActor*>& OutCandidates) const;
+	/** Not const: it remembers the last reported blocker to avoid per-tick log spam. */
+	void GatherCandidates(TArray<AActor*>& OutCandidates);
 	AActor* PickBestCandidate(const TArray<AActor*>& Candidates) const;
 	float ScoreCandidate(AActor* Candidate) const;
 	void SetFocusedActor(AActor* NewFocus);
 	void TryBindInput();
 	void HandleInteractInput();
 	void RegisterInteractContext();
+
+	/**
+	 * Debug-draw the picking result: GREEN only when a valid interactable was
+	 * picked, RED otherwise. The Kismet trace colour cannot express this - it is
+	 * green whenever the ray hits any geometry at all.
+	 */
+	void DebugDrawPick(AActor* Picked) const;
 
 	/** View location/rotation (camera when controlled), else the owner's transform. */
 	void GetViewPoint(FVector& OutLocation, FRotator& OutRotation) const;

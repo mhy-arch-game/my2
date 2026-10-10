@@ -1,0 +1,328 @@
+{
+  "flib_present": true,
+  "flib_methods": [
+    "acquire_editor_element_handle",
+    "call_method",
+    "can_copy",
+    "can_delete",
+    "can_duplicate",
+    "can_edit",
+    "can_rename",
+    "can_reparent",
+    "cast",
+    "get_associated_object",
+    "get_blueprint",
+    "get_class",
+    "get_data",
+    "get_default_object",
+    "get_display_name",
+    "get_editor_property",
+    "get_fname",
+    "get_full_name",
+    "get_handle",
+    "get_name",
+    "get_object",
+    "get_object_for_blueprint",
+    "get_outer",
+    "get_outermost",
+    "get_package",
+    "get_parent_handle",
+    "get_path_name",
+    "get_typed_outer",
+    "get_variable_name",
+    "get_world",
+    "is_actor",
+    "is_attached_to",
+    "is_child_actor",
+    "is_component",
+    "is_default_scene_root",
+    "is_editor_property_overridden",
+    "is_handle_valid",
+    "is_inherited_component",
+    "is_instanced_actor",
+    "is_instanced_component",
+    "is_native_component",
+    "is_package_external",
+    "is_root_actor",
+    "is_root_component",
+    "is_scene_component",
+    "is_valid",
+    "modify",
+    "rename",
+    "reset_editor_property",
+    "set_editor_properties",
+    "set_editor_property",
+    "static_class"
+  ],
+  "entries": [
+    {
+      "get_display_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_variable_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_object": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_component_template": "<absent>",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectDataHandle' object\")",
+      "is_component": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su"
+    },
+    {
+      "get_display_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_variable_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_object": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_component_template": "<absent>",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectDataHandle' object\")",
+      "is_component": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su"
+    },
+    {
+      "get_display_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_variable_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_object": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_component_template": "<absent>",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectDataHandle' object\")",
+      "is_component": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su"
+    },
+    {
+      "get_display_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_variable_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_object": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_component_template": "<absent>",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectDataHandle' object\")",
+      "is_component": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su"
+    },
+    {
+      "get_display_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_variable_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_object": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_component_template": "<absent>",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectDataHandle' object\")",
+      "is_component": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su"
+    },
+    {
+      "get_display_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_variable_name": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_object": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su",
+      "get_component_template": "<absent>",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectDataHandle' object\")",
+      "is_component": "ERR TypeError(\"SubobjectDataBlueprintFunctionLibrary: Failed to convert parameter 'data' when calling function 'Su"
+    }
+  ],
+  "det_index": null,
+  "int_index": null,
+  "pivot_used": [
+    0.0,
+    -21.828739,
+    0.0
+  ],
+  "bp_hinge_write": "skipped (no InteractableComponent subobject)",
+  "delete_attempts": "skipped (InteractionDetector not identified)",
+  "compile_bp": "ok",
+  "save_bp": "ok",
+  "door_count": 17,
+  "instances": [
+    {
+      "label": "active_door",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B5368) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men2",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B4D68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men3",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B3E68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men4",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B2F68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men5",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B3268) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men6",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B1768) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men7",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B0B68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men8",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B0E68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men9",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B2368) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men10",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B4768) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men11",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B5C68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men12",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B6268) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men13",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B6868) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men14",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B6E68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men15",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B7468) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men16",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B7A68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men17",
+      "has_detector": true,
+      "pivot_now": "<Struct 'Vector' (0x000001998C0B8068) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    }
+  ],
+  "save_level": true,
+  "after_reload": [
+    {
+      "label": "active_door",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0B8F48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0B8F68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men2",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BBC48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BBC68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men3",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0B8948) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0B8968) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men4",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0B9B48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0B9B68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men5",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BA748) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BA768) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men6",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BB048) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BB068) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men7",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BB648) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BB668) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men8",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0B3548) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0B3568) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men9",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BD748) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BD768) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men10",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BDD48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BDD68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men11",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BE348) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BE368) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men12",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BE948) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BE968) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men13",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BEF48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BEF68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men14",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0B4A48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0B4A68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men15",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BFB48) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BFB68) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men16",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0BC548) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0BC568) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    },
+    {
+      "label": "men17",
+      "has_detector": true,
+      "bUseAxisRotation": true,
+      "RotationAxis": "<Struct 'Vector' (0x000001998C0B8648) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+      "RotationPivot": "<Struct 'Vector' (0x000001998C0B8668) {x: 0.000000, y: -21.828739, z: 0.000000}>"
+    }
+  ]
+}

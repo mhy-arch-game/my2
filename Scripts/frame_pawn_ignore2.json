@@ -1,0 +1,37 @@
+{
+  "apply": true,
+  "candidate_names": [
+    "AudioImpulseResponse",
+    "AudioImpulseResponseFactory",
+    "BodyCollisionResponse",
+    "CollisionResponse",
+    "CollisionResponseContainer",
+    "CollisionResponseType",
+    "ImpulseResponse",
+    "InputModifierResponseCurveExponential",
+    "InputModifierResponseCurveUser",
+    "MaterialDecalResponse",
+    "NiagaraCVarConditionResponse",
+    "ResponseChannel"
+  ],
+  "enum_with_values": {
+    "CollisionResponseType": [
+      "ECR_BLOCK",
+      "ECR_IGNORE",
+      "ECR_OVERLAP"
+    ]
+  },
+  "frame_count": 17,
+  "body_instance": "BodyInstance",
+  "has_response_reader": false,
+  "setter_tries": [
+    {
+      "form": "int 0",
+      "result": "TypeError(\"StaticMeshComponent: Failed to convert parameter 'new_response' when calling function 'PrimitiveComponent.SetCollisionResponseToChannel' on"
+    },
+    {
+      "form": "int 1",
+      "result": "TypeError(\"StaticMeshComponent: Failed to convert parameter 'new_response' when calling function 'PrimitiveComponent.SetCollisionResponseToChannel' on"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "doc_acquire_editor_element_handle": "x.acquire_editor_element_handle(allow_create=True) -> ScriptTypedElementHandle\r\nK2 Acquire Editor Object Element Handle\r\n\r\nArgs:\r\n    allow_create (bool): \r\n\r\nReturns:\r\n    ScriptTypedElementHandle:",
+  "doc_find_handle_for_object": "x.find_handle_for_object(context, object_to_find, bp_context=None) -> SubobjectDataHandle\r\nAttempt to find an existing handle for the given object.\r\n\r\nArgs:\r\n    context (SubobjectDataHandle): The context that the object to find is within\r\n    object_to_find (Object): The object that you want to find the handle for within the context\r\n    bp_context (Blueprint): \r\n\r\nReturns:\r\n    SubobjectDataHandle: FSubobjectDataHandle  The subobject handle for the object, Invalid handle if not found.",
+  "vars_before": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "attempts": [
+    {
+      "form": "acquire(bp) -> ctx",
+      "err": "TypeError(\"SubobjectDataSubsystem: Failed to convert parameter 'allow_create' when calling function 'EngineElementsLibrary.K2_AcquireEditorObjectElementHandle' on 'Default__EngineElementsLibrary'\\n  T",
+      "count": "-"
+    },
+    {
+      "form": "find_handle_for_object(bp, bp) -> ctx",
+      "err": "TypeError(\"SubobjectDataSubsystem: Failed to convert parameter 'context' when calling function 'SubobjectDataSubsystem.FindHandleForObject' on 'SubobjectDataSubsystem_0'\\n  TypeError: NativizeProperty",
+      "count": "-"
+    }
+  ],
+  "vars_after": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "compile_bp": "ok",
+  "save_bp": "ok"
+}

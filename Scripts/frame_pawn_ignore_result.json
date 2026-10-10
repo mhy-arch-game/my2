@@ -1,0 +1,8 @@
+{
+  "apply": true,
+  "frames": [],
+  "failed": [],
+  "frame_count": 17,
+  "fatal": "AttributeError(\"type object 'CollisionResponse' has no attribute 'ECR_IGNORE'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/frame_pawn_ignore.py\", line 108, in <module>\n    main()\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/frame_pawn_ignore.py\", line 84, in main\n    e[\"setters\"] = set_pawn_ignore(c)\n                   ^^^^^^^^^^^^^^^^^^\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/frame_pawn_ignore.py\", line 49, in set_pawn_ignore\n    unreal.CollisionChannel.ECC_PAWN, unreal.CollisionResponse.ECR_IGNORE)[0]\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: type object 'CollisionResponse' has no attribute 'ECR_IGNORE'\n"
+}

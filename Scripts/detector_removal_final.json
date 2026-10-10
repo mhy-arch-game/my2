@@ -1,0 +1,275 @@
+{
+  "vars_before": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "detector_found": true,
+  "attempts": [
+    {
+      "ctx": "handles[0]",
+      "err": "ok",
+      "count": 0,
+      "vars": [
+        "None",
+        "DefaultSceneRoot",
+        "DoorMesh",
+        "DoorMesh",
+        "Interactable",
+        "InteractionDetector"
+      ]
+    },
+    {
+      "ctx": "root[0]",
+      "err": "ok",
+      "count": 0,
+      "vars": [
+        "None",
+        "DefaultSceneRoot",
+        "DoorMesh",
+        "DoorMesh",
+        "Interactable",
+        "InteractionDetector"
+      ]
+    }
+  ],
+  "vars_after": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "compile_bp": "ok",
+  "save_bp": "ok",
+  "door_count": 17,
+  "with_detector_before_save": 17,
+  "save_level": true,
+  "after_reload": [
+    {
+      "label": "active_door",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men2",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men3",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men4",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men5",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men6",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men7",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men8",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men9",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men10",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men11",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men12",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men13",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men14",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men15",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men16",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men17",
+      "has_detector": true,
+      "use_axis": true,
+      "pivot": "0.0000,-21.8287,0.0000",
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    }
+  ]
+}

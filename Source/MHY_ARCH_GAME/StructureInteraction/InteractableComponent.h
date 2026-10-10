@@ -86,9 +86,35 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle"))
 	FTransform ClosedRelativeTransform;
 
-	/** Relative transform while open (e.g. rotate 90 deg around Z for a door). */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle"))
+	/** Relative transform while open. Ignored when bUseAxisRotation is on. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle && !bUseAxisRotation"))
 	FTransform OpenRelativeTransform;
+
+	// -- axis / bearing rotation -------------------------------------------
+	/**
+	 * Drive the open pose by rotating around an axis through RotationPivot
+	 * instead of lerping Closed -> Open. This lets a single component behave as
+	 * a hinge without restructuring the Blueprint hierarchy (no extra Hinge scene
+	 * component needed): the pivot is expressed in this component's own space.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle"))
+	bool bUseAxisRotation = false;
+
+	/** Axis to rotate around, in this component's local space. (0,0,1) = Z (vertical door hinge). */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle && bUseAxisRotation"))
+	FVector RotationAxis = FVector(0.0f, 0.0f, 1.0f);
+
+	/** Signed angle in degrees applied when opening. Use -90 to swing the other way. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle && bUseAxisRotation"))
+	float OpenAngleDegrees = 90.0f;
+
+	/**
+	 * Point the axis passes through, in this component's local space. This is the
+	 * hinge: e.g. with a door mesh whose origin is at its centre and width 100,
+	 * set (-50, 0, 0) to hinge on the -X edge. (0,0,0) spins around the mesh origin.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle && bUseAxisRotation"))
+	FVector RotationPivot = FVector::ZeroVector;
 
 	/** Seconds to travel between the two transforms. 0 = instant. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle", ClampMin="0.0"))
@@ -101,6 +127,49 @@ public:
 	/** Disable collision on the toggle components while open (so you can walk through). */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle"))
 	bool bDisableCollisionWhenOpen = true;
+
+	/**
+	 * Extra ACTORS whose collision follows this interaction's open state without being
+	 * moved - the only lever when the thing sealing the opening is not the door itself.
+	 *
+	 * A door FRAME is normally a separate StaticMeshActor (see the menkuang* actors in
+	 * firstvision). If that frame's simple collision fills the opening, swinging the
+	 * door clear makes no difference: the doorway stays impassable. Point this at the
+	 * frame and its collision is switched off while the door is open and restored when
+	 * it closes. Only applied together with bDisableCollisionWhenOpen.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bDisableCollisionWhenOpen"))
+	TArray<TObjectPtr<AActor>> CollidersDisabledWhenOpen;
+
+	// -- interaction proxy (stay detectable in ANY state) -------------------
+	/**
+	 * Keep an invisible interaction PROXY box at the object's closed pose, so it stays
+	 * detectable after it has been toggled open.
+	 *
+	 * Without it a door is unfindable the moment it opens: the only collidable thing
+	 * (the panel) has moved out of the crosshair AND bDisableCollisionWhenOpen just
+	 * switched its collision off, so neither the aimed trace nor the overlap fallback
+	 * can see anything. The old code only papered over that by keeping a stale focus
+	 * alive, which is exactly the "must not lose focus" prerequisite we want gone.
+	 *
+	 * The proxy is query-only (it blocks the interaction trace and NOTHING else, so it
+	 * never blocks the player), invisible, never moves, and is skipped by the focus
+	 * outline because that only touches visible primitives.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle"))
+	bool bUseInteractionProxy = true;
+
+	/** Explicit proxy box extent. Zero = derive it from the toggle components' closed bounds. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle && bUseInteractionProxy"))
+	FVector InteractionProxyExtent = FVector::ZeroVector;
+
+	/**
+	 * Grow the proxy half-extent by this much on every axis. A small value (1-2) makes
+	 * the proxy protrude past a door frame casing that sits proud of the panel, so the
+	 * ray reaches the proxy before touching the frame.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle && bUseInteractionProxy", ClampMin="0.0"))
+	float InteractionProxyPadding = 0.0f;
 
 	/** True while the built-in toggle is in its open state. */
 	UFUNCTION(BlueprintPure, Category="Interaction|Built-in Toggle")
@@ -168,6 +237,13 @@ private:
 	/** Push the transform and collision for the current state onto the components. */
 	void ApplyToggleState(bool bInstant);
 
+	/**
+	 * The relative transform the toggle drives toward right now: Closed when
+	 * closed; when open either OpenRelativeTransform, or the closed pose rotated
+	 * around RotationAxis through RotationPivot.
+	 */
+	FTransform GetTargetTransform() const;
+
 	/** Fill ToggleComponents: explicit references first, then names. */
 	void ResolveToggleComponents();
 
@@ -179,5 +255,25 @@ private:
 
 	/** Authored intensity per light, restored when switched back on. */
 	TArray<float> InitialLightIntensity;
+
+	/** Query-only box that keeps this object detectable while it is open. */
+	UPROPERTY(Transient)
+	TObjectPtr<class UBoxComponent> InteractionProxy;
+
+	/** Bounds of the toggle components at the current (closed) pose, in owner space. */
+	FBox ComputeClosedPoseBounds() const;
+
+	/** Create the interaction proxy at the closed pose (called once, on BeginPlay). */
+	void CreateInteractionProxy();
+
+	/** Primitives of CollidersDisabledWhenOpen, gathered on BeginPlay. */
+	UPROPERTY(Transient)
+	TArray<TObjectPtr<UPrimitiveComponent>> ExtraColliderPrimitives;
+
+	/** Their authored collision state, restored when the toggle closes. */
+	TArray<TEnumAsByte<ECollisionEnabled::Type>> ExtraColliderInitialCollision;
+
+	/** Gather the extra colliders and remember their authored collision. */
+	void ResolveExtraColliders();
 };
 

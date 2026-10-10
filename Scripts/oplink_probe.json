@@ -1,0 +1,69 @@
+{
+  "has_InteractionLinkComponent": true,
+  "has_InteractionOperationReceiverComponent": true,
+  "has_InteractionOperationReceiver": true,
+  "has_ProximityBarrierComponent": true,
+  "action_values": [
+    "MOVE_TO",
+    "NOTHING",
+    "SET_ACTOR_HIDDEN",
+    "SET_CLOSED",
+    "SET_OPEN",
+    "TOGGLE_OPEN"
+  ],
+  "link_defaults": {
+    "Entries": "[]",
+    "bAutoBindInteractable": "True"
+  },
+  "link_fns": [
+    "dispatch_entries",
+    "dispatch_operation",
+    "get_last_dispatched_count",
+    "on_dispatched",
+    "resolve_entry_targets"
+  ],
+  "receiver_defaults": {
+    "Channel": "None",
+    "Bindings": "[]",
+    "bEnabled": "True"
+  },
+  "operation_fields": [
+    "active",
+    "assign",
+    "cast",
+    "copy",
+    "export_text",
+    "get_editor_property",
+    "import_text",
+    "instigator",
+    "location",
+    "operation",
+    "set_editor_properties",
+    "set_editor_property",
+    "source",
+    "static_struct",
+    "target",
+    "to_tuple",
+    "value"
+  ],
+  "binding_fields": [
+    "action",
+    "assign",
+    "cast",
+    "copy",
+    "duration",
+    "export_text",
+    "get_editor_property",
+    "import_text",
+    "operation",
+    "set_editor_properties",
+    "set_editor_property",
+    "static_struct",
+    "to_tuple"
+  ],
+  "barrier": {
+    "bDrawOnScreenDebug": "False",
+    "bDrawDebug": "False",
+    "get_barrier_debug_string": "Barrier None | sealed=no | signed=0.0 (along V(X=1.00)) | need >=1000.0 | inside=no | group 0 actor / 0 prim / 0 light"
+  }
+}

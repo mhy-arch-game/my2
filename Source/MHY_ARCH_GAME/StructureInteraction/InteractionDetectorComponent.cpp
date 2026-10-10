@@ -6,6 +6,7 @@
 #include "InteractableInterface.h"
 
 #include "Components/PrimitiveComponent.h"
+#include "DrawDebugHelpers.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Engine/LocalPlayer.h"
@@ -34,6 +35,23 @@ void UInteractionDetectorComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// Player-side only: it must be able to bind the interact action and read a view
+	// point, which requires a Pawn owner. On anything else it is a misplaced
+	// component - disable it instead of polling forever.
+	if (!Cast<APawn>(GetOwner()))
+	{
+		bPlayerSide = false;
+		SetComponentTickEnabled(false);
+		UE_LOG(LogTemp, Warning,
+			TEXT("[Interaction] %s: InteractionDetector is attached to a '%s', which is not a Pawn. ")
+			TEXT("It is a PLAYER-side component and has been disabled - remove it from that object's Blueprint."),
+			*GetNameSafe(GetOwner()),
+			*GetNameSafe(GetOwner() ? GetOwner()->GetClass() : nullptr));
+		return;
+	}
+
+	bPlayerSide = true;
+
 	// Try to bind straight away; if the pawn's input component is not ready yet,
 	// TickComponent will retry until it is.
 	TryBindInput();
@@ -53,6 +71,11 @@ void UInteractionDetectorComponent::TickComponent(float DeltaTime, ELevelTick Ti
 	FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	if (!bPlayerSide)
+	{
+		return;
+	}
 
 	if (!bInputBound)
 	{
@@ -104,6 +127,14 @@ UInteractableComponent* UInteractionDetectorComponent::FindInteractableComponent
 bool UInteractionDetectorComponent::IsInteractableTarget(AActor* Target) const
 {
 	if (!Target)
+	{
+		return false;
+	}
+
+	// A hidden actor is not interactable. Without this, an interactable inside a group
+	// that has not materialised yet (a proximity barrier wall, say) would still be
+	// picked through the invisible interaction proxy box it owns.
+	if (Target->IsHidden())
 	{
 		return false;
 	}
@@ -215,14 +246,31 @@ void UInteractionDetectorComponent::QueryFocusEnd(AActor* Target)
 
 void UInteractionDetectorComponent::TryInteract()
 {
-	AActor* Target = FocusedActor;
-	if (!Target)
+	if (!bPlayerSide)
 	{
+		UE_LOG(LogTemp, Verbose,
+			TEXT("[Interaction] %s: TryInteract ignored - this detector is not on a Pawn."),
+			*GetNameSafe(GetOwner()));
 		return;
 	}
 
-	if (!QueryCanInteract(Target))
+	AActor* Target = FocusedActor;
+
+	// The polled focus can be up to UpdateInterval seconds stale, and an object
+	// that just reacted (moved, or had its collision switched off) may have been
+	// dropped. Only re-search when the current focus is unusable - preferring it
+	// avoids throwing away a perfectly good target just because a key was pressed.
+	if (!Target || !QueryCanInteract(Target))
 	{
+		RefreshFocus();
+		Target = FocusedActor;
+	}
+
+	if (!Target || !QueryCanInteract(Target))
+	{
+		UE_LOG(LogTemp, Verbose,
+			TEXT("[Interaction] %s: interact pressed but nothing interactable is focused."),
+			*GetNameSafe(GetOwner()));
 		return;
 	}
 
@@ -248,10 +296,43 @@ void UInteractionDetectorComponent::RefreshFocus()
 	TArray<AActor*> Candidates;
 	GatherCandidates(Candidates);
 
-	SetFocusedActor(PickBestCandidate(Candidates));
+	AActor* Picked = PickBestCandidate(Candidates);
+	DebugDrawPick(Picked);
+	SetFocusedActor(Picked);
 }
 
-void UInteractionDetectorComponent::GatherCandidates(TArray<AActor*>& OutCandidates) const
+void UInteractionDetectorComponent::DebugDrawPick(AActor* Picked) const
+{
+	if (!bDrawDebug)
+	{
+		return;
+	}
+
+	UWorld* World = GetWorld();
+	if (!World)
+	{
+		return;
+	}
+
+	FVector ViewLocation;
+	FRotator ViewRotation;
+	GetViewPoint(ViewLocation, ViewRotation);
+
+	const FVector End = Picked
+		? Picked->GetActorLocation()
+		: ViewLocation + ViewRotation.Vector() * TraceDistance;
+
+	const float Duration = UpdateInterval > 0.0f ? UpdateInterval : 0.1f;
+	const FColor Color = Picked ? FColor::Green : FColor::Red;
+
+	// Note: GREEN now really means "a valid interactable was picked". The trace
+	// itself is deliberately drawn without Kismet colours, since those are green
+	// for ANY geometry hit and made an occluded door look like a passing check.
+	DrawDebugLine(World, ViewLocation, End, Color, false, Duration, 0, 2.0f);
+	DrawDebugPoint(World, End, 12.0f, Color, false, Duration);
+}
+
+void UInteractionDetectorComponent::GatherCandidates(TArray<AActor*>& OutCandidates)
 {
 	OutCandidates.Reset();
 
@@ -285,21 +366,114 @@ void UInteractionDetectorComponent::GatherCandidates(TArray<AActor*>& OutCandida
 
 		const FVector End = ViewLocation + ViewRotation.Vector() * TraceDistance;
 
-		FHitResult Hit;
-		const bool bHit = UKismetSystemLibrary::LineTraceSingle(
-			this,
-			ViewLocation,
-			End,
-			UEngineTypes::ConvertToTraceType(ECC_Visibility),
-			false,
-			IgnoredActors,
-			bDrawDebug ? EDrawDebugTrace::ForDuration : EDrawDebugTrace::None,
-			Hit,
-			true);
-
-		if (bHit && Hit.GetActor())
+		if (bPierceOccluders)
 		{
-			OutCandidates.Add(Hit.GetActor());
+			// Collect EVERY interactable along the ray, not just the first hit.
+			// The nearest hit is usually an occluder (a door frame jamb/rebate sits
+			// in front of one face of a door), so taking only hit #1 made the door
+			// impossible to open from that side. ScoreCandidate still decides which
+			// candidate wins, so the aimed-at / nearest one is used.
+			TArray<FHitResult> Hits;
+			UKismetSystemLibrary::LineTraceMulti(
+				this,
+				ViewLocation,
+				End,
+				UEngineTypes::ConvertToTraceType(ECC_Visibility),
+				false,
+				IgnoredActors,
+				EDrawDebugTrace::None,
+				Hits,
+				true);
+
+			AActor* FirstOccluder = nullptr;
+			for (const FHitResult& Hit : Hits)
+			{
+				AActor* HitActor = Hit.GetActor();
+				if (!HitActor)
+				{
+					continue;
+				}
+
+				if (IsInteractableTarget(HitActor))
+				{
+					if (!OutCandidates.Contains(HitActor))
+					{
+						OutCandidates.Add(HitActor);
+					}
+				}
+				else if (!FirstOccluder)
+				{
+					FirstOccluder = HitActor;
+				}
+			}
+
+			// Say out loud what the ray had to get past, so a misidentified occluder
+			// is visible in the log instead of only in the crosshair.
+			if (OutCandidates.Num() > 0)
+			{
+				LastReportedBlocker.Reset();
+
+				if (FirstOccluder)
+				{
+					UE_LOG(LogTemp, Log,
+						TEXT("[Interaction] %s: pierced non-interactable '%s' to reach '%s'."),
+						*GetNameSafe(GetOwner()), *FirstOccluder->GetName(), *OutCandidates[0]->GetName());
+				}
+			}
+			else if (Hits.Num() > 0)
+			{
+				// Nothing interactable anywhere on the ray. Naming what it DID hit is the
+				// fastest way to find out why an object is unreachable from one side
+				// (a wall the door is sunk into, a frame casing, a glass pane...).
+				AActor* Blocker = Hits[0].GetActor();
+				if (Blocker && Blocker != LastReportedBlocker.Get())
+				{
+					LastReportedBlocker = Blocker;
+					UE_LOG(LogTemp, Log,
+						TEXT("[Interaction] %s: aimed pick found NO interactable - the ray hit '%s' first."),
+						*GetNameSafe(GetOwner()), *Blocker->GetName());
+				}
+			}
+		}
+		else
+		{
+			FHitResult Hit;
+			const bool bHit = UKismetSystemLibrary::LineTraceSingle(
+				this,
+				ViewLocation,
+				End,
+				UEngineTypes::ConvertToTraceType(ECC_Visibility),
+				false,
+				IgnoredActors,
+				EDrawDebugTrace::None,
+				Hit,
+				true);
+
+			if (bHit && Hit.GetActor())
+			{
+				OutCandidates.Add(Hit.GetActor());
+			}
+		}
+	}
+
+	// LineTrace found nothing: fall back to a short overlap so an unexpected
+	// occluder cannot make a nearby, aimed-at object permanently unreachable.
+	if (PickMode != EInteractionPickMode::SphereOverlap && bFallbackToOverlap && OutCandidates.Num() == 0)
+	{
+		UKismetSystemLibrary::SphereOverlapActors(
+			this,
+			Owner->GetActorLocation(),
+			InteractionRadius,
+			ProbeObjectTypes,
+			nullptr,
+			IgnoredActors,
+			OutCandidates);
+
+		if (OutCandidates.Num() > 0)
+		{
+			UE_LOG(LogTemp, Log,
+				TEXT("[Interaction] %s: aimed pick found nothing, fell back to overlap r=%g (%d candidate(s))."),
+				*GetNameSafe(GetOwner()), InteractionRadius, OutCandidates.Num());
 		}
 	}
 
@@ -394,7 +568,16 @@ float UInteractionDetectorComponent::ScoreCandidate(AActor* Candidate) const
 	}
 
 	// Aiming dominates, distance breaks ties.
-	return Dot * 1000.0f - Distance;
+	float Score = Dot * 1000.0f - Distance;
+
+	// Keep the current focus unless a candidate is clearly better, so an object
+	// that just reacted stays toggle-able.
+	if (Candidate == FocusedActor.Get())
+	{
+		Score += FocusStickinessBonus;
+	}
+
+	return Score;
 }
 
 void UInteractionDetectorComponent::SetFocusedActor(AActor* NewFocus)
