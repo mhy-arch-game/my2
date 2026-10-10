@@ -4,6 +4,8 @@
 
 #include "Engine/World.h"
 #include "Math/Box.h"
+#include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "LevelSequence.h"
 #include "LevelSequenceActor.h"
@@ -32,7 +34,7 @@ void UProximitySequenceComponent::BeginPlay()
 		ApplyPreBlockState();
 	}
 
-	if (bOnce && bTriggered)
+	if (bOnce && bTriggered && !bSlowPlayerNearby)
 	{
 		SetComponentTickEnabled(false);
 	}
@@ -74,13 +76,16 @@ void UProximitySequenceComponent::TickComponent(float DeltaTime, ELevelTick Tick
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	const float Distance = GetDistanceToTarget();
+
+	// 慢速区独立于触发：触发过一次之后到"变成实体"之前仍然限速，所以不再在这里停 tick。
+	UpdateSlowZone(Distance);
+
 	if (bOnce && bTriggered)
 	{
-		SetComponentTickEnabled(false);
 		return;
 	}
 
-	const float Distance = GetDistanceToTarget();
 	if (Distance < 0.0f)
 	{
 		return;
@@ -117,10 +122,8 @@ void UProximitySequenceComponent::TriggerNow()
 
 	OnTriggered.Broadcast(ResolveTargetActor(), Distance);
 
-	if (bOnce)
-	{
-		SetComponentTickEnabled(false);
-	}
+	// 注意：这里不停 tick —— 动画播放期间慢速区还得继续生效，
+	// 停 tick 放在序列播完（HandleSequenceFinished）时。
 }
 
 void UProximitySequenceComponent::ResetTrigger()
@@ -185,6 +188,12 @@ void UProximitySequenceComponent::HandleSequenceFinished()
 	}
 
 	OnSequenceFinished.Broadcast();
+
+	// 触发过 + 已经变成实体：本组件没有别的事了。
+	if (bOnce)
+	{
+		SetComponentTickEnabled(false);
+	}
 }
 
 void UProximitySequenceComponent::ApplyBlockedState()
@@ -219,14 +228,69 @@ void UProximitySequenceComponent::ApplyPreBlockState()
 		*GetNameSafe(Owner));
 }
 
+void UProximitySequenceComponent::UpdateSlowZone(float Distance)
+{
+	bSlowingPlayer = false;
+
+	if (!bSlowPlayerNearby)
+	{
+		return;
+	}
+
+	// 墙已经是实体了，恢复正常移速：慢速区只是为了别让人在"变成实体"的那一刻站在墙里。
+	if (bBlocked)
+	{
+		return;
+	}
+
+	ACharacter* Character = Cast<ACharacter>(ResolveTargetActor());
+	if (!Character)
+	{
+		return;
+	}
+
+	UCharacterMovementComponent* Movement = Character->GetCharacterMovement();
+	if (!Movement)
+	{
+		return;
+	}
+
+	const float Zone = SlowZoneDistance > 0.0f ? SlowZoneDistance : TriggerDistance;
+	if (Distance < 0.0f || Distance > Zone)
+	{
+		return;
+	}
+
+	// 每帧只把"水平速度"钳到上限，不写任何持久状态：
+	// 离开区域自然恢复，也不用担心和疾跑抢 MaxWalkSpeed。
+	// 倍率乘的是"当时的 MaxWalkSpeed"，所以疾跑在区域内只是上限更高，仍然被限速。
+	const float Cap = Movement->MaxWalkSpeed * FMath::Clamp(SlowSpeedMultiplier, 0.0f, 1.0f);
+	const FVector Velocity = Movement->Velocity;
+	const FVector Horizontal(Velocity.X, Velocity.Y, 0.0f);
+	if (Horizontal.SizeSquared() > Cap * Cap)
+	{
+		const FVector Clamped = Horizontal.GetSafeNormal() * Cap;
+		Movement->Velocity = FVector(Clamped.X, Clamped.Y, Velocity.Z);
+	}
+
+	bSlowingPlayer = true;
+
+	if (bDebugLogSlowZone)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[ProximitySequence] %s: 慢速区 %.1fcm 内（上限 %.0f = %.0f x %.2f）。"),
+			*GetNameSafe(GetOwner()), Distance, Cap, Movement->MaxWalkSpeed, SlowSpeedMultiplier);
+	}
+}
+
 FString UProximitySequenceComponent::GetProximitySequenceDebugString() const
 {
 	return FString::Printf(
-		TEXT("ProximitySequence %s | distance=%.1f (trigger<=%.1f) | triggered=%s | blocking=%s | sequence=%s | actor=%s"),
+		TEXT("ProximitySequence %s | distance=%.1f (trigger<=%.1f) | triggered=%s | blocking=%s | slow=%s | sequence=%s | actor=%s"),
 		*GetNameSafe(GetOwner()),
 		GetDistanceToTarget(), TriggerDistance,
 		bTriggered ? TEXT("yes") : TEXT("no"),
 		bBlocked ? TEXT("yes") : TEXT("no"),
+		bSlowingPlayer ? TEXT("yes") : TEXT("no"),
 		Sequence.IsNull() ? TEXT("<未设置>") : *Sequence.ToString(),
 		SequenceActor ? *SequenceActor->GetName() : TEXT("none"));
 }

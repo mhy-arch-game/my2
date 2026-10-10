@@ -1,0 +1,71 @@
+{
+ "actors": {
+  "jiguanqiang0": {
+   "components": [
+    "StaticMeshComponent",
+    "InteractableComponent",
+    "InteractionOperationReceiverComponent"
+   ],
+   "proximity": {},
+   "hidden": "False",
+   "collision": "True"
+  },
+  "jiguanqiang1": {
+   "components": [
+    "StaticMeshComponent",
+    "InteractableComponent",
+    "ProximitySequenceComponent"
+   ],
+   "proximity": {
+    "Sequence": "<Object '/Game/LS_jiguanqiang1.LS_jiguanqiang1' (0x000001F6244B2800) Class 'LevelSequence'",
+    "TriggerDistance": "600.0",
+    "bOnce": "True",
+    "bBlockOnFinish": "True",
+    "bApplyInitialStateOnBeginPlay": "False",
+    "bSlowPlayerNearby": "True",
+    "SlowZoneDistance": "900.0",
+    "SlowSpeedMultiplier": "0.4000000059604645"
+   },
+   "hidden": "False",
+   "collision": "True"
+  },
+  "jiguanqiang2": {
+   "components": [
+    "StaticMeshComponent",
+    "ProximitySequenceComponent"
+   ],
+   "proximity": {
+    "Sequence": "<Object '/Game/LS_jiguanqiang2.LS_jiguanqiang2' (0x000001F6244B2940) Class 'LevelSequence'",
+    "TriggerDistance": "600.0",
+    "bOnce": "True",
+    "bBlockOnFinish": "True",
+    "bApplyInitialStateOnBeginPlay": "False",
+    "bSlowPlayerNearby": "True",
+    "SlowZoneDistance": "900.0",
+    "SlowSpeedMultiplier": "0.4000000059604645"
+   },
+   "hidden": "False",
+   "collision": "True"
+  },
+  "jiguanqiang4": {
+   "components": [
+    "StaticMeshComponent",
+    "InteractableComponent",
+    "InteractionOperationReceiverComponent"
+   ],
+   "proximity": {},
+   "hidden": "False",
+   "collision": "True"
+  },
+  "jiguanqiang3": {
+   "components": [
+    "StaticMeshComponent",
+    "InteractableComponent",
+    "InteractionOperationReceiverComponent"
+   ],
+   "proximity": {},
+   "hidden": "False",
+   "collision": "True"
+  }
+ }
+}

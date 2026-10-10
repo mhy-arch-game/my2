@@ -64,6 +64,32 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Proximity Sequence", meta=(ClampMin="0.0"))
 	float DebugLogRange = 0.0f;
 
+	// -- 靠近时的慢速区（防止玩家在动画播完时正好站在墙里）--------------
+	/**
+	 * 进入慢速区时限制玩家移速。默认开。
+	 * 目的：墙要 5 秒动画才移到位，玩家若全速冲过来，很可能动画结束时正好站在墙的落点上。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Proximity Sequence|Slow Zone")
+	bool bSlowPlayerNearby = true;
+
+	/**
+	 * 慢速区半径（cm）：目标到本体包围盒最近点小于它就开始限速。
+	 * ≤ 0 = 直接用 TriggerDistance。建议比 TriggerDistance 稍大，让玩家"提前减速"。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Proximity Sequence|Slow Zone", meta=(EditCondition="bSlowPlayerNearby"))
+	float SlowZoneDistance = 900.0f;
+
+	/**
+	 * 慢速倍率（测试用，先给个偏保守的值）：区域内水平速度上限 = 当时的
+	 * CharacterMovement->MaxWalkSpeed × 本倍率。1 = 不限速。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Proximity Sequence|Slow Zone", meta=(EditCondition="bSlowPlayerNearby", ClampMin="0.05", ClampMax="1.0"))
+	float SlowSpeedMultiplier = 0.4f;
+
+	/** 调试：限速时每帧打一行日志（默认关，会刷屏）。 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Proximity Sequence|Slow Zone", meta=(EditCondition="bSlowPlayerNearby"))
+	bool bDebugLogSlowZone = false;
+
 	/**
 	 * 播放前先把本体设成"未阻挡"：不可见 + 关碰撞（等动画播完再开启）。
 	 * 默认关 —— 关卡里的墙原本就是"可见 + 有碰撞"，不需要组件改初始状态。
@@ -98,6 +124,10 @@ public:
 	UFUNCTION(BlueprintPure, Category="Proximity Sequence")
 	bool IsBlocking() const { return bBlocked; }
 
+	/** 玩家此刻是否正被慢速区限速。 */
+	UFUNCTION(BlueprintPure, Category="Proximity Sequence")
+	bool IsSlowingPlayer() const { return bSlowingPlayer; }
+
 	/** 目标到本体包围盒最近点的距离（cm）；找不到目标返回 -1。 */
 	UFUNCTION(BlueprintPure, Category="Proximity Sequence")
 	float GetDistanceToTarget() const;
@@ -128,6 +158,9 @@ private:
 	/** 把本体设成"未阻挡"状态（不可见 + 关碰撞）。 */
 	void ApplyPreBlockState();
 
+	/** 按当前距离维护慢速区（每帧调用；只钳速度，不留状态，所以和疾跑等系统不打架）。 */
+	void UpdateSlowZone(float Distance);
+
 	/** 本组件运行时创建的播放器（SequenceActor 为空时用）。 */
 	UPROPERTY(Transient)
 	TObjectPtr<ULevelSequencePlayer> RuntimePlayer;
@@ -136,4 +169,7 @@ private:
 
 	/** 已经是"阻挡"状态（显形 + 碰撞已开）。 */
 	bool bBlocked = false;
+
+	/** 本帧是否对玩家执行了限速。 */
+	bool bSlowingPlayer = false;
 };

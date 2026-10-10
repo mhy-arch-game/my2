@@ -12,8 +12,8 @@
 | 轨道内容 | 一条 `MovieScene3DTransformTrack`：`Location.X` **−1500 → −1800（向前 300cm）**，Y/Z、旋转、缩放不变 |
 | `LS_jiguanqiang2` | 0–150 帧 @30fps = 5.00 秒；绑定 **`jiguanqiang2`**；位移同样是 X −1500 → −1800 |
 | 关卡里的 `LS_jiguanqiang1/2` Actor | 是**空壳**（`Sequence = None`、不自动播放），本方案不使用，可删 |
-| `jiguanqiang1` | StaticMesh + `Interactable`(bEnabled=false) + `InteractionOperationReceiver`(频道 `light_group3`, `Open → SetActorHidden`) |
-| `jiguanqiang2` | **只有 StaticMesh**，没有交互/接收组件（目前未接入任何联动）|
+| `jiguanqiang1` | StaticMesh + `Interactable`(bEnabled=false) + `ProximitySequence`（**原来的 Receiver 已按需求移除**）|
+| `jiguanqiang2` | StaticMesh + `ProximitySequence`（**无任何联动组件**）|
 | 当前外观 | 两堵墙此刻都是**可见 + 有碰撞**（`BlockAllDynamic`）|
 | 组件挂载 | `jiguanqiang1` / `jiguanqiang2` 各有一个 `ProximitySequence` 实例组件（已保存并跨进程复验）|
 
@@ -27,8 +27,11 @@ jiguandeng1                  -> Open  -> "door_light_group1" -> jiguanqiang0 -> 
 men20                        -> Open  -> "door_group1"   ->  jiguanqiang3  -> SetActorHidden
 ```
 
-也就是**「灯亮 → 对应那堵墙消失」**（`SetActorHidden` 会连带关掉碰撞）。`jiguanqiang2` 目前没有接收器，
-不参与这张图——这正是"两面墙功能本该相同"里缺的一半。
+也就是**「灯亮 → 对应那堵墙消失」**（`SetActorHidden` 会连带关掉碰撞）。
+
+> ⚠️ 这两面墙**不参与上述联动**（需求确认）：`jiguanqiang1` 原先挂在频道 `light_group3` 上的
+> `InteractionOperationReceiver` **已被删除**，`jiguanqiang2` 从来就没有。所以 `jiguandeng3` 现在照样广播
+> `light_group3`，但**没有任何接收方**（空广播，无害）。两面墙**唯一**的交互就是"主控角色靠近 → 播动画"。
 
 ## 1. 组件字段
 
@@ -43,6 +46,10 @@ men20                        -> Open  -> "door_group1"   ->  jiguanqiang3  -> Se
 | `bApplyInitialStateOnBeginPlay` | ✗ | **默认关**：墙原本就是"可见 + 有碰撞"，组件不去改初始状态；打开则在 BeginPlay 先设成不可见 + 关碰撞 |
 | `bBlockOnFinish` | ✔ | 序列播完后**显形 + 开碰撞**，坐实"挡住道路" |
 | `bLoop` | ✗ | 循环播放（循环时不会结束，也就不会进入阻挡态）|
+| `bSlowPlayerNearby` | ✔ | 靠近时限速（见下节"慢速区"）|
+| `SlowZoneDistance` | 900 cm | 慢速区半径（到墙体包围盒最近点）；≤0 = 直接用 `TriggerDistance` |
+| `SlowSpeedMultiplier` | 0.4 | **慢速倍率（暴露出来供实测）**：区域内水平速度上限 = 当时的 `MaxWalkSpeed` × 本倍率 |
+| `bDebugLogSlowZone` | ✗ | 调试：限速时每帧打一行日志（会刷屏）|
 | `PlayRate` | 1.0 | 播放速率 |
 | `DebugLogRange` | 0 | >0 时接近过程中打日志，方便调触发线 |
 
@@ -54,6 +61,17 @@ men20                        -> Open  -> "door_group1"   ->  jiguanqiang3  -> Se
 **目标位置 → 本体包围盒最近点**的距离（`FBox::GetClosestPointTo`）：墙再大也是"贴到墙面 N 厘米"的字面意思，
 上下方向同样算。目标取**本地控制器的 Pawn**（玩家）。注意：本体不可见时包围盒依然存在，所以"先不可见、
 靠近才出现"的顺序不会影响触发。
+
+## 2.5 慢速区（防"卡进墙里"）
+
+墙要靠 5 秒动画才移到位；玩家若全速冲过来，很可能动画结束时**正好站在墙的落点上**，一开碰撞就被卡住。
+所以在墙周围放一圈**慢速区**：
+
+- 进入 `SlowZoneDistance`（默认 900cm，比触发距离 600cm 稍大，等于**提前减速**）就开始限速；
+- 实现方式：**每帧把玩家的水平速度钳到 `MaxWalkSpeed × SlowSpeedMultiplier`**（只改速度、不写任何持久状态），
+  所以离开区域自动恢复，也**不会和疾跑抢 `MaxWalkSpeed`**——疾跑在区域内只是上限高一点，照样被限速；
+- 墙**变成实体之后**（`bBlocked`）就不再限速，避免贴着墙走路一直慢；
+- 倍率和半径都在 Details 里暴露，**具体数值由你实测决定**。
 
 ## 3. 完整时序
 
@@ -79,8 +97,10 @@ OnFinished   bBlockOnFinish ? SetActorHiddenInGame(false) + SetActorEnableCollis
 
 | Actor | 组件 | Sequence | TriggerDistance | bOnce | bBlockOnFinish | bApplyInitialStateOnBeginPlay |
 |---|---|---|---|---|---|---|
-| `jiguanqiang1` | `ProximitySequence` | `/Game/LS_jiguanqiang1` | 600（沿用默认，待实测）| ✔ | ✔ | ✗ |
+| `jiguanqiang1` | `ProximitySequence`（+ 哑 Interactable）| `/Game/LS_jiguanqiang1` | 600（沿用默认，待实测）| ✔ | ✔ | ✗ |
 | `jiguanqiang2` | `ProximitySequence` | `/Game/LS_jiguanqiang2` | 600（沿用默认，待实测）| ✔ | ✔ | ✗ |
+
+慢速区两墙都是 `bSlowPlayerNearby=✔ / SlowZoneDistance=900 / SlowSpeedMultiplier=0.4`（待实测调整）。
 
 `jiguanqiang0/3/4` 未改动。两面墙原本就是**可见 + 有碰撞**，所以组件默认不去改初始状态。
 
@@ -111,6 +131,7 @@ OnFinished   bBlockOnFinish ? SetActorHiddenInGame(false) + SetActorEnableCollis
 ## 7. 注意
 
 - 触发状态是**会话内**的（PIE 重开会重新计一次），不落盘；
-- 如果玩家正好站在墙体变成实体的位置里，可能被卡住——需要的话再加"落点有人就延后阻挡"的判断；
+- **防卡墙靠慢速区**（见 2.5 节）：靠近时先把玩家速度压下来，别让人在墙落地那一刻站在墙里。
+  若实测仍会卡住，再考虑"落点有人就延后阻挡"；
 - `bApplyInitialStateOnBeginPlay` **默认关**：墙在关卡里摆的就是"可见 + 有碰撞"，组件只在动画播完后把
   "显形 + 开碰撞"再坐实一次（防止中途被别的联动隐藏掉）。
