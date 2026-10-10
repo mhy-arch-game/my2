@@ -1,0 +1,23 @@
+{
+  "char_bp": "BP_FirstPersonCharacter",
+  "char_components": [
+    "None",
+    "CapsuleComponent",
+    "ArrowComponent",
+    "FirstPersonCamera",
+    "Mesh",
+    "FirstPersonMesh",
+    "FirstPersonCamera",
+    "CharacterMovement"
+  ],
+  "has_sprint_component": false,
+  "has_interaction_detector": false,
+  "actor_count": 529,
+  "door_bp_loaded": true,
+  "door_count": 0,
+  "frame_count": 28,
+  "frame_profiles": {
+    "BlockAll": 28
+  },
+  "door_sample": []
+}
