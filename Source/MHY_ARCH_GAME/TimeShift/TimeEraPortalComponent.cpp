@@ -95,6 +95,37 @@ void UTimeEraPortalComponent::BeginPlay()
 			RegisteredAnchorId = CounterpartId;
 		}
 	}
+
+	// --- 配对自检：把"实际用到的时空"和它的来源直接说出来 --------------------
+	// 这一项配错会让配对方向和垂直位移符号一起错，所以不值得让设计者靠猜。
+	const bool bEraFromComponent = bAutoDetectEra && EraComponent;
+
+	UE_LOG(LogTemp, Log,
+		TEXT("[TimeEraPortal] %s: 所属时空 = %s（来源：%s）；配对方式 = %s；目标时空 = %s。"),
+		*Owner->GetName(),
+		GetOwnerEra() == ETimeEra::Ancient ? TEXT("古 Ancient") : TEXT("今 Modern"),
+		bEraFromComponent ? TEXT("TimeEraComponent")
+			: (bAutoDetectEra ? TEXT("OwnerEra（回退：没找到 TimeEraComponent）") : TEXT("OwnerEra（bAutoDetectEra 已关）")),
+		TargetMode == ETimeEraPortalTargetMode::VerticalOffset ? TEXT("Vertical Offset") : TEXT("Counterpart Object"),
+		GetCounterpartEra() == ETimeEra::Ancient ? TEXT("古 Ancient") : TEXT("今 Modern"));
+
+	if (bAutoDetectEra && !EraComponent)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("[TimeEraPortal] %s: bAutoDetectEra 开着，但对象上没有 TimeEraComponent，已回退到 OwnerEra。")
+			TEXT("若希望它随时空显隐，请补一个 Time Era 组件；否则请确认这里的 OwnerEra 是对的。"),
+			*Owner->GetName());
+	}
+
+	if (bAutoDetectEra && EraComponent && EraComponent->Era != OwnerEra)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("[TimeEraPortal] %s: OwnerEra(%s) 与 TimeEraComponent::Era(%s) 不一致，实际以 TimeEraComponent 为准。")
+			TEXT("把两者改成一致，或关掉 bAutoDetectEra。"),
+			*Owner->GetName(),
+			OwnerEra == ETimeEra::Ancient ? TEXT("古") : TEXT("今"),
+			EraComponent->Era == ETimeEra::Ancient ? TEXT("古") : TEXT("今"));
+	}
 }
 
 void UTimeEraPortalComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -130,6 +161,42 @@ void UTimeEraPortalComponent::HandleInteractRequested(AActor* Interactor, AActor
 	TryUsePortal(Interactor);
 }
 
+bool UTimeEraPortalComponent::ResolveDestination(FVector& OutLocation, FRotator& OutRotation,
+	ETimeEra& OutEra, AActor*& OutCounterpart, FText& OutRefusalReason) const
+{
+	OutEra = GetCounterpartEra();
+	OutCounterpart = nullptr;
+
+	const AActor* Owner = GetOwner();
+	if (!Owner)
+	{
+		OutRefusalReason = LOCTEXT("NoOwner", "传送装置没有 owner。");
+		return false;
+	}
+
+	if (TargetMode == ETimeEraPortalTargetMode::VerticalOffset)
+	{
+		// 两个时空只差 Z：落点由自己的位置直接推出来，不需要对应物。
+		// 符号按自己所属时空取（VerticalOffset 定义 = 今 − 古），所以两半填同一个值即可。
+		const float SignedOffset = (GetOwnerEra() == ETimeEra::Ancient) ? VerticalOffset : -VerticalOffset;
+
+		OutLocation = Owner->GetActorLocation() + FVector(0.0f, 0.0f, SignedOffset);
+		OutRotation = Owner->GetActorRotation();
+		return true;
+	}
+
+	AActor* Counterpart = ResolveCounterpartInternal(OutRefusalReason);
+	if (!Counterpart)
+	{
+		return false;
+	}
+
+	OutLocation = Counterpart->GetActorLocation();
+	OutRotation = Counterpart->GetActorRotation();
+	OutCounterpart = Counterpart;
+	return true;
+}
+
 bool UTimeEraPortalComponent::TryUsePortal(AActor* Traveler)
 {
 	AActor* TravelerActor = ResolveTraveler(Traveler);
@@ -146,18 +213,21 @@ bool UTimeEraPortalComponent::TryUsePortal(AActor* Traveler)
 	}
 
 	FText RefusalReason;
-	AActor* Counterpart = ResolveCounterpartInternal(RefusalReason);
-	if (!Counterpart)
+	FVector Destination = FVector::ZeroVector;
+	FRotator DestinationRotation = FRotator::ZeroRotator;
+	ETimeEra TargetEra = GetCounterpartEra();
+	AActor* Counterpart = nullptr;
+
+	if (!ResolveDestination(Destination, DestinationRotation, TargetEra, Counterpart, RefusalReason))
 	{
 		OnPortalRefused.Broadcast(this, RefusalReason);
 		return false;
 	}
 
-	// 1. switch to the counterpart's era FIRST: listeners (the player's
-	//    UTimeShiftTravelComponent) relocate by the layout mapping, and step 2
-	//    then overrides that with the exact counterpart position.
+	// 1. switch era FIRST: listeners (the player's UTimeShiftTravelComponent) relocate
+	//    by the layout mapping, and step 3 then overrides that with the exact
+	//    destination. Doing it the other way round would undo step 3.
 	UTimeShiftSubsystem* Subsystem = UTimeShiftSubsystem::Get(this);
-	const ETimeEra TargetEra = GetCounterpartEra();
 	if (bSwitchEra && Subsystem && Subsystem->GetEra() != TargetEra)
 	{
 		if (!Subsystem->CanSwitchEra())
@@ -168,22 +238,22 @@ bool UTimeEraPortalComponent::TryUsePortal(AActor* Traveler)
 		Subsystem->SetEra(TargetEra);
 	}
 
-	// 2. explicit arrival at the counterpart.
+	// 2. stop the leftover velocity so the traveller does not keep flying on arrival.
 	if (ACharacter* Character = Cast<ACharacter>(TravelerActor))
 	{
 		if (UCharacterMovementComponent* Movement = Character->GetCharacterMovement())
 		{
-			// Kill the leftover velocity so the traveller does not keep flying on arrival.
 			Movement->StopMovementImmediately();
 		}
 	}
 
-	const FVector Goal = ComputeArrivalLocation(Counterpart, TravelerActor);
+	// 3. place at the resolved destination (works for both target modes).
+	const FVector Goal = ComputeArrivalLocation(Destination, DestinationRotation, TravelerActor);
 	TravelerActor->SetActorLocation(Goal, false, nullptr, ETeleportType::TeleportPhysics);
 
 	if (bMatchCounterpartYaw)
 	{
-		const FRotator ArrivalRotation(0.0f, Counterpart->GetActorRotation().Yaw, 0.0f);
+		const FRotator ArrivalRotation(0.0f, DestinationRotation.Yaw, 0.0f);
 		TravelerActor->SetActorRotation(ArrivalRotation);
 		if (APawn* Pawn = Cast<APawn>(TravelerActor))
 		{
@@ -194,9 +264,12 @@ bool UTimeEraPortalComponent::TryUsePortal(AActor* Traveler)
 		}
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("[TimeEraPortal] %s -> %s (%s)"),
-		*GetOwner()->GetName(), *Counterpart->GetName(),
-		TargetEra == ETimeEra::Ancient ? TEXT("古") : TEXT("今"));
+	UE_LOG(LogTemp, Log, TEXT("[TimeEraPortal] %s -> %s (%s, %s, %.0f/%.0f/%.0f)"),
+		*GetOwner()->GetName(),
+		Counterpart ? *Counterpart->GetName() : TEXT("<仅 Z 不同的另一半>"),
+		TargetEra == ETimeEra::Ancient ? TEXT("古") : TEXT("今"),
+		TargetMode == ETimeEraPortalTargetMode::VerticalOffset ? TEXT("VerticalOffset") : TEXT("Counterpart"),
+		Goal.X, Goal.Y, Goal.Z);
 
 	ArmLock();
 	OnPortalUsed.Broadcast(TravelerActor, GetOwner(), Counterpart);
@@ -211,7 +284,12 @@ bool UTimeEraPortalComponent::CanUsePortal(AActor* Traveler) const
 	}
 
 	FText Reason;
-	if (!ResolveCounterpartInternal(Reason))
+	FVector Destination = FVector::ZeroVector;
+	FRotator DestinationRotation = FRotator::ZeroRotator;
+	ETimeEra DestinationEra = GetCounterpartEra();
+	AActor* Counterpart = nullptr;
+
+	if (!ResolveDestination(Destination, DestinationRotation, DestinationEra, Counterpart, Reason))
 	{
 		return false;
 	}
@@ -219,7 +297,7 @@ bool UTimeEraPortalComponent::CanUsePortal(AActor* Traveler) const
 	if (bSwitchEra)
 	{
 		const UTimeShiftSubsystem* Subsystem = UTimeShiftSubsystem::Get(this);
-		if (Subsystem && Subsystem->GetEra() != GetCounterpartEra() && !Subsystem->CanSwitchEra())
+		if (Subsystem && Subsystem->GetEra() != DestinationEra && !Subsystem->CanSwitchEra())
 		{
 			return false;
 		}
@@ -245,6 +323,13 @@ AActor* UTimeEraPortalComponent::ResolveCounterpart() const
 
 AActor* UTimeEraPortalComponent::ResolveCounterpartInternal(FText& OutRefusalReason) const
 {
+	if (TargetMode == ETimeEraPortalTargetMode::VerticalOffset)
+	{
+		// 这种模式没有"对应对象"：落点由 VerticalOffset 推导（见 ResolveDestination）。
+		OutRefusalReason = LOCTEXT("VerticalNoCounterpart", "垂直位移模式没有对应对象（落点由自己位置 + Z 位移推导）。");
+		return nullptr;
+	}
+
 	const AActor* Owner = GetOwner();
 	const ETimeEra WantedEra = GetCounterpartEra();
 
@@ -348,20 +433,43 @@ ETimeEra UTimeEraPortalComponent::GetCounterpartEra() const
 	return GetOppositeEra(GetOwnerEra());
 }
 
+FString UTimeEraPortalComponent::GetPortalDebugString() const
+{
+	FText Reason;
+	FVector Destination = FVector::ZeroVector;
+	FRotator DestinationRotation = FRotator::ZeroRotator;
+	ETimeEra DestinationEra = GetCounterpartEra();
+	AActor* Counterpart = nullptr;
+
+	const bool bResolved = ResolveDestination(Destination, DestinationRotation, DestinationEra, Counterpart, Reason);
+
+	const FString EraSource = (bAutoDetectEra && EraComponent)
+		? TEXT("TimeEraComponent")
+		: (bAutoDetectEra ? TEXT("OwnerEra(fallback)") : TEXT("OwnerEra"));
+
+	return FString::Printf(
+		TEXT("Portal %s | mode=%s | ownerEra=%s (%s) | targetEra=%s | verticalOffset=%.1f | dest=%s | counterpart=%s | locked=%s"),
+		*GetNameSafe(GetOwner()),
+		TargetMode == ETimeEraPortalTargetMode::VerticalOffset ? TEXT("VerticalOffset") : TEXT("Counterpart"),
+		GetOwnerEra() == ETimeEra::Ancient ? TEXT("Ancient") : TEXT("Modern"),
+		*EraSource,
+		GetCounterpartEra() == ETimeEra::Ancient ? TEXT("Ancient") : TEXT("Modern"),
+		VerticalOffset,
+		bResolved ? *Destination.ToCompactString() : *FString::Printf(TEXT("<解析失败: %s>"), *Reason.ToString()),
+		Counterpart ? *Counterpart->GetName() : TEXT("none"),
+		IsLocked() ? TEXT("yes") : TEXT("no"));
+}
+
 // ---------------------------------------------------------------------------
 // placement
 // ---------------------------------------------------------------------------
 
-FVector UTimeEraPortalComponent::ComputeArrivalLocation(const AActor* Counterpart, const AActor* Traveler) const
+FVector UTimeEraPortalComponent::ComputeArrivalLocation(const FVector& BaseLocation,
+	const FRotator& BaseRotation, const AActor* Traveler) const
 {
-	if (!Counterpart)
-	{
-		return FVector::ZeroVector;
-	}
-
-	// TeleportOffset is expressed in the counterpart's own space.
-	FVector Goal = Counterpart->GetActorLocation()
-		+ Counterpart->GetActorRotation().RotateVector(TeleportOffset);
+	// TeleportOffset is expressed in the destination's own space - for a vertical pair
+	// that is the same object one era away, so its rotation is still the right frame.
+	FVector Goal = BaseLocation + BaseRotation.RotateVector(TeleportOffset);
 
 	if (!bPlaceOnGround || GroundTraceDistance <= 0.0f)
 	{

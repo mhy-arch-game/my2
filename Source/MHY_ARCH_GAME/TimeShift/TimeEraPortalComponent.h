@@ -42,6 +42,25 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTimeEraPortalRefused, UTimeEraPo
  *  not in the opposite era, era switch refused (switch in flight / timed lock),
  *  or this portal still locked.
  */
+/**
+ *  成对方式：怎么找到"另一半"。
+ */
+UENUM(BlueprintType)
+enum class ETimeEraPortalTargetMode : uint8
+{
+	/**
+	 * 两个时空里各放一个对象，互相指认：显式引用 → CounterpartId 锚点 → 最近的锚点。
+	 */
+	CounterpartObject	UMETA(DisplayName="Counterpart Object (指定对应物)"),
+
+	/**
+	 * 同一个对象在两个时空里**只差 Z 坐标**（例如同一块踏板，古代在地面、现代在半空）：
+	 * 落点 = 自己位置 + (0,0,±VerticalOffset)，**不需要任何对应物引用**。
+	 * 符号按自己所属时空自动取，所以两半填**同一个** VerticalOffset 即可。
+	 */
+	VerticalOffset		UMETA(DisplayName="Vertical Offset (仅 Z 不同)")
+};
+
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent), Blueprintable, BlueprintType)
 class UTimeEraPortalComponent : public UActorComponent
 {
@@ -49,6 +68,24 @@ class UTimeEraPortalComponent : public UActorComponent
 
 public:
 	UTimeEraPortalComponent();
+
+	// -- 成对方式 (how the other half is found) ----------------------------
+	/** 成对方式：指定对应物，或者"两个时空仅 Z 不同"。 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal")
+	ETimeEraPortalTargetMode TargetMode = ETimeEraPortalTargetMode::CounterpartObject;
+
+	/**
+	 * TargetMode = Vertical Offset 时的 Z 位移，定义为 **今 − 古**
+	 * （现代那一半比古代高多少；现代更低就填负数）。
+	 *
+	 * 组件按自己所属时空自动取符号：
+	 *   本对象在"古" → 落点 = 自己位置 + (0,0,+VerticalOffset)
+	 *   本对象在"今" → 落点 = 自己位置 + (0,0,-VerticalOffset)
+	 * 所以**两半填同一个值**，不会出现一半填正一半填反的错误。
+	 * 这也是"两时空仅 Z 不同"能自动配对的原因：不需要任何引用。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal", meta=(EditCondition="TargetMode==ETimeEraPortalTargetMode::VerticalOffset"))
+	float VerticalOffset = 1000.0f;
 
 	// -- 指定对应物 (the designated counterpart) ---------------------------
 	/**
@@ -72,13 +109,29 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal", meta=(EditCondition="!CounterpartId.IsNone()"))
 	bool bRegisterAsAnchor = true;
 
-	// -- 所属时空 -----------------------------------------------------------
-	/** Take the owner's era from its UTimeEraComponent. Turn off to set OwnerEra by hand. */
+	// -- 所属时空（配对的正负号就是从这里来的）-------------------------------
+	/**
+	 * 自动读取 owner 上 UTimeEraComponent 的 Era。
+	 *
+	 *   打开（默认）：对象上有 TimeEraComponent 时以它的 Era 为准；
+	 *                 **没有**时回退到下面的 OwnerEra（BeginPlay 会打 Warning 提醒）。
+	 *   关闭：无论有没有 TimeEraComponent，都以 OwnerEra 为准。
+	 *
+	 * 不确定实际用的是哪个？看 BeginPlay 打的那行：
+	 *   [TimeEraPortal] <对象>: 所属时空 = …（来源：TimeEraComponent / OwnerEra）
+	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal")
 	bool bAutoDetectEra = true;
 
-	/** Era the owner belongs to (only used when bAutoDetectEra is off). */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal", meta=(EditCondition="!bAutoDetectEra"))
+	/**
+	 * 本对象属于哪个时空。**始终可编辑**（不再因为 bAutoDetectEra 被灰掉）。
+	 *
+	 * 它决定两件事：
+	 *   1. "另一半"在哪个时空（取反）；
+	 *   2. Vertical Offset 模式的 Z 位移符号（古 = +VerticalOffset，今 = -VerticalOffset）。
+	 * 所以这一项配错，配对方向和落点会一起错。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal")
 	ETimeEra OwnerEra = ETimeEra::Ancient;
 
 	// -- 行为 ---------------------------------------------------------------
@@ -144,7 +197,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category="TimeShift|Portal")
 	bool TryUsePortal(AActor* Traveler);
 
-	/** The counterpart actually resolved for this portal (may be null). */
+	/**
+	 * The counterpart actually resolved for this portal.
+	 * VerticalOffset 模式下**恒为 null** —— 那种模式没有"对应对象"，落点由自己位置 + Z 位移推导。
+	 */
 	UFUNCTION(BlueprintPure, Category="TimeShift|Portal")
 	AActor* ResolveCounterpart() const;
 
@@ -163,6 +219,14 @@ public:
 	/** Whether the per-portal lock is still running. */
 	UFUNCTION(BlueprintPure, Category="TimeShift|Portal")
 	bool IsLocked() const;
+
+	/**
+	 * 一行人类可读状态：配对方式 / 本对象时空与来源 / 目标时空 / Z 偏移 /
+	 * 解析出的落点 / 对应物 / 是否冷却中。给蓝图 Print String 排查用。
+	 * 注意：它会真的跑一次落点解析（对应物模式下可能扫场景），别每帧调。
+	 */
+	UFUNCTION(BlueprintPure, Category="TimeShift|Portal")
+	FString GetPortalDebugString() const;
 
 	/** Fired after a successful teleport. */
 	UPROPERTY(BlueprintAssignable, Category="TimeShift|Portal")
@@ -205,11 +269,20 @@ private:
 	/** Resolve the counterpart: explicit reference first, then id, then nearest anchor. */
 	AActor* ResolveCounterpartInternal(FText& OutRefusalReason) const;
 
+	/**
+	 * Resolve WHERE the traveller ends up, independent of HOW the pair was found.
+	 * 两种成对方式都走这里，所以 TryUsePortal / CanUsePortal 不需要知道落点是
+	 * 来自另一个 actor 还是来自 Z 位移。OutCounterpart 在 VerticalOffset 模式下为 null。
+	 */
+	bool ResolveDestination(FVector& OutLocation, FRotator& OutRotation, ETimeEra& OutEra,
+		AActor*& OutCounterpart, FText& OutRefusalReason) const;
+
 	/** Which era an arbitrary actor belongs to (portal, era component, else unknown). */
 	bool TryGetActorEra(const AActor* Actor, ETimeEra& OutEra) const;
 
-	/** Final arrival location for Traveler next to Counterpart. */
-	FVector ComputeArrivalLocation(const AActor* Counterpart, const AActor* Traveler) const;
+	/** Final arrival location: BaseLocation/BaseRotation is the already-resolved destination. */
+	FVector ComputeArrivalLocation(const FVector& BaseLocation, const FRotator& BaseRotation,
+		const AActor* Traveler) const;
 
 	/** Capsule / bounds half height, used to sit the traveller on the floor. */
 	float GetTravelerHalfHeight(const AActor* Traveler) const;

@@ -65,3 +65,58 @@ struct FMovementAudioSet
 		}
 	}
 };
+
+/**
+ *  角色的**持续**运动状态。
+ *
+ *  与 EMovementAudioEvent（一次性事件：脚步 / 起跳 / 落地）互补：
+ *  那个是"点"，这个是"段"——用来在状态切换时换音乐 / 环境音。
+ *
+ *  优先级（从高到低）：InAir > Crouch > Sprint > Run > Walk > Idle。
+ *  即：滞空时一律算 InAir；蹲着时一律算 Crouch（蹲着不可能疾跑）；否则按水平速度分档。
+ */
+UENUM(BlueprintType)
+enum class EMovementAudioState : uint8
+{
+	/** 基本站立不动。 */
+	Idle		UMETA(DisplayName = "Idle (站立)"),
+
+	/** 低速移动。 */
+	Walk		UMETA(DisplayName = "Walk (行走)"),
+
+	/** 超过 RunSpeedThreshold。 */
+	Run			UMETA(DisplayName = "Run (奔跑)"),
+
+	/** 超过 SprintSpeedThreshold（配合疾跑组件时就是疾跑）。 */
+	Sprint		UMETA(DisplayName = "Sprint (疾跑)"),
+
+	/** 蹲伏中。 */
+	Crouch		UMETA(DisplayName = "Crouch (蹲伏)"),
+
+	/** 滞空（起跳 / 下落）。 */
+	InAir		UMETA(DisplayName = "In Air (滞空)")
+};
+
+/**
+ *  某个持续状态下要**循环**播放的音乐。
+ *
+ *  与 FMovementAudioSet 一样：软引用可以留空，留空 = 该状态不放音乐（只广播状态）。
+ *  音乐是否循环取决于声音资源自身（SoundWave 的 Looping），本结构不管。
+ */
+USTRUCT(BlueprintType)
+struct FMovementStateMusic
+{
+	GENERATED_BODY()
+
+	/** 这个条目对应哪个运动状态。 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="MovementAudio")
+	EMovementAudioState State = EMovementAudioState::Idle;
+
+	/** 该状态下循环播放的音乐（软引用，可留空）。 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="MovementAudio")
+	TSoftObjectPtr<USoundBase> Music;
+
+	/** 该状态音乐的独立音量倍率（再乘以组件上的 VolumeMultiplier）。 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="MovementAudio", meta=(ClampMin="0.0"))
+	float VolumeMultiplier = 1.0f;
+};
