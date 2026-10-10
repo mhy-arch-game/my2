@@ -1,0 +1,128 @@
+{
+  "ia_timeshift": false,
+  "level_classes": {
+    "StaticMeshActor": 489,
+    "active_door_C": 24,
+    "RectLight": 22,
+    "PointLight": 18,
+    "modern_swift_actor_C": 10,
+    "SpotLight": 5,
+    "ExponentialHeightFog": 2,
+    "LevelSequenceActor": 2,
+    "DirectionalLight": 1,
+    "SkyAtmosphere": 1,
+    "VolumetricCloud": 1,
+    "PlayerStart": 1,
+    "SkyLight": 1,
+    "PostProcessVolume": 1,
+    "jumping_area_C": 1,
+    "BP_FirstPersonCharacter_C": 1
+  },
+  "level_class_count": 16,
+  "level_weird_classes": [],
+  "level_primitive_count": 763,
+  "level_null_mesh_slots": 0,
+  "blueprints": {
+    "/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter": {
+      "class": "11E000) Class 'BlueprintGeneratedClass'>",
+      "components": {
+        "Mesh": {
+          "SkeletalMesh": "<Object '/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple' (0x0000018A"
+        },
+        "FirstPersonMesh": {
+          "SkeletalMesh": "<Object '/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple' (0x0000018A"
+        },
+        "MovementAudio": {
+          "DefaultSet": "<Struct 'MovementAudioSet' (0x0000018ACC580A68) {surface: SurfaceType_Default, footstep: N",
+          "StateMusic": "[{state: Run, music: \"/Game/sound_resources/freesound_community-running-6358.freesound_com",
+          "SurfaceSets": "[]"
+        }
+      }
+    },
+    "/Game/bclass_source/modern_swift_actor": {
+      "class": "11A800) Class 'BlueprintGeneratedClass'>",
+      "components": {
+        "switcher": {
+          "StaticMesh": "<Object '/Game/models/tripo_convert_a27cf087-650e-439c-80cf-d55ede9a4be3.tripo_convert_a27"
+        }
+      }
+    },
+    "/Game/bclass_source/active_door": {
+      "class": "4B7000) Class 'BlueprintGeneratedClass'>",
+      "components": {
+        "DoorMesh": {
+          "StaticMesh": "<Object '/Game/Fab/Modern_Door/Door.Door' (0x0000018AC771C000) Class 'StaticMesh'>"
+        }
+      }
+    },
+    "/Game/bclass_source/active_light": {
+      "class": "880E00) Class 'BlueprintGeneratedClass'>",
+      "components": {}
+    },
+    "/Game/bclass_source/jumping_area": {
+      "class": "EF0700) Class 'BlueprintGeneratedClass'>",
+      "components": {
+        "jumping_ball": {
+          "StaticMesh": "<Object '/Engine/BasicShapes/Sphere.Sphere' (0x0000018A99EDB800) Class 'StaticMesh'>"
+        }
+      }
+    },
+    "/Game/bclass_source/reveal_wall": {
+      "class": "882A00) Class 'BlueprintGeneratedClass'>",
+      "components": {
+        "wall": {
+          "StaticMesh": "<Object '/Engine/BasicShapes/Cube.Cube' (0x0000018AA12EE800) Class 'StaticMesh'>"
+        }
+      }
+    },
+    "/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt": {
+      "class": ") Class 'WidgetBlueprintGeneratedClass'>",
+      "components": {}
+    }
+  },
+  "referenced_game_paths": [
+    "/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple",
+    "/Game/Fab/Door_BVM_1/Metal_001.Metal_001",
+    "/Game/Fab/Modern_Door/Door.Door",
+    "/Game/Fab/Modern_Door/Door_Frame.Door_Frame",
+    "/Game/Fab/Modern_Door/modern_door.modern_door",
+    "/Game/Fab/Piano/piano/StaticMeshes/piano.piano",
+    "/Game/Fab/Wall_light_2/wall_light_2/StaticMeshes/wall_light_2.wall_light_2",
+    "/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter.BP_FirstPersonCharacter",
+    "/Game/FirstPerson/_GENERATED/LB/Combined_4D61396D.Combined_4D61396D",
+    "/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397.Combined_E8CDB397",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_29A265CD.CubeGridToolOutput_29A265CD",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_2CBA121C.CubeGridToolOutput_2CBA121C",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_3594524A.CubeGridToolOutput_3594524A",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_3D8FEF1A.CubeGridToolOutput_3D8FEF1A",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_427B7585.CubeGridToolOutput_427B7585",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_42A9CC0A.CubeGridToolOutput_42A9CC0A",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_491C58D1.CubeGridToolOutput_491C58D1",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_73048F59.CubeGridToolOutput_73048F59",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_765BE826.CubeGridToolOutput_765BE826",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_8E1E5239.CubeGridToolOutput_8E1E5239",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_8F1720CA.CubeGridToolOutput_8F1720CA",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_B64D38EF.CubeGridToolOutput_B64D38EF",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_CB3C7928.CubeGridToolOutput_CB3C7928",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_E6DDA077.CubeGridToolOutput_E6DDA077",
+    "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_EF6D50B7.CubeGridToolOutput_EF6D50B7",
+    "/Game/FirstPerson/_GENERATED/LB/PlaneCutOtherPart_11C55C3F.PlaneCutOtherPart_11C55C3F",
+    "/Game/LevelPrototyping/Materials/M_PrototypeGrid.M_PrototypeGrid",
+    "/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt.WBP_InteractionPrompt",
+    "/Game/Weapons/Rifle/Materials/M_Weapon.M_Weapon",
+    "/Game/_GENERATED/LB/CubeGridToolOutput_06BB4348.CubeGridToolOutput_06BB4348",
+    "/Game/_GENERATED/LB/CubeGridToolOutput_8ADF33E7.CubeGridToolOutput_8ADF33E7",
+    "/Game/_GENERATED/LB/CubeGridToolOutput_9B8F52FB.CubeGridToolOutput_9B8F52FB",
+    "/Game/bclass_source/active_door.active_door",
+    "/Game/bclass_source/active_light.active_light",
+    "/Game/bclass_source/jumping_area.jumping_area",
+    "/Game/bclass_source/modern_swift_actor.modern_swift_actor",
+    "/Game/bclass_source/reveal_wall.reveal_wall",
+    "/Game/models/tripo_convert_a27cf087-650e-439c-80cf-d55ede9a4be3.tripo_convert_a27cf087-650e-439c-80cf-d55ede9a4be3",
+    "/Game/sound_resources/freesound_community-jumping-on-wooden-floor-41234.freesound_community-jumping-on-wooden-floor-41234",
+    "/Game/sound_resources/freesound_community-running-6358.freesound_community-running-6358",
+    "/Game/texture/M_wall2.M_wall2",
+    "/Game/texture/M_wall3.M_wall3"
+  ],
+  "referenced_count": 42
+}

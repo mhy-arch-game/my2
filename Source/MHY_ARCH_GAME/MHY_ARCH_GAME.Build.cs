@@ -16,6 +16,7 @@ public class MHY_ARCH_GAME : ModuleRules
 			"EnhancedInput",
 			"UMG",
 			"Slate",
+			"SlateCore",
 			"MotionWarping",
 			"PhysicsCore"
 		});

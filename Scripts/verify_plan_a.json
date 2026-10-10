@@ -1,0 +1,55 @@
+{
+  "/Game/models/毛绒熊3d模型": {
+    "class": "StaticMesh",
+    "material_slots": [
+      {
+        "path": "tripo_node_a320d423-2e83-446b-9838-6b061e41b321_material_002",
+        "exists": true
+      }
+    ]
+  },
+  "/Game/models/毛绒熊3d模型_basecolor": {
+    "class": "Texture2D"
+  },
+  "/Game/models/毛绒熊3d模型_normal": {
+    "class": "Texture2D"
+  },
+  "/Game/models/fireplace": {
+    "class": "StaticMesh",
+    "material_slots": [
+      {
+        "path": "b9acd5b7_b130_41b9_b7e3_14ed88825340",
+        "exists": true
+      }
+    ]
+  },
+  "/Game/models/fireplace_basecolor": {
+    "class": "Texture2D"
+  },
+  "/Game/models/b9acd5b7_b130_41b9_b7e3_14ed88825340": {
+    "class": "MaterialInstanceConstant"
+  },
+  "orphan_MI_texture_params": [
+    {
+      "path": "毛绒熊3d模型_basecolor",
+      "exists": true
+    },
+    {
+      "path": "毛绒熊3d模型_normal",
+      "exists": true
+    }
+  ],
+  "fingerprint": {
+    "null_mesh_slots": 0,
+    "device_count": 10,
+    "switcher_size": [
+      21.4,
+      21.5,
+      100.0
+    ]
+  },
+  "portal_mesh_material": {
+    "path": "tripo_mat_a27cf087",
+    "exists": true
+  }
+}

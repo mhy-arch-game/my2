@@ -1,0 +1,23 @@
+{
+  "world_fields": [
+    "get_focused_target",
+    "get_world",
+    "screen_offset_y",
+    "world_prompt_draw_size",
+    "world_prompt_face_camera",
+    "world_prompt_facing_yaw",
+    "world_prompt_front_offset",
+    "world_prompt_height_offset",
+    "world_space_prompt"
+  ],
+  "defaults": {
+    "bWorldSpacePrompt": "True",
+    "WorldPromptDrawSize": "<Struct 'Vector2D' (0x0000020896A47118) {x: 360.000000, y: 120.000000}>",
+    "WorldPromptHeightOffset": "30.0",
+    "WorldPromptFrontOffset": "40.0",
+    "bWorldPromptFaceCamera": "True",
+    "WorldPromptFacingYaw": "180.0",
+    "bUseBuiltInFallback": "True",
+    "bAutoBindDetector": "True"
+  }
+}
