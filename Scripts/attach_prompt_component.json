@@ -1,0 +1,43 @@
+{
+  "vars_before": [
+    "None",
+    "FirstPersonMesh",
+    "FirstPersonCamera",
+    "FirstPersonCamera",
+    "Mesh",
+    "CapsuleComponent",
+    "ArrowComponent",
+    "Climb",
+    "InteractionDetector",
+    "MotionWarping",
+    "CharacterMovement",
+    "MovementAudio",
+    "TimeShiftTravel",
+    "TimeShiftInput",
+    "Sprint"
+  ],
+  "parent_used": "CapsuleComponent",
+  "add_result": "ok",
+  "new_handle": "(<Struct 'SubobjectDataHandle' (0x000002086FE7FE90) {}>, Text(\"\"))",
+  "vars_after": [
+    "None",
+    "CapsuleComponent",
+    "ArrowComponent",
+    "FirstPersonCamera",
+    "Mesh",
+    "FirstPersonMesh",
+    "FirstPersonCamera",
+    "CharacterMovement",
+    "InteractionDetector",
+    "MotionWarping",
+    "Climb",
+    "MovementAudio",
+    "TimeShiftTravel",
+    "TimeShiftInput",
+    "Sprint",
+    "InteractionPrompt"
+  ],
+  "verified": true,
+  "compile": "ok",
+  "save": "ok"
+}

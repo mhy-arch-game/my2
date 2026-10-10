@@ -1,0 +1,96 @@
+{
+  "devices": [
+    {
+      "label": "kongjianchuansuoqi1",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "mesh": "4be3' (0x0000029F36B6C800) Class 'StaticMesh'>",
+      "size": [
+        21.4,
+        21.5,
+        100.0
+      ]
+    }
+  ],
+  "SM_GrenadeLauncher_users": [],
+  "SM_GrenadeLauncher_user_count": 0
+}

@@ -537,6 +537,7 @@
 | `Docs/MovementAudio.md` | 移动音频接口 + **★ 声音资产接入实操（跑动 / 跳跃 / 落地）**（第 8 节） |
 | `Docs/TimeEraPortal.md` | 跨时空传送（配对、落点、过场接口、落点偏移根因与修复、`TeleportOffset` 微调） |
 | `Docs/GravityZone.md` | 重力区（最高点不变提速、`TargetJumpHeight` 绝对高度） |
+| `Docs/InteractionImplementation.md` | 交互实现 + **★ 聚焦视觉表现完善指南（弹框做精致、描边后期材质 5 步）** |
 ## 10. ★ 脚本批量改资产的持久化规则（血泪教训）
 
 headless 脚本（`-run=PythonScript`）改属性能"报成功"但**实际没存进去**，是本项目最容易踩的坑。
@@ -579,4 +580,20 @@ headless 脚本（`-run=PythonScript`）改属性能"报成功"但**实际没存
 1. `Get-Process UnrealEditor*` 必须为空（否则构建也会因 Live Coding 失败）
 2. 看一眼 `Saved/Autosaves/**` 的 mtime：若比你上次写入更新，说明编辑器正在跑
 3. 每次写完都要**新进程复验**，并在用户打开编辑器之前确认结果
-4. 编辑器里改过的值**以编辑器为准**，不要用脚本去"抢"同一个字段
+4. 编辑器里改过的值**以编辑器为准**，不要用脚本去抢同一个字段
+
+### 10.3 ★ merge 冲突会「删资产 + 换引用」，恢复流程
+
+实测一次 merge 提交（`4113d52`）同时做了两件破坏：
+
+| 破坏 | 证据 | 恢复 |
+|---|---|---|
+| 删掉 4 个 tripo 资产 | `git log --all --diff-filter=D --name-only` 里带该提交的 4 个 `Content/models/tripo_*` 文件 | `git restore --source=<删除前的父提交> --worktree -- <path...>`（**只动工作区，不动 index**；恢复后为未跟踪状态） |
+| 把 `switcher` 的网格引用换成 `SM_GrenadeLauncher` | 恢复资产后组件仍指向榴弹发射器，且没有任何组件引用 tripo | 重新 `set_editor_property("StaticMesh", mesh, notify_mode=ALWAYS)` + `compile_blueprint` + `save_loaded_asset` |
+
+**验收方法（关键）**：用**几何特征**验证，而不是只信名字 —— 恢复后读组件 `get_local_bounds()`，
+应当回到 **21.4 × 21.5 × 100.0**（与事故发生前实测一致）。
+
+> 通用检查：`git log --all --diff-filter=D --name-only` 找被删资产；
+> 全关卡扫一遍 `StaticMeshComponent` 是否有 `StaticMesh == None`（悬空引用）；
+> 对引用被换掉这种没有悬空的情况，用**尺寸 / 位置特征**或与旧提交对比来发现。

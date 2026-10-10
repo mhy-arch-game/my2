@@ -382,3 +382,178 @@ Open = ClosedRelativeTransform * ( T(P) * R(Axis, Angle) * T(-P) )
 | `Docs/InteractionLogic.md` | 交互的人机活动逻辑与解耦设计原理 |
 | `Docs/StructureInteraction.md` | 可交互建筑结构（方块式，另一套开合实现） |
 | `Scripts/diagnose_interaction.py` | 只读诊断脚本 |
+
+---
+
+## 9. 聚焦提示弹框（UInteractionPromptComponent）★ 本轮新增
+
+**需求**：聚焦到可交互物时，弹一个**带文字**的提示框。
+
+### 数据流（零蓝图连线）
+
+```
+玩家探测器 UInteractionDetectorComponent（按 UpdateInterval 重选目标）
+        │ 目标变化
+        v
+OnFocusChanged(FocusActor, Prompt)          <- 既有事件，未改动
+        │
+        v
+UInteractionPromptComponent（挂在玩家角色上）
+        │ 有聚焦 且 提示文字非空 -> ShowPrompt(Prompt)
+        │ 失去聚焦 / 文字为空     -> HidePrompt()
+        v
+弹框 Widget：WidgetClass（你的 WBP）或内置的 UInteractionPromptFallbackWidget
+```
+
+### 已经接好了，默认值即可工作
+
+`BP_FirstPersonCharacter` 上已经有 `InteractionPrompt` 组件：
+
+| 字段 | 默认 | 说明 |
+|---|---|---|
+| `WidgetClass` | 空 | 填你自己的 Widget 蓝图（父类 `InteractionPromptWidget`）即换成你的样式 |
+| `bUseBuiltInFallback` | ✔ | `WidgetClass` 留空时用内置弹框（半透明底框 + 居中白字），**开箱即有提示** |
+| `bAutoBindDetector` | ✔ | 自动绑定同角色上的 `InteractionDetector` |
+| `DefaultPromptText` | 空 | 可交互物没填 `InteractionPrompt` 时用它；留空 = 那种物体不弹框 |
+| **`bWorldSpacePrompt`** | **✔（默认）** | 世界坐标模式：UI 出现在**交互物体前方的世界位置**、每帧朝向镜头，**不跟随镜头** |
+| `WorldPromptDrawSize` | (360, 120) | 世界坐标 UI 面板的绘制尺寸（像素） |
+| `WorldPromptHeightOffset` | 30 | 在物体包围盒之上再抬高多少 cm |
+| `WorldPromptFrontOffset` | 40 | 朝玩家方向再前移多少 cm（让提示浮在物体前方） |
+| `bWorldPromptFaceCamera` | ✔ | 每帧转向摄像机（billboard） |
+| `WorldPromptFacingYaw` | 180 | 朝向补偿：**若文字镜像 / 背对镜头就改成 0** |
+| `ScreenOffsetY` / `ZOrder` | 220 / 100 | **仅当** `bWorldSpacePrompt = ✗`（屏幕空间旧模式）时使用 |
+
+**文字从哪来**：`UInteractableComponent::InteractionPrompt`（或蓝图交互物 `GetInteractionPrompt` 的返回值），
+每个物体自己填，例如"开门" / "传送" / "打开机关"。
+
+### 换成自己的样式（可选）
+
+1. 新建 **Widget Blueprint**，父类选 **`InteractionPromptWidget`**；
+2. 里面放一个 `Border`（半透明底）+ `TextBlock`（提示文字）；
+3. 事件图里实现 **`Set Prompt`**（参数 `PromptText` / `bVisible`）：设 TextBlock 的文字、按 `bVisible` 显隐；
+4. 把它填到 `InteractionPrompt` 组件的 **`WidgetClass`**。
+
+> 内置弹框是**纯 C++ 的 Slate**（`SNew`）实现，所以不需要任何 Widget 蓝图也能工作；
+> 一旦填了 `WidgetClass`，内置弹框就不再使用。
+
+### 事件 / 接口
+
+| 接口 | 用途 |
+|---|---|
+| `OnPromptChanged(PromptText, bVisible)` | 显示 / 隐藏时广播（接音效、动效） |
+| `ShowPrompt(Text)` / `HidePrompt()` | 蓝图里也可自己控制 |
+| `IsPromptVisible()` / `GetPromptText()` | 查询当前状态 |
+
+### 不显示？按顺序查
+
+| 现象 | 原因 |
+|---|---|
+| 完全没有弹框 | ① 角色上没有 `InteractionPrompt` 组件；② 角色没有被本地控制器 possess（HUD 只给本地玩家创建）；③ `WidgetClass` 空且 `bUseBuiltInFallback` 关着 |
+| 有聚焦但不弹框 | 该物体的 `InteractionPrompt` 是空的 —— 弹框只在**有文字**时出现（需求要求的行为） |
+| 位置不合适 | 调 `ScreenOffsetY`（越大越靠下），或换成自己的 WBP 自己排版 |
+| 担心挡鼠标 | 内置弹框用 `HitTestInvisible`，不接收输入；你自己的 WBP 也建议设成 Hit Test Invisible |
+
+---
+
+## 10. 聚焦视觉表现完善指南（弹框 + 描边）★
+
+当前状态（本轮实测，别猜）：
+
+| 视觉元素 | 代码侧 | 资产侧 | 现在能看到什么 |
+|---|---|---|---|
+| **聚焦提示弹框** | ✅ `UInteractionPromptComponent` | ✅ 内置 C++ 弹框兜底 | **已经可见**：半透明底框 + 居中白字，屏幕中心下方 220px |
+| **聚焦描边加粗** | ✅ 探测器会写 `CustomDepth` + 模板值（2 = 加粗） | ❌ **工程里没有任何后期材质、也没有 MPC**；且 `DefaultEngine.ini` 里没有 `r.CustomDepth=3` | **暂时看不到描边** —— 缺 10.2 的 5 步 |
+
+### 10.1 把弹框做精致（推荐：换成自己的 WBP）
+
+内置弹框只是"能看见"，样式是纯代码画的。要好看走这条路（你的 `WBP_InteractionPrompt` 父类**已经**是
+`InteractionPromptWidget` ✓，直接改它即可，不用新建）：
+
+**第 1 步：控件树建议**
+
+```
+SizeBox            (MaxDesiredWidth = 520，Auto Size)
+└ Border  PromptBox      <- 底板：圆角 + 半透明 + 描边
+  └ HorizontalBox
+    ├ Image     KeyIcon     <- 按键图标（E 键帽 / 圆角方键 9 宫格图）
+    └ TextBlock PromptText  <- 提示文字（Auto Wrap Text = 勾）
+```
+
+| 想做的 | 具体做法 |
+|---|---|
+| 圆角底板（零材质，最快） | 导入一张圆角 PNG（带 1px 外描边）→ 纹理设 `Draw As = Box`、`Margin = 24`（九宫格），作为 `Border` 的 Brush |
+| 圆角底板（像素级可控） | 新建 **User Interface** 域材质 `M_UI_Rounded`：参数 `CornerRadius` / `OutlineThickness`，用 UV 到边缘的距离场算圆角与描边；`Border` 的 Brush 直接引用该材质 |
+| 按键图标清晰 | 图标 PNG 的 `Texture Group = UI`、`Compression = UserInterface2D`、`Mip Gen Settings = NoMipmaps`；`Image` 尺寸 28×28，`Vertical Alignment = Center` |
+| 中文字体 | 新建 `Font` 资产并用中文字体（如思源黑体）作为主字体 + 一个 Fallback；字号 20-24（1080p）；必要时加 Font Outline 保证亮背景可读 |
+| 长文案 | `TextBlock` 勾 `Auto Wrap Text` + 外层 `SizeBox` 限宽；行距用 `Line Height Percentage` |
+
+**第 2 步：实现 `Set Prompt` 事件**（这就是组件驱动弹框的唯一契约）
+
+```
+Event Set Prompt (PromptText : Text, bVisible : bool)
+  |- PromptText 文本块 -> SetText(PromptText)
+  |- 分支 bVisible:
+  |    true  -> 播放动画 Appear   （可选：Play Sound 2D 提示音）
+  |    false -> 播放动画 Disappear（反向）
+```
+
+- 给 `PromptBox` 建两个 UMG 动画：`Appear`（0 -> 1：`Scale 0.9 -> 1`、`Opacity 0 -> 1`，约 0.12s）、
+  `Disappear`（反向，约 0.08s；结束时 `Set Visibility = Collapsed`）；
+- 这样"聚焦就淡入放大、失焦就淡出"的质感就出来了（当前内置弹框是硬显隐，没有过渡）。
+
+**第 3 步：挂上去** —— 把 WBP 填到角色 `InteractionPrompt` 组件的 **`Widget Class`**；一旦填了，内置弹框即停用。
+
+**第 4 步：可选增强**
+
+| 想要 | 做法 |
+|---|---|
+| 不同物体不同颜色 / 图标 | 组件事件 `On Prompt Changed(PromptText, bVisible)` + 你自己在可交互物上放的"样式"字段（枚举或 DataAsset），在 `Set Prompt` 里 `Set Brush Color` / `Set Brush from Texture` |
+| 提示跟随物体（世界空间） | ✅ **已实现并设为默认**：组件用 `UWidgetComponent`（`Space = World`）把面板摆在物体前方，每帧 `SetWorldLocationAndRotation` 朝向镜头；位置由 `WorldPromptHeightOffset` / `WorldPromptFrontOffset` 调，想回到屏幕固定 UI 就把 `bWorldSpacePrompt` 关掉 |
+| 打字机逐字显示 | `TextBlock` 外挂一个 Timer，按 `substring` 逐字 `SetText` |
+| 提示类型多样化（"按住 E""E 长按""E 开关"） | 把文案做成 `FText` 表（String Table），物体只填 Key；`Set Prompt` 里按 Key 查表并换图标 |
+
+### 10.2 让"聚焦描边"真正显示出来（当前完全缺失）
+
+探测器已经在做它那一半（`ApplyFocusOutline`：`SetRenderCustomDepth(true)` +
+`SetCustomDepthStencilValue(FocusedOutlineStencil)`，失焦时逐图元还原，并把粗细推进 MPC）。
+缺的是资产侧 5 件事：
+
+1. **打开模板缓冲**：`Project Settings -> Rendering -> Postprocessing -> Custom Depth-Stencil Pass = Enabled with Stencil`
+   （等价于在 `Config/DefaultEngine.ini` 的 `[/Script/Engine.RendererSettings]` 加一行 `r.CustomDepth=3`）。
+   **当前工程里没有这一项** —— 不加的话 `SceneTexture:CustomStencil` 恒为 0，后面全白做。
+2. **建后期材质** `M_OutlinePP`：新建 Material -> `Material Domain = Post Process`，
+   `Blendable Location = Before Tonemapping`（描边更干净）；
+3. **材质主体**（可用版思路）：
+   - 用 `SceneTexture: CustomStencil` 采样屏幕像素，判断 `Stencil > 0`（体像素）与 `Stencil == FocusedOutlineStencil(2)`（聚焦体像素）；
+   - **描边不是画在物体上，而是把"邻域里有物体像素"的屏幕像素点亮**：对当前 UV 取 8 个方向偏移样本
+     （`+-X / +-Y / 四个对角`），偏移量 `= 粗细 / ViewSize`；任一邻域命中就输出描边色，否则保持 `SceneTexture:PostProcessInput0`；
+   - 粗细两种来源：① `CollectionParameter` 读 `MPC_Outline` 的 `OutlineThickness`（推荐，聚焦时变粗就靠它）；
+     ② 或直接按 stencil 值分支（`==2` 用 4px、`==1` 用 1.5px）；
+   - 输出 `Emissive Color = OutlineColor`，`Opacity = 1`，想柔边可用 `SmoothStep` 衰减；
+4. **建 MPC** `MPC_Outline`（右键 -> Materials -> Material Parameter Collection）：加 Scalar `OutlineThickness`（默认 1.5）；
+   在 `M_OutlinePP` 里用 `CollectionParameter` 读它；把 `MPC_Outline` 填到探测器的 `OutlineParameterCollection`
+   （`OutlineThicknessParameter` 保持 `OutlineThickness`）；
+   —— 探测器聚焦时推 `FocusedOutlineThickness(4)`、失焦推回 `RestingOutlineThickness(1.5)`，于是"聚焦变粗"自动成立；
+5. **挂到后期体积**：关卡里的 `PostProcessVolume` -> `Rendering Features -> Post Process Materials -> + -> Asset Reference = M_OutlinePP`；
+   勾上 `Infinite Extent (Unbound) = true` 让它全关卡生效。
+
+| 探测器字段（Details 搜 `outline`） | 默认 | 作用 |
+|---|---|---|
+| `bApplyFocusOutline` | ✔ | 总开关 |
+| `bUseStencilOutline` | ✔ | 写 `CustomDepth` 模板值 |
+| `FocusedOutlineStencil` | 2 | 聚焦时写入的模板值（后期材质按它分流粗细） |
+| `bOutlineVisiblePrimitivesOnly` | ✔ | 只给**可见**图元描边（隐形碰撞盒 / 交互代理不会被描出来） |
+| `OutlineParameterCollection` / `OutlineThicknessParameter` | 空 / `OutlineThickness` | MPC 与参数名 |
+| `FocusedOutlineThickness` / `RestingOutlineThickness` | 4 / 1.5 | 聚焦 / 普通状态推给 MPC 的粗细 |
+
+**验证**：PIE 里对准任意可交互物 -> 边缘出现描边；换目标 -> 描边跟着换；
+把 `RestingOutlineThickness` 设为 0 就变成"只有聚焦才描边"。
+
+> 想让描边**只**出现在聚焦时：`bUseStencilOutline` 保持开、后期材质里只处理 stencil == 2；
+> 想同时给"可交互但未聚焦"的物体一个细描边：给它们的图元常驻 `CustomDepthStencilValue = 1`（例如在物体蓝图里 `Set Render Custom Depth`），材质里 1 走细线、2 走粗线。
+
+### 10.3 传送过场的视觉（已有基础，按需补）
+
+`UTimeEraPortalComponent` 已经把`过场开始 / 结束`两个时机暴露成事件（`OnTransitionBegin` / `OnTransitionEnd`）与接口
+（`ITeleportTransitionInterface`），把 `TransitionDelay` 设成与淡出等长即可；
+黑幕 WBP 的接线步骤见 `Docs/TimeEraPortal.md` 第 8 节（8.5 接线示例）。

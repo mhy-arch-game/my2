@@ -1,0 +1,61 @@
+{
+  "template_switcher": {
+    "mesh": "ct '/Game/Weapons/GrenadeLauncher/Meshes/SM_GrenadeLauncher.SM_GrenadeLauncher' (0x0000019993621000) Class 'StaticMesh'>",
+    "local_min": [
+      -9.12,
+      -27.13,
+      -16.18
+    ],
+    "local_max": [
+      9.28,
+      54.85,
+      24.16
+    ]
+  },
+  "level_mesh_component_total": 499,
+  "level_null_mesh_count": 0,
+  "level_null_mesh_sample": [],
+  "tripo_mesh_users": {},
+  "devices": [
+    {
+      "label": "kongjianchuansuoqi1",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "mesh": "renadeLauncher' (0x0000019993621000) Class 'StaticMesh'>"
+    }
+  ]
+}

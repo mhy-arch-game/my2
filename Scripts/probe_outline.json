@@ -1,0 +1,80 @@
+{
+  "materials": {
+    "Material": [
+      "/Game/Characters/Mannequins/Materials/M_Mannequin.M_Mannequin",
+      "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Materials/M_GradientGlow.M_GradientGlow",
+      "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Materials/M_SimpleGlow.M_SimpleGlow",
+      "/Game/LevelPrototyping/Materials/M_FlatCol.M_FlatCol",
+      "/Game/LevelPrototyping/Materials/M_PrototypeGrid.M_PrototypeGrid",
+      "/Game/texture/checkered_pavement_tiles_diff_4k_Mat.checkered_pavement_tiles_diff_4k_Mat",
+      "/Game/texture/M_floor.M_floor",
+      "/Game/texture/M_wall2.M_wall2",
+      "/Game/texture/M_wall3.M_wall3",
+      "/Game/Weapons/GrenadeLauncher/Materials/M_GrenadeLauncher.M_GrenadeLauncher",
+      "/Game/Weapons/GrenadeLauncher/Materials/M_ProjectileBullet.M_ProjectileBullet",
+      "/Game/Weapons/Rifle/Materials/M_Rifle.M_Rifle",
+      "/Game/Weapons/Rifle/Materials/M_Weapon.M_Weapon"
+    ],
+    "MaterialInstanceConstant": [
+      "/Game/Characters/Mannequins/Materials/Manny/MI_Manny_01_New.MI_Manny_01_New",
+      "/Game/Characters/Mannequins/Materials/Manny/MI_Manny_02_New.MI_Manny_02_New",
+      "/Game/Characters/Mannequins/Materials/Quinn/MI_Quinn_01.MI_Quinn_01",
+      "/Game/Characters/Mannequins/Materials/Quinn/MI_Quinn_02.MI_Quinn_02",
+      "/Game/Fab/A_simple_street_light_lamp/a_simple_street_light_lamp/Materials/Glass.Glass",
+      "/Game/Fab/A_simple_street_light_lamp/a_simple_street_light_lamp/Materials/Lamp_.Lamp_",
+      "/Game/Fab/Bookshelf_Short_LOWPOLY/bookshelf_short_lowpoly/Materials/Shelf2BAKE.Shelf2BAKE",
+      "/Game/Fab/Door_BVM_1/black_001.black_001",
+      "/Game/Fab/Door_BVM_1/Brushed_alu_gold_001.Brushed_alu_gold_001",
+      "/Game/Fab/Door_BVM_1/Chrom_handle_001.Chrom_handle_001",
+      "/Game/Fab/Door_BVM_1/chrome_001.chrome_001",
+      "/Game/Fab/Door_BVM_1/Metal_001.Metal_001",
+      "/Game/Fab/Door_BVM_1/Metal_Chrome_Marked_001.Metal_Chrome_Marked_001",
+      "/Game/Fab/Door_BVM_1/Metal_hindges_001.Metal_hindges_001",
+      "/Game/Fab/Door_BVM_1/Metal_lock_001.Metal_lock_001",
+      "/Game/Fab/Door_BVM_1/Metal_Simple_001.Metal_Simple_001",
+      "/Game/Fab/Door_BVM_1/Plastic_001.Plastic_001",
+      "/Game/Fab/Door_BVM_1/Plastic_cusion__001.Plastic_cusion__001",
+      "/Game/Fab/Door_BVM_1/Rubber_sealant_001.Rubber_sealant_001",
+      "/Game/Fab/Door_BVM_1/Screw_001.Screw_001",
+      "/Game/Fab/Door_BVM_1/Screw_metal_001.Screw_metal_001",
+      "/Game/Fab/Door_BVM_1/Wood_door_001.Wood_door_001",
+      "/Game/Fab/Leather_sofa/sofacuero/Materials/Material_078.Material_078",
+      "/Game/Fab/Leather_sofa/sofacuero/Materials/Material_089.Material_089",
+      "/Game/Fab/Old_Carpet_4/Old_Carpet_4.Old_Carpet_4",
+      "/Game/Fab/Old_Sofa_Low-poly/old_sofa_low_poly/Materials/sofa_01.sofa_01",
+      "/Game/Fab/Old_Sofa_Low-poly/old_sofa_low_poly/Materials/sofa_02.sofa_02",
+      "/Game/Fab/Piano/piano/Materials/piano_black.piano_black",
+      "/Game/Fab/Piano/piano/Materials/piano_gold.piano_gold",
+      "/Game/Fab/Piano/piano/Materials/piano_white.piano_white",
+      "/Game/Fab/Street_Lamp_V3/source/Materials/MI_Glass.MI_Glass",
+      "/Game/Fab/Street_Lamp_V3/source/Materials/MI_Streetlight_Lamp_02.MI_Streetlight_Lamp_02",
+      "/Game/Fab/Vintage_lamp/vintage_lamp/Materials/T_Floor_lamp.T_Floor_lamp",
+      "/Game/Fab/Vintage_lamp/vintage_lamp/Materials/T_lampshade.T_lampshade",
+      "/Game/Fab/Wall_Lamp/wall_lamp/Materials/Material.Material",
+      "/Game/Fab/Wall_Lamp/wall_lamp/Materials/Material_001.Material_001",
+      "/Game/Fab/Wall_Lamp/wall_lamp/Materials/Material_002.Material_002",
+      "/Game/Fab/Wall_light_2/wall_light_2/Materials/wl2_bulb.wl2_bulb",
+      "/Game/Fab/Wall_light_2/wall_light_2/Materials/wl2_frame.wl2_frame",
+      "/Game/Fab/Wall_light_2/wall_light_2/Materials/wl2_glass.wl2_glass",
+      "/Game/FirstPerson/MI_FirstPersonColorway.MI_FirstPersonColorway",
+      "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Materials/MI_GlowNT.MI_GlowNT",
+      "/Game/LevelPrototyping/Materials/MI_DefaultColorway.MI_DefaultColorway",
+      "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_Gray.MI_PrototypeGrid_Gray",
+      "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_Gray_02.MI_PrototypeGrid_Gray_02",
+      "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_Gray_Round.MI_PrototypeGrid_Gray_Round",
+      "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_TopDark.MI_PrototypeGrid_TopDark",
+      "/Game/Weapons/Pistol/Materials/MI_Weapon_Pistol.MI_Weapon_Pistol"
+    ]
+  },
+  "post_process_volumes": [
+    {
+      "label": "PostProcessVolume",
+      "class": "PostProcessVolume",
+      "blendables": [
+        "iter err TypeError(\"'WeightedBlendables' object is not iterable\")"
+      ],
+      "b_override_blendables": "None"
+    }
+  ],
+  "ppv_count": 1
+}

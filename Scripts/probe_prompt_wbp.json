@@ -1,0 +1,19 @@
+{
+  "ui_assets": [
+    [
+      "/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt.WBP_InteractionPrompt",
+      "WidgetBlueprint"
+    ],
+    [
+      "/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt.WBP_InteractionPrompt_C",
+      "None"
+    ]
+  ],
+  "bp_class": "WidgetBlueprint",
+  "parent_err": "Exception(\"WidgetBlueprint: Failed to find property 'parent_class' for attribute 'parent_class' on 'WidgetBlueprint'\")",
+  "generated_class": "<Object '/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt.WBP_InteractionPrompt_C' (0x000001BB9DCDF000) Class 'WidgetBlueprintGeneratedClass'>",
+  "gen_err": "AttributeError(\"'WidgetBlueprintGeneratedClass' object has no attribute 'is_child_of'\")",
+  "tree_err": "Exception(\"WidgetBlueprint: Failed to find property 'widget_tree' for attribute 'widget_tree' on 'WidgetBlueprint'\")",
+  "graphs_err": "Exception(\"WidgetBlueprint: Failed to find property 'function_graphs' for attribute 'function_graphs' on 'WidgetBlueprin",
+  "uber_err": "Exception(\"WidgetBlueprint: Failed to find property 'ubergraph_pages' for attribute 'ubergraph_pages' on 'WidgetBlueprin"
+}
