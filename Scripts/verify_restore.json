@@ -1,0 +1,38 @@
+{
+  "char_components": [
+    "None",
+    "FirstPersonMesh",
+    "FirstPersonCamera",
+    "FirstPersonCamera",
+    "Mesh",
+    "CapsuleComponent",
+    "ArrowComponent",
+    "Climb",
+    "InteractionDetector",
+    "MotionWarping",
+    "CharacterMovement",
+    "MovementAudio",
+    "TimeShiftTravel",
+    "TimeShiftInput",
+    "Sprint"
+  ],
+  "detector_from_disk": {
+    "InteractAction": "<Object '/Game/Input/Actions/IA_Interact.IA_Interact' (0x000001EA97D7DBC0) Class 'InputAction'>",
+    "PickMode": "<InteractionPickMode.LINE_TRACE: 1>",
+    "TraceDistance": "400.0",
+    "InteractionRadius": "250.0",
+    "bDrawDebug": "True",
+    "bRegisterInteractContext": "True"
+  },
+  "wiring_props": {
+    "Climb": [],
+    "MovementAudio": [],
+    "TimeShiftInput": []
+  },
+  "actor_count": 529,
+  "door_count": 24,
+  "frame_count": 28,
+  "frame_profiles": {
+    "IgnoreOnlyPawn": 28
+  }
+}
