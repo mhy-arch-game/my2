@@ -166,6 +166,20 @@ bool UInteractionOperationReceiverComponent::ApplyOperation(const FInteractionOp
 			bApplied = true;
 			break;
 
+		case EInteractionOperationAction::MirrorActive:
+			// bActive carries the MASTER's current state, so a single binding makes this
+			// object follow it (door / lamp: the same SetOpen path the master uses).
+			bApplied |= ApplyOpenState(Operation.bActive);
+			break;
+
+		case EInteractionOperationAction::SetActorVisible:
+			// "Active" means VISIBLE here - the opposite polarity of SetActorHidden,
+			// which is what a wall that appears when the master switches on needs.
+			Owner->SetActorHiddenInGame(!Operation.bActive);
+			Owner->SetActorEnableCollision(!Operation.bActive);
+			bApplied = true;
+			break;
+
 		case EInteractionOperationAction::MoveTo:
 		{
 			const float Requested = Binding.Duration > 0.0f ? Binding.Duration : Operation.Value;

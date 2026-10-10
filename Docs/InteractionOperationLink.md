@@ -6,6 +6,8 @@
 实现方式完全建立在**原先的 interact 内容**之上：发送端接 `UInteractableComponent`，
 接收端的默认动作直接调用 `UInteractableComponent::SetOpen()`（同一套状态管着门与灯）。
 
+> **主 / 从组绑定（门 · 灯 · 墙三种交互状态）见 §9。**
+
 ---
 
 ## 1. 数据流
@@ -151,7 +153,10 @@ UInteractionLinkComponent  （挂在 A 上）
 （内部读的是 `UInteractableComponent::IsOpen()`，而 `NotifyInteract` 是**先改状态再广播**，
 所以读到的一定是新状态。）
 
-### 5.5 接收端六种内置动作（`Action` 枚举）
+> 从物只有"开 / 关"两个状态、纯跟随主物时，**不必**打开 `Mirror Source State`：
+> 用操作里的 `bActive` + 接收端 `MirrorActive` 一条映射即可，见 **§9.3**。
+
+### 5.5 接收端八种内置动作（`Action` 枚举）
 
 | Action | 对 owner 做什么 |
 |---|---|
@@ -160,6 +165,8 @@ UInteractionLinkComponent  （挂在 A 上）
 | **Toggle Open (取反)** | 按当前状态取反 |
 | **Set Actor Hidden (显隐)** | 按操作里的 `bActive` 隐藏/显示 + 开关碰撞 |
 | **Move To (移动落点)** | 把 owner 移到操作里的 `Location`；`Duration > 0` 时插值过去，否则瞬移 |
+| **Mirror Master State (跟随主物开关)** | 按操作里的 `bActive`（= 主物当前开 / 关）设置 owner：有 `Interactable` 走 `SetOpen(bActive)`，没有则点灯。**从物只做 0-1 跟随就用它** |
+| **Set Actor Visible (显形, 墙用)** | 与 `Set Actor Hidden` **极性相反**：`bActive=true` ⇒ 显示 + 开碰撞（主物一开、墙显形） |
 | **Nothing (只走蓝图)** | 不做默认改变，只触发 `On Operation Received` / `On Operation Applied` |
 
 ---
@@ -256,6 +263,7 @@ UInteractionLinkComponent  （挂在 A 上）
 |---|---|
 | 物体被玩家聚焦/按键的**入口** | `UInteractableComponent` / `IInteractableInterface`（**原先的 interact，未改动**） |
 | 物体自己的开合与灯光 | `UInteractableComponent` 的内置开关（`bUseBuiltInToggle` / `bToggleLights`） |
+| 物体只持有"开 / 关"两态、不驱动任何部件 | `UInteractableComponent` 的 **`bTrackOpenState`**（本轮新增） |
 | **A 的交互去改变 B 的状态** | **本文档**：`InteractionLink` + `IInteractionOperationReceiver` |
 | 交互后把玩家传送走 | `UTimeEraPortalComponent`（`Docs/TimeEraPortal.md`） |
 | 按距离触发、整组显形并永久封死 | `UProximityBarrierComponent`（`Docs/ProximityBarrier.md`） |
@@ -263,17 +271,156 @@ UInteractionLinkComponent  （挂在 A 上）
 
 **为什么不把"开门/开灯"硬编码成枚举？** 因为需求里明确要"抽象为一个接口对接"：
 操作名是**数据**，收发双方约定即可扩展（`PlayAnimation`、`Unlock`、`Spawn`…），
-C++ 不需要改。内置的六种 `Action` 只是"接收端偷懒用的默认实现"。
+C++ 不需要改。内置的八种 `Action` 只是"接收端偷懒用的默认实现"。
 
 ---
 
-## 9. 现状（已核验）
+## 9. ★ 主从组绑定：门 / 灯 / 墙（本轮展开）
+
+> 需求：三种交互状态 —— **门（开闭）/ 灯（开关）/ 墙（显隐）**；物体分**主 / 从**；
+> **主操作物的交互形态与 interact 模块完全一致**（聚焦 → 提示 → 按 E → 状态改变）；
+> **从物只做 0-1 两种状态**，且仅仅因为主物变化而改变。
+
+### 9.1 主 / 从 的职责与硬性约束
+
+| | 主物（Master） | 从物（Slave） |
+|---|---|---|
+| 交互入口 | **完整走 interact 模块**：`Interactable`（聚焦 / 描边 / 提示 / 按 E 一个不少） | **不参与交互**：`Interactable` 的 **`bEnabled = ✗`**（探测器直接跳过，也不出提示） |
+| 行为 | `bUseBuiltInToggle` 开门 / `bToggleLights` 开灯 / **`bTrackOpenState` 只存状态** / 蓝图自定义 | 只被 `SetOpen(true/false)` 被动改变（门转、灯亮灭），或用 `SetActorVisible` 显隐 |
+| 组件 | `Interactable` + **`Interaction Link`** | `Interactable`（仅作状态与表现载体；墙可省） + **`Interaction Operation Receiver`** |
+| 状态位 | `bUseBuiltInToggle` / `bToggleLights` / **`bTrackOpenState`** 三者**至少开一个** | 同上（否则 `SetOpen` 直接返回，从物不会动） |
+
+**⚠ 状态的来源（最容易踩的一条）**：`UInteractableComponent::SetOpen()` 在
+`bUseBuiltInToggle`、`bToggleLights`、`bTrackOpenState` **三者都为关**时**直接 return**，
+`bIsOpen` 永远是 false ⇒ 主物发给从物的 `bActive` 永远是"关"，从物永远不动。
+**主物至少要有一个状态来源**，三种选一：
+
+| 主物是什么 | 状态来源 | 说明 |
+|---|---|---|
+| 有开合部件（门 / 闸 / 升降墙） | `bUseBuiltInToggle` | 状态与位移由同一套驱动 |
+| 只管灯（灯泡 / 灯柱） | `bToggleLights` | 状态与灯亮灭由同一套驱动 |
+| **纯蓝图效果 / 什么都不动** | **`bTrackOpenState`（本轮新增）** | **只保存 0/1 状态、不驱动任何部件**：按 E 翻转它、`OnToggleChanged` 广播，`InteractionLink` 就能把它当 `bActive` 转发给从物 |
+
+> `bTrackOpenState` 打开后 `bStartOpen` 同样有效（决定初始状态），并且**不会**让组件进入无意义的插值 tick。
+> 想完全自己维护状态也可以：蓝图里存一个布尔，在交互事件里调 `Dispatch Entries`。
+
+### 9.2 三种从物怎么配（照抄）
+
+| 从物 | 要挂的组件 | 关键字段 | 接收端动作 |
+|---|---|---|---|
+| **门（开闭）** | `Interactable` + `Interaction Operation Receiver` | `Interactable`：`bUseBuiltInToggle=☑`、`ToggleComponentNames=[门板组件名]`、`bUseAxisRotation=☑` + 轴 / 枢轴 / 角度、`ToggleDuration`、`bStartOpen` 与主物一致；**`bEnabled=✗`** | **`Mirror Active`** |
+| **灯（开关）** | 同上 | `Interactable`：`bToggleLights=☑`、`LightComponentNames=[灯组件名]`、`bStartOpen` 与主物一致；**`bEnabled=✗`** | **`Mirror Active`** |
+| **墙（显隐）** | `Interaction Operation Receiver`（墙多半不需要门 / 灯那套，**可以不挂 `Interactable`**） | 若挂了 `Interactable`：**`bEnabled=✗`** | **`Set Actor Visible`**（`bActive=true` ⇒ 显示 + 开碰撞） |
+
+三种从物**都是一条映射**搞定 —— 这正是本轮新增 `MirrorActive` / `SetActorVisible` 的原因。
+
+### 9.3 最小配置（主物 1 条条目 + 从物 1 条映射）
+
+**主物**
+
+| 字段 | 值 |
+|---|---|
+| `Interactable → Interaction Prompt` | 例如"打开机关"（**提示只有主物有**） |
+| `Interaction Link → Entries` `+` 一条 | `Operation = Sync`（名字任意，两端一致即可） |
+| | `Channel = Group_A`（或 `Targets` 直接引用几个从物） |
+| | **`Mirror Source State = ✗`**（留关，见下方说明） |
+
+**从物**
+
+| 字段 | 值 |
+|---|---|
+| `Interaction Operation Receiver → Channel` | `Group_A`（与主物**完全相同**） |
+| `Bindings` `+` 一条 | `Operation = Sync` → `Action = Mirror Master State`（门 / 灯）或 `Set Actor Visible`（墙） |
+
+为什么 `Mirror Source State` 关着也能"我开它开、我关它关"？
+因为 `MirrorActive` 读的是操作里的 **`bActive`**，而发送端把它填成**主物当前的开 / 关状态**，
+所以主物无论开还是关都发同一个操作名 `Sync`，从物照着 `bActive` 走即可。
+
+> 旧写法（`Mirror Source State=☑` + `Open→SetOpen`、`Close→SetClosed` 两行）同样可行，
+> 只是行数多、容易漏一行。两种可以混用（不同条目互不影响）。
+
+### 9.4 蓝图搭建步骤
+
+**主物蓝图（例：`BP_Master_Switch`）**
+
+1. 新建蓝图类（父类 `Actor`）→ 加你需要的网格 / 灯；
+2. **Add Component → `Interactable`**：
+   - `Interaction Prompt` 填提示；
+   - 门就勾 `bUse Built In Toggle` + 填 `Toggle Component Names`；灯就勾 `bToggle Lights` + 填 `Light Component Names`；
+3. **Add Component → `Interaction Link`**：`Entries` 加一条（`Operation` / `Channel` 见 9.3）；
+4. （可选）勾 **`Sync On Begin Play`**，让整组在关卡开始时对齐主物状态（见 9.5）；
+5. 关卡里放实例即可，**不需要任何蓝图连线**。
+
+**从物蓝图（例：`BP_Slave_Door`）**
+
+1. 新建蓝图类 → 放门板网格，记下组件名（如 `DoorMesh`）；
+2. **Add Component → `Interactable`**：
+   - **`bEnabled = ✗`**（关键：从物不可被玩家交互）；
+   - 勾 `bUse Built In Toggle` + `Toggle Component Names=[DoorMesh]`；
+   - 铰链参数照原先那套填（`bUseAxisRotation` / `RotationAxis` / `RotationPivot` / `OpenAngleDegrees` / `ToggleDuration`）；
+   - `bStartOpen` 与主物一致；
+3. **Add Component → `Interaction Operation Receiver`**：填 `Channel` + 一条 `Bindings`（见 9.3）；
+4. 关卡里复制任意多份 —— **同一 `Channel` 的从物会被同一次交互一起带动**。
+
+**成组**：同一组用同一个 `Channel`（建议 `<关卡>_<组名>`，例如 `Vestibule_LampGroup`），
+一组通常 1 主 + N 从；也可以多主共用一个 `Channel`（谁被按都带动整组）。
+
+### 9.5 初始状态一致（`Sync On Begin Play`）
+
+从物不会"自动知道"主物一开始是什么状态，两种做法：
+
+| 做法 | 说明 |
+|---|---|
+| **手工对齐（默认）** | 主物与从物的 `bStartOpen` 填成一致 |
+| **自动同步（推荐给大组）** | 主物勾 **`Sync On Begin Play`** ⇒ 关卡开始后**下一帧**自动发一轮 Entries，把整组拉齐到主物状态 |
+
+> 为什么是"下一帧"而不是 BeginPlay 当场做：关卡里各 Actor 的 BeginPlay 顺序不确定，
+> 抢在从物的 `Interactable::BeginPlay` 之前写状态，会被它自己的 `bStartOpen` 覆盖。
+
+### 9.6 与时空（Era）的关系
+
+主从**各自**是否随时空显隐，只取决于各自有没有 `TimeEraComponent`：
+
+- 想让整组只在"现代"出现：给**每一个**成员都挂 `TimeEraComponent` 且 `Era=Modern`；
+- 只给主物挂：从物**不会**跟着隐藏（从物只跟随"交互状态"，不跟随 Era）。
+
+> 组绑定解决"**一次交互改变多个物体的状态**"；时空显隐是另一套（`Docs/TimeShift.md`）。两者可叠加。
+
+### 9.7 验证清单
+
+1. 走近主物 → 有提示与描边；**从物不应有任何提示**；
+2. 按 E → 日志 `[OperationLink] <主物> -> "Sync" (channel "Group_A"): N receiver(s).`
+   （`N` 应等于该组从物数量；`0` 就是寻址没对上，用 `Resolve Entry Targets` 查）；
+3. 同时出现 N 条 `[OperationReceiver] <从物>: 应用操作 "Sync"。`；
+4. 门应转动、灯应亮灭、墙应显隐；**再按一次 E 应整体回退**（0↔1 两态）；
+5. 勾了 `Sync On Begin Play` 时，关卡开始的下一帧应有一轮派发日志。
+
+### 9.8 排查（主从场景）
+
+| 现象 | 原因 |
+|---|---|
+| 从物被玩家直接交互了 | 从物的 `Interactable` 忘了关 `bEnabled` |
+| 从物完全不动，日志有"应用操作" | 从物 `Interactable` 的 `bUseBuiltInToggle` / `bToggleLights` / `bTrackOpenState` 都没开 ⇒ `SetOpen()` 直接返回 |
+| 只有"开"有反应，"关"没反应 | 用了旧写法 `Mirror Source State=☑` 但 `Bindings` 只写了一行 |
+| 主物按 E 后从物收到的永远是"关" | 主物没有状态位（见 9.1 的 ⚠） |
+| 墙方向反了（开 → 墙消失） | 用了 `SetActorHidden`（隐藏 = `bActive`）；改用 **`SetActorVisible`** |
+| 关卡一开始主从不一致 | 用 `Sync On Begin Play`，或把两边 `bStartOpen` 对齐 |
+| 同一组里别的物体也动了 | 它们 `Channel` 相同 —— 频道就是"组"的语义，要独立就换频道 |
+
+---
+
+## 10. 现状（已核验）
 
 | 项 | 状态 |
 |---|---|
 | `UInteractionLinkComponent` | ✅ 已编译并反射（`Entries` 默认空，`bAutoBindInteractable=true`） |
 | `UInteractionOperationReceiverComponent` | ✅ 已编译并反射（`Channel=None`，`Bindings` 空，`bEnabled=true`） |
 | `IInteractionOperationReceiver` | ✅ 已编译并反射（Blueprintable） |
-| `EInteractionOperationAction` | ✅ 六项：`SET_OPEN / SET_CLOSED / TOGGLE_OPEN / SET_ACTOR_HIDDEN / MOVE_TO / NOTHING` |
+| `EInteractionOperationAction` | ✅ **八项**：`SET_OPEN / SET_CLOSED / TOGGLE_OPEN / SET_ACTOR_HIDDEN / SET_ACTOR_VISIBLE / MOVE_TO / MIRROR_ACTIVE / NOTHING` |
+| `UInteractionLinkComponent::bSyncOnBeginPlay` | ✅ 新增（默认 ✗）：下一帧把整组拉齐到主物状态 |
 | 构建脚本 `Scripts/probe_oplink.py` | Python 侧自检用（`hasattr` + 读默认值） |
-| 运行时联动验证 | ⏳ 尚未在关卡里实测（需要按 §5 配一组 A/B） |
+| 运行时联动验证 | ⏳ 尚未在关卡里实测（需要按 §9 搭一组主 / 从） |
+| 主从三件套（门 / 灯 / 墙）的蓝图 | ⏳ **由你搭建**，§9.4 给了逐步清单 |
+
+> 本轮的两个新动作与一个开关都是**追加式**改动：既有枚举数值不变（新项追加在末尾），
+> 既有"两行写法"、`Set Actor Hidden` 等行为**完全不受影响**。

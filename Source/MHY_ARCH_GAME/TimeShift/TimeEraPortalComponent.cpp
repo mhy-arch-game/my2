@@ -606,6 +606,25 @@ FVector UTimeEraPortalComponent::ComputeArrivalLocation(const FVector& BaseLocat
 	// that is the same object one era away, so its rotation is still the right frame.
 	FVector Goal = BaseLocation + BaseRotation.RotateVector(TeleportOffset);
 
+	// Keep the capsule OUT of the destination device. The mesh is usually tall and thin
+	// (21x21x100 here) while the capsule is 34 in radius, so dropping the traveller on the
+	// device origin swallows the whole device: in first person it disappears and the
+	// interaction breaks with it. Push the arrival sideways along the device's own +X by
+	// (device radius + capsule radius + clearance) so it lands on the ground beside it.
+	if (bArriveClearOfDevice)
+	{
+		const AActor* Device = PendingCounterpart && IsValid(PendingCounterpart)
+			? PendingCounterpart.Get()
+			: GetOwner();
+		const float Escape = GetDeviceHorizontalRadius(Device)
+			+ GetTravelerRadius(Traveler)
+			+ FMath::Max(ArrivalClearance, 0.0f);
+		if (Escape > 0.0f)
+		{
+			Goal += BaseRotation.RotateVector(FVector(Escape, 0.0f, 0.0f));
+		}
+	}
+
 	if (!bPlaceOnGround || GroundTraceDistance <= 0.0f)
 	{
 		return Goal;
@@ -672,6 +691,66 @@ float UTimeEraPortalComponent::GetTravelerHalfHeight(const AActor* Traveler) con
 	}
 
 	return 0.0f;
+}
+
+float UTimeEraPortalComponent::GetTravelerRadius(const AActor* Traveler) const
+{
+	if (const ACharacter* Character = Cast<ACharacter>(Traveler))
+	{
+		if (const UCapsuleComponent* Capsule = Character->GetCapsuleComponent())
+		{
+			return Capsule->GetScaledCapsuleRadius();
+		}
+	}
+
+	if (const APawn* Pawn = Cast<APawn>(Traveler))
+	{
+		if (const UPrimitiveComponent* Root = Cast<UPrimitiveComponent>(Pawn->GetRootComponent()))
+		{
+			return FMath::Min(Root->Bounds.BoxExtent.X, Root->Bounds.BoxExtent.Y);
+		}
+	}
+
+	return 0.0f;
+}
+
+float UTimeEraPortalComponent::GetDeviceHorizontalRadius(const AActor* Device) const
+{
+	if (!Device)
+	{
+		return 0.0f;
+	}
+
+	const FVector Center = Device->GetActorLocation();
+	float Radius = 0.0f;
+
+	TArray<UPrimitiveComponent*> Primitives;
+	Device->GetComponents<UPrimitiveComponent>(Primitives);
+
+	for (const UPrimitiveComponent* Primitive : Primitives)
+	{
+		// Skip the invisible interaction proxy and anything not actually drawn.
+		if (!Primitive || !Primitive->IsVisible())
+		{
+			continue;
+		}
+
+		const FBoxSphereBounds World = Primitive->Bounds;
+		const FVector Min = World.Origin - World.BoxExtent;
+		const FVector Max = World.Origin + World.BoxExtent;
+
+		// Horizontal corners only: the escape is a 2D push, Z is the ground snap's job.
+		for (int32 Corner = 0; Corner < 4; ++Corner)
+		{
+			const FVector Point(
+				(Corner & 1) ? Max.X : Min.X,
+				(Corner & 2) ? Max.Y : Min.Y,
+				Center.Z);
+			Radius = FMath::Max(Radius, FVector::Dist2D(Point, Center));
+		}
+	}
+
+	return Radius;
 }
 
 AActor* UTimeEraPortalComponent::ResolveTraveler(AActor* Interactor) const

@@ -398,9 +398,59 @@ Goal.Z = 装置原点 + 100（装置顶） + 96（胶囊半高） + 2（clearanc
 | # | 改动 | 位置 |
 |---|---|---|
 | 1 | 地面射线**忽略所有带 `UTimeEraPortalComponent` 的 actor**（`VerticalOffset` 模式没有 Counterpart 可忽略，故按"所有传送装置"整体忽略）；且**只允许向下贴地**：`Goal.Z = min(命中点+半高+clearance, 落点+半高+clearance)`，避免打到天花板/上方物体时把角色抬高 | `TimeEraPortalComponent::ComputeArrivalLocation` |
-| 2 | 装置网格改用 **`IgnoreOnlyPawn`**（与门框同一套做法）：修复 #1 之后角色会站在装置基座平面上，胶囊与装置体积重叠；若装置仍挡 Pawn 会被物理挤开、又变成新的偏移。`IgnoreOnlyPawn` 后 Pawn 可穿过装置，但 `Visibility` 仍阻挡（交互探测照常） | `/Game/bclass_source/modern_swift_actor` 的 `switcher` 网格（模板，10 个实例继承） |
+| 2 | ~~装置网格改用 `IgnoreOnlyPawn`~~ **（已回退）**：见 9.4 —— 这个改动是"装置消失"的直接原因，现已改回 `BlockAllDynamic` | `/Game/bclass_source/modern_swift_actor` 的 `switcher` 网格（模板，10 个实例继承） |
+| 3 | **落点水平避开装置**：沿装置自身 +X 推开「装置水平半径 + 胶囊半径 + `ArrivalClearance`」，然后才向下贴地 | `TimeEraPortalComponent::bArriveClearOfDevice` / `ArrivalClearance`（默认开 / 5cm） |
 
-修复后的落点 = **配对装置原点 + 胶囊半高 + 2 cm** ⇒ 脚底正好落在装置基座平面上，与站在源装置处的相对位置一致。
+**现在的落点规则**：配对位置 →（+ `TeleportOffset`）→ **水平推开约 54 cm 站到装置旁边** → 向下贴地站到地面。
+
+---
+
+### 9.4 "运行时装置消失"的根因（★ 本轮新增，实测）
+
+修复 #1 之后落点回到**装置原点**，但装置网格的真实几何是：
+
+```
+switcher 局部包围盒 = 21.4 × 21.5 × 100.0 cm      // 又细又高的柱子，原点在它底面
+角色胶囊            = 半径 34、半高 96             // 胶囊比柱子还宽
+```
+
+把胶囊中心放在装置原点（脚底在柱底平面）时：胶囊横向半径 34 > 柱子半宽 10.7，
+**整根柱子被吞进角色身体里** ⇒ 第一人称的摄像机也在胶囊范围内 ⇒ 看不到装置，
+交互射线同样打不到它 —— 表现就是"**传送交互物消失了**"，而编辑器从外面看一切正常。
+（改成 `IgnoreOnlyPawn` 之前，装置会挡住胶囊、把玩家物理挤开，所以那时没有"看不见"的问题，
+只是被挤开的那一下就是最初报的"位置偏移"。）
+
+⇒ **落点必须"在装置旁边"，不能"在装置里"**：沿装置自身 +X 推开
+`装置水平外接半径(15.2) + 胶囊半径(34) + ArrivalClearance(5) ≈ 54 cm`，再向下贴地。
+于是玩家站在装置侧面的地面上，装置清晰可见、交互照常。
+
+| 参数 | 默认 | 说明 |
+|---|---|---|
+| `bArriveClearOfDevice` | ✔ | 关掉 = 回到"落在装置原点"（只在装置是空心的、例如真正的圆环拱门时才合适） |
+| `ArrivalClearance` | 5 cm | 胶囊表面与装置之间的额外余量 |
+
+> 方向固定取**装置自身的 +X**（不是世界 X），这样复制到任何朝向的装置上行为一致。
+> `TeleportOffset` 仍叠加在它之前，手动微调能力不变（本项目当前 `(5,0,0)`，合计水平偏移约 59 cm）。
+
+### 9.5 第二个独立原因：时空门控（★ 本轮修复）
+
+关卡里**只有这 10 个装置**挂了 `TimeEraComponent`（5 Ancient + 5 Modern），而该组件在 BeginPlay 就会执行：
+
+```
+bActiveInCurrentEra = bExistsInBothEras || (Era == 子系统当前时空)
+SetActorHiddenInGame(!bActive)      // bGateVisibility 默认开
+SetActorEnableCollision(bActive)    // bGateCollision 默认开
+```
+
+`UTimeShiftSubsystem` 的 `InitialEra = Ancient`（配置里没有覆盖）⇒ **运行时开局，5 个 Modern 装置
+（2 / 4 / 6 / 8 / 10）被隐藏且关碰撞**；编辑器视口不执行这段逻辑，所以 10 个全都看得见 ——
+这正是"世界视图正常、运行时少了一半"的第二个原因。
+
+**修复**：装置模板的 `TimeEra → bExistsInBothEras = ☑`（10 个实例已同步）。
+
+- 语义上本来就该这样：**传送装置是两个时空之间的门，必须在两边都在场**；
+- **配对方向不受影响**：Portal 读的是 `Era`（仍然奇 Ancient / 偶 Modern），`bExistsInBothEras` 只影响显隐与碰撞；
+- 若以后希望某个装置只在单一时空出现，把这一项关掉即可。
 
 ---
 

@@ -195,7 +195,9 @@ void UInteractableComponent::CreateInteractionProxy()
 
 void UInteractableComponent::SetOpen(bool bNewOpen, bool bInstant)
 {
-	if (!bUseBuiltInToggle && !bToggleLights)
+	// bTrackOpenState joins the two built-in behaviours: it makes the component hold a
+	// real 0/1 state even when there is nothing to move and no light to switch.
+	if (!bUseBuiltInToggle && !bToggleLights && !bTrackOpenState)
 	{
 		return;
 	}
@@ -207,6 +209,9 @@ void UInteractableComponent::SetOpen(bool bNewOpen, bool bInstant)
 
 	bIsOpen = bNewOpen;
 
+	// Only the transform toggle interpolates. Without this guard a lights-only or
+	// state-only component would enable its tick and never clear bTransitioning
+	// (ApplyToggleState returns early when bUseBuiltInToggle is off).
 	if (bUseBuiltInToggle)
 	{
 		if (bInstant || ToggleDuration <= 0.0f)
@@ -475,7 +480,7 @@ void UInteractableComponent::NotifyInteract(AActor* Interactor)
 	}
 
 	// Built-in convenience first, then the event so Blueprint can add extras.
-	if (bUseBuiltInToggle || bToggleLights)
+	if (bUseBuiltInToggle || bToggleLights || bTrackOpenState)
 	{
 		SetOpen(!bIsOpen);
 	}

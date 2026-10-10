@@ -9,6 +9,7 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "GameFramework/Actor.h"
+#include "TimerManager.h"
 
 UInteractionLinkComponent::UInteractionLinkComponent()
 {
@@ -52,6 +53,22 @@ void UInteractionLinkComponent::BeginPlay()
 	{
 		BoundInteractable->OnInteractRequested.AddDynamic(this, &UInteractionLinkComponent::HandleInteractRequested);
 	}
+
+	if (bSyncOnBeginPlay)
+	{
+		if (UWorld* World = GetWorld())
+		{
+			// Next tick, not now: every actor's BeginPlay must have run first, otherwise a
+			// slave's own bStartOpen would overwrite the state we just mirrored onto it.
+			World->GetTimerManager().SetTimerForNextTick(
+				this, &UInteractionLinkComponent::HandleBeginPlaySync);
+		}
+	}
+}
+
+void UInteractionLinkComponent::HandleBeginPlaySync()
+{
+	DispatchEntries(nullptr);
 }
 
 void UInteractionLinkComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)

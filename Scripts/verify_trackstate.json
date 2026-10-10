@@ -1,0 +1,14 @@
+{
+  "has_property": false,
+  "dir_hits": [
+    "start_open",
+    "track_open_state"
+  ],
+  "cdo_default": "False",
+  "cdo_start_open": "False",
+  "created_via": "outer_kw",
+  "state_with_tracking_OFF": false,
+  "state_with_tracking_ON_open": true,
+  "state_with_tracking_ON_close": false,
+  "tick_enabled_after": false
+}

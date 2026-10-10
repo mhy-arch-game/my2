@@ -1,0 +1,28 @@
+{
+  "action_values": [
+    "MIRROR_ACTIVE",
+    "MOVE_TO",
+    "NOTHING",
+    "SET_ACTOR_HIDDEN",
+    "SET_ACTOR_VISIBLE",
+    "SET_CLOSED",
+    "SET_OPEN",
+    "TOGGLE_OPEN"
+  ],
+  "link_dir": [
+    "dispatch_entries",
+    "dispatch_operation",
+    "get_last_dispatched_count",
+    "on_dispatched",
+    "receive_async_physics_tick",
+    "resolve_entry_targets",
+    "sync_on_begin_play"
+  ],
+  "receiver_dir": [
+    "apply_operation",
+    "channel",
+    "get_channel"
+  ],
+  "fatal": "AttributeError(\"type object 'InteractionOperationReceiverComponent' has no attribute 'find_function'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/verify_oplink.py\", line 12, in <module>\n    report[\"receiver_funcs\"] = {n: (rc.find_function(n) is not None) for n in (\"apply_operation\", \"can_receive\", \"get_channel\")}\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/verify_oplink.py\", line 12, in <dictcomp>\n    report[\"receiver_funcs\"] = {n: (rc.find_function(n) is not None) for n in (\"apply_operation\", \"can_receive\", \"get_channel\")}\n                                    ^^^^^^^^^^^^^^^^\nAttributeError: type object 'InteractionOperationReceiverComponent' has no attribute 'find_function'\n"
+}
