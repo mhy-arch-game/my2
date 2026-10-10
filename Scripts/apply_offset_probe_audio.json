@@ -1,0 +1,45 @@
+{
+  "teleport_offset_x": 5.0,
+  "teleport_template": [
+    {
+      "comp": "TimeEraPortal_GEN_VARIABLE",
+      "before": "<Struct 'Vector' (0x000001C814BCEB18) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+      "write": [
+        "TeleportOffset",
+        "ok",
+        ""
+      ],
+      "after": "<Struct 'Vector' (0x000001C814BCEB18) {x: 5.000000, y: 0.000000, z: 0.000000}>"
+    }
+  ],
+  "compile": "ok",
+  "save_bp": "ok",
+  "character_movement_audio": {
+    "bAutoDetectJumpAndLand": "True",
+    "RunSpeedThreshold": "300.0",
+    "bAutoFootstepByDistance": "False",
+    "FootstepDistance": "180.0",
+    "SurfaceTraceDistance": "150.0",
+    "SurfaceTraceChannel": "<CollisionChannel.ECC_VISIBILITY: 3>",
+    "WalkSpeedThreshold": "10.0",
+    "SprintSpeedThreshold": "500.0",
+    "bPlayMusicPerState": "True",
+    "MusicFadeTime": "0.3499999940395355",
+    "bDispatchToInterfaceListeners": "True",
+    "VolumeMultiplier": "1.0",
+    "PitchMin": "0.949999988079071",
+    "PitchMax": "1.0499999523162842",
+    "DefaultSet": "<Struct 'MovementAudioSet' (0x000001C81B06E268) {surface: SurfaceType_Default, footstep: None, jump: None, land: None}>",
+    "StateMusic": "[]",
+    "SurfaceSets": "[]"
+  },
+  "sound_assets": [
+    [
+      "/Game/Weapons/GrenadeLauncher/Audio/FirstPersonTemplateWeaponFire02.FirstPersonTemplateWeaponFire02",
+      "SoundWave"
+    ]
+  ],
+  "sound_asset_count": 1,
+  "firstperson_asset_count": 49,
+  "firstperson_audio_like": []
+}

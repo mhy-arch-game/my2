@@ -534,3 +534,49 @@
 | `Docs/PERFORMANCE_AND_CRASH_ANALYSIS.md` | 性能与崩溃分析（P0 集显/页面文件） |
 | `Scripts/generate_blueprints.py` | 蓝图生成脚本（幂等） |
 | `Scripts/bp_manifest.json` | 生成清单与接线声明 |
+| `Docs/MovementAudio.md` | 移动音频接口 + **★ 声音资产接入实操（跑动 / 跳跃 / 落地）**（第 8 节） |
+| `Docs/TimeEraPortal.md` | 跨时空传送（配对、落点、过场接口、落点偏移根因与修复、`TeleportOffset` 微调） |
+| `Docs/GravityZone.md` | 重力区（最高点不变提速、`TargetJumpHeight` 绝对高度） |
+## 10. ★ 脚本批量改资产的持久化规则（血泪教训）
+
+headless 脚本（`-run=PythonScript`）改属性能"报成功"但**实际没存进去**，是本项目最容易踩的坑。
+必须把两类对象分开处理：
+
+| 改的是什么 | 正确写法 | 错误写法的症状 |
+|---|---|---|
+| **Blueprint 的 SCS 组件模板**（`SubobjectDataSubsystem` 拿到的 template object） | `set_editor_property(name, value, notify_mode=unreal.PropertyAccessChangeNotifyMode.ALWAYS)`，再 `BlueprintEditorLibrary.compile_blueprint(bp)` + `EditorAssetLibrary.save_loaded_asset(bp)` | **不加** `notify_mode`：编译保存后值被还原（`RotationPivot` 曾退回 `(0,0,0)`） |
+| **关卡里已摆放实例的组件属性** | 普通 `set_editor_property(name, value)`（**不带** `notify_mode`）+ `EditorLoadingAndSavingUtils.save_current_level()` | **加了** `notify_mode=ALWAYS`：同进程读回是新值、`save_map` 返回 True、umap mtime 也变了，但**新进程 `load_map` 读回来还是旧值**（静默丢失） |
+| 关卡实例的 **Actor 自身**属性（位置 / 旋转 / 标签 / Era） | 普通 `set_editor_property` + `EditorLoadingAndSavingUtils.save_map(world, MAP)` | — |
+
+**验证方式（强制）**：只在**新进程**里 `load_map` + 读回才算数。
+同进程读回值、`save_*` 的返回值、文件 mtime —— 这三样**都不可信**（mtime 会变而内容没改）。
+
+已验证通过的脚本模板：
+
+- 关卡实例的组件属性：`Scripts/apply_door_hinge.py`、`Scripts/apply_gravity_instance.py`
+- 蓝图 SCS 模板属性：`Scripts/apply_gravity_preset.py`、`Scripts/persist_swift.py`（phase B）
+
+> 另一条相关坑：World Partition 关卡里"按实例覆盖"的行为**不统一** ——
+> `UTimeEraPortalComponent` 的实例覆盖存不进去，`UTimeEraComponent::Era`、`UGravityZoneComponent` 的可以；
+> 因此**能从模板出的配置就放模板**，实例只放"每个不一样"的值。
+
+=> `Docs/GravityZone.md` 第 7 节还记了同类问题（构造函数里必须用 `InitBoxExtent` 而非 `SetBoxExtent`）。
+
+### 10.1 碰撞 profile：改模板，不要改实例
+
+| 改的是什么 | 正确写法 | 错误写法的症状 |
+|---|---|---|
+| 碰撞 profile（`set_collision_profile_name`） | 改**蓝图 SCS 模板**：`set_collision_profile_name` + `compile_blueprint` + `save_loaded_asset`；实例靠继承 | 对**关卡实例**调 `set_collision_profile_name`：本进程读回是 `IgnoreOnlyPawn`，`save_current_level()` 也返回 True，但**新进程读回来还是旧 profile**（未标记包 dirty，静默丢失） |
+
+### 10.2 ★ 编辑器开着的时候，绝对不要用脚本改资产/关卡
+
+实测：脚本在 15:42 把 `jumping_area` 写成 `TargetJumpHeight=1125 / GravityScaleInside=0.32` 并保存，
+新进程复验也通过；但 `Saved/Autosaves/Game/FirstPerson/firstvision_Auto1.umap` 的 mtime 是 **15:58**，
+随后一次编辑器保存把**它内存里的旧值**（1.2/550）写回磁盘 —— 脚本的改动被静默覆盖。
+
+**开工前的检查清单**：
+
+1. `Get-Process UnrealEditor*` 必须为空（否则构建也会因 Live Coding 失败）
+2. 看一眼 `Saved/Autosaves/**` 的 mtime：若比你上次写入更新，说明编辑器正在跑
+3. 每次写完都要**新进程复验**，并在用户打开编辑器之前确认结果
+4. 编辑器里改过的值**以编辑器为准**，不要用脚本去"抢"同一个字段

@@ -1,0 +1,39 @@
+{
+  "scs_CharacterMovement": {
+    "JumpZVelocity": "420.0",
+    "GravityScale": "1.0",
+    "MaxWalkSpeed": "600.0",
+    "MaxWalkSpeedCrouched": "300.0",
+    "AirControl": "0.6000000238418579",
+    "bApplyGravityWhileJumping": "True",
+    "FallingLateralFriction": "0.0"
+  },
+  "cdo": {
+    "JumpMaxHoldTime": "0.0",
+    "JumpMaxCount": "1"
+  },
+  "cdo_CharacterMovement": {
+    "JumpZVelocity": "420.0",
+    "GravityScale": "1.0",
+    "MaxWalkSpeed": "600.0",
+    "MaxWalkSpeedCrouched": "300.0",
+    "AirControl": "0.6000000238418579",
+    "bApplyGravityWhileJumping": "True",
+    "FallingLateralFriction": "0.0"
+  },
+  "level_characters": [
+    {
+      "label": "BP_FirstPersonCharacter",
+      "class": "BP_FirstPersonCharacter_C",
+      "movement": {
+        "JumpZVelocity": "420.0",
+        "GravityScale": "1.0",
+        "MaxWalkSpeed": "600.0",
+        "MaxWalkSpeedCrouched": "300.0",
+        "AirControl": "0.6000000238418579",
+        "bApplyGravityWhileJumping": "True",
+        "FallingLateralFriction": "0.0"
+      }
+    }
+  ]
+}

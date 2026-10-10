@@ -1,0 +1,109 @@
+{
+  "source_actors": 508,
+  "source_meshes": 508,
+  "source_distribution": {
+    "NoCollision": 5,
+    "BlockAll": 440,
+    "IgnoreOnlyPawn": 38,
+    "BlockAllDynamic": 25
+  },
+  "source_facts": {
+    "men1.ToggleComponentNames": "[\"DoorMesh\"]",
+    "men1.RotationPivot": "<Struct 'Vector' (0x00000175BC5983E8) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+    "men1.bUseAxisRotation": "True",
+    "men18.ToggleComponentNames": "[\"DoorMesh\"]",
+    "men18.RotationPivot": "<Struct 'Vector' (0x00000175BC598AE8) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+    "men18.bUseAxisRotation": "True",
+    "men25.ToggleComponentNames": "[\"DoorMesh\"]",
+    "men25.RotationPivot": "<Struct 'Vector' (0x00000175B764B4E8) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+    "men25.bUseAxisRotation": "True",
+    "jumping_area.TargetJumpHeight": "550.0",
+    "jumping_area.GravityScaleInside": "1.2000000476837158",
+    "kongjianchuansuoqi1.Era": "<TimeEra.ANCIENT: 0>",
+    "kongjianchuansuoqi1.TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+    "kongjianchuansuoqi1.VerticalOffset": "-5000.0",
+    "kongjianchuansuoqi2.Era": "<TimeEra.MODERN: 1>",
+    "kongjianchuansuoqi2.TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+    "kongjianchuansuoqi2.VerticalOffset": "-5000.0"
+  },
+  "matched": 508,
+  "already_correct": 508,
+  "changed": 0,
+  "unmatched_count": 0,
+  "unmatched_sample": [],
+  "devices_touched": 10,
+  "devices": [
+    [
+      "kongjianchuansuoqi1",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ],
+    [
+      "kongjianchuansuoqi2",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ],
+    [
+      "kongjianchuansuoqi3",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ],
+    [
+      "kongjianchuansuoqi4",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ],
+    [
+      "kongjianchuansuoqi5",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ],
+    [
+      "kongjianchuansuoqi6",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ],
+    [
+      "kongjianchuansuoqi7",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ],
+    [
+      "kongjianchuansuoqi8",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ],
+    [
+      "kongjianchuansuoqi9",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ],
+    [
+      "kongjianchuansuoqi10",
+      "switcher",
+      "ok",
+      "IgnoreOnlyPawn",
+      "<CollisionResponseType.ECR_IGNORE: 0>"
+    ]
+  ],
+  "assert_devices_10": true,
+  "save_level": "ok"
+}

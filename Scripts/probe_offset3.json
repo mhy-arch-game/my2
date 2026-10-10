@@ -1,0 +1,464 @@
+{
+  "primitives": [
+    {
+      "label": "kongjianchuansuoqi1",
+      "loc": [
+        620.0,
+        -290.0,
+        100.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi1",
+      "loc": [
+        620.0,
+        -290.0,
+        100.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi1",
+      "loc": [
+        620.0,
+        -290.0,
+        100.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "loc": [
+        620.0,
+        -290.0,
+        -4900.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "loc": [
+        620.0,
+        -290.0,
+        -4900.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "loc": [
+        620.0,
+        -290.0,
+        -4900.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "loc": [
+        -8935.0,
+        580.0,
+        1300.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "loc": [
+        -8935.0,
+        580.0,
+        1300.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "loc": [
+        -8935.0,
+        580.0,
+        1300.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "loc": [
+        -8935.0,
+        580.0,
+        -3700.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "loc": [
+        -8935.0,
+        580.0,
+        -3700.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "loc": [
+        -8935.0,
+        580.0,
+        -3700.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "loc": [
+        -9025.0,
+        -255.0,
+        1300.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "loc": [
+        -9025.0,
+        -255.0,
+        1300.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "loc": [
+        -9025.0,
+        -255.0,
+        1300.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "loc": [
+        -9025.0,
+        -255.0,
+        -3700.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "loc": [
+        -9025.0,
+        -255.0,
+        -3700.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "loc": [
+        -9025.0,
+        -255.0,
+        -3700.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "loc": [
+        -6945.0,
+        -265.0,
+        1700.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "loc": [
+        -6945.0,
+        -265.0,
+        1700.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "loc": [
+        -6945.0,
+        -265.0,
+        1700.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "loc": [
+        -6945.0,
+        -265.0,
+        -3300.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "loc": [
+        -6945.0,
+        -265.0,
+        -3300.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "loc": [
+        -6945.0,
+        -265.0,
+        -3300.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -3100.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -3100.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -3100.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -8100.0
+      ],
+      "comp": "DefaultSceneRoot",
+      "class": "SceneComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -8100.0
+      ],
+      "comp": "BillboardComponent_1",
+      "class": "BillboardComponent"
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -8100.0
+      ],
+      "comp": "switcher",
+      "class": "StaticMeshComponent",
+      "profile": "IgnoreOnlyPawn",
+      "collision_enabled": "<CollisionEnabled.QUERY_ONLY: 1>",
+      "resp_to_pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+      "resp_to_vis": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "bVisible": "True",
+      "bHiddenInGame": "False",
+      "local_min": [
+        -10.718,
+        -10.767,
+        -0.0
+      ],
+      "local_max": [
+        10.718,
+        10.767,
+        99.951
+      ]
+    }
+  ]
+}

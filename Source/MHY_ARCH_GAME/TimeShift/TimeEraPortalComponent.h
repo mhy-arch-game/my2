@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "TimeShiftTypes.h"
+#include "TeleportTransitionTypes.h"
 #include "TimeEraPortalComponent.generated.h"
 
 class AActor;
@@ -18,6 +19,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnTimeEraPortalUsed, AActor*, Tr
 
 /** Fired when the portal refused to teleport, so UI/logic can explain why. */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTimeEraPortalRefused, UTimeEraPortalComponent*, Portal, FText, Reason);
+
+/** 过场事件（Begin / End 共用）：把整段过场所需信息一次交出去。 */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTimeEraPortalTransition, const FTeleportTransitionContext&, Context);
 
 /**
  *  UTimeEraPortalComponent - era-linked teleport, driven by the SHARED interact interface.
@@ -192,6 +196,29 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal|Interaction")
 	bool bDisableInteractableWhileLocked = true;
 
+	// -- 过场配置 (transition) ----------------------------------------------
+	/**
+	 * 过场时长（秒）。
+	 *
+	 *   > 0：先广播"过场开始"，等这么久（够淡出 / 播动画），再切时空 + 落点，
+	 *        最后广播"过场结束"（淡入）。期间 IsTransitioning() 为 true，
+	 *        再次按 E 会被拒绝（不会中途重复触发）。
+	 *   = 0：两个通知紧挨着发出，传送瞬时完成 —— 与没有过场系统时的行为完全一致。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal|Transition", meta=(ClampMin="0.0"))
+	float TransitionDelay = 0.0f;
+
+	/**
+	 * 把过场通知（Begin / End）派发给世界里实现了 ITeleportTransitionInterface 的对象。
+	 * 打开后，"过场导演 / UI 管理器"不需要知道具体是哪扇门在传送。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal|Transition")
+	bool bDispatchTransitionToInterfaceListeners = true;
+
+	/** 过场进行中（已通知 Begin、还没落点）。UI 可以据此禁输入 / 显示遮罩。 */
+	UFUNCTION(BlueprintPure, Category="TimeShift|Portal|Transition")
+	bool IsTransitioning() const { return bTransitionInProgress; }
+
 	// -- API ----------------------------------------------------------------
 	/** Teleport Traveler to the counterpart. Returns false when the portal refused. */
 	UFUNCTION(BlueprintCallable, Category="TimeShift|Portal")
@@ -236,6 +263,15 @@ public:
 	UPROPERTY(BlueprintAssignable, Category="TimeShift|Portal")
 	FOnTimeEraPortalRefused OnPortalRefused;
 
+	// -- 过场接入点（动画 / UI）-------------------------------------------
+	/** 传送过场开始：**还没有移动**。在这里开始淡出 / 播动画 / 显示遮罩 / 禁输入。 */
+	UPROPERTY(BlueprintAssignable, Category="TimeShift|Portal|Transition")
+	FOnTimeEraPortalTransition OnTransitionBegin;
+
+	/** 传送过场结束：**已经落点**。在这里淡入 / 收尾 / 恢复输入。 */
+	UPROPERTY(BlueprintAssignable, Category="TimeShift|Portal|Transition")
+	FOnTimeEraPortalTransition OnTransitionEnd;
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
@@ -265,6 +301,27 @@ private:
 
 	/** Timer that re-enables the interactable when the lock ends. */
 	FTimerHandle LockTimerHandle;
+
+	/** 过场进行中：已广播 Begin，等待 TransitionDelay 后落点。 */
+	bool bTransitionInProgress = false;
+
+	/** 等待过场时用的定时器。 */
+	FTimerHandle TransitionTimerHandle;
+
+	/** 本次过场的上下文（Begin 时构造，End 时复用）。 */
+	FTeleportTransitionContext TransitionContext;
+
+	/** 落点解析结果，在过场延迟期间暂存。 */
+	FVector PendingDestination = FVector::ZeroVector;
+	FRotator PendingDestinationRotation = FRotator::ZeroRotator;
+	ETimeEra PendingTargetEra = ETimeEra::Ancient;
+	TObjectPtr<AActor> PendingCounterpart = nullptr;
+
+	/** 真正执行"切时空 + 落点"，然后广播过场结束。 */
+	void FinishTeleport();
+
+	/** 广播过场开始 / 结束：先本组件的委托，再派发给接口实现者。 */
+	void DispatchTransition(bool bBegin);
 
 	/** Resolve the counterpart: explicit reference first, then id, then nearest anchor. */
 	AActor* ResolveCounterpartInternal(FText& OutRefusalReason) const;

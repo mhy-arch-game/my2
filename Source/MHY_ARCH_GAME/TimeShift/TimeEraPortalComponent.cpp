@@ -4,6 +4,7 @@
 
 #include "InteractableComponent.h"
 #include "TimeEraComponent.h"
+#include "TeleportTransitionInterface.h"
 #include "TimeShiftSubsystem.h"
 
 #include "CollisionQueryParams.h"
@@ -147,6 +148,7 @@ void UTimeEraPortalComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	if (UWorld* World = GetWorld())
 	{
 		World->GetTimerManager().ClearTimer(LockTimerHandle);
+		World->GetTimerManager().ClearTimer(TransitionTimerHandle);
 	}
 
 	Super::EndPlay(EndPlayReason);
@@ -199,6 +201,14 @@ bool UTimeEraPortalComponent::ResolveDestination(FVector& OutLocation, FRotator&
 
 bool UTimeEraPortalComponent::TryUsePortal(AActor* Traveler)
 {
+	// Never restart mid-transition: the player could press E again while the
+	// transition is fading out.
+	if (bTransitionInProgress)
+	{
+		OnPortalRefused.Broadcast(this, LOCTEXT("Transitioning", "上一次传送的过场还没结束。"));
+		return false;
+	}
+
 	AActor* TravelerActor = ResolveTraveler(Traveler);
 	if (!TravelerActor)
 	{
@@ -224,18 +234,79 @@ bool UTimeEraPortalComponent::TryUsePortal(AActor* Traveler)
 		return false;
 	}
 
+	// Era availability is checked up front, so a refusal never starts a transition
+	// (that would fade the screen out for nothing).
+	UTimeShiftSubsystem* Subsystem = UTimeShiftSubsystem::Get(this);
+	if (bSwitchEra && Subsystem && Subsystem->GetEra() != TargetEra && !Subsystem->CanSwitchEra())
+	{
+		OnPortalRefused.Broadcast(this, LOCTEXT("EraCooldown", "时空切换仍在冷却，暂时无法传送。"));
+		return false;
+	}
+
+	// --- remember everything, then notify the transition ------------------
+	PendingDestination = Destination;
+	PendingDestinationRotation = DestinationRotation;
+	PendingTargetEra = TargetEra;
+	PendingCounterpart = Counterpart;
+
+	TransitionContext = FTeleportTransitionContext();
+	TransitionContext.Traveler = TravelerActor;
+	TransitionContext.Portal = GetOwner();
+	TransitionContext.Counterpart = Counterpart;
+	TransitionContext.FromLocation = TravelerActor->GetActorLocation();
+	TransitionContext.ToLocation = Destination;
+	TransitionContext.FromEra = Subsystem ? Subsystem->GetEra() : GetOwnerEra();
+	TransitionContext.ToEra = TargetEra;
+	TransitionContext.Duration = TransitionDelay;
+
+	bTransitionInProgress = true;
+
+	// Begin fires BEFORE anything moves, which is what a fade-out needs.
+	DispatchTransition(/*bBegin=*/true);
+	OnPortalUsed.Broadcast(TravelerActor, GetOwner(), Counterpart);
+
+	if (TransitionDelay > 0.0f)
+	{
+		if (UWorld* World = GetWorld())
+		{
+			World->GetTimerManager().SetTimer(TransitionTimerHandle, this,
+				&UTimeEraPortalComponent::FinishTeleport, TransitionDelay, false);
+			return true;
+		}
+	}
+
+	// No transition (or no world): teleport immediately, exactly as before.
+	FinishTeleport();
+	return true;
+}
+
+void UTimeEraPortalComponent::FinishTeleport()
+{
+	bTransitionInProgress = false;
+
+	AActor* TravelerActor = TransitionContext.Traveler;
+	if (!TravelerActor)
+	{
+		DispatchTransition(/*bBegin=*/false);
+		return;
+	}
+
 	// 1. switch era FIRST: listeners (the player's UTimeShiftTravelComponent) relocate
 	//    by the layout mapping, and step 3 then overrides that with the exact
 	//    destination. Doing it the other way round would undo step 3.
+	//    Re-checked here because the cooldown may have started during the delay.
 	UTimeShiftSubsystem* Subsystem = UTimeShiftSubsystem::Get(this);
-	if (bSwitchEra && Subsystem && Subsystem->GetEra() != TargetEra)
+	if (bSwitchEra && Subsystem && Subsystem->GetEra() != PendingTargetEra)
 	{
 		if (!Subsystem->CanSwitchEra())
 		{
-			OnPortalRefused.Broadcast(this, LOCTEXT("EraCooldown", "时空切换仍在冷却，暂时无法传送。"));
-			return false;
+			UE_LOG(LogTemp, Warning,
+				TEXT("[TimeEraPortal] %s: 过场结束时时空切换仍在冷却，本次传送取消（已广播过场结束收尾）。"),
+				*GetNameSafe(GetOwner()));
+			DispatchTransition(/*bBegin=*/false);
+			return;
 		}
-		Subsystem->SetEra(TargetEra);
+		Subsystem->SetEra(PendingTargetEra);
 	}
 
 	// 2. stop the leftover velocity so the traveller does not keep flying on arrival.
@@ -248,12 +319,15 @@ bool UTimeEraPortalComponent::TryUsePortal(AActor* Traveler)
 	}
 
 	// 3. place at the resolved destination (works for both target modes).
-	const FVector Goal = ComputeArrivalLocation(Destination, DestinationRotation, TravelerActor);
+	const FVector Goal = ComputeArrivalLocation(PendingDestination, PendingDestinationRotation, TravelerActor);
 	TravelerActor->SetActorLocation(Goal, false, nullptr, ETeleportType::TeleportPhysics);
+
+	// The context carries the FINAL landing point (ground snapping applied).
+	TransitionContext.ToLocation = Goal;
 
 	if (bMatchCounterpartYaw)
 	{
-		const FRotator ArrivalRotation(0.0f, DestinationRotation.Yaw, 0.0f);
+		const FRotator ArrivalRotation(0.0f, PendingDestinationRotation.Yaw, 0.0f);
 		TravelerActor->SetActorRotation(ArrivalRotation);
 		if (APawn* Pawn = Cast<APawn>(TravelerActor))
 		{
@@ -264,16 +338,77 @@ bool UTimeEraPortalComponent::TryUsePortal(AActor* Traveler)
 		}
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("[TimeEraPortal] %s -> %s (%s, %s, %.0f/%.0f/%.0f)"),
+	UE_LOG(LogTemp, Log, TEXT("[TimeEraPortal] %s -> %s (%s, %s, %.0f/%.0f/%.0f, 过场 %.2fs)"),
 		*GetOwner()->GetName(),
-		Counterpart ? *Counterpart->GetName() : TEXT("<仅 Z 不同的另一半>"),
-		TargetEra == ETimeEra::Ancient ? TEXT("古") : TEXT("今"),
+		PendingCounterpart ? *PendingCounterpart->GetName() : TEXT("<仅 Z 不同的另一半>"),
+		PendingTargetEra == ETimeEra::Ancient ? TEXT("古") : TEXT("今"),
 		TargetMode == ETimeEraPortalTargetMode::VerticalOffset ? TEXT("VerticalOffset") : TEXT("Counterpart"),
-		Goal.X, Goal.Y, Goal.Z);
+		Goal.X, Goal.Y, Goal.Z,
+		TransitionDelay);
 
 	ArmLock();
-	OnPortalUsed.Broadcast(TravelerActor, GetOwner(), Counterpart);
-	return true;
+	DispatchTransition(/*bBegin=*/false);
+}
+
+void UTimeEraPortalComponent::DispatchTransition(bool bBegin)
+{
+	// 1) Blueprint delegates on this component (bind in a level/character Blueprint).
+	if (bBegin)
+	{
+		OnTransitionBegin.Broadcast(TransitionContext);
+	}
+	else
+	{
+		OnTransitionEnd.Broadcast(TransitionContext);
+	}
+
+	// 2) Interface listeners anywhere in the world: a transition director / UI manager
+	//    does not need to know which portal fired.
+	if (!bDispatchTransitionToInterfaceListeners)
+	{
+		return;
+	}
+
+	UWorld* World = GetWorld();
+	AActor* Owner = GetOwner();
+	if (!World || !Owner)
+	{
+		return;
+	}
+
+	int32 Count = 0;
+	for (TActorIterator<AActor> It(World); It; ++It)
+	{
+		AActor* Listener = *It;
+		if (!Listener || Listener == Owner)
+		{
+			continue;
+		}
+
+		if (!Listener->GetClass()->ImplementsInterface(UTeleportTransitionInterface::StaticClass()))
+		{
+			continue;
+		}
+
+		if (!ITeleportTransitionInterface::Execute_CanReceiveTeleportTransition(
+			Listener, TransitionContext.Traveler))
+		{
+			continue;
+		}
+
+		if (bBegin)
+		{
+			ITeleportTransitionInterface::Execute_OnTeleportTransitionBegin(Listener, TransitionContext);
+		}
+		else
+		{
+			ITeleportTransitionInterface::Execute_OnTeleportTransitionEnd(Listener, TransitionContext);
+		}
+		++Count;
+	}
+
+	UE_LOG(LogTemp, Verbose, TEXT("[TimeEraPortal] %s: 过场%s已派发给 %d 个接口监听者。"),
+		*GetNameSafe(Owner), bBegin ? TEXT("开始") : TEXT("结束"), Count);
 }
 
 bool UTimeEraPortalComponent::CanUsePortal(AActor* Traveler) const
@@ -489,10 +624,30 @@ FVector UTimeEraPortalComponent::ComputeArrivalLocation(const FVector& BaseLocat
 	Params.AddIgnoredActor(Traveler);
 	Params.AddIgnoredActor(GetOwner());
 
+	// 传送装置不是地面：装置网格挡住 Visibility，若不忽略，从"落点 + 距离"往下打的射线
+	// 会先停在【目标装置自己的顶面】上，角色就被放到"装置顶上"而不是装置处。
+	// 实测 kongjianchuansuoqi 的装置高 100cm ⇒ 每次传送都比配对位置高 100cm。
+	// VerticalOffset 模式没有 Counterpart 可以忽略，所以按"所有传送装置"整体忽略。
+	for (TActorIterator<AActor> It(World); It; ++It)
+	{
+		if (AActor* Other = *It)
+		{
+			if (Other->FindComponentByClass<UTimeEraPortalComponent>())
+			{
+				Params.AddIgnoredActor(Other);
+			}
+		}
+	}
+
+	const float HalfHeight = GetTravelerHalfHeight(Traveler);
+
 	FHitResult Hit;
 	if (World->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, Params))
 	{
-		Goal.Z = Hit.ImpactPoint.Z + GetTravelerHalfHeight(Traveler) + GroundClearance;
+		// 只允许"向下贴地"：命中的面若在预定落点之上（天花板 / 其它物体），
+		// 不能把角色向上抬过"脚底正好落在预定平面"这个上限。
+		const float SnappedZ = Hit.ImpactPoint.Z + HalfHeight + GroundClearance;
+		Goal.Z = FMath::Min(SnappedZ, Goal.Z + HalfHeight + GroundClearance);
 	}
 
 	return Goal;
