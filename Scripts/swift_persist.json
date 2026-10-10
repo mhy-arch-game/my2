@@ -1,0 +1,370 @@
+{
+  "phase_a_writes": [
+    {
+      "num": 1,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    },
+    {
+      "num": 2,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    },
+    {
+      "num": 3,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    },
+    {
+      "num": 4,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    },
+    {
+      "num": 5,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    },
+    {
+      "num": 6,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    },
+    {
+      "num": 7,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    },
+    {
+      "num": 8,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    },
+    {
+      "num": 9,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    },
+    {
+      "num": 10,
+      "modify_actor": "ok",
+      "modify_era": "ok",
+      "set_era": "ok",
+      "modify_portal": "ok",
+      "set_mode": "ok",
+      "set_off": "ok",
+      "set_prompt": "ok",
+      "set_cp": "ok"
+    }
+  ],
+  "phase_a_save": "ok",
+  "phase_a_after_reload": [
+    {
+      "num": 1,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 2,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 3,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 4,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 5,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 6,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 7,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 8,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 9,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 10,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+      "VerticalOffset": "1000.0",
+      "InteractionPrompt": "传送至过去",
+      "counterpart_num": null,
+      "pair_ok": false
+    }
+  ],
+  "phase_a_result": "LOST",
+  "phase_b_template_writes": {
+    "TargetMode": "ok",
+    "VerticalOffset": "ok",
+    "InteractionPrompt": "ok"
+  },
+  "phase_b_compile": "ok",
+  "phase_b_save_bp": "ok",
+  "phase_b_writes": [
+    {
+      "num": 1,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    },
+    {
+      "num": 2,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    },
+    {
+      "num": 3,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    },
+    {
+      "num": 4,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    },
+    {
+      "num": 5,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    },
+    {
+      "num": 6,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    },
+    {
+      "num": 7,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    },
+    {
+      "num": 8,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    },
+    {
+      "num": 9,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    },
+    {
+      "num": 10,
+      "modify": "ok",
+      "set_era": "ok",
+      "clear_cp": "ok"
+    }
+  ],
+  "phase_b_save": "ok",
+  "phase_b_after_reload": [
+    {
+      "num": 1,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 2,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 3,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 4,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 5,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 6,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 7,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 8,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 9,
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    },
+    {
+      "num": 10,
+      "Era": "<TimeEra.MODERN: 1>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "InteractionPrompt": "传送",
+      "counterpart_num": null,
+      "pair_ok": false
+    }
+  ]
+}

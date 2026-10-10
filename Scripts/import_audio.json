@@ -1,0 +1,129 @@
+{
+  "dest": "/Game/sound_resources",
+  "found": [
+    "dragon-studio-light-switch-on-382714.mp3",
+    "freesound_community-door-close-79921.mp3",
+    "freesound_community-jumping-on-wooden-floor-41234.mp3",
+    "freesound_community-light-switch-off-86314.mp3",
+    "freesound_community-running-6358.mp3",
+    "freesound_community-switch-100999(1).mp3",
+    "freesound_community-switch-100999.mp3",
+    "soundreality-opening-door-411632.mp3"
+  ],
+  "task_props": {
+    "filename": "ok",
+    "destination_path": "ok",
+    "automated": "ok",
+    "save": "ok",
+    "replace_existing": "ok"
+  },
+  "tasks": [
+    {
+      "file": "dragon-studio-light-switch-on-382714.mp3",
+      "imported": [
+        "/Game/sound_resources/dragon-studio-light-switch-on-382714.dragon-studio-light-switch-on-382714"
+      ]
+    },
+    {
+      "file": "freesound_community-door-close-79921.mp3",
+      "imported": [
+        "/Game/sound_resources/freesound_community-door-close-79921.freesound_community-door-close-79921"
+      ]
+    },
+    {
+      "file": "freesound_community-jumping-on-wooden-floor-41234.mp3",
+      "imported": [
+        "/Game/sound_resources/freesound_community-jumping-on-wooden-floor-41234.freesound_community-jumping-on-wooden-floor-41234"
+      ]
+    },
+    {
+      "file": "freesound_community-light-switch-off-86314.mp3",
+      "imported": [
+        "/Game/sound_resources/freesound_community-light-switch-off-86314.freesound_community-light-switch-off-86314"
+      ]
+    },
+    {
+      "file": "freesound_community-running-6358.mp3",
+      "imported": [
+        "/Game/sound_resources/freesound_community-running-6358.freesound_community-running-6358"
+      ]
+    },
+    {
+      "file": "freesound_community-switch-100999(1).mp3",
+      "imported": [
+        "/Game/sound_resources/freesound_community-switch-100999_1_.freesound_community-switch-100999_1_"
+      ]
+    },
+    {
+      "file": "freesound_community-switch-100999.mp3",
+      "imported": [
+        "/Game/sound_resources/freesound_community-switch-100999.freesound_community-switch-100999"
+      ]
+    },
+    {
+      "file": "soundreality-opening-door-411632.mp3",
+      "imported": [
+        "/Game/sound_resources/soundreality-opening-door-411632.soundreality-opening-door-411632"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "path": "/Game/sound_resources/dragon-studio-light-switch-on-382714.dragon-studio-light-switch-on-382714",
+      "class": "SoundWave",
+      "Duration": "0.5746938586235046",
+      "bLooping": "False",
+      "SoundClassObject": "None"
+    },
+    {
+      "path": "/Game/sound_resources/freesound_community-door-close-79921.freesound_community-door-close-79921",
+      "class": "SoundWave",
+      "Duration": "2.7428572177886963",
+      "bLooping": "False",
+      "SoundClassObject": "None"
+    },
+    {
+      "path": "/Game/sound_resources/freesound_community-jumping-on-wooden-floor-41234.freesound_community-jumping-on-wooden-floor-41234",
+      "class": "SoundWave",
+      "Duration": "0.6240000128746033",
+      "bLooping": "False",
+      "SoundClassObject": "None"
+    },
+    {
+      "path": "/Game/sound_resources/freesound_community-light-switch-off-86314.freesound_community-light-switch-off-86314",
+      "class": "SoundWave",
+      "Duration": "0.8640000224113464",
+      "bLooping": "False",
+      "SoundClassObject": "None"
+    },
+    {
+      "path": "/Game/sound_resources/freesound_community-running-6358.freesound_community-running-6358",
+      "class": "SoundWave",
+      "Duration": "5.929795742034912",
+      "bLooping": "False",
+      "SoundClassObject": "None"
+    },
+    {
+      "path": "/Game/sound_resources/freesound_community-switch-100999.freesound_community-switch-100999",
+      "class": "SoundWave",
+      "Duration": "4.007999897003174",
+      "bLooping": "False",
+      "SoundClassObject": "None"
+    },
+    {
+      "path": "/Game/sound_resources/freesound_community-switch-100999_1_.freesound_community-switch-100999_1_",
+      "class": "SoundWave",
+      "Duration": "4.007999897003174",
+      "bLooping": "False",
+      "SoundClassObject": "None"
+    },
+    {
+      "path": "/Game/sound_resources/soundreality-opening-door-411632.soundreality-opening-door-411632",
+      "class": "SoundWave",
+      "Duration": "2.0399999618530273",
+      "bLooping": "False",
+      "SoundClassObject": "None"
+    }
+  ],
+  "asset_count": 8
+}

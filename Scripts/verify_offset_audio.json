@@ -1,0 +1,100 @@
+{
+  "portal_offsets": [
+    {
+      "label": "kongjianchuansuoqi1",
+      "yaw": 0.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "yaw": 0.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "yaw": -90.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "yaw": -90.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "yaw": 0.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "yaw": 0.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "yaw": 90.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "yaw": 90.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "yaw": 90.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "yaw": 90.0,
+      "TeleportOffset": [
+        5.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "char_audio": {
+    "bAutoFootstepByDistance": "True",
+    "FootstepDistance": "180.0",
+    "bAutoDetectJumpAndLand": "True",
+    "DefaultSet": "<Struct 'MovementAudioSet' (0x0000026D16810A68) {surface: SurfaceType_Default, footstep: None, jump: None, land: None}>"
+  }
+}

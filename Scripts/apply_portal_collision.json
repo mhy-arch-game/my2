@@ -1,0 +1,38 @@
+{
+  "profile": "IgnoreOnlyPawn",
+  "template": [
+    {
+      "comp": "switcher_GEN_VARIABLE",
+      "before": {
+        "profile": "BlockAllDynamic",
+        "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+        "vis": "<CollisionResponseType.ECR_BLOCK: 2>"
+      },
+      "set": "ok",
+      "after": {
+        "profile": "IgnoreOnlyPawn",
+        "pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+        "vis": "<CollisionResponseType.ECR_BLOCK: 2>"
+      }
+    },
+    {
+      "comp": "switcher_GEN_VARIABLE",
+      "before": {
+        "profile": "IgnoreOnlyPawn",
+        "pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+        "vis": "<CollisionResponseType.ECR_BLOCK: 2>"
+      },
+      "set": "ok",
+      "after": {
+        "profile": "IgnoreOnlyPawn",
+        "pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+        "vis": "<CollisionResponseType.ECR_BLOCK: 2>"
+      }
+    }
+  ],
+  "compile": "ok",
+  "save_bp": "ok",
+  "instances_written": 508,
+  "instances_after": null,
+  "save_level": "ok"
+}

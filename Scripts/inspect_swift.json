@@ -1,0 +1,289 @@
+{
+  "modern_swift_actor": {
+    "bp": "modern_swift_actor",
+    "components": [
+      [
+        "None",
+        "modern_swift_actor_C"
+      ],
+      [
+        "DefaultSceneRoot",
+        "SceneComponent"
+      ],
+      [
+        "switcher",
+        "StaticMeshComponent"
+      ],
+      [
+        "switcher",
+        "StaticMeshComponent"
+      ],
+      [
+        "Interactable",
+        "InteractableComponent"
+      ],
+      [
+        "TimeEraPortal",
+        "TimeEraPortalComponent"
+      ],
+      [
+        "TimeEra",
+        "TimeEraComponent"
+      ]
+    ],
+    "templates": {
+      "Interactable": {
+        "InteractionPrompt": "传送至过去",
+        "bUseBuiltInToggle": "False",
+        "ToggleComponentNames": "[]",
+        "bEnabled": "True"
+      },
+      "TimeEraPortal": {
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "VerticalOffset": "1000.0",
+        "CounterpartId": "None",
+        "CounterpartActor": "None",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "InteractionPrompt": "传送至过去",
+        "bAutoUseInteractableOnOwner": "True",
+        "bSuppressBuiltInToggle": "False",
+        "TeleportOffset": "<Struct 'Vector' (0x000001DD0583ED18) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+        "bPlaceOnGround": "True",
+        "bMatchCounterpartYaw": "True",
+        "PortalCooldown": "2.0"
+      },
+      "TimeEra": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "bExistsInBothEras": "False"
+      }
+    }
+  },
+  "ancient_swift_actor": {
+    "error": "not found"
+  },
+  "actor_count": 530,
+  "kongjian_actors": [
+    {
+      "label": "kongjianchuansuoqi1",
+      "class": "StaticMeshActor",
+      "loc": [
+        620.0,
+        -290.0,
+        100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "class": "StaticMeshActor",
+      "loc": [
+        620.0,
+        -290.0,
+        -4900.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "class": "StaticMeshActor",
+      "loc": [
+        -8935.0,
+        580.0,
+        1300.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "class": "StaticMeshActor",
+      "loc": [
+        -8935.0,
+        580.0,
+        -3700.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "class": "StaticMeshActor",
+      "loc": [
+        -9025.0,
+        -255.0,
+        1300.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "class": "StaticMeshActor",
+      "loc": [
+        -9025.0,
+        -255.0,
+        -3700.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "class": "StaticMeshActor",
+      "loc": [
+        -6945.0,
+        -265.0,
+        1700.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "class": "StaticMeshActor",
+      "loc": [
+        -6945.0,
+        -265.0,
+        -3300.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "class": "StaticMeshActor",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -3100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "class": "StaticMeshActor",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -8100.0
+      ],
+      "rot": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "components": [
+        "StaticMeshComponent0:StaticMeshComponent"
+      ]
+    }
+  ],
+  "kongjian_count": 10
+}

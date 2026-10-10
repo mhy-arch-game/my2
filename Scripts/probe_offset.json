@@ -1,0 +1,10 @@
+{
+  "capsule": {
+    "name": "CollisionCylinder",
+    "half_height": "96.0",
+    "radius": "33.99907684326172",
+    "rel_loc": "<Struct 'Vector' (0x00000140E9F90F80) {x: 0.000000, y: 0.000000, z: 0.000000}>"
+  },
+  "fatal": "AttributeError(\"'SceneComponent' object has no attribute 'get_component_location'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/probe_offset.py\", line 72, in <module>\n    \"world\": v3(c.get_component_location()),\n                ^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'SceneComponent' object has no attribute 'get_component_location'\n"
+}

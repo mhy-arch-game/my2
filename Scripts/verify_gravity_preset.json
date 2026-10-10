@@ -1,0 +1,28 @@
+{
+  "template": [
+    {
+      "GravityScaleInside": "0.3199999928474426",
+      "bScaleJumpVelocity": "False",
+      "TargetJumpHeight": "1125.0",
+      "bAffectPawnsOnly": "True",
+      "BoxExtent": "<Struct 'Vector' (0x00000209E5C65308) {x: 400.000000, y: 400"
+    },
+    {
+      "GravityScaleInside": "0.3199999928474426",
+      "bScaleJumpVelocity": "False",
+      "TargetJumpHeight": "1125.0",
+      "bAffectPawnsOnly": "True",
+      "BoxExtent": "<Struct 'Vector' (0x00000209E5C65308) {x: 400.000000, y: 400"
+    }
+  ],
+  "level": [
+    {
+      "GravityScaleInside": "0.3199999928474426",
+      "bScaleJumpVelocity": "False",
+      "TargetJumpHeight": "1125.0",
+      "bAffectPawnsOnly": "True",
+      "BoxExtent": "<Struct 'Vector' (0x00000209EA7A1408) {x: 774.620066, y: 698",
+      "label": "jumping_area"
+    }
+  ]
+}

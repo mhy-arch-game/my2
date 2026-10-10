@@ -119,7 +119,20 @@ void UGravityZoneComponent::ApplyTo(AActor* Actor)
 
 	Movement->GravityScale = Entry.GravityScale * GravityScaleInside;
 
-	if (bScaleJumpVelocity)
+	if (TargetJumpHeight > 0.0f)
+	{
+		// Absolute height request: solve h = v^2 / (2g) for v using the gravity this
+		// character actually feels inside the zone (volume gravity * applied scale).
+		// NOTE: UCharacterMovementComponent::GetGravityZ() already multiplies by
+		// GravityScale in UE5 (return Super::GetGravityZ() * GravityScale), so this is
+		// the final gravity the character feels - do NOT scale it again here.
+		const float AppliedGravityZ = FMath::Abs(Movement->GetGravityZ());
+		if (AppliedGravityZ > 1e-3f)
+		{
+			Movement->JumpZVelocity = FMath::Sqrt(2.0f * AppliedGravityZ * TargetJumpHeight);
+		}
+	}
+	else if (bScaleJumpVelocity)
 	{
 		// h = v^2 / (2g): scaling v by sqrt(k) keeps the height while g scales by k.
 		Movement->JumpZVelocity = Entry.JumpZVelocity * FMath::Sqrt(FMath::Max(GravityScaleInside, 0.0f));
@@ -138,7 +151,7 @@ void UGravityZoneComponent::RestoreFrom(AActor* Actor, const FGravityZoneEntry& 
 
 	Movement->GravityScale = Entry.GravityScale;
 
-	if (bScaleJumpVelocity)
+	if (bScaleJumpVelocity || TargetJumpHeight > 0.0f)
 	{
 		Movement->JumpZVelocity = Entry.JumpZVelocity;
 	}
@@ -160,4 +173,38 @@ bool UGravityZoneComponent::IsActorInside(const AActor* Actor) const
 	}
 
 	return false;
+}
+
+// ---------------------------------------------------------------------------
+// Preserving the jump height while changing how fast the arc is
+// ---------------------------------------------------------------------------
+
+void UGravityZoneComponent::ConfigurePreservingJumpHeight(float GravityMultiplier, bool bAlsoScaleJumpVelocity)
+{
+	GravityScaleInside = FMath::Max(GravityMultiplier, 0.0f);
+	bScaleJumpVelocity = bAlsoScaleJumpVelocity;
+}
+
+float UGravityZoneComponent::GetJumpHeightScale() const
+{
+	// h = v^2 / (2g). With v * sqrt(k) and g * k the height is unchanged; scaling
+	// only g divides the height by k.
+	if (bScaleJumpVelocity || TargetJumpHeight > 0.0f)
+	{
+		// TargetJumpHeight pins the height by construction, so the ratio is 1 as well.
+		return 1.0f;
+	}
+	return GravityScaleInside > 1e-4f ? 1.0f / GravityScaleInside : 1.0f;
+}
+
+float UGravityZoneComponent::GetAirTimeScale() const
+{
+	// Rise time t = v / g (fall time behaves the same way).
+	const float k = GravityScaleInside;
+	if (k <= 1e-4f)
+	{
+		return 1.0f;
+	}
+	const float VelocityScale = bScaleJumpVelocity ? FMath::Sqrt(k) : 1.0f;
+	return VelocityScale / k;
 }

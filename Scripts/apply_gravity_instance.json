@@ -1,0 +1,18 @@
+{
+  "target_height": 1125.0,
+  "new_scale": 0.32,
+  "method": "plain set_editor_property + save_current_level",
+  "mtime_before": "2026-10-10 15:22:53.886954",
+  "actor_class": "jumping_area_C",
+  "comp": "GravityZone",
+  "before": "0.07999999821186066",
+  "before_h": "1125.0",
+  "set_scale": "ok",
+  "set_height": "ok",
+  "after_in_process": "0.3199999928474426",
+  "after_h_in_process": "1125.0",
+  "save_current_level": "ok",
+  "actor_package": "PersistentLevel",
+  "save_actor_pkg": "False",
+  "mtime_after": "2026-10-10 15:42:16.614064"
+}

@@ -1,0 +1,299 @@
+{
+  "found": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "spawned": [
+    {
+      "label": "kongjianchuansuoqi1",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "class_before": "StaticMeshActor",
+      "class_after": "modern_swift_actor_C"
+    }
+  ],
+  "filled": [
+    {
+      "num": 1,
+      "label": "kongjianchuansuoqi1",
+      "pair_with": 2,
+      "era": "Ancient",
+      "prompt": "传送至现代",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_1' (0x000001DA16536900) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至现代",
+        "VerticalOffset": "-5000.0"
+      }
+    },
+    {
+      "num": 2,
+      "label": "kongjianchuansuoqi2",
+      "pair_with": 1,
+      "era": "Modern",
+      "prompt": "传送至过去",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_0' (0x000001DA16537300) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至过去",
+        "VerticalOffset": "-5000.0"
+      }
+    },
+    {
+      "num": 3,
+      "label": "kongjianchuansuoqi3",
+      "pair_with": 4,
+      "era": "Ancient",
+      "prompt": "传送至现代",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_3' (0x000001DA1653EB00) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至现代",
+        "VerticalOffset": "-5000.0"
+      }
+    },
+    {
+      "num": 4,
+      "label": "kongjianchuansuoqi4",
+      "pair_with": 3,
+      "era": "Modern",
+      "prompt": "传送至过去",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_2' (0x000001DA1653E100) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至过去",
+        "VerticalOffset": "-5000.0"
+      }
+    },
+    {
+      "num": 5,
+      "label": "kongjianchuansuoqi5",
+      "pair_with": 6,
+      "era": "Ancient",
+      "prompt": "传送至现代",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_5' (0x000001DA1653C300) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至现代",
+        "VerticalOffset": "-5000.0"
+      }
+    },
+    {
+      "num": 6,
+      "label": "kongjianchuansuoqi6",
+      "pair_with": 5,
+      "era": "Modern",
+      "prompt": "传送至过去",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_4' (0x000001DA1653D700) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至过去",
+        "VerticalOffset": "-5000.0"
+      }
+    },
+    {
+      "num": 7,
+      "label": "kongjianchuansuoqi7",
+      "pair_with": 8,
+      "era": "Ancient",
+      "prompt": "传送至现代",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_7' (0x000001D9F0FC7300) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至现代",
+        "VerticalOffset": "-5000.0"
+      }
+    },
+    {
+      "num": 8,
+      "label": "kongjianchuansuoqi8",
+      "pair_with": 7,
+      "era": "Modern",
+      "prompt": "传送至过去",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_6' (0x000001D9F0FC5500) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至过去",
+        "VerticalOffset": "-5000.0"
+      }
+    },
+    {
+      "num": 9,
+      "label": "kongjianchuansuoqi9",
+      "pair_with": 10,
+      "era": "Ancient",
+      "prompt": "传送至现代",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_9' (0x000001DA09FF8200) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至现代",
+        "VerticalOffset": "-5000.0"
+      }
+    },
+    {
+      "num": 10,
+      "label": "kongjianchuansuoqi10",
+      "pair_with": 9,
+      "era": "Modern",
+      "prompt": "传送至过去",
+      "set_era": "ok",
+      "portal": {
+        "TargetMode": "ok",
+        "VerticalOffset": "ok",
+        "InteractionPrompt": "ok",
+        "bAutoUseInteractableOnOwner": "ok",
+        "CounterpartActor": "ok"
+      },
+      "set_interactable_prompt": "ok",
+      "readback": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+        "CounterpartActor": "<Object '/Game/FirstPerson/firstvision.firstvision:PersistentLevel.modern_swift_actor_C_8' (0x000001D9F0FC5A00) Class 'modern_swift_actor_C'>",
+        "InteractionPrompt": "传送至过去",
+        "VerticalOffset": "-5000.0"
+      }
+    }
+  ],
+  "save": "ok"
+}
