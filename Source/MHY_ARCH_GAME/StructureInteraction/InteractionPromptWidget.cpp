@@ -18,13 +18,17 @@ TSharedRef<SWidget> UInteractionPromptFallbackWidget::RebuildWidget()
 		[
 			SNew(SBorder)
 			.BorderImage(FCoreStyle::Get().GetBrush("GenericWhiteBox"))
-			.BorderBackgroundColor(FLinearColor(0.0f, 0.0f, 0.0f, 0.7f))
+			// 透明底：不画任何底色（原来这里是 0.7 的黑底方框）。
+			.BorderBackgroundColor(FLinearColor::Transparent)
 			.Padding(FMargin(22.0f, 10.0f))
 			[
 				SAssignNew(TextSlate, STextBlock)
 				.Text(PendingText)
+				// 白字；亮背景上靠深色投影保持可读（投影不是底色，仍然"透明底"）。
 				.ColorAndOpacity(FSlateColor(FLinearColor::White))
-				.Font(FCoreStyle::GetDefaultFontStyle("Bold", 24))
+				.ShadowOffset(FVector2D(1.5f, 1.5f))
+				.ShadowColorAndOpacity(FLinearColor(0.0f, 0.0f, 0.0f, 0.85f))
+				.Font(FCoreStyle::GetDefaultFontStyle("Bold", 26))
 			]
 		];
 }

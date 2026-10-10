@@ -584,6 +584,15 @@ void UInteractionDetectorComponent::SetFocusedActor(AActor* NewFocus)
 {
 	if (NewFocus == FocusedActor)
 	{
+		// Same actor, but its prompt may have changed since the last broadcast (a door
+		// that just opened now offers "关门"): push the new text to the HUD without
+		// touching focus, otherwise the popup would keep saying "开门".
+		const FText CurrentPrompt = GetCurrentPrompt();
+		if (!CurrentPrompt.EqualTo(LastBroadcastPrompt))
+		{
+			LastBroadcastPrompt = CurrentPrompt;
+			OnFocusChanged.Broadcast(FocusedActor, CurrentPrompt);
+		}
 		return;
 	}
 
@@ -606,7 +615,8 @@ void UInteractionDetectorComponent::SetFocusedActor(AActor* NewFocus)
 		ApplyFocusOutline(FocusedActor);
 	}
 
-	OnFocusChanged.Broadcast(FocusedActor, GetCurrentPrompt());
+	LastBroadcastPrompt = GetCurrentPrompt();
+	OnFocusChanged.Broadcast(FocusedActor, LastBroadcastPrompt);
 }
 
 void UInteractionDetectorComponent::TryBindInput()

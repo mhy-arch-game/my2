@@ -1,0 +1,16 @@
+{
+  "before": {
+    "WorldPromptHeightOffset": "0.0",
+    "WorldPromptDrawSize": "<Struct 'Vector2D' (0x00000108DA228618) {x: 320.000000, y: 64.000000}>",
+    "WorldPromptFrontOffset": "40.0"
+  },
+  "h": "ok",
+  "s": "ok",
+  "after": {
+    "WorldPromptHeightOffset": "30.0",
+    "WorldPromptDrawSize": "<Struct 'Vector2D' (0x00000108DA228618) {x: 360.000000, y: 120.000000}",
+    "WorldPromptFrontOffset": "40.0"
+  },
+  "compile": "ok",
+  "save": "ok"
+}

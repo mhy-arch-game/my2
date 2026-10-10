@@ -1,0 +1,4 @@
+{
+  "fatal": "AttributeError(\"module 'unreal' has no attribute 'BackgroundMusicSettings'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/verify_bgmusic.py\", line 15, in <module>\n    cls = unreal.BackgroundMusicSettings\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: module 'unreal' has no attribute 'BackgroundMusicSettings'\n"
+}

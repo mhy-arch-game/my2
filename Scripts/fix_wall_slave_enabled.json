@@ -1,0 +1,29 @@
+{
+  "walls": [
+    {
+      "label": "jiguanqiang0",
+      "before_bEnabled": "True",
+      "write": "ok",
+      "after_bEnabled": "False"
+    },
+    {
+      "label": "jiguanqiang1",
+      "before_bEnabled": "True",
+      "write": "ok",
+      "after_bEnabled": "False"
+    },
+    {
+      "label": "jiguanqiang4",
+      "before_bEnabled": "True",
+      "write": "ok",
+      "after_bEnabled": "False"
+    },
+    {
+      "label": "jiguanqiang3",
+      "before_bEnabled": "True",
+      "write": "ok",
+      "after_bEnabled": "False"
+    }
+  ],
+  "save_level": "ok"
+}

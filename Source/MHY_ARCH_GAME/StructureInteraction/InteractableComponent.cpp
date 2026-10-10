@@ -467,6 +467,13 @@ void UInteractableComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 	}
 }
 
+FText UInteractableComponent::GetInteractionPrompt() const
+{
+	// Two-state objects read better when the prompt says what the NEXT press does:
+	// "开门" while closed, "关门" while open. An empty alternate keeps the old behaviour.
+	return (bIsOpen && !InteractionPromptOpen.IsEmpty()) ? InteractionPromptOpen : InteractionPrompt;
+}
+
 bool UInteractableComponent::CanInteract(AActor*) const
 {
 	return bEnabled;

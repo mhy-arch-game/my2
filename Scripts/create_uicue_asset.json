@@ -1,0 +1,23 @@
+{
+  "classes": {
+    "subsystem": true,
+    "trigger_volume": true,
+    "subtitle_widget": true,
+    "presenter_interface": true,
+    "cue_set": true,
+    "segment_struct": true
+  },
+  "existed": false,
+  "created": "<Object '/Game/MHY_ARCH_GAME/UI/DA_UiCueSet.DA_UiCueSet' (0x0000011004E07400) Cl",
+  "loaded_class": "UiCueSet",
+  "defaults": {
+    "QueueGapSeconds": "3.0",
+    "DefaultSegmentSeconds": "2.5",
+    "SegmentDelimiters": "。！？!?.;；\n",
+    "bUseBuiltInSubtitle": "True",
+    "SubtitleBottomOffset": "140.0",
+    "Cues": "[]"
+  },
+  "volume_class_loaded": "<Object '/Script/MHY_ARCH_GAME.UiCueTriggerVolume' (0x0000011015404600) Class 'Class'>",
+  "save": "ok"
+}

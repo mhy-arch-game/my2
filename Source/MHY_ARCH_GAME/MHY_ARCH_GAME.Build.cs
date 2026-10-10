@@ -18,7 +18,11 @@ public class MHY_ARCH_GAME : ModuleRules
 			"Slate",
 			"SlateCore",
 			"MotionWarping",
-			"PhysicsCore"
+			"PhysicsCore",
+			"AssetRegistry",
+			"DeveloperSettings",
+			"LevelSequence",
+			"MovieScene"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
@@ -35,7 +39,10 @@ public class MHY_ARCH_GAME : ModuleRules
 			"MHY_ARCH_GAME/StructureInteraction",
 			"MHY_ARCH_GAME/StructureInteraction/Interfaces",
 			"MHY_ARCH_GAME/TimeShift",
-			"MHY_ARCH_GAME/TimeShift/Interfaces"
+			"MHY_ARCH_GAME/TimeShift/Interfaces",
+			"MHY_ARCH_GAME/UiDirector",
+			"MHY_ARCH_GAME/BackgroundMusic",
+			"MHY_ARCH_GAME/ProximitySequence"
 		});
 
 		// Uncomment if you are using Slate UI

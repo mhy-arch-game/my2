@@ -1,0 +1,34 @@
+{
+  "walls_from_disk": [
+    {
+      "label": "jiguanqiang0",
+      "bEnabled": "False",
+      "receiver_bEnabled": "True",
+      "channel": "door_light_group1"
+    },
+    {
+      "label": "jiguanqiang1",
+      "bEnabled": "False",
+      "receiver_bEnabled": "True",
+      "channel": "light_group3"
+    },
+    {
+      "label": "jiguanqiang2",
+      "bEnabled": "no interactable",
+      "receiver_bEnabled": "no receiver",
+      "channel": "-"
+    },
+    {
+      "label": "jiguanqiang3",
+      "bEnabled": "False",
+      "receiver_bEnabled": "True",
+      "channel": "door_group1"
+    },
+    {
+      "label": "jiguanqiang4",
+      "bEnabled": "False",
+      "receiver_bEnabled": "True",
+      "channel": "light_group2"
+    }
+  ]
+}
