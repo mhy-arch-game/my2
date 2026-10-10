@@ -1,0 +1,2432 @@
+{
+  "interactables": [
+    {
+      "label": "jiguanqiang0",
+      "class": "StaticMeshActor",
+      "loc": [
+        200.0,
+        -160.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "StaticMeshComponent0"
+      ]
+    },
+    {
+      "label": "jiguanqiang1",
+      "class": "StaticMeshActor",
+      "loc": [
+        -1500.0,
+        -3355.0,
+        296.5
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "StaticMeshComponent0"
+      ]
+    },
+    {
+      "label": "jiguandeng1",
+      "class": "StaticMeshActor",
+      "loc": [
+        220.0,
+        -312.0,
+        -4682.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "灯光开灭",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [
+        "PointLight"
+      ],
+      "scene_comps": [
+        "StaticMeshComponent0",
+        "PointLight",
+        "BillboardComponent_0"
+      ]
+    },
+    {
+      "label": "jiguanqiang4",
+      "class": "StaticMeshActor",
+      "loc": [
+        -7120.0,
+        -400.0,
+        1700.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "StaticMeshComponent0"
+      ]
+    },
+    {
+      "label": "jiguanqiang3",
+      "class": "StaticMeshActor",
+      "loc": [
+        -7220.0,
+        -320.0,
+        -3300.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "StaticMeshComponent0"
+      ]
+    },
+    {
+      "label": "jiguandeng2",
+      "class": "StaticMeshActor",
+      "loc": [
+        -7121.0,
+        -250.0,
+        -3132.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [
+        "PointLight"
+      ],
+      "scene_comps": [
+        "StaticMeshComponent0",
+        "PointLight",
+        "BillboardComponent_0"
+      ]
+    },
+    {
+      "label": "jiguandeng3",
+      "class": "StaticMeshActor",
+      "loc": [
+        -6801.0,
+        1630.0,
+        -2672.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [
+        "PointLight"
+      ],
+      "scene_comps": [
+        "StaticMeshComponent0",
+        "PointLight",
+        "BillboardComponent_0"
+      ]
+    },
+    {
+      "label": "men1",
+      "class": "active_door_C",
+      "loc": [
+        -1490.0,
+        -310.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men2",
+      "class": "active_door_C",
+      "loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men3",
+      "class": "active_door_C",
+      "loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men4",
+      "class": "active_door_C",
+      "loc": [
+        -2390.0,
+        1190.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men5",
+      "class": "active_door_C",
+      "loc": [
+        -2710.0,
+        1190.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men6",
+      "class": "active_door_C",
+      "loc": [
+        -3090.0,
+        1190.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men7",
+      "class": "active_door_C",
+      "loc": [
+        -2550.0,
+        1030.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men8",
+      "class": "active_door_C",
+      "loc": [
+        -2550.0,
+        790.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men9",
+      "class": "active_door_C",
+      "loc": [
+        -2710.0,
+        630.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men10",
+      "class": "active_door_C",
+      "loc": [
+        -3090.0,
+        630.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men11",
+      "class": "active_door_C",
+      "loc": [
+        -3250.0,
+        790.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men12",
+      "class": "active_door_C",
+      "loc": [
+        -3250.0,
+        1350.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men13",
+      "class": "active_door_C",
+      "loc": [
+        -3250.0,
+        1870.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men14",
+      "class": "active_door_C",
+      "loc": [
+        -3410.0,
+        1190.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men15",
+      "class": "active_door_C",
+      "loc": [
+        -4430.0,
+        2050.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men16",
+      "class": "active_door_C",
+      "loc": [
+        -5430.0,
+        2890.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men17",
+      "class": "active_door_C",
+      "loc": [
+        -6430.0,
+        3730.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men18",
+      "class": "active_door_C",
+      "loc": [
+        -8170.0,
+        680.0,
+        2510.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men19",
+      "class": "active_door_C",
+      "loc": [
+        -7350.0,
+        -10.0,
+        3700.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men20",
+      "class": "active_door_C",
+      "loc": [
+        -7210.0,
+        -250.0,
+        1700.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men21",
+      "class": "active_door_C",
+      "loc": [
+        -7950.0,
+        1510.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men23",
+      "class": "active_door_C",
+      "loc": [
+        -7780.0,
+        -3130.0,
+        3690.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men24",
+      "class": "active_door_C",
+      "loc": [
+        -8750.0,
+        -2800.0,
+        2995.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "men25",
+      "class": "active_door_C",
+      "loc": [
+        -11340.0,
+        -670.0,
+        2190.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "True",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "开门",
+      "ToggleComponentNames": "[\"DoorMesh\"]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi1",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        620.0,
+        -290.0,
+        100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        620.0,
+        -290.0,
+        -4900.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        -8935.0,
+        580.0,
+        1300.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        -8935.0,
+        580.0,
+        -3700.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        -9025.0,
+        -255.0,
+        1300.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        -9025.0,
+        -255.0,
+        -3700.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        -6945.0,
+        -265.0,
+        1700.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        -6945.0,
+        -265.0,
+        -3300.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -3100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "class": "modern_swift_actor_C",
+      "loc": [
+        -22065.0,
+        3345.0,
+        -8100.0
+      ],
+      "bEnabled": "True",
+      "bUseBuiltInToggle": "False",
+      "bToggleLights": "False",
+      "bTrackOpenState": "False",
+      "bStartOpen": "False",
+      "IsOpen": "False",
+      "prompt": "传送至过去",
+      "ToggleComponentNames": "[]",
+      "LightComponentNames": "[]",
+      "LightComponents_count": "0",
+      "light_comps_on_actor": [],
+      "scene_comps": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "switcher"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "label": "jiguandeng1",
+      "class": "StaticMeshActor",
+      "entries": [
+        {
+          "Operation": "Open",
+          "Channel": "door_light_group1",
+          "bMirrorSourceState": "True",
+          "ClosedOperation": "Close",
+          "Value": "0.0",
+          "Location": "<Struct 'Vector' (0x00000246C7F33A58) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+          "Targets": []
+        }
+      ],
+      "bAutoBindInteractable": "True",
+      "bSyncOnBeginPlay": "False"
+    },
+    {
+      "label": "jiguandeng2",
+      "class": "StaticMeshActor",
+      "entries": [
+        {
+          "Operation": "Open",
+          "Channel": "light_group2",
+          "bMirrorSourceState": "False",
+          "ClosedOperation": "Close",
+          "Value": "0.0",
+          "Location": "<Struct 'Vector' (0x00000246C7F330F8) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+          "Targets": []
+        }
+      ],
+      "bAutoBindInteractable": "True",
+      "bSyncOnBeginPlay": "False"
+    },
+    {
+      "label": "jiguandeng3",
+      "class": "StaticMeshActor",
+      "entries": [
+        {
+          "Operation": "Open",
+          "Channel": "light_group3",
+          "bMirrorSourceState": "False",
+          "ClosedOperation": "Close",
+          "Value": "0.0",
+          "Location": "<Struct 'Vector' (0x00000246C7F338D8) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+          "Targets": []
+        }
+      ],
+      "bAutoBindInteractable": "True",
+      "bSyncOnBeginPlay": "False"
+    },
+    {
+      "label": "men20",
+      "class": "active_door_C",
+      "entries": [
+        {
+          "Operation": "Open",
+          "Channel": "door_group1",
+          "bMirrorSourceState": "True",
+          "ClosedOperation": "Close",
+          "Value": "0.0",
+          "Location": "<Struct 'Vector' (0x00000246C7F33BD8) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+          "Targets": []
+        }
+      ],
+      "bAutoBindInteractable": "True",
+      "bSyncOnBeginPlay": "False"
+    }
+  ],
+  "receivers": [
+    {
+      "label": "jiguanqiang0",
+      "class": "StaticMeshActor",
+      "Channel": "door_light_group1",
+      "bEnabled": "True",
+      "bindings": [
+        {
+          "Operation": "Open",
+          "Action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>",
+          "Duration": "0.0"
+        },
+        {
+          "Operation": "Close",
+          "Action": "<InteractionOperationAction.SET_ACTOR_VISIBLE: 7>",
+          "Duration": "0.0"
+        }
+      ]
+    },
+    {
+      "label": "jiguanqiang1",
+      "class": "StaticMeshActor",
+      "Channel": "light_group3",
+      "bEnabled": "True",
+      "bindings": [
+        {
+          "Operation": "Open",
+          "Action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>",
+          "Duration": "0.0"
+        },
+        {
+          "Operation": "Close",
+          "Action": "<InteractionOperationAction.SET_ACTOR_VISIBLE: 7>",
+          "Duration": "0.0"
+        }
+      ]
+    },
+    {
+      "label": "jiguanqiang4",
+      "class": "StaticMeshActor",
+      "Channel": "light_group2",
+      "bEnabled": "True",
+      "bindings": [
+        {
+          "Operation": "Open",
+          "Action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>",
+          "Duration": "0.0"
+        },
+        {
+          "Operation": "Close",
+          "Action": "<InteractionOperationAction.SET_ACTOR_VISIBLE: 7>",
+          "Duration": "0.0"
+        }
+      ]
+    },
+    {
+      "label": "jiguanqiang3",
+      "class": "StaticMeshActor",
+      "Channel": "door_group1",
+      "bEnabled": "True",
+      "bindings": [
+        {
+          "Operation": "Open",
+          "Action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>",
+          "Duration": "0.0"
+        },
+        {
+          "Operation": "Close",
+          "Action": "None",
+          "Duration": "0.0"
+        }
+      ]
+    }
+  ],
+  "lights": [
+    {
+      "actor": "DirectionalLight",
+      "actor_class": "DirectionalLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "6.0"
+    },
+    {
+      "actor": "PointLight4",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "SpotLight",
+      "actor_class": "SpotLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "10000.0"
+    },
+    {
+      "actor": "wall_light_2",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_3",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_4",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_5",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_6",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_7",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_8",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_9",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_10",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_11",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_12",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_13",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_14",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_15",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_16",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_17",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_18",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_19",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_20",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_21",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_22",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_23",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_24",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_25",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_26",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_27",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_28",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_29",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_30",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_31",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_32",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_33",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_34",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_35",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_36",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_37",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_38",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_39",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_40",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_41",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_42",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_43",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_44",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_45",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_46",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_47",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_48",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_49",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_50",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_51",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_52",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_53",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_54",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_55",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_56",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_57",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_58",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_59",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "RectLight",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "wall_light_60",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_61",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_62",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_63",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "jiguandeng1",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_65",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_66",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_67",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_68",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_69",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_70",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_71",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_72",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_73",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_74",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_75",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_76",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_77",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_78",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_79",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_80",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_81",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_82",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_83",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_84",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_85",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_86",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_87",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_88",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_89",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_90",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_92",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_93",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_94",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_95",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_91",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_96",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_97",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_98",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_99",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "wall_light_100",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "RectLight3",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "10000.0"
+    },
+    {
+      "actor": "SpotLight2",
+      "actor_class": "SpotLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "10000.0"
+    },
+    {
+      "actor": "SpotLight3",
+      "actor_class": "SpotLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "10000.0"
+    },
+    {
+      "actor": "SpotLight4",
+      "actor_class": "SpotLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "10000.0"
+    },
+    {
+      "actor": "RectLight4",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "10000.0"
+    },
+    {
+      "actor": "PointLight3",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight5",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "wall_light_101",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "jiguandeng2",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "jiguandeng3",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "L3deng1",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "L3deng1.1",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "L3deng2",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "L3deng3",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "L3deng2.2",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "L3deng3.3",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "30.0"
+    },
+    {
+      "actor": "PointLight6",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "160.0"
+    },
+    {
+      "actor": "PointLight7",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "160.0"
+    },
+    {
+      "actor": "PointLight8",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "160.0"
+    },
+    {
+      "actor": "SpotLight5",
+      "actor_class": "SpotLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "5000.0"
+    },
+    {
+      "actor": "RectLight2",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "wall_light_102",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "150.0"
+    },
+    {
+      "actor": "wall_light_103",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "150.0"
+    },
+    {
+      "actor": "wall_light_104",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "150.0"
+    },
+    {
+      "actor": "wall_light_105",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "150.0"
+    },
+    {
+      "actor": "wall_light_106",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "150.0"
+    },
+    {
+      "actor": "wall_light_107",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "150.0"
+    },
+    {
+      "actor": "wall_light_108",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "150.0"
+    },
+    {
+      "actor": "wall_light_109",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "150.0"
+    },
+    {
+      "actor": "wall_light_110",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_111",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_112",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_113",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_114",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_115",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_116",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_117",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_118",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_120",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_121",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_122",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_124",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_125",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_126",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_128",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "wall_light_129",
+      "actor_class": "StaticMeshActor",
+      "comp": "PointLight",
+      "visible": "True",
+      "intensity": "100.0"
+    },
+    {
+      "actor": "PointLight",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight2",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight9",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight10",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight11",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight6",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight8",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight9",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight10",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight11",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight7",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight12",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight13",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight14",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight15",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight16",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight12",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight13",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight14",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight15",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight16",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight17",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight18",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight5",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight17",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight18",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight19",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight20",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight21",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    },
+    {
+      "actor": "RectLight22",
+      "actor_class": "RectLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "8.0"
+    }
+  ],
+  "counts": {
+    "interactables": 41,
+    "links": 4,
+    "receivers": 4,
+    "light_comps": 179
+  }
+}

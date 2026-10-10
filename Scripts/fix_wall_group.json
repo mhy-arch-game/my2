@@ -1,0 +1,103 @@
+{
+  "masters": [
+    {
+      "label": "jiguandeng1",
+      "rows": [
+        {
+          "before_mirror": "True",
+          "after_mirror": "False",
+          "op": "Open",
+          "channel": "door_light_group1"
+        }
+      ],
+      "write": "ok"
+    },
+    {
+      "label": "jiguandeng2",
+      "rows": [
+        {
+          "before_mirror": "False",
+          "after_mirror": "False",
+          "op": "Open",
+          "channel": "light_group2"
+        }
+      ],
+      "write": "ok"
+    },
+    {
+      "label": "jiguandeng3",
+      "rows": [
+        {
+          "before_mirror": "False",
+          "after_mirror": "False",
+          "op": "Open",
+          "channel": "light_group3"
+        }
+      ],
+      "write": "ok"
+    },
+    {
+      "label": "men20",
+      "rows": [
+        {
+          "before_mirror": "True",
+          "after_mirror": "False",
+          "op": "Open",
+          "channel": "door_group1"
+        }
+      ],
+      "write": "ok"
+    }
+  ],
+  "slaves": [
+    {
+      "label": "jiguanqiang0",
+      "before": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)",
+        "(Operation=\"Close\",Action=SetActorVisible,Duration=0.000000)"
+      ],
+      "write": "ok",
+      "after": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)"
+      ],
+      "channel": "door_light_group1"
+    },
+    {
+      "label": "jiguanqiang1",
+      "before": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)",
+        "(Operation=\"Close\",Action=SetActorVisible,Duration=0.000000)"
+      ],
+      "write": "ok",
+      "after": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)"
+      ],
+      "channel": "light_group3"
+    },
+    {
+      "label": "jiguanqiang3",
+      "before": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)",
+        "(Operation=\"Close\",Action=SetActorVisible,Duration=0.000000)"
+      ],
+      "write": "ok",
+      "after": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)"
+      ],
+      "channel": "door_group1"
+    },
+    {
+      "label": "jiguanqiang4",
+      "before": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)",
+        "(Operation=\"Close\",Action=SetActorVisible,Duration=0.000000)"
+      ],
+      "write": "ok",
+      "after": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)"
+      ],
+      "channel": "light_group2"
+    }
+  ],
+  "save_level": "ok"
+}

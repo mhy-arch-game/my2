@@ -1,0 +1,171 @@
+{
+  "lamps": [
+    {
+      "label": "jiguandeng1",
+      "bToggleLights": "True",
+      "LightComponentNames": "[\"PointLight\"]",
+      "bStartOpen": "False",
+      "bTrackOpenState": "False"
+    },
+    {
+      "label": "jiguandeng2",
+      "bToggleLights": "True",
+      "LightComponentNames": "[\"PointLight\"]",
+      "bStartOpen": "False",
+      "bTrackOpenState": "False"
+    },
+    {
+      "label": "jiguandeng3",
+      "bToggleLights": "True",
+      "LightComponentNames": "[\"PointLight\"]",
+      "bStartOpen": "False",
+      "bTrackOpenState": "False"
+    }
+  ],
+  "masters": [
+    {
+      "label": "jiguandeng1",
+      "op": "Open",
+      "channel": "door_light_group1",
+      "mirror": "False",
+      "closed": "Close"
+    },
+    {
+      "label": "jiguandeng2",
+      "op": "Open",
+      "channel": "light_group2",
+      "mirror": "False",
+      "closed": "Close"
+    },
+    {
+      "label": "jiguandeng3",
+      "op": "Open",
+      "channel": "light_group3",
+      "mirror": "False",
+      "closed": "Close"
+    },
+    {
+      "label": "men20",
+      "op": "Open",
+      "channel": "door_group1",
+      "mirror": "False",
+      "closed": "Close"
+    }
+  ],
+  "slaves": [
+    {
+      "label": "jiguanqiang0",
+      "channel": "door_light_group1",
+      "rows": [
+        {
+          "op": "Open",
+          "action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>"
+        }
+      ]
+    },
+    {
+      "label": "jiguanqiang1",
+      "channel": "light_group3",
+      "rows": [
+        {
+          "op": "Open",
+          "action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>"
+        }
+      ]
+    },
+    {
+      "label": "jiguanqiang4",
+      "channel": "light_group2",
+      "rows": [
+        {
+          "op": "Open",
+          "action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>"
+        }
+      ]
+    },
+    {
+      "label": "jiguanqiang3",
+      "channel": "door_group1",
+      "rows": [
+        {
+          "op": "Open",
+          "action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>"
+        }
+      ]
+    }
+  ],
+  "dry_run": [
+    {
+      "master": "jiguandeng1",
+      "slave": "jiguanqiang0",
+      "step": 1,
+      "bActive": true,
+      "发操作": "Open",
+      "命中": "SET_ACTOR_HIDDEN",
+      "从物结果": "隐藏"
+    },
+    {
+      "master": "jiguandeng1",
+      "slave": "jiguanqiang0",
+      "step": 2,
+      "bActive": false,
+      "发操作": "Open",
+      "命中": "SET_ACTOR_HIDDEN",
+      "从物结果": "显形"
+    },
+    {
+      "master": "jiguandeng2",
+      "slave": "jiguanqiang4",
+      "step": 1,
+      "bActive": true,
+      "发操作": "Open",
+      "命中": "SET_ACTOR_HIDDEN",
+      "从物结果": "隐藏"
+    },
+    {
+      "master": "jiguandeng2",
+      "slave": "jiguanqiang4",
+      "step": 2,
+      "bActive": false,
+      "发操作": "Open",
+      "命中": "SET_ACTOR_HIDDEN",
+      "从物结果": "显形"
+    },
+    {
+      "master": "jiguandeng3",
+      "slave": "jiguanqiang1",
+      "step": 1,
+      "bActive": true,
+      "发操作": "Open",
+      "命中": "SET_ACTOR_HIDDEN",
+      "从物结果": "隐藏"
+    },
+    {
+      "master": "jiguandeng3",
+      "slave": "jiguanqiang1",
+      "step": 2,
+      "bActive": false,
+      "发操作": "Open",
+      "命中": "SET_ACTOR_HIDDEN",
+      "从物结果": "显形"
+    },
+    {
+      "master": "men20",
+      "slave": "jiguanqiang3",
+      "step": 1,
+      "bActive": true,
+      "发操作": "Open",
+      "命中": "SET_ACTOR_HIDDEN",
+      "从物结果": "隐藏"
+    },
+    {
+      "master": "men20",
+      "slave": "jiguanqiang3",
+      "step": 2,
+      "bActive": false,
+      "发操作": "Open",
+      "命中": "SET_ACTOR_HIDDEN",
+      "从物结果": "显形"
+    }
+  ]
+}

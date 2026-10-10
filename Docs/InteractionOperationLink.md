@@ -403,9 +403,42 @@ C++ 不需要改。内置的八种 `Action` 只是"接收端偷懒用的默认�
 | 从物完全不动，日志有"应用操作" | 从物 `Interactable` 的 `bUseBuiltInToggle` / `bToggleLights` / `bTrackOpenState` 都没开 ⇒ `SetOpen()` 直接返回 |
 | 只有"开"有反应，"关"没反应 | 用了旧写法 `Mirror Source State=☑` 但 `Bindings` 只写了一行 |
 | 主物按 E 后从物收到的永远是"关" | 主物没有状态位（见 9.1 的 ⚠） |
-| 墙方向反了（开 → 墙消失） | 用了 `SetActorHidden`（隐藏 = `bActive`）；改用 **`SetActorVisible`** |
+| 墙方向反了（开 → 墙消失） | 用了 `SetActorHidden`（隐藏 = `bActive`）；改用 **`SetActorVisible`**（显形 = `bActive`） |
+| **从物卡在已切换状态、第二次交互没反应** | 见 §9.9 极性陷阱（两行写法必错） |
+| Binding 的 Action 显示为 `(INVALID)` | 该值越界（多半来自枚举版本不同的编辑器/分支）⇒ 重新选一次动作即可 |
 | 关卡一开始主从不一致 | 用 `Sync On Begin Play`，或把两边 `bStartOpen` 对齐 |
 | 同一组里别的物体也动了 | 它们 `Channel` 相同 —— 频道就是"组"的语义，要独立就换频道 |
+
+### 9.9 ★ 极性陷阱：从物"卡在 1 状态"的两个典型原因（实测）
+
+`SetActorHidden` 与 `SetActorVisible` **都读操作里的 `bActive`**，只是极性相反：
+
+| Action | 实现 | `bActive=true` | `bActive=false` |
+|---|---|---|---|
+| `Set Actor Hidden` | `SetActorHiddenInGame(bActive)` | **隐藏** | **显形** |
+| `Set Actor Visible` | `SetActorHiddenInGame(!bActive)` | **显形** | **隐藏** |
+
+**错误写法（实测卡住的配置）**：主物 `MirrorSourceState=☑`、从物两行
+`Open→SetActorHidden` + `Close→SetActorVisible`。
+第一次交互：`bActive=true`、发 `Open` → 隐藏 ✓；
+第二次交互：`bActive=false`、发 `Close` → `SetActorVisible` 在 `bActive=false` 时**还是隐藏** ✗
+⇒ 两行都在隐藏，从物看起来"永远停在已切换状态" ✓ 完全吻合"0-1-0 后回到不了 0"。
+
+**推荐写法（单行 + 状态驱动）**——本项目 4 组机关墙已按此重写：
+
+| 端 | 配置 |
+|---|---|
+| 主物 `Interaction Link → Entries` | `Operation = Open`（名字任意）、`Mirror Source State = ✗`、`Channel = <组名>` |
+| 从物 `Bindings` | **只一行**：`Open → Set Actor Hidden` |
+
+于是：主物开 → `bActive=true` → 墙隐藏；主物关 → `bActive=false` → 墙显形 ✓（一次交互一次翻转）。
+
+> 若必须用两行写法（`MirrorSourceState=☑` + `Open`/`Close`），**两行要用同一个动作**
+> （都填 `SetActorHidden`），绝不能一行 `Hidden` 一行 `Visible`。
+
+**另一个同症状原因**：Binding 的 `Action` 存成了越界值 —— 编辑器里它读作 `None`、
+`export_text()` 显示 `Action=(INVALID)`，命中该行时 switch 落到 default，什么都不做。
+多半来自枚举版本不同的编辑器/分支。解决办法：重新选一次动作（本项目 `jiguanqiang3` 就是这一例）。
 
 ---
 
