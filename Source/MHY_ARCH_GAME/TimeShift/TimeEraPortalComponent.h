@@ -160,6 +160,24 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal|Placement")
 	bool bPlaceOnGround = true;
 
+	/**
+	 * 落点水平避开传送装置本身（默认开）。
+	 *
+	 * 传送装置往往又细又高（本项目的 switcher 只有 21×21×100），而角色胶囊半径 34、
+	 * 半高 96 —— 把胶囊摆在装置原点会把它【整个吞进角色身体里】：第一人称下玩家看不见它，
+	 * 交互也随之中断，表现就是"传送交互物消失"（编辑器从外面看是正常的）。
+	 *
+	 * 打开后落点沿装置自身的 +X 方向额外推开
+	 * 「装置水平半径 + 胶囊半径 + ArrivalClearance」，落在装置【旁边】的地面上。
+	 * 关掉则回到"落在装置原点"；若装置是实心的，请自行确认它不会被胶囊吞掉。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal|Placement")
+	bool bArriveClearOfDevice = true;
+
+	/** 避开装置时额外的水平余量（cm）。 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal|Placement", meta=(EditCondition="bArriveClearOfDevice", ClampMin="0.0"))
+	float ArrivalClearance = 5.0f;
+
 	/** Half-length of the ground trace around the counterpart. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TimeShift|Portal|Placement", meta=(EditCondition="bPlaceOnGround", ClampMin="0.0"))
 	float GroundTraceDistance = 1000.0f;
@@ -343,6 +361,12 @@ private:
 
 	/** Capsule / bounds half height, used to sit the traveller on the floor. */
 	float GetTravelerHalfHeight(const AActor* Traveler) const;
+
+	/** 角色胶囊的水平半径（拿不到胶囊时退化为根组件的水平外接半径）。 */
+	float GetTravelerRadius(const AActor* Traveler) const;
+
+	/** 装置的水平外接半径（以 actor 原点为圆心，量它的可见图元）。 */
+	float GetDeviceHorizontalRadius(const AActor* Device) const;
 
 	/** The pawn to move: pawns are used as-is, controllers are followed to their pawn. */
 	AActor* ResolveTraveler(AActor* Interactor) const;

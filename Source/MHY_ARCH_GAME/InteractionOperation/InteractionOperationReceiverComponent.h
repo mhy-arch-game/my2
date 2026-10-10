@@ -49,6 +49,9 @@ struct FInteractionOperationBinding
  *   - 若 owner 上没有 InteractableComponent，但有灯光组件，则退化为直接驱动这些灯
  *     （可见性 + 记录下来的原始强度），让一盏"光秃秃的灯"也能被联动。
  *
+ *  从物（只做 0-1 跟随）：用一条 "任意操作名 -> MirrorActive" 映射即可，
+ *  它会读操作里的 bActive（= 主物当前开/关）来设置自己；墙这类"显隐"用 SetActorVisible。
+ *
  *  寻址：本组件通过 Channel 暴露自己；发送方按同名频道广播即可命中。
  *  想在蓝图里做自定义行为（而不是用这张映射表），可以直接让蓝图类实现
  *  IInteractionOperationReceiver 接口，或监听 OnOperationApplied / OnOperationReceived。

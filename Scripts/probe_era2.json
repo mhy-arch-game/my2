@@ -1,0 +1,267 @@
+{
+  "devices": [
+    {
+      "label": "kongjianchuansuoqi1",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.MODERN: 1>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.ANCIENT: 0>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "class": "modern_swift_actor_C",
+      "actor_bHidden": "False",
+      "era": {
+        "Era": "<TimeEra.MODERN: 1>",
+        "bExistsInBothEras": "False",
+        "bGateVisibility": "True",
+        "bGateCollision": "True",
+        "bGateTick": "False"
+      },
+      "portal": {
+        "bSwitchEra": "True",
+        "bAutoDetectEra": "True",
+        "OwnerEra": "<TimeEra.ANCIENT: 0>",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "mesh": {
+        "comp": "switcher",
+        "bHiddenInGame": "False",
+        "editor_visible": "True"
+      }
+    }
+  ],
+  "level_era_counts": {
+    "Ancient": 5,
+    "Modern": 5,
+    "both": 0
+  },
+  "player_starts": [
+    {
+      "label": "PlayerStart",
+      "class": "PlayerStart",
+      "loc": [
+        0.0,
+        0.0,
+        3182.0
+      ]
+    }
+  ],
+  "hidden_at_runtime_if_initial_era_ancient": [
+    "kongjianchuansuoqi2",
+    "kongjianchuansuoqi4",
+    "kongjianchuansuoqi6",
+    "kongjianchuansuoqi8",
+    "kongjianchuansuoqi10"
+  ]
+}
