@@ -1,0 +1,42 @@
+{
+  "has_MovementAudioInterface": true,
+  "has_MovementAudioComponent": true,
+  "has_MovementAudioState": true,
+  "has_MovementStateMusic": true,
+  "has_MovementAudioEvent": true,
+  "states": [
+    "CROUCH",
+    "IDLE",
+    "IN_AIR",
+    "RUN",
+    "SPRINT",
+    "WALK"
+  ],
+  "music_fields": [
+    "assign",
+    "cast",
+    "copy",
+    "export_text",
+    "get_editor_property",
+    "import_text",
+    "music",
+    "set_editor_properties",
+    "set_editor_property",
+    "state",
+    "static_struct",
+    "to_tuple",
+    "volume_multiplier"
+  ],
+  "defaults": {
+    "WalkSpeedThreshold": "10.0",
+    "SprintSpeedThreshold": "500.0",
+    "bPlayMusicPerState": "True",
+    "StateMusic": "[]",
+    "MusicFadeTime": "0.3499999940395355",
+    "bDispatchToInterfaceListeners": "True",
+    "bLogStateChanges": "False",
+    "RunSpeedThreshold": "300.0"
+  },
+  "get_movement_state": "<MovementAudioState.IDLE: 0>",
+  "debug_string": "MovementAudio None | state=Idle (站立) | speed2D=0 (walk>10 run>300 sprint>500) | run=no air=no crouch=no | music=none fade=0.35 | iface=on"
+}

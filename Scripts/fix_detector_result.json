@@ -1,0 +1,50 @@
+{
+  "ia_interact": "IA_Interact",
+  "found": [
+    "Climb",
+    "InteractionDetector",
+    "MotionWarping",
+    "MovementAudio",
+    "Sprint",
+    "TimeShiftInput",
+    "TimeShiftTravel"
+  ],
+  "detector_applied": {
+    "InteractAction": "ok",
+    "PickMode": "ok",
+    "TraceDistance": "ok",
+    "InteractionRadius": "ok",
+    "MinFacingCosine": "ok",
+    "bDrawDebug": "ok",
+    "FocusStickinessBonus": "ok",
+    "bRegisterInteractContext": "ok"
+  },
+  "detector_readback": {
+    "InteractAction": "<Object '/Game/Input/Actions/IA_Interact.IA_Interact' (0x000002D0D201D8C0) Class 'InputAction'>",
+    "PickMode": "<InteractionPickMode.LINE_TRACE: 1>",
+    "TraceDistance": "400.0",
+    "InteractionRadius": "250.0",
+    "MinFacingCosine": "0.0",
+    "bDrawDebug": "True",
+    "bRegisterInteractContext": "True",
+    "FocusStickinessBonus": "150.0"
+  },
+  "wiring": {
+    "Climb": {},
+    "InteractionDetector": {
+      "InteractAction": "<Object '/Game/Input/Actions/IA_Interact.IA_Interact' (0x000002D0D201D8C0) Class 'InputAction'>",
+      "bRegisterInteractContext": "True"
+    },
+    "MotionWarping": {},
+    "MovementAudio": {},
+    "TimeShiftTravel": {},
+    "TimeShiftInput": {},
+    "Sprint": {
+      "SprintAction": "None",
+      "SprintKey": "<Struct 'Key' (0x000002D0D1EF4D80) {}>",
+      "bRegisterSprintContext": "True"
+    }
+  },
+  "compile": "ok",
+  "save": "ok"
+}

@@ -9,11 +9,17 @@
 /**
  *  Generic interaction contract for controllable / interactive actors.
  *
- *  Generalises the existing variant-local ISideScrollingInteractable by adding
- *  focus and prompt support, so a detector can highlight the focused structure
- *  and a HUD can show a prompt, without knowing the concrete class.
+ *  The detector (UInteractionDetectorComponent) only ever talks to this interface,
+ *  so it never knows concrete types. Every object supplies its OWN logic:
+ *  implement this interface on the class (C++ or Blueprint), or - if you do not
+ *  want to touch the class - drop a UInteractableComponent on the actor instead
+ *  (the detector accepts either).
+ *
+ *  Declared Blueprintable so designers can implement it per-object in Blueprint
+ *  without writing C++; each method is a BlueprintNativeEvent, so C++ classes
+ *  override the _Implementation form.
  */
-UINTERFACE(MinimalAPI, NotBlueprintable)
+UINTERFACE(MinimalAPI, Blueprintable)
 class UInteractableInterface : public UInterface
 {
 	GENERATED_BODY()
@@ -25,23 +31,28 @@ class IInteractableInterface
 
 public:
 
-	/** Whether the actor can currently be interacted with by Instigator. */
-	UFUNCTION(BlueprintCallable, Category="Interactable")
-	virtual bool CanInteract(AActor* Interactor) const = 0;
+	/** Whether the actor can currently be interacted with by Interactor. */
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Interactable")
+	bool CanInteract(AActor* Interactor);
+	virtual bool CanInteract_Implementation(AActor* Interactor) { return true; }
 
-	/** Perform the interaction. */
-	UFUNCTION(BlueprintCallable, Category="Interactable")
-	virtual void OnInteract(AActor* Interactor) = 0;
+	/** Perform the interaction. Per-object logic goes here. */
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Interactable")
+	void OnInteract(AActor* Interactor);
+	virtual void OnInteract_Implementation(AActor* Interactor) {}
 
 	/** Prompt shown to the player while this actor is focused. */
-	UFUNCTION(BlueprintCallable, Category="Interactable")
-	virtual FText GetInteractionPrompt() const = 0;
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Interactable")
+	FText GetInteractionPrompt();
+	virtual FText GetInteractionPrompt_Implementation() { return FText::GetEmpty(); }
 
 	/** Called when this actor becomes the focused interaction candidate. */
-	UFUNCTION(BlueprintCallable, Category="Interactable")
-	virtual void OnFocusBegin(AActor* Interactor) {}
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Interactable")
+	void OnFocusBegin(AActor* Interactor);
+	virtual void OnFocusBegin_Implementation(AActor* Interactor) {}
 
 	/** Called when this actor stops being the focused interaction candidate. */
-	UFUNCTION(BlueprintCallable, Category="Interactable")
-	virtual void OnFocusEnd(AActor* Interactor) {}
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Interactable")
+	void OnFocusEnd(AActor* Interactor);
+	virtual void OnFocusEnd_Implementation(AActor* Interactor) {}
 };

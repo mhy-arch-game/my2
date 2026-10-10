@@ -79,3 +79,7 @@ DerivedDataCache/*
 /Content/texture/plastered_wall_02_nor_gl_4k.uasset
 /Content/texture/checkered_pavement_tiles_nor_gl_4k.uasset
 /Content/texture/plastered_wall_02_rough_4k.uasset
+
+# Project documentation IS versioned. The former "/Docs/" ignore rule was lifted
+# on request so the design docs travel with the code. Keep them in sync.
+# (Only genuinely local scratch output should be ignored, never Docs/.)

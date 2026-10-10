@@ -41,11 +41,11 @@ public:
 	AInteractiveStructure();
 
 	// ~begin IInteractableInterface
-	virtual bool CanInteract(AActor* Interactor) const override;
-	virtual void OnInteract(AActor* Interactor) override;
-	virtual FText GetInteractionPrompt() const override;
-	virtual void OnFocusBegin(AActor* Interactor) override;
-	virtual void OnFocusEnd(AActor* Interactor) override;
+	virtual bool CanInteract_Implementation(AActor* Interactor) override;
+	virtual void OnInteract_Implementation(AActor* Interactor) override;
+	virtual FText GetInteractionPrompt_Implementation() override;
+	virtual void OnFocusBegin_Implementation(AActor* Interactor) override;
+	virtual void OnFocusEnd_Implementation(AActor* Interactor) override;
 	// ~end IInteractableInterface
 
 	/** Move the structure to a specific state. */

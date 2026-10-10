@@ -1,0 +1,20 @@
+{
+  "class": true,
+  "enum": [
+    "COUNTERPART_OBJECT",
+    "VERTICAL_OFFSET"
+  ],
+  "defaults": {
+    "TargetMode": "<TimeEraPortalTargetMode.COUNTERPART_OBJECT: 0>",
+    "VerticalOffset": "1000.0",
+    "OwnerEra": "<TimeEra.ANCIENT: 0>",
+    "bAutoDetectEra": "True",
+    "CounterpartActor": "None",
+    "CounterpartId": "None",
+    "TeleportOffset": "<Struct 'Vector' (0x000002ADA4EDC118) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+    "bPlaceOnGround": "True"
+  },
+  "owner_era_write": "ok",
+  "owner_era_readback": "<TimeEra.MODERN: 1>",
+  "debug_string": "Portal None | mode=Counterpart | ownerEra=Modern (OwnerEra(fallback)) | targetEra=Ancient | verticalOffset=1000.0 | dest=<解析失败: 传送装置没有 owner。> | counterpart=none | locked=no"
+}

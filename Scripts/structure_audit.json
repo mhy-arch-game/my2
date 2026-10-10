@@ -1,0 +1,4 @@
+{
+  "fatal": "TypeError(\"call() got an unexpected keyword argument 'recursive'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/audit_structure.py\", line 37, in <module>\n    main()\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/audit_structure.py\", line 23, in main\n    err, assets = call(lib.list_assets, folder, recursive=True, include_folder=False)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: call() got an unexpected keyword argument 'recursive'\n"
+}

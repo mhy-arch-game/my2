@@ -9,6 +9,7 @@
 #include "MovementAudioComponent.generated.h"
 
 class ACharacter;
+class UAudioComponent;
 class USoundAttenuation;
 class USoundBase;
 class USoundConcurrency;
@@ -24,6 +25,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnMovementLand, FName, SurfaceName
 
 /** Walk <-> run changed. */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMovementRunStateChanged, bool, bRunning);
+
+/** 持续运动状态变化（切音乐 / 动画 / UI 都用它）。 */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnMovementStateChanged, EMovementAudioState, NewState, EMovementAudioState, PreviousState);
 
 /**
  *  UMovementAudioComponent - the movement audio hub attached to a character.
@@ -67,6 +71,10 @@ public:
 	UPROPERTY(BlueprintAssignable, Category="MovementAudio")
 	FOnMovementRunStateChanged OnRunStateChanged;
 
+	/** 持续运动状态变化时广播（第一次进入状态也会广播一次，便于立即起播音乐）。 */
+	UPROPERTY(BlueprintAssignable, Category="MovementAudio")
+	FOnMovementStateChanged OnMovementStateChanged;
+
 	// -- triggers (called by the AnimNotify, or any external system) ---------
 
 	/** Play/broadcast a footstep for the surface under the character. */
@@ -100,6 +108,14 @@ public:
 	/** Name of the surface at an arbitrary world location. */
 	UFUNCTION(BlueprintPure, Category="MovementAudio")
 	FName GetSurfaceNameAtLocation(const FVector& WorldLocation) const;
+
+	/** 当前持续运动状态。 */
+	UFUNCTION(BlueprintPure, Category="MovementAudio")
+	EMovementAudioState GetMovementState() const { return MovementState; }
+
+	/** 一行人类可读状态（状态 / 速度与三个阈值 / 蹲伏 / 音乐 / 是否派发接口），给 Print String 用。 */
+	UFUNCTION(BlueprintPure, Category="MovementAudio")
+	FString GetMovementAudioDebugString() const;
 
 protected:
 	virtual void BeginPlay() override;
@@ -160,6 +176,38 @@ protected:
 	UPROPERTY(EditAnywhere, Category="MovementAudio|Detection")
 	TEnumAsByte<ECollisionChannel> SurfaceTraceChannel = ECC_Visibility;
 
+	// -- 持续运动状态 / 状态音乐 ------------------------------------------
+	/** 水平速度高于它算"行走"，再低算站立。 */
+	UPROPERTY(EditAnywhere, Category="MovementAudio|States", meta=(ClampMin="0.0"))
+	float WalkSpeedThreshold = 10.0f;
+
+	/** 水平速度高于它算"疾跑"（应介于 RunSpeedThreshold 与你的疾跑速度之间）。 */
+	UPROPERTY(EditAnywhere, Category="MovementAudio|States", meta=(ClampMin="0.0"))
+	float SprintSpeedThreshold = 500.0f;
+
+	/** 状态变化时**按状态循环播放音乐**。 */
+	UPROPERTY(EditAnywhere, Category="MovementAudio|States")
+	bool bPlayMusicPerState = true;
+
+	/** 每个状态的循环音乐（软引用，可留空 = 该状态不放音乐）。 */
+	UPROPERTY(EditAnywhere, Category="MovementAudio|States")
+	TArray<FMovementStateMusic> StateMusic;
+
+	/** 音乐淡入 / 淡出时长（秒）。0 = 硬切；默认值 ≈ 交叉淡化。 */
+	UPROPERTY(EditAnywhere, Category="MovementAudio|States", meta=(ClampMin="0.0"))
+	float MusicFadeTime = 0.35f;
+
+	/**
+	 * 把状态变化派发给世界里实现了 IMovementAudioInterface 的对象。
+	 * 打开后，"音乐导演"之类的旁观者不需要知道具体角色是谁。
+	 */
+	UPROPERTY(EditAnywhere, Category="MovementAudio|States")
+	bool bDispatchToInterfaceListeners = true;
+
+	/** 状态变化时打一行日志（排查"状态没变 / 音乐没换"用）。 */
+	UPROPERTY(EditAnywhere, Category="MovementAudio|States")
+	bool bLogStateChanges = false;
+
 private:
 	UPROPERTY(Transient)
 	TObjectPtr<ACharacter> CachedCharacter;
@@ -172,6 +220,34 @@ private:
 
 	float DistanceSinceLastFootstep = 0.0f;
 	FVector LastLocation = FVector::ZeroVector;
+
+	/** 当前持续运动状态。 */
+	EMovementAudioState MovementState = EMovementAudioState::Idle;
+
+	/**
+	 * 第一次算出的状态必须**强制应用一次**，否则初始就是 Idle 时
+	 * SetMovementState(Idle) 会被"没变化"挡掉，Idle 音乐永远起播不了。
+	 */
+	bool bMovementStateApplied = false;
+
+	/** 正在播放的状态音乐。自动销毁，所以判定要用 IsValid。 */
+	UPROPERTY(Transient)
+	TObjectPtr<UAudioComponent> MusicComponent;
+
+	/** 由速度 + 滞空 + 蹲伏推导当前状态。 */
+	EMovementAudioState ComputeMovementState(float Speed2D) const;
+
+	/** 状态变化统一入口：广播 → 换音乐 → 派发接口 → 日志。 */
+	void SetMovementState(EMovementAudioState NewState);
+
+	/** 按状态切换循环音乐（旧的淡出、新的淡入）。 */
+	void UpdateStateMusic(EMovementAudioState NewState);
+
+	/** 淡出并释放当前状态音乐。 */
+	void StopStateMusic();
+
+	/** 把状态变化派发给 IMovementAudioInterface 的实现者。 */
+	void DispatchStateToInterfaceListeners(EMovementAudioState NewState, EMovementAudioState PreviousState);
 
 	UFUNCTION()
 	void HandleLanded(const FHitResult& Hit);

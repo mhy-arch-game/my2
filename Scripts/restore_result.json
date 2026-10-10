@@ -1,0 +1,264 @@
+{
+  "steps": {
+    "add_components": {
+      "root": "CapsuleComponent",
+      "before": [
+        "None",
+        "CapsuleComponent",
+        "ArrowComponent",
+        "FirstPersonCamera",
+        "Mesh",
+        "FirstPersonMesh",
+        "FirstPersonCamera",
+        "CharacterMovement"
+      ],
+      "results": [
+        {
+          "name": "InteractionDetector",
+          "add": "ok"
+        },
+        {
+          "name": "MotionWarping",
+          "add": "ok"
+        },
+        {
+          "name": "Climb",
+          "add": "ok"
+        },
+        {
+          "name": "MovementAudio",
+          "add": "ok"
+        },
+        {
+          "name": "TimeShiftTravel",
+          "add": "ok"
+        },
+        {
+          "name": "TimeShiftInput",
+          "add": "ok"
+        },
+        {
+          "name": "Sprint",
+          "add": "ok"
+        }
+      ]
+    },
+    "compile": "ok",
+    "save_bp": "ok",
+    "doors": {
+      "replaced": [
+        {
+          "label": "men1",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men2",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men3",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men4",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men5",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men6",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men7",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men8",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men9",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men10",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men11",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men12",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men13",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men14",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men15",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men16",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        },
+        {
+          "label": "men17",
+          "class_before": "StaticMeshActor",
+          "class_after": "active_door_C",
+          "prompt": "开门",
+          "use_axis": true,
+          "pivot": [
+            0.0,
+            -21.83,
+            0.0
+          ]
+        }
+      ],
+      "missing": [],
+      "frame_count": 28,
+      "frame_pawn_sample": {
+        "label": "menkuang1",
+        "pawn": "<CollisionResponseType.ECR_IGNORE: 0>"
+      },
+      "save": "ok"
+    }
+  }
+}

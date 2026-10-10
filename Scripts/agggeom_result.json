@@ -1,0 +1,27 @@
+{
+  "Door": {
+    "asset": "Door",
+    "meshes": [],
+    "box_elems": "AttributeError(\"'KAggregateGeom' object has no attribute 'box_elems'\")",
+    "convex_elems": "AttributeError(\"'KAggregateGeom' object has no attribute 'convex_elems'\")",
+    "sphere_elems": "AttributeError(\"'KAggregateGeom' object has no attribute 'sphere_elems'\")",
+    "sphyl_elems": "AttributeError(\"'KAggregateGeom' object has no attribute 'sphyl_elems'\")"
+  },
+  "Door_Frame": {
+    "asset": "Door_Frame",
+    "meshes": [],
+    "box_elems": "AttributeError(\"'KAggregateGeom' object has no attribute 'box_elems'\")",
+    "convex_elems": "AttributeError(\"'KAggregateGeom' object has no attribute 'convex_elems'\")",
+    "sphere_elems": "AttributeError(\"'KAggregateGeom' object has no attribute 'sphere_elems'\")",
+    "sphyl_elems": "AttributeError(\"'KAggregateGeom' object has no attribute 'sphyl_elems'\")"
+  },
+  "capsules": [
+    {
+      "name": "CollisionCylinder",
+      "get_scaled_capsule_radius": "33.99907684326172",
+      "get_scaled_capsule_half_height": "96.0",
+      "get_unscaled_capsule_radius": "33.99907684326172",
+      "get_unscaled_capsule_half_height": "96.0"
+    }
+  ]
+}

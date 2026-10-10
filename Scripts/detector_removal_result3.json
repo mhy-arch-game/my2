@@ -1,0 +1,227 @@
+{
+  "vars_before": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "bp_detector_found": true,
+  "bp_delete_attempts": {
+    "delete_subobjects_ctx": "ERR TypeError(\"SubobjectDataSubsystem: Failed to convert parameter 'context_handle' when calling function 'SubobjectDataSubsystem.DeleteSubobjects' on 'SubobjectDataSubsystem",
+    "delete_subobject_ctx": "ERR TypeError(\"SubobjectDataSubsystem: Failed to convert parameter 'subobject_to_delete' when calling function 'SubobjectDataSubsystem.DeleteSubobject' on 'SubobjectDataSubsy"
+  },
+  "vars_after_a": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "vars_after_b": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable",
+    "InteractionDetector"
+  ],
+  "compile_bp": "ok",
+  "save_bp": "ok",
+  "door_count": 17,
+  "instances_with_detector": 17,
+  "instance_route_cleaned": 0,
+  "instance_route_sample": "ok",
+  "save_level": true,
+  "after_reload": [
+    {
+      "label": "active_door",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men2",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men3",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men4",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men5",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men6",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men7",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men8",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men9",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men10",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men11",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men12",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men13",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men14",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men15",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men16",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    },
+    {
+      "label": "men17",
+      "has_detector": true,
+      "components": [
+        "DefaultSceneRoot",
+        "BillboardComponent_1",
+        "DoorMesh",
+        "InteractionDetector",
+        "Interactable"
+      ]
+    }
+  ]
+}

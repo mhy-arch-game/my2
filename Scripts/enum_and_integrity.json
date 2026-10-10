@@ -1,0 +1,152 @@
+{
+  "CollisionResponse_values": [
+    "assign",
+    "cast",
+    "copy",
+    "export_text",
+    "get_editor_property",
+    "import_text",
+    "set_editor_properties",
+    "set_editor_property",
+    "static_struct",
+    "to_tuple"
+  ],
+  "CollisionChannel_values": [
+    "ECC_CAMERA",
+    "ECC_DESTRUCTIBLE",
+    "ECC_PAWN",
+    "ECC_PHYSICS_BODY",
+    "ECC_VEHICLE",
+    "ECC_VISIBILITY",
+    "ECC_WORLD_DYNAMIC",
+    "ECC_WORLD_STATIC",
+    "cast",
+    "get_display_name",
+    "name",
+    "static_enum",
+    "value"
+  ],
+  "CollisionEnabled_values": [
+    "NO_COLLISION",
+    "PHYSICS_ONLY",
+    "PROBE_ONLY",
+    "QUERY_AND_PHYSICS",
+    "QUERY_AND_PROBE",
+    "QUERY_ONLY",
+    "cast",
+    "get_display_name",
+    "name",
+    "static_enum",
+    "value"
+  ],
+  "total_actors": 421,
+  "markers": {
+    "marker": "active_door"
+  },
+  "door_count": 17,
+  "frame_count": 17,
+  "doors": [
+    {
+      "label": "men2",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "active_door",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men11",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men12",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men13",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men14",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men15",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men16",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men17",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men3",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men4",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men5",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men6",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men7",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men8",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men9",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    },
+    {
+      "label": "men10",
+      "use_axis": true,
+      "pivot": "0.00,-21.83,0.00",
+      "has_detector": false
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "listing": {
+    "/Game/MHY_ARCH_GAME/Blueprints": [
+      "BP_ClimbSpot",
+      "BP_ClimbSpot_C",
+      "BP_InteractiveStructure",
+      "BP_InteractiveStructure_C",
+      "BP_LiquidLightSurface",
+      "BP_LiquidLightSurface_C",
+      "BP_MHY_ARCH_GAMECharacter",
+      "BP_MHY_ARCH_GAMECharacter_C",
+      "BP_MHY_ARCH_GAMEGameMode",
+      "BP_MHY_ARCH_GAMEGameMode_C",
+      "BP_MHY_ARCH_GAMEPlayerController",
+      "BP_MHY_ARCH_GAMEPlayerController_C",
+      "BP_RevealLightVolume",
+      "BP_RevealLightVolume_C",
+      "BP_RevealPlatform",
+      "BP_RevealPlatform_C",
+      "BP_TimeShiftAnchor",
+      "BP_TimeShiftAnchor_C"
+    ],
+    "/Game/bclass_source": [
+      "active_door",
+      "active_door_C",
+      "active_light",
+      "active_light_C",
+      "ancient_swift_actor",
+      "ancient_swift_actor_C",
+      "jumping_area",
+      "jumping_area_C",
+      "modern_swift_actor",
+      "modern_swift_actor_C",
+      "reveal_wall",
+      "reveal_wall_C"
+    ],
+    "/Game/LevelPrototyping": [
+      "BP_DoorFrame",
+      "BP_DoorFrame_C",
+      "SM_Door",
+      "SM_DoorFrame_Corner",
+      "SM_DoorFrame_Edge",
+      "M_GradientGlow",
+      "M_SimpleGlow",
+      "MI_GlowNT",
+      "SM_CircularBand",
+      "SM_CircularGlow",
+      "NS_JumpPad",
+      "BP_JumpPad",
+      "BP_JumpPad_C",
+      "SM_TargetBaseMesh",
+      "BP_WobbleTarget",
+      "BP_WobbleTarget_C",
+      "M_FlatCol",
+      "M_PrototypeGrid",
+      "MF_ProcGrid",
+      "MI_DefaultColorway",
+      "MI_PrototypeGrid_Gray",
+      "MI_PrototypeGrid_Gray_02",
+      "MI_PrototypeGrid_Gray_Round",
+      "MI_PrototypeGrid_TopDark",
+      "SM_ChamferCube",
+      "SM_Cube",
+      "SM_Cylinder",
+      "SM_Plane",
+      "SM_QuarterCylinder",
+      "SM_QuarterCylinderOuter",
+      "SM_Ramp",
+      "T_GridChecker_A"
+    ],
+    "/Game/FirstPerson/Blueprints": [
+      "BP_FirstPersonCameraManager",
+      "BP_FirstPersonCameraManager_C",
+      "BP_FirstPersonCharacter",
+      "BP_FirstPersonCharacter_C",
+      "BP_FirstPersonGameMode",
+      "BP_FirstPersonGameMode_C",
+      "BP_FirstPersonPlayerController",
+      "BP_FirstPersonPlayerController_C"
+    ],
+    "/Game/Input": [
+      "IA_Interact",
+      "IA_Jump",
+      "IA_Look",
+      "IA_MouseLook",
+      "IA_Move",
+      "IA_Sprint",
+      "IMC_Default",
+      "IMC_Interaction",
+      "IMC_MouseLook",
+      "BPI_TouchInterface",
+      "BPI_TouchInterface_C",
+      "UI_Thumbstick",
+      "UI_Thumbstick_C",
+      "UI_TouchSimple",
+      "UI_TouchSimple_C"
+    ],
+    "/Game/MHY_ARCH_GAME": [
+      "BP_ClimbSpot",
+      "BP_ClimbSpot_C",
+      "BP_InteractiveStructure",
+      "BP_InteractiveStructure_C",
+      "BP_LiquidLightSurface",
+      "BP_LiquidLightSurface_C",
+      "BP_MHY_ARCH_GAMECharacter",
+      "BP_MHY_ARCH_GAMECharacter_C",
+      "BP_MHY_ARCH_GAMEGameMode",
+      "BP_MHY_ARCH_GAMEGameMode_C",
+      "BP_MHY_ARCH_GAMEPlayerController",
+      "BP_MHY_ARCH_GAMEPlayerController_C",
+      "BP_RevealLightVolume",
+      "BP_RevealLightVolume_C",
+      "BP_RevealPlatform",
+      "BP_RevealPlatform_C",
+      "BP_TimeShiftAnchor",
+      "BP_TimeShiftAnchor_C",
+      "WBP_InteractionPrompt",
+      "WBP_InteractionPrompt_C"
+    ]
+  },
+  "listing_err": {},
+  "referencers": {
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_ClimbSpot.BP_ClimbSpot": [],
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_InteractiveStructure.BP_InteractiveStructure": [],
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_LiquidLightSurface.BP_LiquidLightSurface": [],
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter.BP_MHY_ARCH_GAMECharacter": [
+      "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEGameMode"
+    ],
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEGameMode.BP_MHY_ARCH_GAMEGameMode": [],
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController.BP_MHY_ARCH_GAMEPlayerController": [
+      "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEGameMode"
+    ],
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_RevealLightVolume.BP_RevealLightVolume": [],
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_RevealPlatform.BP_RevealPlatform": [],
+    "/Game/MHY_ARCH_GAME/Blueprints/BP_TimeShiftAnchor.BP_TimeShiftAnchor": [],
+    "/Game/bclass_source/active_door.active_door": [],
+    "/Game/bclass_source/active_light.active_light": [],
+    "/Game/bclass_source/ancient_swift_actor.ancient_swift_actor": [],
+    "/Game/bclass_source/jumping_area.jumping_area": [],
+    "/Game/bclass_source/modern_swift_actor.modern_swift_actor": [],
+    "/Game/bclass_source/reveal_wall.reveal_wall": [],
+    "/Game/LevelPrototyping/Interactable/Door/BP_DoorFrame.BP_DoorFrame": [],
+    "/Game/LevelPrototyping/Interactable/Door/Meshes/SM_Door.SM_Door": [
+      "/Game/LevelPrototyping/Interactable/Door/BP_DoorFrame"
+    ],
+    "/Game/LevelPrototyping/Interactable/Door/Meshes/SM_DoorFrame_Corner.SM_DoorFrame_Corner": [
+      "/Game/LevelPrototyping/Interactable/Door/BP_DoorFrame"
+    ],
+    "/Game/LevelPrototyping/Interactable/Door/Meshes/SM_DoorFrame_Edge.SM_DoorFrame_Edge": [
+      "/Game/LevelPrototyping/Interactable/Door/BP_DoorFrame"
+    ],
+    "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Materials/M_GradientGlow.M_GradientGlow": [
+      "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularGlow"
+    ],
+    "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Materials/M_SimpleGlow.M_SimpleGlow": [
+      "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Materials/MI_GlowNT",
+      "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularBand"
+    ],
+    "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Materials/MI_GlowNT.MI_GlowNT": [
+      "/Game/LevelPrototyping/Interactable/JumpPad/BP_JumpPad"
+    ],
+    "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularBand.SM_CircularBand": [
+      "/Game/LevelPrototyping/Interactable/JumpPad/Assets/NS_JumpPad"
+    ],
+    "/Game/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularGlow.SM_CircularGlow": [
+      "/Game/LevelPrototyping/Interactable/JumpPad/Assets/NS_JumpPad"
+    ],
+    "/Game/LevelPrototyping/Interactable/JumpPad/Assets/NS_JumpPad.NS_JumpPad": [
+      "/Game/LevelPrototyping/Interactable/JumpPad/BP_JumpPad"
+    ],
+    "/Game/LevelPrototyping/Interactable/JumpPad/BP_JumpPad.BP_JumpPad": [],
+    "/Game/LevelPrototyping/Interactable/Target/Assets/SM_TargetBaseMesh.SM_TargetBaseMesh": [
+      "/Game/LevelPrototyping/Interactable/Target/BP_WobbleTarget"
+    ],
+    "/Game/LevelPrototyping/Interactable/Target/BP_WobbleTarget.BP_WobbleTarget": [],
+    "/Game/LevelPrototyping/Materials/M_FlatCol.M_FlatCol": [
+      "/Game/LevelPrototyping/Materials/MI_DefaultColorway",
+      "/Game/LevelPrototyping/Interactable/Door/Meshes/SM_Door"
+    ],
+    "/Game/LevelPrototyping/Materials/M_PrototypeGrid.M_PrototypeGrid": [
+      "/Game/FirstPerson/firstvision",
+      "/Game/_GENERATED/LB/CubeGridToolOutput_06BB4348",
+      "/Game/_GENERATED/LB/CubeGridToolOutput_B5326AEF",
+      "/Game/FirstPerson/_GENERATED/LB/Combined_4D61396D",
+      "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_B01FDCB4",
+      "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_F3320D09",
+      "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_FA3D63B1",
+      "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_Gray",
+      "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_Gray_02",
+      "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_TopDark",
+      "/Game/_GENERATED/LB/CubeGridToolOutput_7E6B15F8",
+      "/Game/_GENERATED/LB/CubeGridToolOutput_E06500AD",
+      "/Game/FirstPerson/_GENERATED/LB/Combined_2F83F3A3",
+      "/Game/FirstPerson/_GENERATED/LB/Combined_541CD044",
+      "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_C2B77AF1",
+      "/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_B64D38EF",
+      "/Game/FirstPerson/_GENERATED/LB/PlaneCutOtherPart_11C55C3F"
+    ],
+    "/Game/LevelPrototyping/Materials/MF_ProcGrid.MF_ProcGrid": [
+      "/Game/LevelPrototyping/Materials/M_PrototypeGrid"
+    ],
+    "/Game/LevelPrototyping/Materials/MI_DefaultColorway.MI_DefaultColorway": [
+      "/Game/FirstPerson/MI_FirstPersonColorway",
+      "/Game/LevelPrototyping/Meshes/SM_ChamferCube",
+      "/Game/LevelPrototyping/Meshes/SM_Plane",
+      "/Game/LevelPrototyping/Interactable/Door/Meshes/SM_DoorFrame_Corner",
+      "/Game/LevelPrototyping/Interactable/Door/Meshes/SM_DoorFrame_Edge",
+      "/Game/LevelPrototyping/Interactable/Target/Assets/SM_TargetBaseMesh"
+    ],
+    "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_Gray.MI_PrototypeGrid_Gray": [
+      "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_Gray_Round",
+      "/Game/LevelPrototyping/Meshes/SM_Cube",
+      "/Game/LevelPrototyping/Meshes/SM_Cylinder",
+      "/Game/LevelPrototyping/Meshes/SM_QuarterCylinder",
+      "/Game/LevelPrototyping/Meshes/SM_QuarterCylinderOuter",
+      "/Game/LevelPrototyping/Meshes/SM_Ramp",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/0/GZ/TTBKQTM7H2HDLWB3T16ZLY"
+    ],
+    "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_Gray_02.MI_PrototypeGrid_Gray_02": [],
+    "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_Gray_Round.MI_PrototypeGrid_Gray_Round": [],
+    "/Game/LevelPrototyping/Materials/MI_PrototypeGrid_TopDark.MI_PrototypeGrid_TopDark": [],
+    "/Game/LevelPrototyping/Meshes/SM_ChamferCube.SM_ChamferCube": [],
+    "/Game/LevelPrototyping/Meshes/SM_Cube.SM_Cube": [
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/0/44/E30ITTGIQYU50RQY5Y9XCY",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/0/9C/F5Z2JNQMT747Y7QES5KOP7",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/0/ER/GJUIXEEO8HUV9WZCSZR9GH",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/1/2T/XLTJQ7V46UNMQF707MQDQK",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/2/OC/XS0DUOELE7HJY3F9XZSBNV",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/3/8B/S2VB6OCHYGRYWAD0QGDM9H",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/4/N3/FQV2FW1I8D4Z06TF38UTCR",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/4/QB/9YXJRQGLS33G0BEH37USBX",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/4/XL/U0BAKX7624EKY7QR8W4QDX",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/8/I3/0VVXG3S0B4RN6QSHFSGKGX",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/8/W2/920TYXDM12T8GKK1E0M892",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/9/8O/BVYOAIREBMOAK7193TKE2N",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/9/AC/RFQ7INIHB1Q1JWY7DWYQ5Y",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/9/D2/66RZ3E9MEBJPV125V7SWQ6",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/9/LJ/OQX9YN9UJ9NNRX6ERJ3PPZ",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/A/HH/BIAWP2Z8HW32809JWMRLU3",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/A/J3/JQWZC33CXMXDX87CAIWJ94",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/A/U0/N7D7PHGDI2A4EOLD58TA92",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/C/0I/0PXPLZ76IWADZO9D6J4VWA",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/D/IP/FTEAYZDQR9M2KDS0TEPHA0"
+    ],
+    "/Game/LevelPrototyping/Meshes/SM_Cylinder.SM_Cylinder": [
+      "/Game/LevelPrototyping/Interactable/JumpPad/BP_JumpPad",
+      "/Game/LevelPrototyping/Interactable/Target/BP_WobbleTarget",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/D/V1/DLNCFC4C5RQ8EDPCDYCKHQ"
+    ],
+    "/Game/LevelPrototyping/Meshes/SM_Plane.SM_Plane": [],
+    "/Game/LevelPrototyping/Meshes/SM_QuarterCylinder.SM_QuarterCylinder": [
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/0/56/I0F38RE5S8MZ8PNQ5GDDSS",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/0/QF/0MZRSMWGNM91UYLLVJ3D8E",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/1/IH/6AC5KKMX2JQTMBRMPI2QXX",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/1/TT/AN7EDCE3WNBXY7C6MLPGQH",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/1/WL/M7MJFQ0T76JWU6F1Z7YH8J",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/2/1X/SN5R6LIXKDO3W51X1TVUTZ",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/2/SP/2T0RTK13XAOOIQD0QTXDQ9",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/4/3X/YJ94LSV2G9NAIYZIK96QLE",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/4/8V/Q896X99E5DMTT521YEXM9A",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/5/TI/UOUH4EXJHIGJNF2D0Y7CPX",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/5/V6/DING1S8EVR2AQW03U1ABGV",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/6/6I/29E05UQXOAGP6TCP5CN0BQ",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/6/I5/5U3R0J6P3EIOET939AGA6V",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/6/U8/LL0QNHFPYL403X5YW0FGG6",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/8/7M/FNN1ELJOC3KQT4JN0YDHT6",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/A/2N/XWEBNOYZ7JA5DZOPBGZ71S",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/C/GO/765U52T3ZSF8D2MPGLVRR0",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/D/LE/5ZDRK6QRB1CF1JSS3HJKPV",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/D/TO/58Y2HCG1B7M6VAJN1E38IS",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/E/P7/9DOH3BZKA2A8C7ZTDWILWC"
+    ],
+    "/Game/LevelPrototyping/Meshes/SM_QuarterCylinderOuter.SM_QuarterCylinderOuter": [],
+    "/Game/LevelPrototyping/Meshes/SM_Ramp.SM_Ramp": [
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/3/BN/PJBVMDVV9BICN8MLKJ849X",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/4/6J/NUEDVP0K274K8FKJ6Y0WEX",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/4/IJ/E7WQWO4MJ84GWAX8H4UR84",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/7/HV/3VH3D4CLM38OC4F8ICXDVQ",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/8/2H/HS4VI3UZJT1LNKM6HC7PL2",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/8/KL/17EY7JSE7TF01OWV9LBSC1",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/9/3M/CN6DASGRPPAPEICARMETU3",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/9/9S/AT66MUZW91DYUD6WM5FH0P",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/B/TG/2MDU2GF02TMAKTSII7ZI7V",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/B/U9/AHG6736Q2Y3SGC1JQONLFJ",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/D/R5/8FN93FIP5FEZUI0RECK61K",
+      "/Game/__ExternalActors__/FirstPerson/Lvl_FirstPerson/D/W0/RTEFXSATTAVCPYEQHKNEY1"
+    ],
+    "/Game/LevelPrototyping/Textures/T_GridChecker_A.T_GridChecker_A": [
+      "/Game/LevelPrototyping/Materials/M_PrototypeGrid",
+      "/Game/LevelPrototyping/Materials/MF_ProcGrid"
+    ],
+    "/Game/FirstPerson/Blueprints/BP_FirstPersonCameraManager.BP_FirstPersonCameraManager": [
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonPlayerController"
+    ],
+    "/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter.BP_FirstPersonCharacter": [
+      "/Game/FirstPerson/firstvision",
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonGameMode"
+    ],
+    "/Game/FirstPerson/Blueprints/BP_FirstPersonGameMode.BP_FirstPersonGameMode": [
+      "/Game/FirstPerson/Lvl_FirstPerson",
+      "/Game/FirstPerson/firstvision"
+    ],
+    "/Game/FirstPerson/Blueprints/BP_FirstPersonPlayerController.BP_FirstPersonPlayerController": [
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonGameMode"
+    ],
+    "/Game/Input/Actions/IA_Interact.IA_Interact": [
+      "/Game/Input/IMC_Interaction"
+    ],
+    "/Game/Input/Actions/IA_Jump.IA_Jump": [
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter",
+      "/Game/Input/IMC_Default",
+      "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter"
+    ],
+    "/Game/Input/Actions/IA_Look.IA_Look": [
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter",
+      "/Game/Input/IMC_Default",
+      "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter"
+    ],
+    "/Game/Input/Actions/IA_MouseLook.IA_MouseLook": [
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter",
+      "/Game/Input/IMC_MouseLook",
+      "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter"
+    ],
+    "/Game/Input/Actions/IA_Move.IA_Move": [
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter",
+      "/Game/Input/IMC_Default",
+      "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMECharacter"
+    ],
+    "/Game/Input/Actions/IA_Sprint.IA_Sprint": [],
+    "/Game/Input/IMC_Default.IMC_Default": [
+      "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController",
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonPlayerController"
+    ],
+    "/Game/Input/IMC_Interaction.IMC_Interaction": [
+      "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController"
+    ],
+    "/Game/Input/IMC_MouseLook.IMC_MouseLook": [
+      "/Game/MHY_ARCH_GAME/Blueprints/BP_MHY_ARCH_GAMEPlayerController",
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonPlayerController"
+    ],
+    "/Game/Input/Touch/BPI_TouchInterface.BPI_TouchInterface": [
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter",
+      "/Game/Input/Touch/UI_TouchSimple"
+    ],
+    "/Game/Input/Touch/UI_Thumbstick.UI_Thumbstick": [
+      "/Game/Input/Touch/UI_TouchSimple"
+    ],
+    "/Game/Input/Touch/UI_TouchSimple.UI_TouchSimple": [
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter",
+      "/Game/FirstPerson/Blueprints/BP_FirstPersonPlayerController"
+    ],
+    "/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt.WBP_InteractionPrompt": []
+  },
+  "candidate_count": 70
+}

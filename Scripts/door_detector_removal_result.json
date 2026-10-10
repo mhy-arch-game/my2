@@ -1,0 +1,252 @@
+{
+  "bp_handle_count": 6,
+  "bp_entries": [
+    {
+      "get_display_name": "active_door",
+      "get_variable_name": "None",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectData' object\")",
+      "get_object": "<Object '/Game/bclass_source/active_door.Default__active_door_C' (0x000001370447B900) Class 'active_door_C'>",
+      "is_component": "False",
+      "is_inherited_component": "False",
+      "can_delete": "False",
+      "can_edit": "True"
+    },
+    {
+      "get_display_name": "DefaultSceneRoot_GEN_VARIABLE",
+      "get_variable_name": "DefaultSceneRoot",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectData' object\")",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:DefaultSceneRoot_GEN_VARIABLE' (0x0000013704495100) Class 'SceneComponent'>",
+      "is_component": "True",
+      "is_inherited_component": "False",
+      "can_delete": "False",
+      "can_edit": "True"
+    },
+    {
+      "get_display_name": "DoorMesh_GEN_VARIABLE",
+      "get_variable_name": "DoorMesh",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectData' object\")",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:DoorMesh_GEN_VARIABLE' (0x00000137043CA800) Class 'StaticMeshComponent'>",
+      "is_component": "True",
+      "is_inherited_component": "False",
+      "can_delete": "True",
+      "can_edit": "True"
+    },
+    {
+      "get_display_name": "DoorMesh_GEN_VARIABLE",
+      "get_variable_name": "DoorMesh",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectData' object\")",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:DoorMesh_GEN_VARIABLE' (0x00000137043CA800) Class 'StaticMeshComponent'>",
+      "is_component": "True",
+      "is_inherited_component": "False",
+      "can_delete": "True",
+      "can_edit": "True"
+    },
+    {
+      "get_display_name": "Interactable_GEN_VARIABLE",
+      "get_variable_name": "Interactable",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectData' object\")",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:Interactable_GEN_VARIABLE' (0x0000013704494E00) Class 'InteractableComponent'>",
+      "is_component": "True",
+      "is_inherited_component": "False",
+      "can_delete": "True",
+      "can_edit": "True"
+    },
+    {
+      "get_display_name": "InteractionDetector_GEN_VARIABLE",
+      "get_variable_name": "InteractionDetector",
+      "get_class": "ERR TypeError(\"descriptor 'get_class' for '_ObjectBase' objects doesn't apply to a 'SubobjectData' object\")",
+      "get_object": "<Object '/Game/bclass_source/active_door.active_door_C:InteractionDetector_GEN_VARIABLE' (0x00000137042E3800) Class 'InteractionDetectorComponent'>",
+      "is_component": "True",
+      "is_inherited_component": "False",
+      "can_delete": "True",
+      "can_edit": "True"
+    }
+  ],
+  "det_i": null,
+  "int_i": null,
+  "mesh_i": null,
+  "pivot": [
+    0.0,
+    -21.828739,
+    0.0
+  ],
+  "det_data": "InteractionDetector subobject not identified",
+  "compile_bp": "ok",
+  "save_bp": "ok",
+  "door_count": 17,
+  "instances": [
+    {
+      "label": "active_door",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men2",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men3",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men4",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men5",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men6",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men7",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men8",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men9",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men10",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men11",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men12",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men13",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men14",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men15",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men16",
+      "detector_after_bp_edit": true
+    },
+    {
+      "label": "men17",
+      "detector_after_bp_edit": true
+    }
+  ],
+  "save_level": true,
+  "after_reload": [
+    {
+      "label": "active_door",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A012F68) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men2",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A01B668) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men3",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A01AA68) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men4",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A01B068) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men5",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A01E968) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men6",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A01DD68) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men7",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A01A468) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men8",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A01BC68) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men9",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A017168) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men10",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A016B68) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men11",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A016268) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men12",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A013568) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men13",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A014D68) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men14",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A014768) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men15",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A012368) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men16",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A016568) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    },
+    {
+      "label": "men17",
+      "has_detector": true,
+      "pivot": "<Struct 'Vector' (0x000001370A017D68) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+      "use_axis": true
+    }
+  ]
+}

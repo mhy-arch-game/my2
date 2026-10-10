@@ -1,0 +1,121 @@
+{
+  "apply": true,
+  "profile": "IgnoreOnlyPawn",
+  "frame_count": 17,
+  "before": {
+    "profile": "Custom",
+    "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+    "visibility": "<CollisionResponseType.ECR_BLOCK: 2>"
+  },
+  "changed": 17,
+  "after_set": {
+    "profile": "IgnoreOnlyPawn",
+    "pawn": "<CollisionResponseType.ECR_IGNORE: 0>",
+    "visibility": "<CollisionResponseType.ECR_BLOCK: 2>"
+  },
+  "save_level": true,
+  "from_disk": [
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang1"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang2"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang3"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang4"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang5"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang6"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang7"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang8"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang9"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang10"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang11"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang12"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang13"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang14"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang15"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang16"
+    },
+    {
+      "profile": "Custom",
+      "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "visibility": "<CollisionResponseType.ECR_BLOCK: 2>",
+      "label": "menkuang17"
+    }
+  ]
+}

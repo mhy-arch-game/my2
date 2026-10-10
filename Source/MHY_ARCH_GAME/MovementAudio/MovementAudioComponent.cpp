@@ -5,7 +5,11 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Components/AudioComponent.h"
 #include "Components/PrimitiveComponent.h"
+#include "Engine/World.h"
+#include "EngineUtils.h"
+#include "MovementAudioInterface.h"
 #include "PhysicalMaterials/PhysicalMaterial.h"
 #include "PhysicsEngine/BodyInstance.h"
 #include "Sound/SoundAttenuation.h"
@@ -57,6 +61,9 @@ void UMovementAudioComponent::BeginPlay()
 
 void UMovementAudioComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
+	// Never leave state music playing after teardown.
+	StopStateMusic();
+
 	if (CachedCharacter && bAutoDetectJumpAndLand)
 	{
 		CachedCharacter->LandedDelegate.RemoveDynamic(this, &UMovementAudioComponent::HandleLanded);
@@ -105,6 +112,9 @@ void UMovementAudioComponent::UpdateMovementState(float DeltaTime)
 		bRunning = bNewRunning;
 		OnRunStateChanged.Broadcast(bRunning);
 	}
+
+	// Sustained movement state: drives the interface dispatch and the per-state music.
+	SetMovementState(ComputeMovementState(Speed2D));
 
 	// Distance based footstep fallback (for testing before animations exist).
 	if (bAutoFootstepByDistance && !bInAir && Movement->IsMovingOnGround())
@@ -175,6 +185,197 @@ void UMovementAudioComponent::PlayMovementAudioEvent(EMovementAudioEvent Event)
 
 	// 2) Then play the optional asset, if one is assigned for this surface.
 	PlaySoundAt(Set.GetSoundForEvent(Event), Location);
+}
+
+// ---------------------------------------------------------------------------
+// Sustained movement state (music per state + interface dispatch)
+// ---------------------------------------------------------------------------
+
+EMovementAudioState UMovementAudioComponent::ComputeMovementState(float Speed2D) const
+{
+	// Priority: airborne > crouched > sprint > run > walk > idle.
+	if (bInAir)
+	{
+		return EMovementAudioState::InAir;
+	}
+
+	if (CachedCharacter && CachedCharacter->bIsCrouched)
+	{
+		return EMovementAudioState::Crouch;
+	}
+
+	if (Speed2D > SprintSpeedThreshold)
+	{
+		return EMovementAudioState::Sprint;
+	}
+
+	if (Speed2D > RunSpeedThreshold)
+	{
+		return EMovementAudioState::Run;
+	}
+
+	if (Speed2D > WalkSpeedThreshold)
+	{
+		return EMovementAudioState::Walk;
+	}
+
+	return EMovementAudioState::Idle;
+}
+
+void UMovementAudioComponent::SetMovementState(EMovementAudioState NewState)
+{
+	if (NewState == MovementState && bMovementStateApplied)
+	{
+		return;
+	}
+
+	// There is no meaningful "previous" the very first time; using the new state keeps
+	// the delegate signature honest and tells listeners this is the initial state.
+	const EMovementAudioState Previous = bMovementStateApplied ? MovementState : NewState;
+
+	MovementState = NewState;
+	bMovementStateApplied = true;
+
+	// 1) Blueprint event.
+	OnMovementStateChanged.Broadcast(MovementState, Previous);
+
+	// 2) Per-state music.
+	if (bPlayMusicPerState)
+	{
+		UpdateStateMusic(MovementState);
+	}
+
+	// 3) Interface listeners (decoupled observers such as a music director).
+	if (bDispatchToInterfaceListeners)
+	{
+		DispatchStateToInterfaceListeners(MovementState, Previous);
+	}
+
+	if (bLogStateChanges)
+	{
+		const UEnum* Enum = StaticEnum<EMovementAudioState>();
+		UE_LOG(LogTemp, Log, TEXT("[MovementAudio] %s: 运动状态 %s -> %s。"),
+			*GetNameSafe(GetOwner()),
+			Enum ? *Enum->GetDisplayNameTextByValue(static_cast<int64>(Previous)).ToString() : TEXT("?"),
+			Enum ? *Enum->GetDisplayNameTextByValue(static_cast<int64>(MovementState)).ToString() : TEXT("?"));
+	}
+}
+
+void UMovementAudioComponent::UpdateStateMusic(EMovementAudioState NewState)
+{
+	const FMovementStateMusic* Entry = nullptr;
+	for (const FMovementStateMusic& Candidate : StateMusic)
+	{
+		if (Candidate.State == NewState)
+		{
+			Entry = &Candidate;
+			break;
+		}
+	}
+
+	// No entry, or the slot is still empty: just fade the current track out.
+	if (!Entry || Entry->Music.IsNull())
+	{
+		StopStateMusic();
+		return;
+	}
+
+	USoundBase* Loaded = Entry->Music.LoadSynchronous();
+	if (!Loaded)
+	{
+		StopStateMusic();
+		return;
+	}
+
+	// Fade the old track out; it stops by itself (bAutoDestroy below cleans it up).
+	if (IsValid(MusicComponent))
+	{
+		MusicComponent->FadeOut(MusicFadeTime, 0.0f);
+	}
+
+	MusicComponent = UGameplayStatics::SpawnSound2D(
+		this, Loaded, /*VolumeMultiplier=*/1.0f, /*PitchMultiplier=*/1.0f, /*StartTime=*/0.0f,
+		Concurrency, /*bPersistAcrossLevelTransition=*/false, /*bAutoDestroy=*/true);
+
+	if (IsValid(MusicComponent))
+	{
+		// Volume is applied by FadeIn only, so it is not multiplied twice.
+		MusicComponent->FadeIn(MusicFadeTime, VolumeMultiplier * Entry->VolumeMultiplier);
+	}
+}
+
+void UMovementAudioComponent::StopStateMusic()
+{
+	if (IsValid(MusicComponent))
+	{
+		MusicComponent->FadeOut(MusicFadeTime, 0.0f);
+	}
+
+	MusicComponent = nullptr;
+}
+
+void UMovementAudioComponent::DispatchStateToInterfaceListeners(EMovementAudioState NewState,
+	EMovementAudioState PreviousState)
+{
+	UWorld* World = GetWorld();
+	AActor* Owner = GetOwner();
+	if (!World || !Owner)
+	{
+		return;
+	}
+
+	int32 Count = 0;
+	for (TActorIterator<AActor> It(World); It; ++It)
+	{
+		AActor* Listener = *It;
+		if (!Listener || Listener == Owner)
+		{
+			continue;
+		}
+
+		if (!Listener->GetClass()->ImplementsInterface(UMovementAudioInterface::StaticClass()))
+		{
+			continue;
+		}
+
+		if (!IMovementAudioInterface::Execute_CanReceiveMovementAudio(Listener, Owner))
+		{
+			continue;
+		}
+
+		IMovementAudioInterface::Execute_OnMovementAudioStateChanged(Listener, NewState, PreviousState, Owner);
+		++Count;
+	}
+
+	if (Count > 0 && bLogStateChanges)
+	{
+		UE_LOG(LogTemp, Verbose, TEXT("[MovementAudio] %s: 状态变化已派发给 %d 个接口监听者。"),
+			*GetNameSafe(Owner), Count);
+	}
+}
+
+FString UMovementAudioComponent::GetMovementAudioDebugString() const
+{
+	const float Speed2D = (CachedCharacter && CachedCharacter->GetCharacterMovement())
+		? CachedCharacter->GetCharacterMovement()->Velocity.Size2D()
+		: 0.0f;
+
+	const UEnum* Enum = StaticEnum<EMovementAudioState>();
+	const FString StateName = Enum
+		? Enum->GetDisplayNameTextByValue(static_cast<int64>(MovementState)).ToString()
+		: TEXT("?");
+
+	return FString::Printf(
+		TEXT("MovementAudio %s | state=%s | speed2D=%.0f (walk>%.0f run>%.0f sprint>%.0f) | run=%s air=%s crouch=%s | music=%s fade=%.2f | iface=%s"),
+		*GetNameSafe(GetOwner()),
+		*StateName,
+		Speed2D, WalkSpeedThreshold, RunSpeedThreshold, SprintSpeedThreshold,
+		bRunning ? TEXT("yes") : TEXT("no"),
+		bInAir ? TEXT("yes") : TEXT("no"),
+		(CachedCharacter && CachedCharacter->bIsCrouched) ? TEXT("yes") : TEXT("no"),
+		IsValid(MusicComponent) ? TEXT("playing") : TEXT("none"),
+		MusicFadeTime,
+		bDispatchToInterfaceListeners ? TEXT("on") : TEXT("off"));
 }
 
 void UMovementAudioComponent::PlaySoundAt(const TSoftObjectPtr<USoundBase>& Sound, const FVector& WorldLocation)

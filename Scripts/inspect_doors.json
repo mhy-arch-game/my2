@@ -1,0 +1,441 @@
+{
+  "class_InteractionDetectorComponent": true,
+  "class_MotionWarpingComponent": true,
+  "class_ClimbComponent": true,
+  "class_MovementAudioComponent": true,
+  "class_TimeShiftTravelComponent": true,
+  "class_TimeShiftInputComponent": true,
+  "class_SprintComponent": true,
+  "class_InteractableComponent": true,
+  "door_bp": "active_door",
+  "door_bp_components": [
+    "None",
+    "DefaultSceneRoot",
+    "DoorMesh",
+    "DoorMesh",
+    "Interactable"
+  ],
+  "door_tpl": {
+    "bEnabled": "True",
+    "InteractionPrompt": "开门",
+    "bUseBuiltInToggle": "True",
+    "ToggleComponentNames": "[\"DoorMesh\"]",
+    "bUseAxisRotation": "True",
+    "RotationAxis": "<Struct 'Vector' (0x000001FDF8D167C8) {x: 0.000000, y: 0.000000, z: 1.000000}>",
+    "OpenAngleDegrees": "90.0",
+    "RotationPivot": "<Struct 'Vector' (0x000001FDF8D167E8) {x: 0.000000, y: -21.828739, z: 0.000000}>",
+    "ToggleDuration": "0.6000000238418579",
+    "bStartOpen": "False",
+    "bDisableCollisionWhenOpen": "True",
+    "bToggleLights": "False"
+  },
+  "actor_count": 529,
+  "men": [
+    {
+      "label": "men1",
+      "class": "StaticMeshActor",
+      "loc": [
+        -1490.0,
+        -310.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men2",
+      "class": "StaticMeshActor",
+      "loc": [
+        -1810.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men3",
+      "class": "StaticMeshActor",
+      "loc": [
+        -8700.0,
+        170.0,
+        1300.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men4",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2390.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men5",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2710.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men6",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3090.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men7",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2550.0,
+        1030.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men8",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2550.0,
+        790.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men9",
+      "class": "StaticMeshActor",
+      "loc": [
+        -2710.0,
+        630.0,
+        100.0
+      ],
+      "yaw": -0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men10",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3090.0,
+        630.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men11",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3250.0,
+        790.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men12",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3250.0,
+        1350.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men13",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3250.0,
+        1870.0,
+        100.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men14",
+      "class": "StaticMeshActor",
+      "loc": [
+        -3410.0,
+        1190.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men15",
+      "class": "StaticMeshActor",
+      "loc": [
+        -4430.0,
+        2050.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men16",
+      "class": "StaticMeshActor",
+      "loc": [
+        -5430.0,
+        2890.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men17",
+      "class": "StaticMeshActor",
+      "loc": [
+        -6430.0,
+        3730.0,
+        100.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men18",
+      "class": "StaticMeshActor",
+      "loc": [
+        -8170.0,
+        680.0,
+        2510.0
+      ],
+      "yaw": -90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men19",
+      "class": "StaticMeshActor",
+      "loc": [
+        -7350.0,
+        -10.0,
+        3700.0
+      ],
+      "yaw": -90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men20",
+      "class": "StaticMeshActor",
+      "loc": [
+        -7210.0,
+        -250.0,
+        1700.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men21",
+      "class": "StaticMeshActor",
+      "loc": [
+        -7950.0,
+        1510.0,
+        100.0
+      ],
+      "yaw": -90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men23",
+      "class": "StaticMeshActor",
+      "loc": [
+        -7780.0,
+        -3130.0,
+        3690.0
+      ],
+      "yaw": -180.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men24",
+      "class": "StaticMeshActor",
+      "loc": [
+        -8750.0,
+        -2800.0,
+        2995.0
+      ],
+      "yaw": 90.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    },
+    {
+      "label": "men25",
+      "class": "StaticMeshActor",
+      "loc": [
+        -11340.0,
+        -670.0,
+        2190.0
+      ],
+      "yaw": 0.0,
+      "scale": [
+        2.6,
+        2.6,
+        2.6
+      ],
+      "has_interactable": false
+    }
+  ],
+  "menkuang_count": 28,
+  "menkuang_sample": [
+    "menkuang1",
+    "menkuang2",
+    "menkuang3",
+    "menkuang4",
+    "menkuang5"
+  ],
+  "class_histogram": {
+    "StaticMeshActor": 455,
+    "PointLight": 5,
+    "SpotLight": 4,
+    "RectLight": 4,
+    "ExponentialHeightFog": 2,
+    "DirectionalLight": 1,
+    "SkyAtmosphere": 1,
+    "VolumetricCloud": 1,
+    "PlayerStart": 1,
+    "SkyLight": 1,
+    "PostProcessVolume": 1,
+    "BP_FirstPersonCharacter_C": 1
+  }
+}

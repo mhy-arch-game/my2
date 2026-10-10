@@ -14,7 +14,8 @@ AClimbSpot::AClimbSpot()
 
 	TriggerBox = CreateDefaultSubobject<UBoxComponent>(TEXT("TriggerBox"));
 	RootComponent = TriggerBox;
-	TriggerBox->SetBoxExtent(FVector(70.0f, 70.0f, 100.0f));
+	// InitBoxExtent: constructor-safe (SetBoxExtent would NewObject a BodySetup here).
+	TriggerBox->InitBoxExtent(FVector(70.0f, 70.0f, 100.0f));
 	TriggerBox->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
 	TriggerBox->SetGenerateOverlapEvents(true);
 	TriggerBox->OnComponentBeginOverlap.AddDynamic(this, &AClimbSpot::OnTriggerBeginOverlap);
