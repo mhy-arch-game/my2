@@ -412,15 +412,15 @@ UInteractionPromptComponent（挂在玩家角色上）
 | 字段 | 默认 | 说明 |
 |---|---|---|
 | `WidgetClass` | 空 | 填你自己的 Widget 蓝图（父类 `InteractionPromptWidget`）即换成你的样式 |
-| `bUseBuiltInFallback` | ✔ | `WidgetClass` 留空时用内置弹框（半透明底框 + 居中白字），**开箱即有提示** |
+| `bUseBuiltInFallback` | ✔ | `WidgetClass` 留空时用内置弹框（**透明底 + 居中白字**，白字带深色投影保证亮背景可读），**开箱即有提示** |
 | `bAutoBindDetector` | ✔ | 自动绑定同角色上的 `InteractionDetector` |
 | `DefaultPromptText` | 空 | 可交互物没填 `InteractionPrompt` 时用它；留空 = 那种物体不弹框 |
 | **`bWorldSpacePrompt`** | **✔（默认）** | 世界坐标模式：UI 出现在**交互物体前方的世界位置**、每帧朝向镜头，**不跟随镜头** |
-| `WorldPromptDrawSize` | (360, 120) | 世界坐标 UI 面板的绘制尺寸（像素） |
-| `WorldPromptHeightOffset` | 30 | 在物体包围盒之上再抬高多少 cm |
+| `WorldPromptDrawSize` | (360, 120) | 世界坐标 UI 面板的绘制尺寸（像素）。面板是**居中**在锚点上的，改小 Y 会把文字往物体表面压 ⇒ 容易遮挡 |
+| `WorldPromptHeightOffset` | **30** | 在物体包围盒**顶部**再抬高多少 cm。**必须让文字中心高于物体表面**，否则会被物体自身遮挡（见下方排查表）|
 | `WorldPromptFrontOffset` | 40 | 朝玩家方向再前移多少 cm（让提示浮在物体前方） |
 | `bWorldPromptFaceCamera` | ✔ | 每帧转向摄像机（billboard） |
-| `WorldPromptFacingYaw` | 180 | 朝向补偿：**若文字镜像 / 背对镜头就改成 0** |
+| `WorldPromptFacingYaw` | **0** | 朝向补偿（度）。默认 0 = 面板正面**正对玩家**；只有文字镜像/背对时才改 180 |
 | `ScreenOffsetY` / `ZOrder` | 220 / 100 | **仅当** `bWorldSpacePrompt = ✗`（屏幕空间旧模式）时使用 |
 
 **文字从哪来**：`UInteractableComponent::InteractionPrompt`（或蓝图交互物 `GetInteractionPrompt` 的返回值），
@@ -450,8 +450,30 @@ UInteractionPromptComponent（挂在玩家角色上）
 |---|---|
 | 完全没有弹框 | ① 角色上没有 `InteractionPrompt` 组件；② 角色没有被本地控制器 possess（HUD 只给本地玩家创建）；③ `WidgetClass` 空且 `bUseBuiltInFallback` 关着 |
 | 有聚焦但不弹框 | 该物体的 `InteractionPrompt` 是空的 —— 弹框只在**有文字**时出现（需求要求的行为） |
-| 位置不合适 | 调 `ScreenOffsetY`（越大越靠下），或换成自己的 WBP 自己排版 |
+| 位置不合适 | 世界模式下调 `WorldPromptHeightOffset` / `WorldPromptFrontOffset`；屏幕模式调 `ScreenOffsetY` |
+| 文字**镜像 / 背对**玩家 | `WorldPromptFacingYaw`（默认 0）改成 `180` |
+| **世界坐标提示完全不显示（但屏幕模式能看到）** | 锚点落在物体表面内 ⇒ 面板被物体**深度遮挡**。锚点 = `物体包围盒顶部 + WorldPromptHeightOffset`，面板以该点为**中心**；把 `WorldPromptHeightOffset` 调大（经验值 ≥ `WorldPromptDrawSize.Y` 的一半，比如 60）或把 `DrawSize.Y` 调小即可 |
+| 白字在亮背景上看不清 | 内置弹框已带深色投影；改善可换成自己的 WBP 加描边/半透明渐变底 |
 | 担心挡鼠标 | 内置弹框用 `HitTestInvisible`，不接收输入；你自己的 WBP 也建议设成 Hit Test Invisible |
+
+---
+
+### 9.10 ★ 两状态提示（开门/关门、开灯/关灯）
+
+同一种物体有两种状态时，提示应该说清"**下一次按键会做什么**"，否则开门后还写着"开门"。
+
+| 配置位置 | 字段 | 含义 |
+|---|---|---|
+| `InteractableComponent` | `InteractionPrompt` | **关闭**状态下的提示（如"开门"、"开灯"）|
+| `InteractableComponent` | `InteractionPromptOpen` | **打开**状态下的提示（如"关门"、"关灯"）；留空 = 一直用上面那个 |
+
+取值逻辑：`GetInteractionPrompt()` 在 `IsOpen()` 为真且 `InteractionPromptOpen` 非空时返回后者 ✓。
+
+**关键（本轮修的坑）**：探测器过去只在"聚焦对象变化"时才广播 `OnFocusChanged`，
+所以按 E 把门打开后，聚焦对象没变 ⇒ 弹窗文字不会刷新，仍显示"开门"。
+现在 `SetFocusedActor` 在**同一目标但提示文字变化**时也会重新广播 ⇒ 按 E 立刻切换成"关门"。
+
+**本项目已配好**：24 扇门 = 开门/关门；3 盏机关灯 = 开灯/关灯（`jiguandeng2/3` 原先提示为空，一并补上）。
 
 ---
 
@@ -481,6 +503,7 @@ SizeBox            (MaxDesiredWidth = 520，Auto Size)
 
 | 想做的 | 具体做法 |
 |---|---|
+| **透明底 + 白字（当前内置样式）** | `Border` 的 Brush 颜色 **Alpha = 0**（不画底色）；`TextBlock` 用白色 + `Shadow Offset (1.5, 1.5)` / `Shadow Color (0,0,0,0.85)` 保证亮背景可读 |
 | 圆角底板（零材质，最快） | 导入一张圆角 PNG（带 1px 外描边）→ 纹理设 `Draw As = Box`、`Margin = 24`（九宫格），作为 `Border` 的 Brush |
 | 圆角底板（像素级可控） | 新建 **User Interface** 域材质 `M_UI_Rounded`：参数 `CornerRadius` / `OutlineThickness`，用 UV 到边缘的距离场算圆角与描边；`Border` 的 Brush 直接引用该材质 |
 | 按键图标清晰 | 图标 PNG 的 `Texture Group = UI`、`Compression = UserInterface2D`、`Mip Gen Settings = NoMipmaps`；`Image` 尺寸 28×28，`Vertical Alignment = Center` |

@@ -1,0 +1,37 @@
+{
+ "handles_before": [
+  {
+   "var": "None",
+   "obj": "StaticMeshActor_12",
+   "class": "StaticMeshActor"
+  },
+  {
+   "var": "StaticMeshComponent",
+   "obj": "StaticMeshComponent0",
+   "class": "StaticMeshComponent"
+  },
+  {
+   "var": "None",
+   "obj": "Interactable",
+   "class": "InteractableComponent"
+  },
+  {
+   "var": "None",
+   "obj": "InteractionOperationReceiver",
+   "class": "InteractionOperationReceiverComponent"
+  },
+  {
+   "var": "None",
+   "obj": "ProximitySequence",
+   "class": "ProximitySequenceComponent"
+  }
+ ],
+ "context_found": true,
+ "delete": "1",
+ "components_after": [
+  "StaticMeshComponent",
+  "InteractableComponent",
+  "ProximitySequenceComponent"
+ ],
+ "save": "True"
+}

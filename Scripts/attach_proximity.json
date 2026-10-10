@@ -1,0 +1,32 @@
+{
+ "has_class": true,
+ "actors": {
+  "jiguanqiang1": {
+   "class": "StaticMeshActor",
+   "handles": 4,
+   "parent": "index0",
+   "add": "ok",
+   "add_ret": "(<Struct 'SubobjectDataHandle' (0x000002BEAE20C010) {}>, Text(\"\"))",
+   "seq_asset": "/Game/LS_jiguanqiang1.LS_jiguanqiang1",
+   "seq_after": "<Object '/Game/LS_jiguanqiang1.LS_jiguanqiang1' (0x000002BE9D47B2C0) Class 'LevelSequence'>",
+   "trigger": "600.0",
+   "once": "True",
+   "blockOnFinish": "True",
+   "initial": "False"
+  },
+  "jiguanqiang2": {
+   "class": "StaticMeshActor",
+   "handles": 2,
+   "parent": "index0",
+   "add": "ok",
+   "add_ret": "(<Struct 'SubobjectDataHandle' (0x000002BEAE208190) {}>, Text(\"\"))",
+   "seq_asset": "/Game/LS_jiguanqiang2.LS_jiguanqiang2",
+   "seq_after": "<Object '/Game/LS_jiguanqiang2.LS_jiguanqiang2' (0x000002BE9D47B180) Class 'LevelSequence'>",
+   "trigger": "600.0",
+   "once": "True",
+   "blockOnFinish": "True",
+   "initial": "False"
+  }
+ },
+ "save": "ok"
+}

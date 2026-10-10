@@ -1,0 +1,14 @@
+{
+  "trigger_values": [
+    "BOX_VOLUME",
+    "INTERACT_FIRST_TOGGLE"
+  ],
+  "cue_fields": [
+    "cue_id",
+    "text",
+    "trigger",
+    "trigger_id",
+    "voice"
+  ],
+  "subsystem_exists": true
+}

@@ -161,8 +161,12 @@ bool UInteractionOperationReceiverComponent::ApplyOperation(const FInteractionOp
 			break;
 
 		case EInteractionOperationAction::SetActorHidden:
+			// bActive = HIDDEN. Collision must follow VISIBILITY, not bActive: a hidden
+			// object should not block, and - the bug this fixes - an object brought BACK
+			// to visible must collide again. (The old code enabled collision while hidden
+			// and disabled it while visible, so a restored wall became walk-through.)
 			Owner->SetActorHiddenInGame(Operation.bActive);
-			Owner->SetActorEnableCollision(Operation.bActive);
+			Owner->SetActorEnableCollision(!Operation.bActive);
 			bApplied = true;
 			break;
 
@@ -173,10 +177,10 @@ bool UInteractionOperationReceiverComponent::ApplyOperation(const FInteractionOp
 			break;
 
 		case EInteractionOperationAction::SetActorVisible:
-			// "Active" means VISIBLE here - the opposite polarity of SetActorHidden,
-			// which is what a wall that appears when the master switches on needs.
+			// "Active" means VISIBLE here - the opposite polarity of SetActorHidden.
+			// Collision follows visibility, same rule as SetActorHidden (only the sign differs).
 			Owner->SetActorHiddenInGame(!Operation.bActive);
-			Owner->SetActorEnableCollision(!Operation.bActive);
+			Owner->SetActorEnableCollision(Operation.bActive);
 			bApplied = true;
 			break;
 

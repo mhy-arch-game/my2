@@ -225,6 +225,12 @@ private:
 	UPROPERTY(Transient)
 	TObjectPtr<AActor> FocusedActor;
 
+	/**
+	 * Last prompt sent through OnFocusChanged. A door that just opened keeps the same
+	 * focused actor but changes its prompt ("开门" -> "关门"), and the HUD must follow.
+	 */
+	FText LastBroadcastPrompt;
+
 	float TimeSinceRefresh = 0.0f;
 	bool bInputBound = false;
 	bool bContextRegistered = false;
