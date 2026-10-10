@@ -80,5 +80,18 @@ enum class EInteractionOperationAction : uint8
 	MoveTo			UMETA(DisplayName="Move To (移动落点)"),
 
 	/** 什么都不做，仅用于占位 / 只走蓝图事件。 */
-	Nothing			UMETA(DisplayName="Nothing (只走蓝图)")
+	Nothing			UMETA(DisplayName="Nothing (只走蓝图)"),
+
+	/**
+	 * 按操作里的 bActive 决定 owner 的开 / 关。
+	 * bActive 由发送方填成【主物当前状态】，所以从物只要一条映射就能整体跟随主物，
+	 * 不必再写 "Open->SetOpen / Close->SetClosed" 两行。
+	 */
+	MirrorActive	UMETA(DisplayName="Mirror Master State (跟随主物开关)"),
+
+	/**
+	 * 按操作里的 bActive 决定 owner 的显 / 隐（bActive = true 时【显示】）。
+	 * 与 SetActorHidden 极性相反，给"主物一开、墙就显形"这类用法。
+	 */
+	SetActorVisible	UMETA(DisplayName="Set Actor Visible (显形, 墙用)")
 };

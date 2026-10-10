@@ -1,0 +1,73 @@
+{
+  "run": "/Game/sound_resources/freesound_community-running-6358.freesound_community-running-6358",
+  "jump": "/Game/sound_resources/freesound_community-jumping-on-wooden-floor-41234.freesound_community-jumping-on-wooden-floor-41234",
+  "candidate_errors": [
+    [
+      "SoftObjectPath.asset_path_name",
+      "Exception(\"SoftObjectPath: Failed to find property 'asset_path_name' for attribute 'asset_path_name' on 'SoftO"
+    ],
+    [
+      "SoftObjectPath.AssetPathName",
+      "Exception(\"SoftObjectPath: Failed to find property 'AssetPathName' for attribute 'AssetPathName' on 'SoftObjec"
+    ],
+    [
+      "SoftObjectPath.Path",
+      "Exception(\"SoftObjectPath: Failed to find property 'Path' for attribute 'Path' on 'SoftObjectPath'\")"
+    ],
+    [
+      "SoftObjectPath.asset_path_name",
+      "Exception(\"SoftObjectPath: Failed to find property 'asset_path_name' for attribute 'asset_path_name' on 'SoftO"
+    ],
+    [
+      "SoftObjectPath.AssetPathName",
+      "Exception(\"SoftObjectPath: Failed to find property 'AssetPathName' for attribute 'AssetPathName' on 'SoftObjec"
+    ],
+    [
+      "SoftObjectPath.Path",
+      "Exception(\"SoftObjectPath: Failed to find property 'Path' for attribute 'Path' on 'SoftObjectPath'\")"
+    ],
+    [
+      "SoftObjectPath.asset_path_name",
+      "Exception(\"SoftObjectPath: Failed to find property 'asset_path_name' for attribute 'asset_path_name' on 'SoftO"
+    ],
+    [
+      "SoftObjectPath.AssetPathName",
+      "Exception(\"SoftObjectPath: Failed to find property 'AssetPathName' for attribute 'AssetPathName' on 'SoftObjec"
+    ],
+    [
+      "SoftObjectPath.Path",
+      "Exception(\"SoftObjectPath: Failed to find property 'Path' for attribute 'Path' on 'SoftObjectPath'\")"
+    ],
+    [
+      "SoftObjectPath.asset_path_name",
+      "Exception(\"SoftObjectPath: Failed to find property 'asset_path_name' for attribute 'asset_path_name' on 'SoftO"
+    ],
+    [
+      "SoftObjectPath.AssetPathName",
+      "Exception(\"SoftObjectPath: Failed to find property 'AssetPathName' for attribute 'AssetPathName' on 'SoftObjec"
+    ],
+    [
+      "SoftObjectPath.Path",
+      "Exception(\"SoftObjectPath: Failed to find property 'Path' for attribute 'Path' on 'SoftObjectPath'\")"
+    ]
+  ],
+  "jump_how": "UObject",
+  "land_how": "UObject",
+  "import_text_used": true,
+  "music_how": [
+    {
+      "state": "<MovementAudioState.RUN: 2>",
+      "how": "UObject",
+      "readback": "<Object '/Game/sound_resources/freesound_community-running-6358.freesound_community-runnin"
+    },
+    {
+      "state": "<MovementAudioState.SPRINT: 3>",
+      "how": "UObject",
+      "readback": "<Object '/Game/sound_resources/freesound_community-running-6358.freesound_community-runnin"
+    }
+  ],
+  "after_default": "<Struct 'MovementAudioSet' (0x00000258F0EF8268) {surface: SurfaceType_Default, footstep: None, jump: \"/Game/sound_resources/freesound_community-jumping-on-wooden-floor-41234.freesound_community-jumping-on-wooden-floor-41234\", land: \"/Game/sound_resources/freesound_community-jumping-on-wooden-floor-4",
+  "after_statemusic": "[{state: Run, music: \"/Game/sound_resources/freesound_community-running-6358.freesound_community-running-6358\", volume_multiplier: 1.000000}, {state: Sprint, music: \"/Game/sound_resources/freesound_community-running-6358.freesound_community-running-6358\", volume_multiplier: 1.000000}]",
+  "compile": "ok",
+  "save_char": "ok"
+}

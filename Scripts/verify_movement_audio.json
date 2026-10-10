@@ -1,0 +1,6 @@
+{
+  "running_blooping": "True",
+  "DefaultSet": "<Struct 'MovementAudioSet' (0x000001EDD2ED8868) {surface: SurfaceType_Default, footstep: None, jump: \"/Game/sound_resources/freesound_community-jumping-on-wooden-floor-41234.freesound_community-jumping-on-wooden-floor-41234\", land: \"/Game/sound_resources/frees",
+  "StateMusic": "[{state: Run, music: \"/Game/sound_resources/freesound_community-running-6358.freesound_community-running-6358\", volume_multiplier: 1.000000}, {state: Sprint, music: \"/Game/sound_resources/freesound_community-running-6358.freesound_community-running-6358\", volume_multiplier: 1.000000}]",
+  "bAutoFootstepByDistance": "True"
+}

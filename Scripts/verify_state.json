@@ -1,0 +1,85 @@
+{
+  "actor_count": 530,
+  "mesh_component_count": 508,
+  "profile_distribution": {
+    "NoCollision": 5,
+    "BlockAll": 440,
+    "IgnoreOnlyPawn": 38,
+    "BlockAllDynamic": 25
+  },
+  "jumping_labels": [
+    [
+      "jumping_area",
+      "jumping_area_C",
+      [
+        -7850.0,
+        615.0,
+        100.0
+      ]
+    ]
+  ],
+  "gravity_zones": [
+    {
+      "label": "jumping_area",
+      "actor": "jumping_area_C",
+      "loc": [
+        -7850.0,
+        615.0,
+        100.0
+      ],
+      "comp": "GravityZone",
+      "GravityScaleInside": "1.2000000476837158",
+      "TargetJumpHeight": "550.0",
+      "bScaleJumpVelocity": "False",
+      "bAffectPawnsOnly": "True",
+      "BoxExtent": [
+        774.6,
+        698.1,
+        3597.8
+      ]
+    }
+  ],
+  "gravity_zone_count": 1,
+  "door_count": 24,
+  "doors_bad": [],
+  "doors_sample": [
+    {
+      "label": "men1",
+      "useAxis": "True",
+      "pivot": "<Struct 'Vector' (0x000001FC09E075E8) {x: 0.000000, y: -21.828739, z: ",
+      "toggle": "[\"DoorMesh\"]"
+    },
+    {
+      "label": "men2",
+      "useAxis": "True",
+      "pivot": "<Struct 'Vector' (0x000001FC09E083E8) {x: 0.000000, y: -21.828739, z: ",
+      "toggle": "[\"DoorMesh\"]"
+    },
+    {
+      "label": "men3",
+      "useAxis": "True",
+      "pivot": "<Struct 'Vector' (0x000001FC09E08768) {x: 0.000000, y: -21.828739, z: ",
+      "toggle": "[\"DoorMesh\"]"
+    },
+    {
+      "label": "men23",
+      "useAxis": "True",
+      "pivot": "<Struct 'Vector' (0x000001FBD8D005E8) {x: 0.000000, y: -21.828739, z: ",
+      "toggle": "[\"DoorMesh\"]"
+    },
+    {
+      "label": "men24",
+      "useAxis": "True",
+      "pivot": "<Struct 'Vector' (0x000001FBD8D0B868) {x: 0.000000, y: -21.828739, z: ",
+      "toggle": "[\"DoorMesh\"]"
+    },
+    {
+      "label": "men25",
+      "useAxis": "True",
+      "pivot": "<Struct 'Vector' (0x000001FBD8D0A6E8) {x: 0.000000, y: -21.828739, z: ",
+      "toggle": "[\"DoorMesh\"]"
+    }
+  ],
+  "frame_count": 28,
+  "device_count": 10
+}

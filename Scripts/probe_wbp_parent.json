@@ -1,0 +1,9 @@
+{
+  "asset_class": "<Struct 'TopLevelAssetPath' (0x000002226DC2003C) {package_name: \"/Script/UMGEditor\", asset_name: \"WidgetBlueprint\"}>",
+  "tags_subset": {
+    "ParentClass": "/Script/CoreUObject.Class'/Script/MHY_ARCH_GAME.InteractionPromptWidget'",
+    "NativeParentClass": "/Script/CoreUObject.Class'/Script/MHY_ARCH_GAME.InteractionPromptWidget'",
+    "GeneratedClass": "/Script/UMG.WidgetBlueprintGeneratedClass'/Game/MHY_ARCH_GAME/UI/WBP_InteractionPrompt.WBP_InteractionPrompt_C'",
+    "BlueprintType": "BPTYPE_Normal"
+  }
+}

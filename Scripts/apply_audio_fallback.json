@@ -1,0 +1,13 @@
+{
+  "writes": [
+    {
+      "comp": "MovementAudio_GEN_VARIABLE",
+      "before": "False",
+      "set": "ok",
+      "after": "True",
+      "footstep_distance": "180.0"
+    }
+  ],
+  "compile": "ok",
+  "save": "ok"
+}

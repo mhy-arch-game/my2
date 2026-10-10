@@ -1,0 +1,30 @@
+{
+  "subsystem_class": "<Object '/Script/MHY_ARCH_GAME.TimeShiftSubsystem' (0x000001893D3F5A00) Class 'Class'>",
+  "subsys_InitialEra": "<TimeEra.ANCIENT: 0>",
+  "subsys_CooldownDuration": "2.0",
+  "template": {
+    "Mesh": {
+      "bHiddenInGame": "False",
+      "bVisible": "True",
+      "profile": "IgnoreOnlyPawn"
+    },
+    "Portal": {
+      "bSwitchEra": "True",
+      "bAutoDetectEra": "True",
+      "OwnerEra": "<TimeEra.ANCIENT: 0>",
+      "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+      "VerticalOffset": "-5000.0",
+      "bRegisterAsAnchor": "True",
+      "CounterpartId": "None"
+    },
+    "TimeEra": {
+      "Era": "<TimeEra.MODERN: 1>",
+      "bExistsInBothEras": "False",
+      "bGateVisibility": "True",
+      "bGateCollision": "True",
+      "bGateTick": "False"
+    }
+  },
+  "fatal": "AttributeError(\"'Actor' object has no attribute 'is_hidden'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/probe_era.py\", line 70, in <module>\n    row = {\"label\": lbl, \"actor_hidden\": str(call(a.is_hidden)[1]),\n                                                  ^^^^^^^^^^^\nAttributeError: 'Actor' object has no attribute 'is_hidden'\n"
+}

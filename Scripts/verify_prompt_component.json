@@ -1,0 +1,38 @@
+{
+  "class_dir": [
+    "default_prompt_text",
+    "get_prompt_text",
+    "hide_prompt",
+    "is_prompt_visible",
+    "on_prompt_changed",
+    "show_prompt"
+  ],
+  "fallback_exists": true,
+  "abstract_base_exists": true,
+  "component_props": {
+    "bUseBuiltInFallback": "True",
+    "bAutoBindDetector": "True",
+    "ScreenOffsetY": "220.0",
+    "ZOrder": "100",
+    "DefaultPromptText": "",
+    "WidgetClass": "None"
+  },
+  "character_components": [
+    "None",
+    "CapsuleComponent",
+    "ArrowComponent",
+    "FirstPersonCamera",
+    "Mesh",
+    "FirstPersonMesh",
+    "FirstPersonCamera",
+    "CharacterMovement",
+    "InteractionDetector",
+    "MotionWarping",
+    "Climb",
+    "MovementAudio",
+    "TimeShiftTravel",
+    "TimeShiftInput",
+    "Sprint",
+    "InteractionPrompt"
+  ]
+}

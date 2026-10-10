@@ -1,0 +1,77 @@
+{
+  "lamps": [
+    {
+      "label": "jiguandeng1",
+      "light_comps": [
+        "PointLight"
+      ],
+      "before": {
+        "bToggleLights": "False",
+        "LightComponentNames": "[]",
+        "bUseBuiltInToggle": "False",
+        "bStartOpen": "False"
+      },
+      "set_bToggleLights": "ok",
+      "set_light_names": "ok",
+      "after_bToggleLights": "True",
+      "after_light_names": "[\"PointLight\"]"
+    },
+    {
+      "label": "jiguandeng2",
+      "light_comps": [
+        "PointLight"
+      ],
+      "before": {
+        "bToggleLights": "False",
+        "LightComponentNames": "[]",
+        "bUseBuiltInToggle": "False",
+        "bStartOpen": "False"
+      },
+      "set_bToggleLights": "ok",
+      "set_light_names": "ok",
+      "after_bToggleLights": "True",
+      "after_light_names": "[\"PointLight\"]"
+    },
+    {
+      "label": "jiguandeng3",
+      "light_comps": [
+        "PointLight"
+      ],
+      "before": {
+        "bToggleLights": "False",
+        "LightComponentNames": "[]",
+        "bUseBuiltInToggle": "False",
+        "bStartOpen": "False"
+      },
+      "set_bToggleLights": "ok",
+      "set_light_names": "ok",
+      "after_bToggleLights": "True",
+      "after_light_names": "[\"PointLight\"]"
+    }
+  ],
+  "rows": [
+    {
+      "raw_before": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)",
+        "(Operation=\"Close\",Action=(INVALID),Duration=0.000000)"
+      ]
+    },
+    {
+      "changes": [
+        {
+          "before_action": "None",
+          "after_action": "<InteractionOperationAction.SET_ACTOR_VISIBLE: 7>",
+          "raw_after": "(Operation=\"Close\",Action=SetActorVisible,Duration=0.000000)"
+        }
+      ],
+      "write_bindings": "ok"
+    },
+    {
+      "raw_after_all": [
+        "(Operation=\"Open\",Action=SetActorHidden,Duration=0.000000)",
+        "(Operation=\"Close\",Action=SetActorVisible,Duration=0.000000)"
+      ]
+    }
+  ],
+  "save_level": "ok"
+}

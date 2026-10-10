@@ -1,0 +1,21 @@
+{
+  "tripo": "/Game/models/tripo_convert_a27cf087-650e-439c-80cf-d55ede9a4be3",
+  "mesh_class": "StaticMesh",
+  "switcher": {
+    "before": "eLauncher.SM_GrenadeLauncher' (0x0000021E06090800) Class 'StaticMesh'>",
+    "set": "ok",
+    "after": "-650e-439c-80cf-d55ede9a4be3' (0x0000021E0551F800) Class 'StaticMesh'>",
+    "local_min": [
+      -10.72,
+      -10.77,
+      -0.0
+    ],
+    "local_max": [
+      10.72,
+      10.77,
+      99.95
+    ]
+  },
+  "compile": "ok",
+  "save_bp": "ok"
+}

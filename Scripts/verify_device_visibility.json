@@ -1,0 +1,68 @@
+{
+  "template_profile": "BlockAllDynamic",
+  "template_both_eras": "True",
+  "devices": [
+    {
+      "label": "kongjianchuansuoqi1",
+      "both": "True",
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "profile": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "both": "True",
+      "Era": "<TimeEra.MODERN: 1>",
+      "profile": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "both": "True",
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "profile": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "both": "True",
+      "Era": "<TimeEra.MODERN: 1>",
+      "profile": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "both": "True",
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "profile": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "both": "True",
+      "Era": "<TimeEra.MODERN: 1>",
+      "profile": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "both": "True",
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "profile": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "both": "True",
+      "Era": "<TimeEra.MODERN: 1>",
+      "profile": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "both": "True",
+      "Era": "<TimeEra.ANCIENT: 0>",
+      "profile": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "both": "True",
+      "Era": "<TimeEra.MODERN: 1>",
+      "profile": "BlockAllDynamic"
+    }
+  ],
+  "hidden_if_era_ancient": [],
+  "hidden_if_era_modern": []
+}

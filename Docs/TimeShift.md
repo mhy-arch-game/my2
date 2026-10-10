@@ -197,3 +197,28 @@ UTimeShiftSubsystem::SwitchEra() → SetEra(另一个时代)
 | `Docs/StructureInteraction.md` | 可交互建筑结构框架 |
 | `Docs/OverlapDemo.md` | 重叠即通行 + 变材质/透明 |
 | `Docs/LiquidLight.md` | 光照液体流动表现 |
+
+---
+
+## ★ 跨时空都要存在的道具：勾 `bExistsInBothEras`
+
+`UTimeEraComponent` 在 BeginPlay 与每次换时空时都会：
+
+```
+bActiveInCurrentEra = bExistsInBothEras || (Era == 当前时空)
+SetActorHiddenInGame(!bActive)     // bGateVisibility 默认开
+SetActorEnableCollision(bActive)   // bGateCollision 默认开
+```
+
+⇒ **不勾 `bExistsInBothEras` 的物体在运行时会被隐藏**，而编辑器视口不做这件事 ——
+典型症状是"编辑器里看得到、一运行就少了一半"（本项目 10 个传送装置就踩过：
+`InitialEra = Ancient` 时 5 个 Modern 装置全被隐藏）。
+
+| 物体 | 该怎么设 |
+|---|---|
+| 只属于一个时空的景物（建筑 / 植被） | `Era` 填对，`bExistsInBothEras = ✗` |
+| **跨时空都要在的道具**（传送装置、公共地面、UI 锚点） | `bExistsInBothEras = ☑`（此时 `Era` 仍可作为"它属于哪一侧"的语义标签被其它系统读取，例如 `UTimeEraPortalComponent` 的配对方向） |
+| 与时空完全无关的物体 | 不要挂 `TimeEraComponent`（挂了也不会隐藏，但没必要） |
+
+> 初始时空由 `UTimeShiftSubsystem::InitialEra` 决定，是 `config=Game` 属性：
+> 可以在 `Config/DefaultGame.ini` 的 `[/Script/MHY_ARCH_GAME.TimeShiftSubsystem]` 段落里覆盖。

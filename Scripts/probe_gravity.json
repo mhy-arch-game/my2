@@ -1,0 +1,229 @@
+{
+  "jumping_area": {
+    "bp": "jumping_area",
+    "components": [
+      [
+        "None",
+        "jumping_area_C"
+      ],
+      [
+        "DefaultSceneRoot",
+        "SceneComponent"
+      ],
+      [
+        "jumping_ball",
+        "StaticMeshComponent"
+      ],
+      [
+        "jumping_ball",
+        "StaticMeshComponent"
+      ],
+      [
+        "GravityZone",
+        "GravityZoneComponent"
+      ],
+      [
+        "GravityZone",
+        "GravityZoneComponent"
+      ]
+    ],
+    "props": {
+      "GravityZone": {
+        "GravityScaleInside": "0.30000001192092896",
+        "bAffectPawnsOnly": "True",
+        "bScaleJumpVelocity": "False",
+        "BoxExtent": "<Struct 'Vector' (0x000001C9073B6108) {x: 400.000000, y: 400.000000, z: 200.000000}>",
+        "bHiddenInGame": "True",
+        "bAutoActivate": "False"
+      }
+    }
+  },
+  "reveal_wall": {
+    "bp": "reveal_wall",
+    "components": [
+      [
+        "None",
+        "reveal_wall_C"
+      ],
+      [
+        "DefaultSceneRoot",
+        "SceneComponent"
+      ],
+      [
+        "wall",
+        "StaticMeshComponent"
+      ],
+      [
+        "PointLight",
+        "PointLightComponent"
+      ],
+      [
+        "PointLight",
+        "PointLightComponent"
+      ],
+      [
+        "wall",
+        "StaticMeshComponent"
+      ],
+      [
+        "ProximityBarrier",
+        "ProximityBarrierComponent"
+      ]
+    ],
+    "props": {}
+  },
+  "active_light": {
+    "bp": "active_light",
+    "components": [
+      [
+        "None",
+        "active_light_C"
+      ],
+      [
+        "DefaultSceneRoot",
+        "SceneComponent"
+      ]
+    ],
+    "props": {}
+  },
+  "modern_swift_actor": {
+    "bp": "modern_swift_actor",
+    "components": [
+      [
+        "None",
+        "modern_swift_actor_C"
+      ],
+      [
+        "DefaultSceneRoot",
+        "SceneComponent"
+      ],
+      [
+        "switcher",
+        "StaticMeshComponent"
+      ],
+      [
+        "switcher",
+        "StaticMeshComponent"
+      ],
+      [
+        "Interactable",
+        "InteractableComponent"
+      ],
+      [
+        "TimeEraPortal",
+        "TimeEraPortalComponent"
+      ],
+      [
+        "TimeEra",
+        "TimeEraComponent"
+      ]
+    ],
+    "props": {
+      "Interactable": {
+        "InteractionPrompt": "传送至过去",
+        "bUseBuiltInToggle": "False",
+        "ToggleComponentNames": "[]",
+        "bEnabled": "True"
+      },
+      "TimeEraPortal": {
+        "InteractionPrompt": "传送",
+        "TargetMode": "<TimeEraPortalTargetMode.VERTICAL_OFFSET: 1>",
+        "VerticalOffset": "-5000.0"
+      },
+      "TimeEra": {
+        "Era": "<TimeEra.MODERN: 1>"
+      }
+    }
+  },
+  "char": {
+    "bp": "BP_FirstPersonCharacter",
+    "components": [
+      [
+        "None",
+        "BP_FirstPersonCharacter_C"
+      ],
+      [
+        "FirstPersonMesh",
+        "SkeletalMeshComponent"
+      ],
+      [
+        "FirstPersonCamera",
+        "CameraComponent"
+      ],
+      [
+        "FirstPersonCamera",
+        "CameraComponent"
+      ],
+      [
+        "Mesh",
+        "SkeletalMeshComponent"
+      ],
+      [
+        "CapsuleComponent",
+        "CapsuleComponent"
+      ],
+      [
+        "ArrowComponent",
+        "ArrowComponent"
+      ],
+      [
+        "Climb",
+        "ClimbComponent"
+      ],
+      [
+        "InteractionDetector",
+        "InteractionDetectorComponent"
+      ],
+      [
+        "MotionWarping",
+        "MotionWarpingComponent"
+      ],
+      [
+        "CharacterMovement",
+        "CharacterMovementComponent"
+      ],
+      [
+        "MovementAudio",
+        "MovementAudioComponent"
+      ],
+      [
+        "TimeShiftTravel",
+        "TimeShiftTravelComponent"
+      ],
+      [
+        "TimeShiftInput",
+        "TimeShiftInputComponent"
+      ],
+      [
+        "Sprint",
+        "SprintComponent"
+      ]
+    ],
+    "props": {}
+  },
+  "level_actor_count": 530,
+  "level_gravity_zones": [
+    {
+      "label": "jumping_area",
+      "actor_class": "jumping_area_C",
+      "loc": [
+        -7850.0,
+        615.0,
+        100.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "comp": "GravityZone",
+      "GravityScaleInside": "0.07999999821186066",
+      "bAffectPawnsOnly": "True",
+      "bScaleJumpVelocity": "False",
+      "BoxExtent": "<Struct 'Vector' (0x000001C90E998408) {x: 774.620066, y: 698.064562, z: 3597.816041}>",
+      "bHiddenInGame": "True",
+      "bAutoActivate": "False"
+    }
+  ],
+  "level_gravity_zone_count": 1
+}

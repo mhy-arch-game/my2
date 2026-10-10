@@ -1,0 +1,77 @@
+{
+  "template": {
+    "era": {
+      "before": "False",
+      "set": "ok",
+      "after": "True"
+    },
+    "meshes": [
+      {
+        "comp": "switcher_GEN_VARIABLE",
+        "before": "IgnoreOnlyPawn",
+        "after": "BlockAllDynamic"
+      },
+      {
+        "comp": "switcher_GEN_VARIABLE",
+        "before": "BlockAllDynamic",
+        "after": "BlockAllDynamic"
+      }
+    ]
+  },
+  "compile": "ok",
+  "save_bp": "ok",
+  "instances": [
+    {
+      "label": "kongjianchuansuoqi1",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi2",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi3",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi4",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi5",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi6",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi7",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi8",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi9",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    },
+    {
+      "label": "kongjianchuansuoqi10",
+      "both_after": "True",
+      "profile_after": "BlockAllDynamic"
+    }
+  ],
+  "device_count": 10,
+  "save_level": "ok"
+}

@@ -236,6 +236,20 @@ BeginPlay:
 
 事件：`OnPortalUsed(Traveler, Source, Counterpart)`、`OnPortalRefused(Portal, Reason)`。
 
+> **落点微调（本项目当前值）**：`modern_swift_actor` 模板的 `TeleportOffset = (5, 0, 0)`，
+> 即落点沿**装置局部 X** 偏 5 cm。`TeleportOffset` 是按"装置自身的旋转"换算的
+> （Vertical Offset 模式用的是本装置的旋转，而每对两半的 yaw 相同，所以等价于目标装置的旋转）。
+> 各对的实际世界方向：
+>
+> | 对 | 装置 yaw | 局部 +X 对应世界方向 |
+> |---|---|---|
+> | 1/2、5/6 | 0 | **世界 +X**（+5 cm） |
+> | 3/4 | −90 | **世界 −Y**（−5 cm） |
+> | 7/8、9/10 | +90 | **世界 +Y**（+5 cm） |
+>
+> 若要"**世界 X 统一 +5 cm**"，需要把偏移改成世界空间叠加（1 个开关或 1 行代码），当前**没有**这么做。
+> 偏移在贴地之前叠加且只影响 X/Y —— 贴地只改 Z，所以这 5 cm 不会被吃掉。
+
 ## 5. 时序（这一段很重要）
 
 ```
@@ -265,9 +279,209 @@ TryUsePortal(Traveler):
 - `CounterpartId` 的语义与 `ATimeShiftAnchor::AnchorId` 一致，两套可以共存。
 - 传送装置注册为锚点后，**通用**时空切换也能在这些点正确配对（副作用即特性）。
 
-## 8. 未验证 / 待确认
+## 8. 过场动画 / UI 提示接口
+
+传送的**状态变更与表现解耦**：Portal 只负责"什么时候开始 / 什么时候结束"，
+动画、黑幕、UI 提示、音效由外部通过**蓝图事件**或**实现接口**自己接。
+
+### 8.1 三段时间轴
+
+1. **触发**：按 E → 校验通过 → 落点、目标时空、对应物**在此时就已算好**
+2. **开始（`OnTransitionBegin`）**：广播过场上下文；若 `TransitionDelay > 0`，
+   **真正的位移被推迟**，把时间留给过场表现（淡出 / 镜头 / UI）
+3. **结束（`OnTransitionEnd`）**：延时到点后执行实际传送
+   （切时空 → 落点 → 朝向），再广播一次，携带**最终落点**
+
+> `TransitionDelay = 0`（默认）时第 2、3 步在同一帧完成 —— 行为与加接口前**完全一致**，老内容不受影响。
+
+### 8.2 两种接法
+
+**(a) 蓝图事件（最简单）**
+
+选中挂着 `Time Era Portal` 的对象 → Details 面板里：
+
+| 事件 | 时机 |
+|---|---|
+| `On Transition Begin` | 过场开始（位移**之前**） |
+| `On Transition End` | 传送完成（位移**之后**） |
+
+两者都带参数 `Context`（`FTeleportTransitionContext`），直接拿去播动画 / 弹 UI。
+
+**(b) 实现接口 `ITeleportTransitionInterface`（跨对象、可复用）**
+
+任意蓝图类实现 `Teleport Transition Interface` 之后，Portal 会**自动**找到它并调用，
+不需要连任何线：
+
+| 函数 | 语义 |
+|---|---|
+| `CanReceiveTeleportTransition(Context)` → bool | 返回 false 则跳过这个接收者 |
+| `OnTeleportTransitionBegin(Context)` | 过场开始 |
+| `OnTeleportTransitionEnd(Context)` | 传送完成 |
+
+查找方式为遍历关卡内实现者；`bDispatchTransitionToInterfaceListeners`（默认 ✔）可整体关掉。
+
+> 典型用法：关卡里放一个 `BP_TeleportFade` 实现该接口负责黑场；
+> 以后加新的传送装置**不用逐个个接线**，全部自动生效。
+
+### 8.3 `FTeleportTransitionContext` 字段
+
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `Traveler` | `AActor*` | 被传送的角色 |
+| `Portal` | `UTimeEraPortalComponent*` | 本次传送的装置 |
+| `Counterpart` | `AActor*` | 对应的另一半（可能为空） |
+| `FromLocation` | `FVector` | 传送前位置 |
+| `ToLocation` | `FVector` | 落点。**开始事件里是"预计落点"，结束事件里是实际落点** |
+| `FromEra` / `ToEra` | `ETimeEra` | 源 / 目标时空 |
+| `Duration` | `float` | 本次过场时长（= `TransitionDelay`） |
+
+### 8.4 新参数
+
+| 参数 | 默认 | 说明 |
+|---|---|---|
+| `TransitionDelay` | 0.0 | 过场时长（秒）。> 0 时位移被推迟这么久；期间再按 E 会被拒绝 |
+| `bDispatchTransitionToInterfaceListeners` | ✔ | 是否自动调用关卡里实现了 `ITeleportTransitionInterface` 的 Actor |
+
+过场进行中 `IsTransitioning()` 为 true；组件 `EndPlay` 会清掉计时器，不会留下悬空回调。
+
+### 8.5 接线示例（黑幕转场）
+
+1. 关卡里放一个空 Actor，加一个全屏 UMG（或后处理），存成 `BP_TeleportFade`
+2. Class Settings → **Interfaces → Add → Teleport Transition Interface**
+3. `OnTeleportTransitionBegin`：把黑幕不透明度在 `Context.Duration` 内插值到 1
+4. `OnTeleportTransitionEnd`：再插值回 0
+5. 传送装置上把 `Transition Delay` 设成与淡出等长（例如 `0.5`）
+6. Play → 按 E：黑幕渐入 → 0.5s 后角色出现在另一半 → 黑幕渐出
+
+> 只想做**文字提示**（如"已传送至现代"）：不用黑幕，直接在 `OnTransitionEnd` 里
+> 用 `Context.ToEra` 拼字符串推给 `WBP_InteractionPrompt` 即可。
+
+---
+
+## 9. 落点偏移的根因与修复（实测）
+
+### 9.1 先证明"配对距离"本身是对的
+
+实测关卡里 5 对装置的几何（`kongjianchuansuoqi1..10`，全部 `BlockAllDynamic`→见 9.3）：
+
+| 对 | ΔX | ΔY | ΔZ | 水平偏差 |
+|---|---|---|---|---|
+| 1↔2、3↔4、5↔6、7↔8、9↔10 | **0.00** | **0.00** | **−5000.00** | **0.00 cm** |
+
+另外：装置网格的世界坐标 = actor 原点（网格无相对偏移）；`TeleportOffset = (0,0,0)`；每对两个 actor 的 yaw 相同。
+=> **`VerticalOffset = −5000` 完全正确，不需要重新标定传送距离。**
+
+### 9.2 偏移来自"落地贴地"，不是传送距离
+
+`bPlaceOnGround = true` 时落点会被一条地面射线**覆盖 Z**：
+
+```
+Start = 落点 + (0,0, GroundTraceDistance)     // +1000
+End   = 落点 - (0,0, GroundTraceDistance)     // -1000
+通道   = ECC_Visibility
+忽略   = 自己 + 被传送角色          ← 原来的忽略表里【没有】目标装置
+命中后 Goal.Z = 命中点.Z + 胶囊半高 + GroundClearance
+```
+
+装置网格 `BlockAllDynamic`、**挡 `ECC_Visibility`**，几何为 `localZ ∈ [0, 100]`（从 actor 原点往上一米）。
+于是射线从"落点+1000"往下打时，**第一个命中的就是目标装置自己的顶面**：
+
+```
+Goal.Z = 装置原点 + 100（装置顶） + 96（胶囊半高） + 2（clearance） = 装置原点 + 198
+```
+
+而站在源装置处的相对高度是 `装置原点 + 98` ⇒ **每次传送都高整整 100 cm（正好一个装置的高度）**，
+表现就是"被放到了装置顶上"而不是装置处 —— 这就是位置偏移的来源。
+
+### 9.3 修复（两处，缺一不可）
+
+| # | 改动 | 位置 |
+|---|---|---|
+| 1 | 地面射线**忽略所有带 `UTimeEraPortalComponent` 的 actor**（`VerticalOffset` 模式没有 Counterpart 可忽略，故按"所有传送装置"整体忽略）；且**只允许向下贴地**：`Goal.Z = min(命中点+半高+clearance, 落点+半高+clearance)`，避免打到天花板/上方物体时把角色抬高 | `TimeEraPortalComponent::ComputeArrivalLocation` |
+| 2 | ~~装置网格改用 `IgnoreOnlyPawn`~~ **（已回退）**：见 9.4 —— 这个改动是"装置消失"的直接原因，现已改回 `BlockAllDynamic` | `/Game/bclass_source/modern_swift_actor` 的 `switcher` 网格（模板，10 个实例继承） |
+| 3 | **落点水平避开装置**：沿装置自身 +X 推开「装置水平半径 + 胶囊半径 + `ArrivalClearance`」，然后才向下贴地 | `TimeEraPortalComponent::bArriveClearOfDevice` / `ArrivalClearance`（默认开 / 5cm） |
+
+**现在的落点规则**：配对位置 →（+ `TeleportOffset`）→ **水平推开约 54 cm 站到装置旁边** → 向下贴地站到地面。
+
+---
+
+### 9.4 "运行时装置消失"的根因（★ 本轮新增，实测）
+
+修复 #1 之后落点回到**装置原点**，但装置网格的真实几何是：
+
+```
+switcher 局部包围盒 = 21.4 × 21.5 × 100.0 cm      // 又细又高的柱子，原点在它底面
+角色胶囊            = 半径 34、半高 96             // 胶囊比柱子还宽
+```
+
+把胶囊中心放在装置原点（脚底在柱底平面）时：胶囊横向半径 34 > 柱子半宽 10.7，
+**整根柱子被吞进角色身体里** ⇒ 第一人称的摄像机也在胶囊范围内 ⇒ 看不到装置，
+交互射线同样打不到它 —— 表现就是"**传送交互物消失了**"，而编辑器从外面看一切正常。
+（改成 `IgnoreOnlyPawn` 之前，装置会挡住胶囊、把玩家物理挤开，所以那时没有"看不见"的问题，
+只是被挤开的那一下就是最初报的"位置偏移"。）
+
+⇒ **落点必须"在装置旁边"，不能"在装置里"**：沿装置自身 +X 推开
+`装置水平外接半径(15.2) + 胶囊半径(34) + ArrivalClearance(5) ≈ 54 cm`，再向下贴地。
+于是玩家站在装置侧面的地面上，装置清晰可见、交互照常。
+
+| 参数 | 默认 | 说明 |
+|---|---|---|
+| `bArriveClearOfDevice` | ✔ | 关掉 = 回到"落在装置原点"（只在装置是空心的、例如真正的圆环拱门时才合适） |
+| `ArrivalClearance` | 5 cm | 胶囊表面与装置之间的额外余量 |
+
+> 方向固定取**装置自身的 +X**（不是世界 X），这样复制到任何朝向的装置上行为一致。
+> `TeleportOffset` 仍叠加在它之前，手动微调能力不变（本项目当前 `(5,0,0)`，合计水平偏移约 59 cm）。
+
+### 9.5 第二个独立原因：时空门控（★ 本轮修复）
+
+关卡里**只有这 10 个装置**挂了 `TimeEraComponent`（5 Ancient + 5 Modern），而该组件在 BeginPlay 就会执行：
+
+```
+bActiveInCurrentEra = bExistsInBothEras || (Era == 子系统当前时空)
+SetActorHiddenInGame(!bActive)      // bGateVisibility 默认开
+SetActorEnableCollision(bActive)    // bGateCollision 默认开
+```
+
+`UTimeShiftSubsystem` 的 `InitialEra = Ancient`（配置里没有覆盖）⇒ **运行时开局，5 个 Modern 装置
+（2 / 4 / 6 / 8 / 10）被隐藏且关碰撞**；编辑器视口不执行这段逻辑，所以 10 个全都看得见 ——
+这正是"世界视图正常、运行时少了一半"的第二个原因。
+
+**修复**：装置模板的 `TimeEra → bExistsInBothEras = ☑`（10 个实例已同步）。
+
+- 语义上本来就该这样：**传送装置是两个时空之间的门，必须在两边都在场**；
+- **配对方向不受影响**：Portal 读的是 `Era`（仍然奇 Ancient / 偶 Modern），`bExistsInBothEras` 只影响显隐与碰撞；
+- 若以后希望某个装置只在单一时空出现，把这一项关掉即可。
+
+---
+
+### 9.6 分组与方向复核（★ 本轮：修正分组数据）
+
+`OwnerEra`（回退字段）原先与 `TimeEraComponent.Era` **相反**，分组数据自相矛盾：
+一旦 `bAutoDetectEra` 被关掉、或运行时找不到 Era 组件，配对方向就会**整体反向**。
+现已把模板与 10 个实例的 `OwnerEra` 同步成与 `Era` 一致。
+
+复核（按 C++ 取号规则：`Ancient → +VerticalOffset`、`Modern → -VerticalOffset`，`VerticalOffset = -5000`）：
+
+| 对 | 奇数（Ancient） | 方向 | 偶数（Modern） | 方向 |
+|---|---|---|---|---|
+| 1 ↔ 2 | Z=100 → −4900 | **向下 5000** | Z=−4900 → 100 | **向上 5000** |
+| 3 ↔ 4 | 1300 → −3700 | 向下 | −3700 → 1300 | 向上 |
+| 5 ↔ 6 | 1300 → −3700 | 向下 | −3700 → 1300 | 向上 |
+| 7 ↔ 8 | 1700 → −3300 | 向下 | −3300 → 1700 | 向上 |
+| 9 ↔ 10 | −3100 → −8100 | 向下 | −8100 → −3100 | 向上 |
+
+⇒ **距离完全一致（5000）；奇数向下、偶数向上**；每对两半的 yaw 相同，
+所以水平偏移（`TeleportOffset` + 避开装置那一段）在世界坐标里的方向也一致。
+
+---
+
+## 10. 未验证 / 待确认
 
 - 只在编译期验证 + 逻辑自检；**运行时行为尚未在编辑器里实测**（需要先接线，见第 3 节）。
+- 过场接口（第 8 节）已完成**反射级验证**（UHT 产出、结构体 8 个字段、两个事件、接口类均可加载），
+  但**位移推迟的实际时序、以及接口分发**尚未在 PIE 里实测。
+- 第 9 节的落点修复是**按实测几何推导**的（射线忽略表 + 装置碰撞 profile），**未在 PIE 里实测**；
+  复测时请确认：传送后脚底是否正好落在目标装置基座平面（应与源装置处相对高度一致）。
 - 主控角色当前用的是 `firstvision` 关卡里的 `BP_FirstPersonCharacter`；它是否挂
   `TimeShiftTravelComponent` 未确认——若没挂，第 5 节第 2 步不会发生，落点仍由第 3 步决定，
   功能正常但不会顺带做 layout 映射。

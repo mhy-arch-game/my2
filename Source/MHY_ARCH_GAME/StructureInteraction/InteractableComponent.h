@@ -44,6 +44,20 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction")
 	FText InteractionPrompt;
 
+	/**
+	 * 只保存"开 / 关"状态，不驱动任何部件。
+	 *
+	 * 一个"只有两种状态"的物体（拉杆 / 按钮 / 纯蓝图效果的开关）既没有要移动的部件，
+	 * 也没有要开关的灯，于是两个内置行为都关着时状态永远翻不动 —— SetOpen() 会直接
+	 * return，IsOpen() 恒为 false。打开本开关让物体自己持有这个 0/1 状态：
+	 * 按 E 会翻转它、OnToggleChanged 会广播，其它系统（例如 UInteractionLinkComponent
+	 * 把 IsOpen() 当作操作的 bActive 转发给从物）也就能读到真实状态。
+	 *
+	 * 初始值取自 bStartOpen（在 Built-in Toggle 分类里）。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction")
+	bool bTrackOpenState = false;
+
 	/** Fired when the interact key is pressed while the owner is focused. */
 	UPROPERTY(BlueprintAssignable, Category="Interaction")
 	FOnInteractableEvent OnInteractRequested;
@@ -120,8 +134,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle", ClampMin="0.0"))
 	float ToggleDuration = 0.6f;
 
-	/** Start in the open state. */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle"))
+	/** Start in the open state. Also used by bTrackOpenState (状态位模式). */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Built-in Toggle", meta=(EditCondition="bUseBuiltInToggle || bTrackOpenState"))
 	bool bStartOpen = false;
 
 	/** Disable collision on the toggle components while open (so you can walk through). */

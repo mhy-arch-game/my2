@@ -95,6 +95,16 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction Operation")
 	bool bAutoBindInteractable = true;
 
+	/**
+	 * 在 BeginPlay 之后的第一帧自动发一轮 Entries（默认关）。
+	 *
+	 * 用途：一组"主 + 从"物体在关卡开始时就应处在同一个状态（从物跟随主物的初始开 / 关）。
+	 * 之所以等到下一帧而不是 BeginPlay 当场执行：关卡里各 Actor 的 BeginPlay 顺序不确定，
+	 * 抢在从物的 InteractableComponent::BeginPlay 之前写状态，会被它自己的 bStartOpen 覆盖。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction Operation")
+	bool bSyncOnBeginPlay = false;
+
 	/** 手动发一轮 Entries（不依赖交互，可被别的触发器调用）。返回成功投递的接收方数量。 */
 	UFUNCTION(BlueprintCallable, Category="Interaction Operation")
 	int32 DispatchEntries(AActor* Instigator);
@@ -121,6 +131,10 @@ protected:
 
 	UFUNCTION()
 	void HandleInteractRequested(AActor* Interactor, AActor* Interactable);
+
+	/** bSyncOnBeginPlay 的下一帧回调。 */
+	UFUNCTION()
+	void HandleBeginPlaySync();
 
 private:
 	UPROPERTY(Transient)

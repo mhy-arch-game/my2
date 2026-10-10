@@ -1,0 +1,41 @@
+{
+  "/Game/models/tripo_convert_a27cf087-650e-439c-80cf-d55ede9a4be3": {
+    "exists": true,
+    "referencers": [
+      "/Game/bclass_source/modern_swift_actor"
+    ]
+  },
+  "/Game/models/毛绒熊3d模型": {
+    "exists": false,
+    "referencers": "ok"
+  },
+  "/Game/models/毛绒熊3d模型_basecolor": {
+    "exists": false,
+    "referencers": [
+      "/Game/models/tripo_node_a320d423-2e83-446b-9838-6b061e41b321_material_002"
+    ]
+  },
+  "/Game/models/毛绒熊3d模型_normal": {
+    "exists": false,
+    "referencers": [
+      "/Game/models/tripo_node_a320d423-2e83-446b-9838-6b061e41b321_material_002"
+    ]
+  },
+  "/Game/models/fireplace": {
+    "exists": false,
+    "referencers": "ok"
+  },
+  "/Game/models/fireplace_basecolor": {
+    "exists": false,
+    "referencers": "ok"
+  },
+  "/Game/models/b9acd5b7_b130_41b9_b7e3_14ed88825340": {
+    "exists": false,
+    "referencers": "ok"
+  },
+  "/Game/bclass_source/ancient_swift_actor": {
+    "exists": false,
+    "referencers": "ok"
+  },
+  "level_sequences": []
+}

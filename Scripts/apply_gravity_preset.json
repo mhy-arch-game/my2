@@ -1,0 +1,46 @@
+{
+  "target_height": 1125.0,
+  "new_scale": 0.32,
+  "mtime_before": "2026-10-10 15:06:07.469750",
+  "template": [
+    [
+      "TargetJumpHeight",
+      "ok",
+      ""
+    ],
+    [
+      "GravityScaleInside",
+      "ok",
+      ""
+    ],
+    [
+      "TargetJumpHeight",
+      "ok",
+      ""
+    ],
+    [
+      "GravityScaleInside",
+      "ok",
+      ""
+    ]
+  ],
+  "compile": "ok",
+  "save_bp": "ok",
+  "level": [
+    [
+      "jumping_area",
+      [
+        "TargetJumpHeight",
+        "ok",
+        ""
+      ],
+      [
+        "GravityScaleInside",
+        "ok",
+        ""
+      ]
+    ]
+  ],
+  "save_map": "True",
+  "mtime_after": "2026-10-10 15:22:53.886954"
+}

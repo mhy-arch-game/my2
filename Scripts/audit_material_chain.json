@@ -1,0 +1,46 @@
+{
+  "mesh_material_slots": [
+    {
+      "path": "/Game/models/tripo_mat_a27cf087.tripo_mat_a27cf087",
+      "exists": true
+    }
+  ],
+  "component_override_materials": "[]",
+  "/Game/models/tripo_mat_a27cf087": {
+    "class": "MaterialInstanceConstant",
+    "parent": {
+      "path": "/InterchangeAssets/Materials/FBXLegacyPhongSurfaceMaterial.FBXLegacyPhongSurfaceMaterial",
+      "exists": true
+    },
+    "texture_params": [
+      {
+        "name": "<Struct 'MaterialParameterInfo' (0x00000",
+        "value": {
+          "path": "/Game/models/tripo_rgb_70e72a92-ddee-41d8-ba9f-6d1dec8597bb.tripo_rgb_70e72a92-ddee-41d8-ba9f-6d1dec8597bb",
+          "exists": true
+        }
+      }
+    ],
+    "scalar_param_count": 2,
+    "referencers": "TypeError(\"get_referencers() required argument 'reference_options' (pos 2) not found\")"
+  },
+  "/Game/models/tripo_node_a320d423-2e83-446b-9838-6b061e41b321_material_002": {
+    "class": "MaterialInstanceConstant",
+    "parent": {
+      "path": "/InterchangeAssets/Materials/FBXLegacyPhongSurfaceMaterial.FBXLegacyPhongSurfaceMaterial",
+      "exists": true
+    },
+    "texture_params": [
+      {
+        "name": "<Struct 'MaterialParameterInfo' (0x00000",
+        "value": "None"
+      },
+      {
+        "name": "<Struct 'MaterialParameterInfo' (0x00000",
+        "value": "None"
+      }
+    ],
+    "scalar_param_count": 3,
+    "referencers": "TypeError(\"get_referencers() required argument 'reference_options' (pos 2) not found\")"
+  }
+}
