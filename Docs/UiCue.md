@@ -38,7 +38,7 @@ IUiCuePresenter（实现它的 Actor）  或  内置屏幕字幕 + 自己播配�
 | `FUiCue::Trigger` | `TriggerId` 填什么 | 触发时机 |
 |---|---|---|
 | **`BoxVolume`（盒体体积）** | 关卡里 `UI Cue Trigger Volume` 的 `TriggerId` | 玩家进入盒子 → 立刻触发，体积**永久失效** |
-| **`InteractFirstToggle`（可交互物首次切换状态）** | **可交互物在关卡里的名字 / 标签**（如 `men1`、`jiguandeng1`） | 复用 interact 模块：该物体**第一次**开 / 关状态变化时触发一次，之后不再触发 |
+| **`InteractFirstToggle`（可交互物首次切换状态）** | **可交互物的对象名 / `UiCue:xxx` 标签 / 编辑器标签**（如 `men1`、`jiguandeng1`）—— 打包版只有前两种有效，见 §11 | 复用 interact 模块：该物体**第一次**开 / 关状态变化时触发一次，之后不再触发 |
 
 **`InteractFirstToggle` 的两个前提**（都是 interact 模块本来的要求）：
 
@@ -242,4 +242,78 @@ IUiCuePresenter（实现它的 Actor）  或  内置屏幕字幕 + 自己播配�
 字幕已移到**屏幕底端**：`DA_UiCueSet` 的 `SubtitleBottomOffset` = **30**（px，距屏幕底边）。
 控件锚点是屏幕底部居中（anchors `(0.5, 1.0)` + alignment `(0.5, 1.0)`），所以这个值就是"离底边多少像素"，
 想让字幕更贴边就调小（0 = 紧贴底边），想抬高就调大。改完直接保存 DataAsset 生效，不用重编译。
+
+---
+
+## 11. 发行版（打包后）注意：触发 id 必须是"能进包的"标识
+
+> **踩坑记录（2026-10）**：PIE 里 9 条元事件都正常，打成 Shipping 包后**只触发第一条 `ui_opening`**。
+
+**成因**：关卡里物件的**对象名**是自动生成的（`active_door_C_0`、`modern_swift_actor_C_0`、`StaticMeshActor_12`），
+我们平时说的 `men1` / `jiguanqiang1` 其实一直是编辑器里的 **Actor Label**。而 `AActor::ActorLabel` 属于
+`WITH_EDITORONLY_DATA`（编辑器专有数据），**打包后根本不存在** —— `GetActorNameOrLabel()` 会退化成 `GetName()`。
+于是 `InteractFirstToggle` / `ProximityToActor` 这两类 cue 的 `TriggerId` 在包里一条都对不上，
+只剩不需要物件的 `GameStart`（`ui_opening`）能触发。PIE 日志里那对 warning/后续行就是证据：
+先按对象名匹配失败（`可交互物 kongjianchuansuoqi1（首次交互） 没有匹配的 cue`），紧接着按标签第二次才命中。
+
+**现在的匹配顺序**（`UUiCueSubsystem::GetMatchedActorKey`，日志会写明"按哪个键命中"）：
+
+| 顺序 | 键 | 发行版是否有效 |
+|---|---|---|
+| 1 | **物件对象名**（`AActor::GetFName()`） | ✅ |
+| 2 | **Actor Tag**：`UiCue:men1`（也接受裸 tag `men1`） | ✅ |
+| 3 | 编辑器标签 `ActorLabel` | ❌ 只在 PIE/编辑器里兜底（`#if WITH_EDITORONLY_DATA`）|
+
+**关卡物件的落地方式（已做）**：cue 表引用到的 8 个物件都贴上了 `UiCue:<原标签>`：
+
+| 编辑器标签 | 对象名 | 贴上的标签 |
+|---|---|---|
+| `men1` / `men2` / `men3` / `men21` | `active_door_C_0` / `_1` / `_2` / `_20` | `UiCue:men1` … |
+| `kongjianchuansuoqi1` / `2` | `modern_swift_actor_C_0` / `_1` | `UiCue:kongjianchuansuoqi1` / `2` |
+| `jiguanqiang1` / `2` | `StaticMeshActor_12` / `_13` | `UiCue:jiguanqiang1` / `2` |
+
+**以后新增 cue 的两种做法**（任选其一）：
+
+1. 给物件贴一个 `UiCue:<TriggerId>` 标签（**推荐**：身份与编辑器标签解耦，之后改标签/改名字都不影响）；
+2. 或者把物件的**对象名**直接改成 `TriggerId`。
+
+懒得手贴就跑脚本（读 cue 表 → 给被引用物件补 `UiCue:` 标签 → 保存关卡）：
+
+```powershell
+& "E:\UE5_engine\UE_5.7\Engine\Binaries\Win64\UnrealEditor-Cmd.exe" "E:\BaiduNetdiskDownload\my2\MHY_PROJ_v0_1.uproject" `
+  -run=PythonScript -Script="E:\BaiduNetdiskDownload\my2\Scripts\fix_uicue_ids_shipping.py" `
+  -unattended -nop4 -nosplash -NoSound -nullrhi -DDC-ForceMemoryCache -stdout
+```
+
+复核脚本 `Scripts/verify_uicue_ids_shipping.py`：**只按"对象名 / Actor Tag"**（发行版真正会走的两条）重新解析一遍，
+全绿才允许出包（输出 `Scripts/verify_uicue_ids.json`）。
+
+### 发行版没有日志 —— 用 `-UiCueSelfTest` 自检
+
+Shipping 默认 `USE_LOGGING_IN_SHIPPING=0`，**所有 `UE_LOG` 都被裁掉**，发行版出问题看不到任何日志。
+所以子系统里带了一个只在显式传开关时才工作的自检：把 cue 表里每条触发 id 在**包里**能否对上物件写成文本文件。
+
+```powershell
+Saved\Packaged\Release_20261011\Windows\MHY_PROJ_v0_1.exe -UiCueSelfTest
+# 报告写到 exe 同目录（写不进去就退到 Saved 目录）：UiCueSelfTest.txt
+```
+
+报告里出现 `UNRESOLVED` 的那条 cue，在发行版里就是**永远不会触发** —— 出包前跑一次即可（不传开关时这段代码不执行）。
+
+**本次实测（2026-10-11，真 Shipping 包 · `Saved\Packaged\Release_20261011`）**：
+
+```
+MHY UiCue 自检 —— 检查每条 cue 的触发 id 在【发行版】里能否对上关卡物件
+配置：Shipping（编辑器专有的 ActorLabel 已不存在，只能靠对象名 / Actor Tag）
+
+ui_opening       None                         N/A（进入游戏触发，不需要物件）
+ui_kongjian1     kongjianchuansuoqi1          OK   actor=modern_swift_actor_C_0  key=Actor Tag 'UiCue:kongjianchuansuoqi1'
+ui_kongjian2     kongjianchuansuoqi2          OK   actor=modern_swift_actor_C_1  key=Actor Tag 'UiCue:kongjianchuansuoqi2'
+ui_men1          men1                         OK   actor=active_door_C_0        key=Actor Tag 'UiCue:men1'
+ui_men2          men2                         OK   actor=active_door_C_1        key=Actor Tag 'UiCue:men2'
+ui_men3          men3                         OK   actor=active_door_C_2        key=Actor Tag 'UiCue:men3'
+ui_men21         men21                        OK   actor=active_door_C_20       key=Actor Tag 'UiCue:men21'
+ui_jiguanqiang1  jiguanqiang1                 OK   actor=StaticMeshActor_12     key=Actor Tag 'UiCue:jiguanqiang1'
+ui_jiguanqiang2  jiguanqiang2                 OK   actor=StaticMeshActor_13     key=Actor Tag 'UiCue:jiguanqiang2'
+```
 

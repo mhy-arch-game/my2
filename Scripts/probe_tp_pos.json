@@ -1,0 +1,73 @@
+{
+ "characters": [
+  {
+   "label": "BP_FirstPersonCharacter",
+   "class": "BP_FirstPersonCharacter_C",
+   "loc": [
+    416.7,
+    -263.0,
+    110.6
+   ],
+   "bDrawDebug_before": "False",
+   "bDrawDebug_after": "True",
+   "dist_to_tp1": 205.4,
+   "dist_to_tp2": 5014.8
+  }
+ ],
+ "teleporters": {
+  "kongjianchuansuoqi1": [
+   620.0,
+   -290.0,
+   100.0
+  ],
+  "kongjianchuansuoqi2": [
+   620.0,
+   -290.0,
+   -4900.0
+  ],
+  "kongjianchuansuoqi3": [
+   -8935.0,
+   580.0,
+   1300.0
+  ],
+  "kongjianchuansuoqi4": [
+   -8935.0,
+   580.0,
+   -3700.0
+  ],
+  "kongjianchuansuoqi5": [
+   -9025.0,
+   -255.0,
+   1300.0
+  ],
+  "kongjianchuansuoqi6": [
+   -9025.0,
+   -255.0,
+   -3700.0
+  ],
+  "kongjianchuansuoqi7": [
+   -6945.0,
+   -265.0,
+   1700.0
+  ],
+  "kongjianchuansuoqi8": [
+   -6945.0,
+   -265.0,
+   -3300.0
+  ],
+  "kongjianchuansuoqi9": [
+   -22065.0,
+   3345.0,
+   -3100.0
+  ],
+  "kongjianchuansuoqi10": [
+   -22065.0,
+   3345.0,
+   -8100.0
+  ]
+ },
+ "debug_reverted": [
+  "BP_FirstPersonCharacter"
+ ],
+ "save": "True"
+}

@@ -1,0 +1,507 @@
+{
+ "cues": [
+  {
+   "CueId": "ui_opening",
+   "Trigger": "<UiCueTrigger.GAME_START: 2>",
+   "TriggerId": "None",
+   "TextLen": 99,
+   "Voices": [
+    "/Game/sound_resources/opening.opening",
+    "/Game/sound_resources/opening2.opening2",
+    "/Game/sound_resources/opening3.opening3"
+   ]
+  },
+  {
+   "CueId": "ui_kongjian1",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "kongjianchuansuoqi1",
+   "TextLen": 55,
+   "Voices": [
+    "/Game/sound_resources/kongjianzhuanhuanqi1.kongjianzhuanhuanqi1",
+    "/Game/sound_resources/kongjianzhuanhuanqi1_2.kongjianzhuanhuanqi1_2"
+   ]
+  },
+  {
+   "CueId": "ui_kongjian2",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "kongjianchuansuoqi2",
+   "TextLen": 61,
+   "Voices": [
+    "/Game/sound_resources/kongjianzhuanhuanqi2.kongjianzhuanhuanqi2"
+   ]
+  },
+  {
+   "CueId": "ui_men1",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "men1",
+   "TextLen": 43,
+   "Voices": [
+    "/Game/sound_resources/men1.men1"
+   ]
+  },
+  {
+   "CueId": "ui_men2",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "men2",
+   "TextLen": 54,
+   "Voices": [
+    "/Game/sound_resources/men2.men2"
+   ]
+  },
+  {
+   "CueId": "ui_men3",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "men3",
+   "TextLen": 50,
+   "Voices": [
+    "/Game/sound_resources/men3.men3"
+   ]
+  },
+  {
+   "CueId": "ui_men21",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "men21",
+   "TextLen": 103,
+   "Voices": [
+    "/Game/sound_resources/men21.men21",
+    "/Game/sound_resources/men21_2.men21_2"
+   ]
+  },
+  {
+   "CueId": "ui_jiguanqiang1",
+   "Trigger": "<UiCueTrigger.PROXIMITY_TO_ACTOR: 3>",
+   "TriggerId": "jiguanqiang1",
+   "TextLen": 71,
+   "Voices": [
+    "/Game/sound_resources/LS12.LS12"
+   ]
+  },
+  {
+   "CueId": "ui_jiguanqiang2",
+   "Trigger": "<UiCueTrigger.PROXIMITY_TO_ACTOR: 3>",
+   "TriggerId": "jiguanqiang2",
+   "TextLen": 71,
+   "Voices": [
+    "/Game/sound_resources/LS12.LS12"
+   ]
+  }
+ ],
+ "triggerIds": [
+  "jiguanqiang1",
+  "jiguanqiang2",
+  "kongjianchuansuoqi1",
+  "kongjianchuansuoqi2",
+  "men1",
+  "men2",
+  "men21",
+  "men3"
+ ],
+ "sounds": {
+  "/Game/sound_resources/LS12.LS12": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "4.895999908447266",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/kongjianzhuanhuanqi1.kongjianzhuanhuanqi1": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "2.9760000705718994",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/kongjianzhuanhuanqi1_2.kongjianzhuanhuanqi1_2": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "1.5839999914169312",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/kongjianzhuanhuanqi2.kongjianzhuanhuanqi2": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "4.1519999504089355",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/men1.men1": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "3.1440000534057617",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/men2.men2": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "4.320000171661377",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/men21.men21": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "3.5280001163482666",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/men21_2.men21_2": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "3.5280001163482666",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/men3.men3": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "3.671999931335449",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/opening.opening": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "2.2799999713897705",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/opening2.opening2": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "3.1440000534057617",
+   "bLooping": "False"
+  },
+  "/Game/sound_resources/opening3.opening3": {
+   "class": "<Object '/Script/Engine.SoundWave' (0x00007FF441CF1EE8) Class 'Class'>",
+   "duration": "2.5920000076293945",
+   "bLooping": "False"
+  }
+ },
+ "actorCount": 590,
+ "interactableCount": 41,
+ "matchReport": {
+  "jiguanqiang1": [
+   {
+    "name": "StaticMeshActor_12",
+    "label": "jiguanqiang1",
+    "class": "StaticMeshActor",
+    "tags": [],
+    "comps": [
+     "StaticMeshComponent",
+     "InteractableComponent",
+     "ProximitySequenceComponent"
+    ]
+   }
+  ],
+  "jiguanqiang2": [
+   {
+    "name": "StaticMeshActor_13",
+    "label": "jiguanqiang2",
+    "class": "StaticMeshActor",
+    "tags": [],
+    "comps": [
+     "StaticMeshComponent",
+     "ProximitySequenceComponent"
+    ]
+   }
+  ],
+  "kongjianchuansuoqi1": [
+   {
+    "name": "modern_swift_actor_C_0",
+    "label": "kongjianchuansuoqi1",
+    "class": "modern_swift_actor_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "TimeEraComponent",
+     "InteractableComponent",
+     "TimeEraPortalComponent"
+    ]
+   },
+   {
+    "name": "modern_swift_actor_C_9",
+    "label": "kongjianchuansuoqi10",
+    "class": "modern_swift_actor_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "TimeEraComponent",
+     "InteractableComponent",
+     "TimeEraPortalComponent"
+    ]
+   }
+  ],
+  "kongjianchuansuoqi2": [
+   {
+    "name": "modern_swift_actor_C_1",
+    "label": "kongjianchuansuoqi2",
+    "class": "modern_swift_actor_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "TimeEraComponent",
+     "InteractableComponent",
+     "TimeEraPortalComponent"
+    ]
+   }
+  ],
+  "men1": [
+   {
+    "name": "active_door_C_0",
+    "label": "men1",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_9",
+    "label": "men10",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_10",
+    "label": "men11",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_11",
+    "label": "men12",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_12",
+    "label": "men13",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_13",
+    "label": "men14",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_14",
+    "label": "men15",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_15",
+    "label": "men16",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_16",
+    "label": "men17",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_17",
+    "label": "men18",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_18",
+    "label": "men19",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   }
+  ],
+  "men2": [
+   {
+    "name": "active_door_C_1",
+    "label": "men2",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_19",
+    "label": "men20",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "InteractionLinkComponent",
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_20",
+    "label": "men21",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_21",
+    "label": "men23",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_22",
+    "label": "men24",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   },
+   {
+    "name": "active_door_C_23",
+    "label": "men25",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   }
+  ],
+  "men21": [
+   {
+    "name": "active_door_C_20",
+    "label": "men21",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   }
+  ],
+  "men3": [
+   {
+    "name": "active_door_C_2",
+    "label": "men3",
+    "class": "active_door_C",
+    "tags": [],
+    "comps": [
+     "SceneComponent",
+     "BillboardComponent",
+     "StaticMeshComponent",
+     "InteractableComponent"
+    ]
+   }
+  ]
+ },
+ "cookSafeMatch": {
+  "jiguanqiang1": {
+   "byName": [],
+   "byTag": []
+  },
+  "jiguanqiang2": {
+   "byName": [],
+   "byTag": []
+  },
+  "kongjianchuansuoqi1": {
+   "byName": [],
+   "byTag": []
+  },
+  "kongjianchuansuoqi2": {
+   "byName": [],
+   "byTag": []
+  },
+  "men1": {
+   "byName": [],
+   "byTag": []
+  },
+  "men2": {
+   "byName": [],
+   "byTag": []
+  },
+  "men21": {
+   "byName": [],
+   "byTag": []
+  },
+  "men3": {
+   "byName": [],
+   "byTag": []
+  }
+ }
+}

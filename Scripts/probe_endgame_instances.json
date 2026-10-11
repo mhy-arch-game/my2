@@ -1,0 +1,16 @@
+{
+ "instances": [
+  {
+   "class": "endofthegame_C",
+   "label": "endofthegame",
+   "name": "endofthegame_C_1",
+   "loc": [
+    596.7,
+    -263.0,
+    238.6
+   ],
+   "outer": "PersistentLevel"
+  }
+ ],
+ "count": 1
+}

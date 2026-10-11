@@ -1,0 +1,33 @@
+{
+ "bp": "end_of_the_game",
+ "compile": "None",
+ "generated": "<Object '/Game/bclass_source/end_of_the_game.end_of_the_game_C' (0x0000023A01267700) Class 'BlueprintGenerated",
+ "parent_tag": "/Script/CoreUObject.Class'/Script/MHY_ARCH_GAME.EndOfTheGameActor'",
+ "instances": [
+  {
+   "class": "end_of_the_game_C",
+   "label": "end_of_the_game",
+   "loc": [
+    -20040.0,
+    -665.0,
+    -2890.0
+   ],
+   "comps": [
+    {
+     "name": "EndGameSpin",
+     "class": "RotatingMovementComponent"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "prompt": "\u89e6\u78b0",
+     "enabled": "True"
+    },
+    {
+     "name": "StaticMesh",
+     "class": "StaticMeshComponent"
+    }
+   ]
+  }
+ ]
+}

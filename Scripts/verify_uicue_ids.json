@@ -1,0 +1,116 @@
+{
+ "cues": [
+  {
+   "CueId": "ui_opening",
+   "Trigger": "<UiCueTrigger.GAME_START: 2>",
+   "TriggerId": "None"
+  },
+  {
+   "CueId": "ui_kongjian1",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "kongjianchuansuoqi1"
+  },
+  {
+   "CueId": "ui_kongjian2",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "kongjianchuansuoqi2"
+  },
+  {
+   "CueId": "ui_men1",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "men1"
+  },
+  {
+   "CueId": "ui_men2",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "men2"
+  },
+  {
+   "CueId": "ui_men3",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "men3"
+  },
+  {
+   "CueId": "ui_men21",
+   "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "TriggerId": "men21"
+  },
+  {
+   "CueId": "ui_jiguanqiang1",
+   "Trigger": "<UiCueTrigger.PROXIMITY_TO_ACTOR: 3>",
+   "TriggerId": "jiguanqiang1"
+  },
+  {
+   "CueId": "ui_jiguanqiang2",
+   "Trigger": "<UiCueTrigger.PROXIMITY_TO_ACTOR: 3>",
+   "TriggerId": "jiguanqiang2"
+  }
+ ],
+ "rows": [
+  {
+   "CueId": "ui_opening",
+   "TriggerId": "-",
+   "cookSafe": "N/A (GameStart)",
+   "labelOnly": "-"
+  },
+  {
+   "CueId": "ui_kongjian1",
+   "TriggerId": "kongjianchuansuoqi1",
+   "cookSafe": "Actor Tag UiCue:kongjianchuansuoqi1 @ modern_swift_actor_C_0",
+   "labelOnly": "-",
+   "candidates": 1
+  },
+  {
+   "CueId": "ui_kongjian2",
+   "TriggerId": "kongjianchuansuoqi2",
+   "cookSafe": "Actor Tag UiCue:kongjianchuansuoqi2 @ modern_swift_actor_C_1",
+   "labelOnly": "-",
+   "candidates": 1
+  },
+  {
+   "CueId": "ui_men1",
+   "TriggerId": "men1",
+   "cookSafe": "Actor Tag UiCue:men1 @ active_door_C_0",
+   "labelOnly": "-",
+   "candidates": 1
+  },
+  {
+   "CueId": "ui_men2",
+   "TriggerId": "men2",
+   "cookSafe": "Actor Tag UiCue:men2 @ active_door_C_1",
+   "labelOnly": "-",
+   "candidates": 1
+  },
+  {
+   "CueId": "ui_men3",
+   "TriggerId": "men3",
+   "cookSafe": "Actor Tag UiCue:men3 @ active_door_C_2",
+   "labelOnly": "-",
+   "candidates": 1
+  },
+  {
+   "CueId": "ui_men21",
+   "TriggerId": "men21",
+   "cookSafe": "Actor Tag UiCue:men21 @ active_door_C_20",
+   "labelOnly": "-",
+   "candidates": 1
+  },
+  {
+   "CueId": "ui_jiguanqiang1",
+   "TriggerId": "jiguanqiang1",
+   "cookSafe": "Actor Tag UiCue:jiguanqiang1 @ StaticMeshActor_12",
+   "labelOnly": "-",
+   "candidates": 1
+  },
+  {
+   "CueId": "ui_jiguanqiang2",
+   "TriggerId": "jiguanqiang2",
+   "cookSafe": "Actor Tag UiCue:jiguanqiang2 @ StaticMeshActor_13",
+   "labelOnly": "-",
+   "candidates": 1
+  }
+ ],
+ "okCount": 9,
+ "cueCount": 9,
+ "actorCount": 590
+}

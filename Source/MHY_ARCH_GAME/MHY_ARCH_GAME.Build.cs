@@ -39,6 +39,7 @@ public class MHY_ARCH_GAME : ModuleRules
 			"MHY_ARCH_GAME/StructureInteraction",
 			"MHY_ARCH_GAME/StructureInteraction/Interfaces",
 			"MHY_ARCH_GAME/TimeShift",
+			"MHY_ARCH_GAME/GameFlow",
 			"MHY_ARCH_GAME/TimeShift/Interfaces",
 			"MHY_ARCH_GAME/UiDirector",
 			"MHY_ARCH_GAME/BackgroundMusic",

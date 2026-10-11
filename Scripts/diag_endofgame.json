@@ -1,0 +1,8 @@
+{
+ "bp": "end_of_the_game",
+ "status_before": "ERR Exception(\"Blueprint: Property 'Status' for attribute 'status' on 'Blueprint' is protected and cannot be read\"",
+ "variables_err": "Exception(\"Blueprint: Failed to find property 'new_variables' for attribute 'new_variables",
+ "handle_type": "<class 'Array'>",
+ "scs_err": "AttributeError(\"'SubobjectData' object has no attribute 'get_display_name'\")",
+ "status_after": "ERR Exception(\"Blueprint: Property 'Status' for attribute 'status' on 'Blueprint' is protected and cannot be read\""
+}

@@ -156,6 +156,12 @@ private:
 	/** 命中的体积 -> 找到匹配 cue 并入队。 */
 	bool EnqueueCueForVolume(AUiCueTriggerVolume* Volume);
 
+	/** 真正入队（bOnce 判定 + 日志），所有触发源共用。 */
+	bool EnqueueCue(const FUiCue& Cue, const FString& SourceLabel);
+
+	/** 按 Actor 匹配 cue：TriggerId 对 对象名 / Actor Tag / 编辑器标签。 */
+	bool EnqueueCueForActor(AActor* Actor, EUiCueTrigger Kind, const FString& SourceLabel);
+
 	/** 按 TriggerId + 触发方式找 cue 并入队（两种触发方式共用）。 */
 	bool EnqueueCueByTriggerId(FName TriggerId, EUiCueTrigger Kind, const FString& SourceLabel);
 
@@ -182,8 +188,18 @@ private:
 	/** 按名字 / 标签找关卡里的 Actor（带缓存）。 */
 	AActor* ResolveActorById(FName Id, UWorld* World);
 
-	/** Actor 的名字 / 标签是否等于给定的 id。 */
+	/**
+	 * Actor 用哪个键命中了 TriggerId（"对象名" / "Actor Tag 'UiCue:x'" / "编辑器标签"）；
+	 * 没命中返回空串。**打包版里没有编辑器标签**，所以关卡物件必须靠对象名或 'UiCue:xxx' 标签。
+	 */
+	static FString GetMatchedActorKey(FName TriggerId, const AActor* Actor);
+
+	/** TriggerId 能否对上这个 Actor（GetMatchedActorKey 非空即命中）。 */
 	static bool MatchesActorId(FName TriggerId, const AActor* Actor);
+
+	/** 发行版自检（命令行 -UiCueSelfTest）：把触发 id 的解析结果写成文本文件。 */
+	void RunSelfTestIfRequested();
+	bool bSelfTestDone = false;
 
 	void StartCue(const FUiCue& Cue);
 	void ShowSegment(int32 Index);

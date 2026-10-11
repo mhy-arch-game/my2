@@ -14,17 +14,14 @@
 #include "LevelSequencePlayer.h"
 #include "MovieSceneSequencePlaybackSettings.h"
 
-#if !UE_BUILD_SHIPPING
 /**
  * 调试钩子：>0 = 关卡开始 N 秒后，自动对场景里所有 ProximitySequenceComponent 调一次 TriggerNow()。
  * 用途：headless / 无玩家的环境里也能驱动"播序列 → 播完开碰撞"这整条链路（正常游戏保持 0）。
- * **Shipping 构建里整段被编译掉**，面向用户的包里不存在这个调试开关。
  */
 static TAutoConsoleVariable<int32> CVarProximitySequenceAutoTrigger(
 	TEXT("ps.AutoTrigger"), 0,
 	TEXT(">0 = 关卡运行 N 秒后自动对所有 ProximitySequenceComponent 调一次 TriggerNow（调试用）。"),
 	ECVF_Default);
-#endif
 
 UProximitySequenceComponent::UProximitySequenceComponent()
 {
@@ -99,7 +96,6 @@ void UProximitySequenceComponent::TickComponent(float DeltaTime, ELevelTick Tick
 
 	const float Distance = GetDistanceToTarget();
 
-#if !UE_BUILD_SHIPPING
 	// 调试钩子：ps.AutoTrigger 秒后自动触发一次（无玩家环境验证 "播序列 → 播完开碰撞" 用）。
 	const int32 AutoTriggerSeconds = CVarProximitySequenceAutoTrigger.GetValueOnGameThread();
 	if (AutoTriggerSeconds > 0 && !bTriggered && GetWorld() && GetWorld()->GetTimeSeconds() >= AutoTriggerSeconds)
@@ -108,7 +104,6 @@ void UProximitySequenceComponent::TickComponent(float DeltaTime, ELevelTick Tick
 			*GetNameSafe(GetOwner()), AutoTriggerSeconds);
 		TriggerNow();
 	}
-#endif
 
 	// 慢速区独立于触发：触发过一次之后到"变成实体"之前仍然限速，所以不再在这里停 tick。
 	UpdateSlowZone(Distance);
