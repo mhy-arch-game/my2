@@ -543,6 +543,7 @@
 | `Docs/ProximitySequence.md` | **★ 首次靠近播放关卡序列**（机关墙：距离触发 → 播动画 → 显形 + 开碰撞挡路；含实测联动关系） |
 | `Docs/Packaging.md` | **★ 面向用户端的打包构建（Windows Shipping）**：命令行/GUI 两种出包方式、调试功能禁用清单、验收清单、常见问题 |
 | `Docs/InteractSelectionVisual.md` | **★ 交互选中视觉效果选型**：7 个候选方案（Stencil 后处理描边 / Overlay 材质 / DMI 染色 / 反向壳 / 简易染色 / 世界标记 / X-ray）+ 逐方案实现步骤与验收 |
+| `Docs/CharacterModelReplacement.md` | **★ 替换人物模型**：现状装配、四种模型形态的兼容性结论、10 项风险清单、推荐路线（走 UE5 骨架最省事）与验收 |
 ## 10. ★ 脚本批量改资产的持久化规则（血泪教训）
 
 headless 脚本（`-run=PythonScript`）改属性能"报成功"但**实际没存进去**，是本项目最容易踩的坑。
