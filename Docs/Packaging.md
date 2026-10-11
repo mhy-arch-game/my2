@@ -91,6 +91,25 @@ Saved\Packaged\Windows\
 
 > 出包命令见 §2.2；把 `-archivedirectory` 指到新文件夹即可为指定版本单独归档（本表第一行就是这么出的）。
 
+| `e6c3ded <fix> 打包时强制收 UiCue 表与配音`（**当前版本**）| 2026-10-11 | `Saved\Packaged\UserBuild_e6c3ded_20261011\Windows` | **895.7 MB**（pak 10.3 MB）| 启动 20 秒无崩溃 ✓；manifest **3110** 条，含 `DA_UiCueSet` 与全部 12 段 UiCue 配音（对比上一版新增 58 个文件）✓ |
+
+### 踩坑记录：只在运行时"扫 AssetRegistry"找到的资产不会被 cook
+
+UiCue 的 cue 表 `/Game/MHY_ARCH_GAME/UI/DA_UiCueSet` 是模块在运行时扫描 AssetRegistry **自动找**的，
+**没有任何硬/软引用指向它** —— 于是 cooker 根本不知道它的存在，第一版包里既没有 cue 表、也没有它引用的 12 段配音
+（实测：那版 manifest 里 `DA_UiCueSet` / `opening` / `kongjianzhuanhuanqi` 全是 0 命中，play 起来自然没有 UiCue）。
+
+修法：在 `Config/DefaultGame.ini` 里显式声明要收的目录（`Project Settings → Packaging` 里也是这两项）：
+
+```ini
+[/Script/UnrealEd.ProjectPackagingSettings]
++DirectoriesToAlwaysCook=(Path="/Game/MHY_ARCH_GAME/UI")
++DirectoriesToAlwaysCook=(Path="/Game/sound_resources")
+```
+
+> 判断方式很简单：**凡是"代码/配置里用软引用或路径字符串指向、或靠运行时扫描发现"的资产，都要写进 `DirectoriesToAlwaysCook`**；
+> 硬引用（关卡/蓝图/组件属性里直接指的）不需要。自查办法就是出包后翻 `Manifest_UFSFiles_Win64.txt` 看它有没有在里面。
+
 整包直接拷贝到目标机器即可运行（目标机需要 **VC++ 2015-2022 运行库**；要在包里附带安装器就加 `-prereqs`）。
 
 ## 3. 打包（编辑器 GUI，偶尔手动出包时用）
