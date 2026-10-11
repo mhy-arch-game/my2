@@ -1,0 +1,15 @@
+{
+ "fixed": {
+  "kongjianchuansuoqi3": {
+   "before": "-5000.0",
+   "after": "-5085.0",
+   "loc_z": 1300.0
+  },
+  "kongjianchuansuoqi4": {
+   "before": "-5000.0",
+   "after": "-5085.0",
+   "loc_z": -3785.0
+  }
+ },
+ "save": "True"
+}

@@ -1,0 +1,110 @@
+{
+ "cues": [
+  {
+   "id": "ui_opening",
+   "trigger": "<UiCueTrigger.GAME_START: 2>",
+   "triggerId": "None",
+   "text": "Hey, can you hear me? The rules of space here aren't ordinary. Try interacting with this mechanism.",
+   "voices": [
+    "<Object '/Game/sound_resources/opening.opening",
+    "<Object '/Game/sound_resources/opening2.openin",
+    "<Object '/Game/sound_resources/opening3.openin"
+   ],
+   "prox": "600.0",
+   "once": "True"
+  },
+  {
+   "id": "ui_kongjian1",
+   "trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "triggerId": "kongjianchuansuoqi1",
+   "text": "This is another space of his mind. Try to do something.",
+   "voices": [
+    "<Object '/Game/sound_resources/kongjianzhuanhu",
+    "<Object '/Game/sound_resources/kongjianzhuanhu"
+   ],
+   "prox": "600.0",
+   "once": "True"
+  },
+  {
+   "id": "ui_kongjian2",
+   "trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "triggerId": "kongjianchuansuoqi2",
+   "text": "It seems like a change in one space can affect another space.",
+   "voices": [
+    "<Object '/Game/sound_resources/kongjianzhuanhu"
+   ],
+   "prox": "600.0",
+   "once": "True"
+  },
+  {
+   "id": "ui_men1",
+   "trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "triggerId": "men1",
+   "text": "Behind these doors are stored his memories.",
+   "voices": [
+    "<Object '/Game/sound_resources/men1.men1' (0x0"
+   ],
+   "prox": "600.0",
+   "once": "True"
+  },
+  {
+   "id": "ui_men2",
+   "trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "triggerId": "men2",
+   "text": "The space of this memory is pretty chaotic, get ready.",
+   "voices": [
+    "<Object '/Game/sound_resources/men2.men2' (0x0"
+   ],
+   "prox": "600.0",
+   "once": "True"
+  },
+  {
+   "id": "ui_men3",
+   "trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "triggerId": "men3",
+   "text": "A hidden passage, this should be one of his scars.",
+   "voices": [
+    "<Object '/Game/sound_resources/men3.men3' (0x0"
+   ],
+   "prox": "600.0",
+   "once": "True"
+  },
+  {
+   "id": "ui_men21",
+   "trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "triggerId": "men21",
+   "text": "The location is right here, try looking higher up. The space here feels very light, give jumping a try.",
+   "voices": [
+    "<Object '/Game/sound_resources/men21.men21' (0",
+    "<Object '/Game/sound_resources/men21_2.men21_2"
+   ],
+   "prox": "600.0",
+   "once": "True"
+  },
+  {
+   "id": "ui_jiguanqiang1",
+   "trigger": "<UiCueTrigger.PROXIMITY_TO_ACTOR: 3>",
+   "triggerId": "jiguanqiang1",
+   "text": "Sometimes you'll run into obstacles, it's his inner caution toward you.",
+   "voices": [
+    "<Object '/Game/sound_resources/LS12.LS12' (0x0"
+   ],
+   "prox": "600.0",
+   "once": "True"
+  },
+  {
+   "id": "ui_jiguanqiang2",
+   "trigger": "<UiCueTrigger.PROXIMITY_TO_ACTOR: 3>",
+   "triggerId": "jiguanqiang2",
+   "text": "Sometimes you'll run into obstacles, it's his inner caution toward you.",
+   "voices": [
+    "<Object '/Game/sound_resources/LS12.LS12' (0x0"
+   ],
+   "prox": "600.0",
+   "once": "True"
+  }
+ ],
+ "gap": "3.0",
+ "delims": "。！？!?.;；\n",
+ "trigger_volumes": []
+}

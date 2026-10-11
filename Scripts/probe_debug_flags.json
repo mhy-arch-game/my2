@@ -1,0 +1,20 @@
+{
+ "drawdebug_on": [
+  "BP_FirstPersonCharacter / InteractionDetectorComponent"
+ ],
+ "debug_props": {
+  "jiguanqiang1": {
+   "DebugLogRange": "0.0",
+   "bDebugLogSlowZone": "False",
+   "bSlowPlayerNearby": "True"
+  },
+  "jiguanqiang2": {
+   "DebugLogRange": "0.0",
+   "bDebugLogSlowZone": "False",
+   "bSlowPlayerNearby": "True"
+  },
+  "character_detector:BP_FirstPersonCharacter": {
+   "bDrawDebug": "True"
+  }
+ }
+}

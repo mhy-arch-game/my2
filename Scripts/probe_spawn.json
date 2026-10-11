@@ -1,0 +1,55 @@
+{
+ "player_starts": [
+  {
+   "label": "PlayerStart",
+   "class": "PlayerStart",
+   "loc": [
+    0.0,
+    0.0,
+    3182.0
+   ]
+  }
+ ],
+ "walls": {
+  "jiguanqiang1": {
+   "loc": [
+    -1500.0,
+    -3355.0,
+    296.5
+   ],
+   "bounds_inplace": "<ERR TypeError('get_actor_bounds() takes at most 2 arguments (3 given)')>",
+   "bounds_out": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_1arg": "(<Struct 'Vector' (0x000002A0898DB170) {x: -1333.715267, y: -3310.000000, z: 250.000000}>, <Struct 'Vector' (0x000002A0898DB440) {x: 173.715267, y: 170.000000, ",
+   "mesh_bounds": "<ERR Exception(\"StaticMeshComponent: Failed to find property 'Bounds' for attribute 'Bounds' on>",
+   "mesh_local_bounds": "(<Struct 'Vector' (0x000002A0898DB4E0) {x: -7.430533, y: -125.000000, z: -296.500000}>, <Struct 'Vector' (0x000002A0898DAE00) {x: 340.000000, y: 215.000000, z: ",
+   "mesh_extent": "<Struct 'BoxSphereBounds' (0x000002A09D832280) {origin: {x: 166.284733, y: 45.000000, z: -46.500000}, box_extent: {x: 17"
+  },
+  "jiguanqiang2": {
+   "loc": [
+    -1500.0,
+    3145.0,
+    296.5
+   ],
+   "bounds_inplace": "<ERR TypeError('get_actor_bounds() takes at most 2 arguments (3 given)')>",
+   "bounds_out": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_1arg": "(<Struct 'Vector' (0x000002A0898095A0) {x: -1333.715267, y: 3190.000000, z: 250.000000}>, <Struct 'Vector' (0x000002A0898DAE00) {x: 173.715267, y: 170.000000, z",
+   "mesh_bounds": "<ERR Exception(\"StaticMeshComponent: Failed to find property 'Bounds' for attribute 'Bounds' on>",
+   "mesh_local_bounds": "(<Struct 'Vector' (0x000002A0898DB170) {x: -7.430533, y: -125.000000, z: -296.500000}>, <Struct 'Vector' (0x000002A0898DB440) {x: 340.000000, y: 215.000000, z: ",
+   "mesh_extent": "<Struct 'BoxSphereBounds' (0x000002A09D834940) {origin: {x: 166.284733, y: 45.000000, z: -46.500000}, box_extent: {x: 17"
+  }
+ }
+}

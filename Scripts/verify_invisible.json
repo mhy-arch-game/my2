@@ -1,0 +1,53 @@
+{
+ "before": {
+  "jiguanqiang1": {
+   "loc": "<Struct 'Vector' (0x000001DD17A232B0) {x: -1500.000000, y: -",
+   "rot": "<Struct 'Rotator' (0x000001DD17A232B0) {pitch: 0.000000, yaw: 0.000000",
+   "scale": "<Struct 'Vector' (0x000001DD17A232B0) {x: 1.000000",
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397.C",
+   "profile": "BlockAllDynamic",
+   "col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "bHiddenInGame": "False",
+   "bVisible": "True",
+   "actor_bHidden": "False",
+   "mobility": "<ComponentMobility.MOVABLE: 2>"
+  },
+  "jiguanqiang2": {
+   "loc": "<Struct 'Vector' (0x000001DD17A88420) {x: -1500.000000, y: 3",
+   "rot": "<Struct 'Rotator' (0x000001DD17A88420) {pitch: 0.000000, yaw: 0.000000",
+   "scale": "<Struct 'Vector' (0x000001DD17A88420) {x: 1.000000",
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397.C",
+   "profile": "BlockAllDynamic",
+   "col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "bHiddenInGame": "False",
+   "bVisible": "True",
+   "actor_bHidden": "False",
+   "mobility": "<ComponentMobility.MOVABLE: 2>"
+  },
+  "yinxingqiang1": {
+   "loc": "<Struct 'Vector' (0x000001DD17A88380) {x: -1800.000000, y: -",
+   "rot": "<Struct 'Rotator' (0x000001DD17A88380) {pitch: 0.000000, yaw: 0.000000",
+   "scale": "<Struct 'Vector' (0x000001DD17A88380) {x: 1.000000",
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397.C",
+   "profile": "InvisibleWall",
+   "col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "bHiddenInGame": "True",
+   "bVisible": "True",
+   "actor_bHidden": "False",
+   "mobility": "<ComponentMobility.STATIC: 0>"
+  },
+  "yinxingqiang2": {
+   "loc": "<Struct 'Vector' (0x000001DD17A88470) {x: -1800.000000, y: 3",
+   "rot": "<Struct 'Rotator' (0x000001DD17A88470) {pitch: 0.000000, yaw: 0.000000",
+   "scale": "<Struct 'Vector' (0x000001DD17A88470) {x: 1.000000",
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397.C",
+   "profile": "InvisibleWall",
+   "col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "bHiddenInGame": "True",
+   "bVisible": "True",
+   "actor_bHidden": "False",
+   "mobility": "<ComponentMobility.STATIC: 0>"
+  }
+ },
+ "fixed": []
+}

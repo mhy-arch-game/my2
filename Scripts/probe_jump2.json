@@ -1,0 +1,112 @@
+{
+ "boxes": [
+  {
+   "label": "jumping_area",
+   "loc": [
+    -7850.0,
+    615.0,
+    0.0
+   ],
+   "ext": [
+    774.6,
+    698.1,
+    3597.8
+   ],
+   "min": [
+    -8624.6,
+    -83.10000000000002,
+    -3597.8
+   ],
+   "max": [
+    -7075.4,
+    1313.1,
+    3597.8
+   ]
+  },
+  {
+   "label": "jumping_area2",
+   "loc": [
+    -7850.0,
+    615.0,
+    0.0
+   ],
+   "ext": [
+    1073.5,
+    978.5,
+    948.8
+   ],
+   "min": [
+    -8923.5,
+    -363.5,
+    -948.8
+   ],
+   "max": [
+    -6776.5,
+    1593.5,
+    948.8
+   ]
+  },
+  {
+   "label": "jumping_area3",
+   "loc": [
+    -7850.0,
+    670.0,
+    -4975.0
+   ],
+   "ext": [
+    1073.5,
+    1073.8,
+    948.8
+   ],
+   "min": [
+    -8923.5,
+    -403.79999999999995,
+    -5923.8
+   ],
+   "max": [
+    -6776.5,
+    1743.8,
+    -4026.2
+   ]
+  }
+ ],
+ "overlaps": [
+  {
+   "pair": "jumping_area & jumping_area2",
+   "overlap_cm": [
+    1549.2,
+    1396.2,
+    1897.6
+   ],
+   "overlaps": true
+  },
+  {
+   "pair": "jumping_area & jumping_area3",
+   "overlap_cm": [
+    1549.2,
+    1396.2,
+    -428.4
+   ],
+   "overlaps": false
+  },
+  {
+   "pair": "jumping_area2 & jumping_area3",
+   "overlap_cm": [
+    2147.0,
+    1957.0,
+    -3077.4
+   ],
+   "overlaps": false
+  }
+ ],
+ "char": {
+  "JumpMaxCount": "1",
+  "JumpMaxHoldTime": "0.0"
+ },
+ "char_move": {
+  "JumpZVelocity": "420.0",
+  "GravityScale": "1.0",
+  "AirControl": "0.6000000238418579"
+ },
+ "nav": "<Struct 'NavAgentProperties' (0x0000013073580170) {can_crouch: False, can_jump: True, can_walk: True, can_swim: True, can_fly: False, agent_radius: 48.000000, a"
+}

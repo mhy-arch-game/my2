@@ -1,0 +1,31 @@
+{
+ "cue_count": 9,
+ "cue_ids": [
+  "ui_opening",
+  "ui_kongjian1",
+  "ui_kongjian2",
+  "ui_men1",
+  "ui_men2",
+  "ui_men3",
+  "ui_men21",
+  "ui_jiguanqiang1",
+  "ui_jiguanqiang2"
+ ],
+ "subtitle_offset": "30.0",
+ "gap": "3.0",
+ "level": {
+  "invisible": [
+   "yinxingqiang1",
+   "yinxingqiang2"
+  ],
+  "proximity": [
+   "jiguanqiang1",
+   "jiguanqiang2"
+  ],
+  "uicue_vol": [],
+  "portal34": {
+   "kongjianchuansuoqi3": "-5085.0",
+   "kongjianchuansuoqi4": "-5085.0"
+  }
+ }
+}
