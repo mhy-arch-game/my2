@@ -107,6 +107,24 @@ UiCue 的 cue 表 `/Game/MHY_ARCH_GAME/UI/DA_UiCueSet` 是模块在运行时扫�
 +DirectoriesToAlwaysCook=(Path="/Game/sound_resources")
 ```
 
+### Git LFS 归档（含 UiCue 的那个包）
+
+| 项 | 值 |
+|---|---|
+| 归档内容 | `Saved/Packaged/UserBuild_e6c3ded_20261011`（**含 UiCue** 的 Windows Shipping 包）|
+| 方式 | **Git LFS**（`.gitattributes` 里 `Saved/Packaged/UserBuild_e6c3ded_20261011/** filter=lfs diff=lfs merge=lfs -text`）|
+| 提交 | `92f06cb <build> 归档含 UiCue 的 Windows Shipping 包 e6c3ded（Git LFS：29 个文件 / 895.7 MB）` |
+| 上传量 | LFS 对象 **29/29，939 MB**（已推到 `origin/develop`）|
+| 另两个包 | `Windows`、`UserBuild_0b953c6_20261011`（**不含 UiCue** 的旧包）**未入库**，只在本地 |
+
+**拉取者注意**
+
+1. 需要安装 **git-lfs**（`git lfs install` 一次即可），否则 `Saved/Packaged/**` 只会拿到 LFS 指针文本；
+2. GitHub 免费 LFS 配额（1 GB 存储）已被这次上传占掉大半，后续再归档大包请先清旧对象或改用 Release 附件；
+3. **不要对 `Saved/Packaged/**` 执行 `git restore` / `git checkout`** —— 那会用指针覆盖（或触发 smudge），真实文件只留在本地 `Saved/Packaged` 里；要重来就重新出包；
+4. 本机 `E:\Git`（git 2.52.0）**缺少 `git-remote-https.exe`**，用它推 https 会报 `remote helper https aborted session`；请用 **GitHub Desktop 自带的 git** 推：
+   `%LOCALAPPDATA%\GitHubDesktop\app-3.6.7\resources\app\git\cmd\git.exe`（实测可正常推送 + 上传 LFS）。
+
 > 判断方式很简单：**凡是"代码/配置里用软引用或路径字符串指向、或靠运行时扫描发现"的资产，都要写进 `DirectoriesToAlwaysCook`**；
 > 硬引用（关卡/蓝图/组件属性里直接指的）不需要。自查办法就是出包后翻 `Manifest_UFSFiles_Win64.txt` 看它有没有在里面。
 
