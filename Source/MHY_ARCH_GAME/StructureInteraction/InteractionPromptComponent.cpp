@@ -278,7 +278,11 @@ void UInteractionPromptComponent::UpdateWorldPromptTransform()
 	FRotator WorldRotation = PromptWidgetComponent->GetComponentRotation();
 	if (bWorldPromptFaceCamera)
 	{
+		// Look at the player (camera when controlled) and keep the panel upright: a billboard
+		// with roll would render the text tilted. Default facing yaw is 0 = front towards
+		// the player; only mirror-image cases need 180.
 		WorldRotation = UKismetMathLibrary::FindLookAtRotation(WorldLocation, ViewLocation);
+		WorldRotation.Roll = 0.0f;
 		WorldRotation.Yaw += WorldPromptFacingYaw;
 	}
 

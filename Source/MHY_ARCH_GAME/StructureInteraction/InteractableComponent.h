@@ -40,9 +40,16 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction")
 	bool bEnabled = true;
 
-	/** Text shown by the HUD while the owner is focused. */
+	/** Text shown by the HUD while the owner is focused（物体处于【关闭】状态时的提示，例如"开门"）。 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction")
 	FText InteractionPrompt;
+
+	/**
+	 * 物体处于【打开】状态时显示的提示（例如"关门"）。
+	 * 留空 = 一直用 InteractionPrompt（旧行为）；填上就能让两种状态各自说明"下一次按键做什么"。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction")
+	FText InteractionPromptOpen;
 
 	/**
 	 * 只保存"开 / 关"状态，不驱动任何部件。
@@ -225,7 +232,8 @@ public:
 
 	// -- queried by UInteractionDetectorComponent --------------------------
 	virtual bool CanInteract(AActor* Interactor) const;
-	virtual FText GetInteractionPrompt() const { return InteractionPrompt; }
+	/** 按当前开/关状态返回该显示的提示（打开且填了 InteractionPromptOpen 时用它）。 */
+	virtual FText GetInteractionPrompt() const;
 	virtual void NotifyInteract(AActor* Interactor);
 	virtual void NotifyFocusGained(AActor* Interactor);
 	virtual void NotifyFocusLost(AActor* Interactor);

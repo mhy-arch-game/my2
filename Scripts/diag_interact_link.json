@@ -8,7 +8,7 @@
         -160.0,
         100.0
       ],
-      "bEnabled": "True",
+      "bEnabled": "False",
       "bUseBuiltInToggle": "False",
       "bToggleLights": "False",
       "bTrackOpenState": "False",
@@ -31,7 +31,7 @@
         -3355.0,
         296.5
       ],
-      "bEnabled": "True",
+      "bEnabled": "False",
       "bUseBuiltInToggle": "False",
       "bToggleLights": "False",
       "bTrackOpenState": "False",
@@ -56,13 +56,13 @@
       ],
       "bEnabled": "True",
       "bUseBuiltInToggle": "False",
-      "bToggleLights": "False",
+      "bToggleLights": "True",
       "bTrackOpenState": "False",
       "bStartOpen": "False",
       "IsOpen": "False",
-      "prompt": "灯光开灭",
+      "prompt": "开灯",
       "ToggleComponentNames": "[]",
-      "LightComponentNames": "[]",
+      "LightComponentNames": "[\"PointLight\"]",
       "LightComponents_count": "0",
       "light_comps_on_actor": [
         "PointLight"
@@ -81,7 +81,7 @@
         -400.0,
         1700.0
       ],
-      "bEnabled": "True",
+      "bEnabled": "False",
       "bUseBuiltInToggle": "False",
       "bToggleLights": "False",
       "bTrackOpenState": "False",
@@ -104,7 +104,7 @@
         -320.0,
         -3300.0
       ],
-      "bEnabled": "True",
+      "bEnabled": "False",
       "bUseBuiltInToggle": "False",
       "bToggleLights": "False",
       "bTrackOpenState": "False",
@@ -129,13 +129,13 @@
       ],
       "bEnabled": "True",
       "bUseBuiltInToggle": "False",
-      "bToggleLights": "False",
+      "bToggleLights": "True",
       "bTrackOpenState": "False",
       "bStartOpen": "False",
       "IsOpen": "False",
-      "prompt": "",
+      "prompt": "开灯",
       "ToggleComponentNames": "[]",
-      "LightComponentNames": "[]",
+      "LightComponentNames": "[\"PointLight\"]",
       "LightComponents_count": "0",
       "light_comps_on_actor": [
         "PointLight"
@@ -156,13 +156,13 @@
       ],
       "bEnabled": "True",
       "bUseBuiltInToggle": "False",
-      "bToggleLights": "False",
+      "bToggleLights": "True",
       "bTrackOpenState": "False",
       "bStartOpen": "False",
       "IsOpen": "False",
-      "prompt": "",
+      "prompt": "开灯",
       "ToggleComponentNames": "[]",
-      "LightComponentNames": "[]",
+      "LightComponentNames": "[\"PointLight\"]",
       "LightComponents_count": "0",
       "light_comps_on_actor": [
         "PointLight"
@@ -854,7 +854,7 @@
       "loc": [
         -8935.0,
         580.0,
-        -3700.0
+        -3785.0
       ],
       "bEnabled": "True",
       "bUseBuiltInToggle": "False",
@@ -1032,10 +1032,10 @@
         {
           "Operation": "Open",
           "Channel": "door_light_group1",
-          "bMirrorSourceState": "True",
+          "bMirrorSourceState": "False",
           "ClosedOperation": "Close",
           "Value": "0.0",
-          "Location": "<Struct 'Vector' (0x00000246C7F33A58) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+          "Location": "<Struct 'Vector' (0x000001A90E7ACA58) {x: 0.000000, y: 0.000000, z: 0.000000}>",
           "Targets": []
         }
       ],
@@ -1052,7 +1052,7 @@
           "bMirrorSourceState": "False",
           "ClosedOperation": "Close",
           "Value": "0.0",
-          "Location": "<Struct 'Vector' (0x00000246C7F330F8) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+          "Location": "<Struct 'Vector' (0x000001A90E7AC698) {x: 0.000000, y: 0.000000, z: 0.000000}>",
           "Targets": []
         }
       ],
@@ -1069,7 +1069,7 @@
           "bMirrorSourceState": "False",
           "ClosedOperation": "Close",
           "Value": "0.0",
-          "Location": "<Struct 'Vector' (0x00000246C7F338D8) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+          "Location": "<Struct 'Vector' (0x000001A90E7AC8D8) {x: 0.000000, y: 0.000000, z: 0.000000}>",
           "Targets": []
         }
       ],
@@ -1083,10 +1083,10 @@
         {
           "Operation": "Open",
           "Channel": "door_group1",
-          "bMirrorSourceState": "True",
+          "bMirrorSourceState": "False",
           "ClosedOperation": "Close",
           "Value": "0.0",
-          "Location": "<Struct 'Vector' (0x00000246C7F33BD8) {x: 0.000000, y: 0.000000, z: 0.000000}>",
+          "Location": "<Struct 'Vector' (0x000001A90E7A9CF8) {x: 0.000000, y: 0.000000, z: 0.000000}>",
           "Targets": []
         }
       ],
@@ -1105,11 +1105,6 @@
           "Operation": "Open",
           "Action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>",
           "Duration": "0.0"
-        },
-        {
-          "Operation": "Close",
-          "Action": "<InteractionOperationAction.SET_ACTOR_VISIBLE: 7>",
-          "Duration": "0.0"
         }
       ]
     },
@@ -1122,11 +1117,6 @@
         {
           "Operation": "Open",
           "Action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>",
-          "Duration": "0.0"
-        },
-        {
-          "Operation": "Close",
-          "Action": "<InteractionOperationAction.SET_ACTOR_VISIBLE: 7>",
           "Duration": "0.0"
         }
       ]
@@ -1141,11 +1131,6 @@
           "Operation": "Open",
           "Action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>",
           "Duration": "0.0"
-        },
-        {
-          "Operation": "Close",
-          "Action": "<InteractionOperationAction.SET_ACTOR_VISIBLE: 7>",
-          "Duration": "0.0"
         }
       ]
     },
@@ -1158,11 +1143,6 @@
         {
           "Operation": "Open",
           "Action": "<InteractionOperationAction.SET_ACTOR_HIDDEN: 3>",
-          "Duration": "0.0"
-        },
-        {
-          "Operation": "Close",
-          "Action": "None",
           "Duration": "0.0"
         }
       ]
@@ -2421,12 +2401,19 @@
       "comp": "LightComponent0",
       "visible": "True",
       "intensity": "8.0"
+    },
+    {
+      "actor": "PointLight19",
+      "actor_class": "PointLight",
+      "comp": "LightComponent0",
+      "visible": "True",
+      "intensity": "160.0"
     }
   ],
   "counts": {
     "interactables": 41,
     "links": 4,
     "receivers": 4,
-    "light_comps": 179
+    "light_comps": 180
   }
 }

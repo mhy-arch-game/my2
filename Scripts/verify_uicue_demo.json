@@ -1,0 +1,30 @@
+{
+  "cues_from_disk": [
+    {
+      "CueId": "demo_spawn",
+      "Trigger": "<UiCueTrigger.BOX_VOLUME: 0>",
+      "TriggerId": "demo_spawn",
+      "Text": "UI Cue 演示：你刚出生就进入了示例触发体积。这条字幕来自 DA_UiCue",
+      "bOnce": "True"
+    },
+    {
+      "CueId": "demo_men1",
+      "Trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+      "TriggerId": "men1",
+      "Text": "UI Cue 演示：这是 men1 第一次被切换状态（开或关）。再按一次 E 不",
+      "bOnce": "True"
+    }
+  ],
+  "gap": "3.0",
+  "level_volume": {
+    "label": "UiCueDemo_Volume",
+    "trigger_id": "demo_spawn",
+    "loc": [
+      0.0,
+      0.0,
+      3182.0
+    ],
+    "box_extent": "<Struct 'Vector' (0x000002510B4CD808) {x: 600.000000, y: 600.000000, z",
+    "contains_player_start": "True"
+  }
+}

@@ -73,7 +73,7 @@ enum class EInteractionOperationAction : uint8
 	/** InteractableComponent::SetOpen(!IsOpen())：取反。 */
 	ToggleOpen		UMETA(DisplayName="Toggle Open (取反)"),
 
-	/** 按操作里的 bActive 隐藏 / 显示 owner。 */
+	/** 按操作里的 bActive 隐藏 / 显示 owner（碰撞随可见性一起开关）。 */
 	SetActorHidden	UMETA(DisplayName="Set Actor Hidden (显隐)"),
 
 	/** 把 owner 移动到操作里的 Location（Value > 0 时用 Value 秒插值过去）。 */
@@ -90,7 +90,7 @@ enum class EInteractionOperationAction : uint8
 	MirrorActive	UMETA(DisplayName="Mirror Master State (跟随主物开关)"),
 
 	/**
-	 * 按操作里的 bActive 决定 owner 的显 / 隐（bActive = true 时【显示】）。
+	 * 按操作里的 bActive 决定 owner 的显 / 隐（bActive = true 时【显示】），碰撞随可见性一起开关。
 	 * 与 SetActorHidden 极性相反，给"主物一开、墙就显形"这类用法。
 	 */
 	SetActorVisible	UMETA(DisplayName="Set Actor Visible (显形, 墙用)")

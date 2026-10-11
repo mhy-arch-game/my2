@@ -1,0 +1,84 @@
+{
+  "walls": [
+    {
+      "label": "jiguanqiang0",
+      "class": "StaticMeshActor",
+      "actor_enable_collision": "True",
+      "primitives": [
+        {
+          "comp": "StaticMeshComponent0",
+          "class": "StaticMeshComponent",
+          "profile": "BlockAll",
+          "enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+          "vis": "<CollisionResponseType.ECR_BLOCK: 2>"
+        }
+      ],
+      "all_components": [
+        "StaticMeshComponent",
+        "InteractableComponent",
+        "InteractionOperationReceiverComponent"
+      ]
+    },
+    {
+      "label": "jiguanqiang1",
+      "class": "StaticMeshActor",
+      "actor_enable_collision": "True",
+      "primitives": [
+        {
+          "comp": "StaticMeshComponent0",
+          "class": "StaticMeshComponent",
+          "profile": "BlockAllDynamic",
+          "enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+          "vis": "<CollisionResponseType.ECR_BLOCK: 2>"
+        }
+      ],
+      "all_components": [
+        "StaticMeshComponent",
+        "InteractableComponent",
+        "InteractionOperationReceiverComponent"
+      ]
+    },
+    {
+      "label": "jiguanqiang3",
+      "class": "StaticMeshActor",
+      "actor_enable_collision": "True",
+      "primitives": [
+        {
+          "comp": "StaticMeshComponent0",
+          "class": "StaticMeshComponent",
+          "profile": "BlockAll",
+          "enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+          "vis": "<CollisionResponseType.ECR_BLOCK: 2>"
+        }
+      ],
+      "all_components": [
+        "StaticMeshComponent",
+        "InteractableComponent",
+        "InteractionOperationReceiverComponent"
+      ]
+    },
+    {
+      "label": "jiguanqiang4",
+      "class": "StaticMeshActor",
+      "actor_enable_collision": "True",
+      "primitives": [
+        {
+          "comp": "StaticMeshComponent0",
+          "class": "StaticMeshComponent",
+          "profile": "BlockAll",
+          "enabled": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+          "pawn": "<CollisionResponseType.ECR_BLOCK: 2>",
+          "vis": "<CollisionResponseType.ECR_BLOCK: 2>"
+        }
+      ],
+      "all_components": [
+        "StaticMeshComponent",
+        "InteractableComponent",
+        "InteractionOperationReceiverComponent"
+      ]
+    }
+  ]
+}

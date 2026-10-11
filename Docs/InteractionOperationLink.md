@@ -413,10 +413,18 @@ C++ 不需要改。内置的八种 `Action` 只是"接收端偷懒用的默认�
 
 `SetActorHidden` 与 `SetActorVisible` **都读操作里的 `bActive`**，只是极性相反：
 
-| Action | 实现 | `bActive=true` | `bActive=false` |
-|---|---|---|---|
-| `Set Actor Hidden` | `SetActorHiddenInGame(bActive)` | **隐藏** | **显形** |
-| `Set Actor Visible` | `SetActorHiddenInGame(!bActive)` | **显形** | **隐藏** |
+| Action | 可见性 | 碰撞（本轮修复后） | `bActive=true` | `bActive=false` |
+|---|---|---|---|---|
+| `Set Actor Hidden` | `SetActorHiddenInGame(bActive)` | `SetActorEnableCollision(!bActive)` | **隐藏 + 无碰撞** | **显形 + 有碰撞** |
+| `Set Actor Visible` | `SetActorHiddenInGame(!bActive)` | `SetActorEnableCollision(bActive)` | **显形 + 有碰撞** | **隐藏 + 无碰撞** |
+
+**★ 本轮修复（碰撞没被恢复）**：旧实现里 `SetActorHidden` 用**同一个 `bActive`** 同时控制显隐与碰撞，
+于是 `bActive=false`（要显形）时**显示出来了但碰撞被关掉** —— 机关墙回到显形状态变成能穿过的"虚墙"。
+现在两个动作的碰撞**统一跟随可见性**。
+
+> 好消息：`AActor::SetActorEnableCollision()` 只切 **actor 级开关**并通知组件
+> （引擎 `Actor.cpp:5267` 的实现里没有改任何组件的 `CollisionEnabled`/Profile），
+> 所以切回来时原有碰撞设置**自动完整恢复** —— 本项目 4 面墙的 `BlockAll` / Pawn=Block 实测完好。
 
 **错误写法（实测卡住的配置）**：主物 `MirrorSourceState=☑`、从物两行
 `Open→SetActorHidden` + `Close→SetActorVisible`。

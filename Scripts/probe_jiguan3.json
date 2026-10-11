@@ -1,0 +1,1278 @@
+{
+ "ls": {
+  "api": {
+   "trext": true,
+   "sext": true,
+   "trext_names": [
+    "acquire_editor_element_handle",
+    "add_section",
+    "call_method",
+    "cast",
+    "get_class",
+    "get_color_tint",
+    "get_default_object",
+    "get_display_name",
+    "get_editor_property",
+    "get_fname",
+    "get_full_name",
+    "get_name",
+    "get_outer",
+    "get_outermost",
+    "get_package",
+    "get_path_name",
+    "get_section_to_key",
+    "get_sections",
+    "get_sorting_order",
+    "get_track_row_display_name",
+    "get_typed_outer",
+    "get_world",
+    "is_editor_property_overridden",
+    "is_package_external",
+    "modify",
+    "remove_section",
+    "rename",
+    "reset_editor_property",
+    "set_color_tint",
+    "set_display_name",
+    "set_editor_properties",
+    "set_editor_property",
+    "set_section_to_key",
+    "set_sorting_order",
+    "set_track_row_display_name",
+    "static_class"
+   ],
+   "sext_names": [
+    "acquire_editor_element_handle",
+    "call_method",
+    "cast",
+    "get_all_channels",
+    "get_auto_size_end_frame",
+    "get_auto_size_end_frame_seconds",
+    "get_auto_size_has_end_frame",
+    "get_auto_size_has_start_frame",
+    "get_auto_size_start_frame",
+    "get_auto_size_start_frame_seconds",
+    "get_channel",
+    "get_channels_by_type",
+    "get_class",
+    "get_default_object",
+    "get_editor_property",
+    "get_end_frame",
+    "get_end_frame_seconds",
+    "get_fname",
+    "get_full_name",
+    "get_name",
+    "get_outer",
+    "get_outermost",
+    "get_package",
+    "get_parent_sequence_frame",
+    "get_path_name",
+    "get_start_frame",
+    "get_start_frame_seconds",
+    "get_typed_outer",
+    "get_world",
+    "has_end_frame",
+    "has_start_frame",
+    "is_editor_property_overridden",
+    "is_package_external",
+    "modify",
+    "rename",
+    "reset_editor_property",
+    "set_editor_properties",
+    "set_editor_property",
+    "set_end_frame",
+    "set_end_frame_bounded",
+    "set_end_frame_seconds",
+    "set_range",
+    "set_range_seconds",
+    "set_start_frame",
+    "set_start_frame_bounded"
+   ]
+  },
+  "LS_jiguanqiang1": {
+   "playback": "<Struct 'SequencerScriptingRange' (0x000001CE2CB3A2E0) {has_start_value: True, has_end_val",
+   "start_s": 0.0,
+   "end_s": 5.0,
+   "tick": "<Struct 'FrameRate' (0x000001CE1B5E1E60) {numerator: 24000, ",
+   "bindings": [
+    {
+     "name": "jiguanqiang1",
+     "display": "jiguanqiang1",
+     "possessed": "<Object '/Script/Engine.StaticMeshActor' (0x00007FF39067CE18",
+     "valid": "True",
+     "tracks": [
+      {
+       "track": "MovieScene3DTransformTrack",
+       "sections_err": "[\"/Script/MovieSceneTracks.MovieScene3DTransformSection'/Game/LS_jiguanqiang1.LS",
+       "section_count": 0,
+       "sections": []
+      }
+     ]
+    }
+   ]
+  },
+  "LS_jiguanqiang2": {
+   "playback": "<Struct 'SequencerScriptingRange' (0x000001CE2CB3AD00) {has_start_value: True, has_end_val",
+   "start_s": 0.0,
+   "end_s": 5.0,
+   "tick": "<Struct 'FrameRate' (0x000001CE1B5E1C70) {numerator: 24000, ",
+   "bindings": [
+    {
+     "name": "jiguanqiang2",
+     "display": "jiguanqiang2",
+     "possessed": "<Object '/Script/Engine.StaticMeshActor' (0x00007FF39067CE18",
+     "valid": "True",
+     "tracks": [
+      {
+       "track": "MovieScene3DTransformTrack",
+       "sections_err": "[\"/Script/MovieSceneTracks.MovieScene3DTransformSection'/Game/LS_jiguanqiang2.LS",
+       "section_count": 0,
+       "sections": []
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "walls": {
+  "jiguanqiang0": {
+   "class": "StaticMeshActor",
+   "loc": [
+    200.0,
+    -160.0,
+    100.0
+   ],
+   "yaw": 0.0,
+   "pitch": 0.0,
+   "roll": 0.0,
+   "fwd": "<Struct 'Vector' (0x000001CE2A4AB120) {x: 1.000000, y: 0.000",
+   "hidden": "False",
+   "col": "True",
+   "bounds_origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_extent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_29A265CD.CubeGridToolOutput_29A265CD' (0",
+     "vis": "True",
+     "col_enabled": "<CollisionEnabled.QUERY_AND_PH",
+     "profile": "BlockAll"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "bEnabled": "False",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "LightComponentNames": "[]",
+     "bStartOpen": "False",
+     "InteractionPrompt": "",
+     "InteractionPromptOpen": "",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionOperationReceiver",
+     "class": "InteractionOperationReceiverComponent",
+     "channel": "door_light_group1",
+     "bindings": "[{operation: \"Open\", action: SetActorHidden, duration: 0.000000}]"
+    }
+   ]
+  },
+  "jiguanqiang1": {
+   "class": "StaticMeshActor",
+   "loc": [
+    -1500.0,
+    -3355.0,
+    296.5
+   ],
+   "yaw": 0.0,
+   "pitch": 0.0,
+   "roll": 0.0,
+   "fwd": "<Struct 'Vector' (0x000001CE2A4AAEF0) {x: 1.000000, y: 0.000",
+   "hidden": "False",
+   "col": "True",
+   "bounds_origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_extent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397.Combined_E8CDB397' (0x000001CE2F259000) C",
+     "vis": "True",
+     "col_enabled": "<CollisionEnabled.QUERY_AND_PH",
+     "profile": "BlockAllDynamic"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "bEnabled": "False",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "LightComponentNames": "[]",
+     "bStartOpen": "False",
+     "InteractionPrompt": "",
+     "InteractionPromptOpen": "",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionOperationReceiver",
+     "class": "InteractionOperationReceiverComponent",
+     "channel": "light_group3",
+     "bindings": "[{operation: \"Open\", action: SetActorHidden, duration: 0.000000}]"
+    }
+   ]
+  },
+  "jiguanqiang2": {
+   "class": "StaticMeshActor",
+   "loc": [
+    -1500.0,
+    3145.0,
+    296.5
+   ],
+   "yaw": 0.0,
+   "pitch": 0.0,
+   "roll": 0.0,
+   "fwd": "<Struct 'Vector' (0x000001CE2A4AAC20) {x: 1.000000, y: 0.000",
+   "hidden": "False",
+   "col": "True",
+   "bounds_origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_extent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397.Combined_E8CDB397' (0x000001CE2F259000) C",
+     "vis": "True",
+     "col_enabled": "<CollisionEnabled.QUERY_AND_PH",
+     "profile": "BlockAllDynamic"
+    }
+   ]
+  },
+  "jiguandeng1": {
+   "class": "StaticMeshActor",
+   "loc": [
+    220.0,
+    -312.0,
+    -4682.0
+   ],
+   "yaw": -90.0,
+   "pitch": 0.0,
+   "roll": 0.0,
+   "fwd": "<Struct 'Vector' (0x000001CE1A5C32B0) {x: -0.000000, y: -1.0",
+   "hidden": "False",
+   "col": "True",
+   "bounds_origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_extent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "mesh": "<Object '/Game/Fab/Wall_light_2/wall_light_2/StaticMeshes/wall_light_2.wall_light_2' (0x000001CE327C",
+     "vis": "True",
+     "col_enabled": "<CollisionEnabled.QUERY_AND_PH",
+     "profile": "BlockAll"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "True",
+     "LightComponentNames": "[\"PointLight\"]",
+     "bStartOpen": "False",
+     "InteractionPrompt": "开灯",
+     "InteractionPromptOpen": "关灯",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionLink",
+     "class": "InteractionLinkComponent",
+     "sync": "False"
+    },
+    {
+     "name": "PointLight",
+     "class": "PointLightComponent"
+    },
+    {
+     "name": "BillboardComponent_0",
+     "class": "BillboardComponent"
+    }
+   ]
+  },
+  "jiguanqiang4": {
+   "class": "StaticMeshActor",
+   "loc": [
+    -7120.0,
+    -400.0,
+    1700.0
+   ],
+   "yaw": 0.0,
+   "pitch": 0.0,
+   "roll": 0.0,
+   "fwd": "<Struct 'Vector' (0x000001CE2A4AB4E0) {x: 1.000000, y: 0.000",
+   "hidden": "False",
+   "col": "True",
+   "bounds_origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_extent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_8E1E5239.CubeGridToolOutput_8E1E5239' (0",
+     "vis": "True",
+     "col_enabled": "<CollisionEnabled.QUERY_AND_PH",
+     "profile": "BlockAll"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "bEnabled": "False",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "LightComponentNames": "[]",
+     "bStartOpen": "False",
+     "InteractionPrompt": "",
+     "InteractionPromptOpen": "",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionOperationReceiver",
+     "class": "InteractionOperationReceiverComponent",
+     "channel": "light_group2",
+     "bindings": "[{operation: \"Open\", action: SetActorHidden, duration: 0.000000}]"
+    }
+   ]
+  },
+  "jiguanqiang3": {
+   "class": "StaticMeshActor",
+   "loc": [
+    -7220.0,
+    -320.0,
+    -3300.0
+   ],
+   "yaw": 0.0,
+   "pitch": 0.0,
+   "roll": 0.0,
+   "fwd": "<Struct 'Vector' (0x000001CE2A4AB350) {x: 1.000000, y: 0.000",
+   "hidden": "False",
+   "col": "True",
+   "bounds_origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_extent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_765BE826.CubeGridToolOutput_765BE826' (0",
+     "vis": "True",
+     "col_enabled": "<CollisionEnabled.QUERY_AND_PH",
+     "profile": "BlockAll"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "bEnabled": "False",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "LightComponentNames": "[]",
+     "bStartOpen": "False",
+     "InteractionPrompt": "",
+     "InteractionPromptOpen": "",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionOperationReceiver",
+     "class": "InteractionOperationReceiverComponent",
+     "channel": "door_group1",
+     "bindings": "[{operation: \"Open\", action: SetActorHidden, duration: 0.000000}]"
+    }
+   ]
+  },
+  "jiguandeng2": {
+   "class": "StaticMeshActor",
+   "loc": [
+    -7121.0,
+    -250.0,
+    -3132.0
+   ],
+   "yaw": 90.0,
+   "pitch": 0.0,
+   "roll": 0.0,
+   "fwd": "<Struct 'Vector' (0x000001CE2A4AB170) {x: 0.000000, y: 1.000",
+   "hidden": "False",
+   "col": "True",
+   "bounds_origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_extent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "mesh": "<Object '/Game/Fab/Wall_light_2/wall_light_2/StaticMeshes/wall_light_2.wall_light_2' (0x000001CE327C",
+     "vis": "True",
+     "col_enabled": "<CollisionEnabled.QUERY_AND_PH",
+     "profile": "BlockAll"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "True",
+     "LightComponentNames": "[\"PointLight\"]",
+     "bStartOpen": "False",
+     "InteractionPrompt": "开灯",
+     "InteractionPromptOpen": "关灯",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionLink",
+     "class": "InteractionLinkComponent",
+     "sync": "False"
+    },
+    {
+     "name": "PointLight",
+     "class": "PointLightComponent"
+    },
+    {
+     "name": "BillboardComponent_0",
+     "class": "BillboardComponent"
+    }
+   ]
+  },
+  "jiguankuai1": {
+   "class": "StaticMeshActor",
+   "loc": [
+    -7400.0,
+    1600.0,
+    1860.0
+   ],
+   "yaw": 0.0,
+   "pitch": 0.0,
+   "roll": 0.0,
+   "fwd": "<Struct 'Vector' (0x000001CE2A4AACC0) {x: 1.000000, y: 0.000",
+   "hidden": "False",
+   "col": "True",
+   "bounds_origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_extent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/CubeGridToolOutput_42A9CC0A.CubeGridToolOutput_42A9CC0A' (0",
+     "vis": "True",
+     "col_enabled": "<CollisionEnabled.QUERY_AND_PH",
+     "profile": "BlockAll"
+    }
+   ]
+  },
+  "jiguandeng3": {
+   "class": "StaticMeshActor",
+   "loc": [
+    -6801.0,
+    1630.0,
+    -2672.0
+   ],
+   "yaw": 90.0,
+   "pitch": 0.0,
+   "roll": 0.0,
+   "fwd": "<Struct 'Vector' (0x000001CE2A4AAD60) {x: 0.000000, y: 1.000",
+   "hidden": "False",
+   "col": "True",
+   "bounds_origin": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bounds_extent": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "mesh": "<Object '/Game/Fab/Wall_light_2/wall_light_2/StaticMeshes/wall_light_2.wall_light_2' (0x000001CE327C",
+     "vis": "True",
+     "col_enabled": "<CollisionEnabled.QUERY_AND_PH",
+     "profile": "BlockAll"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "True",
+     "LightComponentNames": "[\"PointLight\"]",
+     "bStartOpen": "False",
+     "InteractionPrompt": "开灯",
+     "InteractionPromptOpen": "关灯",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionLink",
+     "class": "InteractionLinkComponent",
+     "sync": "False"
+    },
+    {
+     "name": "PointLight",
+     "class": "PointLightComponent"
+    },
+    {
+     "name": "BillboardComponent_0",
+     "class": "BillboardComponent"
+    }
+   ]
+  }
+ },
+ "links": [
+  {
+   "owner": "jiguandeng1",
+   "sync": "False",
+   "entries": [
+    {
+     "op": "Open",
+     "ch": "door_light_group1",
+     "mirror": "False",
+     "closed": "Close",
+     "targets": []
+    }
+   ]
+  },
+  {
+   "owner": "jiguandeng2",
+   "sync": "False",
+   "entries": [
+    {
+     "op": "Open",
+     "ch": "light_group2",
+     "mirror": "False",
+     "closed": "Close",
+     "targets": []
+    }
+   ]
+  },
+  {
+   "owner": "jiguandeng3",
+   "sync": "False",
+   "entries": [
+    {
+     "op": "Open",
+     "ch": "light_group3",
+     "mirror": "False",
+     "closed": "Close",
+     "targets": []
+    }
+   ]
+  },
+  {
+   "owner": "men20",
+   "sync": "False",
+   "entries": [
+    {
+     "op": "Open",
+     "ch": "door_group1",
+     "mirror": "False",
+     "closed": "Close",
+     "targets": []
+    }
+   ]
+  }
+ ],
+ "interactables": [
+  {
+   "owner": "jiguanqiang0",
+   "enabled": "False",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "jiguanqiang1",
+   "enabled": "False",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "jiguandeng1",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "True",
+   "lightNames": "[\"PointLight\"]",
+   "prompt": "开灯",
+   "promptOpen": "关灯",
+   "isOpen": "False"
+  },
+  {
+   "owner": "jiguanqiang4",
+   "enabled": "False",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "jiguanqiang3",
+   "enabled": "False",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "jiguandeng2",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "True",
+   "lightNames": "[\"PointLight\"]",
+   "prompt": "开灯",
+   "promptOpen": "关灯",
+   "isOpen": "False"
+  },
+  {
+   "owner": "jiguandeng3",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "True",
+   "lightNames": "[\"PointLight\"]",
+   "prompt": "开灯",
+   "promptOpen": "关灯",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men1",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men2",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men3",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men4",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men5",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men6",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men7",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men8",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men9",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men10",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men11",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men12",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men13",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men14",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men15",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men16",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men17",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men18",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men19",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men20",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men21",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men23",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men24",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "men25",
+   "enabled": "True",
+   "toggle": "True",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "开门",
+   "promptOpen": "关门",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi1",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi2",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi3",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi4",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi5",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi6",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi7",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi8",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi9",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  },
+  {
+   "owner": "kongjianchuansuoqi10",
+   "enabled": "True",
+   "toggle": "False",
+   "track": "False",
+   "startOpen": "False",
+   "lights": "False",
+   "lightNames": "[]",
+   "prompt": "传送至过去",
+   "promptOpen": "",
+   "isOpen": "False"
+  }
+ ],
+ "lamps": [
+  {
+   "label": "jiguandeng1",
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x000001CE2E34A860) {x: 220.000000, y: -31",
+   "hidden": "False",
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "intensity": "None",
+     "visible": "<built-i"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "intensity": "None",
+     "bEnabled": "True",
+     "bToggleLights": "True",
+     "LightComponentNames": "[\"PointLight\"]",
+     "bStartOpen": "False",
+     "bTrackOpenState": "False",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionLink",
+     "class": "InteractionLinkComponent",
+     "intensity": "None",
+     "entries": "[{operation: \"Open\", channel: \"door_light_group1\", targets: , mirror_source_state: False, closed_operation: \"Close\", location: {x: 0.000000,"
+    },
+    {
+     "name": "PointLight",
+     "class": "PointLightComponent",
+     "intensity": "30.0",
+     "visible": "<built-i"
+    },
+    {
+     "name": "BillboardComponent_0",
+     "class": "BillboardComponent",
+     "intensity": "None",
+     "visible": "<built-i"
+    }
+   ]
+  },
+  {
+   "label": "jiguandeng2",
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x000001CE2E34AD10) {x: -7121.000279, y: -",
+   "hidden": "False",
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "intensity": "None",
+     "visible": "<built-i"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "intensity": "None",
+     "bEnabled": "True",
+     "bToggleLights": "True",
+     "LightComponentNames": "[\"PointLight\"]",
+     "bStartOpen": "False",
+     "bTrackOpenState": "False",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionLink",
+     "class": "InteractionLinkComponent",
+     "intensity": "None",
+     "entries": "[{operation: \"Open\", channel: \"light_group2\", targets: , mirror_source_state: False, closed_operation: \"Close\", location: {x: 0.000000, y: 0"
+    },
+    {
+     "name": "PointLight",
+     "class": "PointLightComponent",
+     "intensity": "30.0",
+     "visible": "<built-i"
+    },
+    {
+     "name": "BillboardComponent_0",
+     "class": "BillboardComponent",
+     "intensity": "None",
+     "visible": "<built-i"
+    }
+   ]
+  },
+  {
+   "label": "jiguandeng3",
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x000001CE2E34AD10) {x: -6801.000279, y: 1",
+   "hidden": "False",
+   "comps": [
+    {
+     "name": "StaticMeshComponent0",
+     "class": "StaticMeshComponent",
+     "intensity": "None",
+     "visible": "<built-i"
+    },
+    {
+     "name": "Interactable",
+     "class": "InteractableComponent",
+     "intensity": "None",
+     "bEnabled": "True",
+     "bToggleLights": "True",
+     "LightComponentNames": "[\"PointLight\"]",
+     "bStartOpen": "False",
+     "bTrackOpenState": "False",
+     "IsOpen": "False"
+    },
+    {
+     "name": "InteractionLink",
+     "class": "InteractionLinkComponent",
+     "intensity": "None",
+     "entries": "[{operation: \"Open\", channel: \"light_group3\", targets: , mirror_source_state: False, closed_operation: \"Close\", location: {x: 0.000000, y: 0"
+    },
+    {
+     "name": "PointLight",
+     "class": "PointLightComponent",
+     "intensity": "30.0",
+     "visible": "<built-i"
+    },
+    {
+     "name": "BillboardComponent_0",
+     "class": "BillboardComponent",
+     "intensity": "None",
+     "visible": "<built-i"
+    }
+   ]
+  }
+ ]
+}

@@ -85,11 +85,11 @@ public:
 	bool bWorldPromptFaceCamera = true;
 
 	/**
-	 * 朝向摄像机的偏航补偿：若显示出来的文字是镜像 / 背对镜头，把它从 180 改成 0。
-	 * （Widget 面板的正面默认与 +X 相反，所以默认值取 180。）
+	 * 朝向补偿（度）。默认 0 = 面板正面**正对玩家**（标准 billboard 写法）。
+	 * 只有当你的 WBP/材质导致文字镜像或背对时，才需要把它改成 180。
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Interaction|Prompt|World", meta=(EditCondition="bWorldSpacePrompt && bWorldPromptFaceCamera"))
-	float WorldPromptFacingYaw = 180.0f;
+	float WorldPromptFacingYaw = 0.0f;
 
 	// -- 屏幕空间模式的参数 -------------------------------------------------
 

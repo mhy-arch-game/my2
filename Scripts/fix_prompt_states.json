@@ -1,0 +1,214 @@
+{
+  "doors": [
+    {
+      "label": "men1",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men2",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men3",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men4",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men5",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men6",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men7",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men8",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men9",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men10",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men11",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men12",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men13",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men14",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men15",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men16",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men17",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men18",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men19",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men20",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men21",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men23",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men24",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    },
+    {
+      "label": "men25",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开门",
+      "now_open_state": "关门"
+    }
+  ],
+  "lamps": [
+    {
+      "label": "jiguandeng1",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开灯",
+      "now_open_state": "关灯"
+    },
+    {
+      "label": "jiguandeng2",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开灯",
+      "now_open_state": "关灯"
+    },
+    {
+      "label": "jiguandeng3",
+      "closed": "ok",
+      "open": "ok",
+      "now_closed_state": "开灯",
+      "now_open_state": "关灯"
+    }
+  ],
+  "char": {
+    "before_height": "30.0",
+    "before_size": "<Struct 'Vector2D' (0x0000021B454E0498) {x: 360.000000, y: 120.000000}",
+    "height": "ok",
+    "size": "ok",
+    "after_height": "0.0",
+    "after_size": "<Struct 'Vector2D' (0x0000021B454E0498) {x: 320.000000, y: 64.000000}>"
+  },
+  "door_template": {
+    "closed": "ok",
+    "open": "ok",
+    "now_closed_state": "开门",
+    "now_open_state": "关门"
+  },
+  "door_template_compile": "ok",
+  "door_template_save": "ok",
+  "char_compile": "ok",
+  "char_save": "ok",
+  "save_level": "ok"
+}

@@ -1,0 +1,156 @@
+{
+ "api": {
+  "mseq_ext": true,
+  "binding_ext": true,
+  "track_ext": true,
+  "mseq_names": [
+   "acquire_editor_element_handle",
+   "add_marked_frame",
+   "add_marked_frame_to_sequence",
+   "add_possessable",
+   "add_root_folder_to_sequence",
+   "add_spawnable_from_class",
+   "add_spawnable_from_instance",
+   "add_track",
+   "are_marked_frames_locked",
+   "call_method",
+   "cast",
+   "delete_marked_frame",
+   "delete_marked_frames",
+   "find_binding_by_id",
+   "find_binding_by_name",
+   "find_marked_frame_by_frame_number",
+   "find_marked_frame_by_frame_number_in_sequence",
+   "find_marked_frame_by_label",
+   "find_next_marked_frame",
+   "find_next_marked_frame_in_sequence",
+   "find_tracks_by_exact_type",
+   "find_tracks_by_type",
+   "get_binding_id",
+   "get_bindings",
+   "get_class",
+   "get_clock_source",
+   "get_custom_clock",
+   "get_default_object",
+   "get_display_rate",
+   "get_editor_property",
+   "get_evaluation_type",
+   "get_fname",
+   "get_full_name",
+   "get_marked_frames",
+   "get_marked_frames_from_sequence",
+   "get_movie_scene",
+   "get_name",
+   "get_outer",
+   "get_outermost",
+   "get_package",
+   "get_path_name",
+   "get_playback_end",
+   "get_playback_end_seconds",
+   "get_playback_range",
+   "get_playback_start",
+   "get_playback_start_seconds",
+   "get_portable_binding_id",
+   "get_possessables",
+   "get_root_folders_in_sequence",
+   "get_spawnables",
+   "get_tick_resolution",
+   "get_tracks",
+   "get_typed_outer",
+   "get_view_range_end",
+   "get_view_range_start",
+   "get_work_range_end",
+   "get_work_range_start",
+   "get_world",
+   "is_editor_property_overridden",
+   "is_package_external"
+  ],
+  "binding_names": [
+   "acquire_editor_element_handle",
+   "add_track",
+   "call_method",
+   "cast",
+   "equal_equal_movie_scene_binding_proxy",
+   "find_tracks_by_exact_type",
+   "find_tracks_by_type",
+   "get_child_possessables",
+   "get_class",
+   "get_default_object",
+   "get_display_name",
+   "get_editor_property",
+   "get_fname",
+   "get_full_name",
+   "get_id",
+   "get_name",
+   "get_object_template",
+   "get_outer",
+   "get_outermost",
+   "get_package",
+   "get_parent",
+   "get_path_name",
+   "get_possessed_object_class",
+   "get_sorting_order",
+   "get_tracks",
+   "get_typed_outer",
+   "get_world",
+   "is_editor_property_overridden",
+   "is_package_external",
+   "is_valid",
+   "modify",
+   "move_binding_contents",
+   "not_equal_movie_scene_binding_proxy",
+   "remove",
+   "remove_track",
+   "rename",
+   "reset_editor_property",
+   "set_display_name",
+   "set_editor_properties",
+   "set_editor_property",
+   "set_name",
+   "set_parent",
+   "set_sorting_order",
+   "set_spawnable_binding_id",
+   "static_class"
+  ]
+ },
+ "ls": {
+  "LS_jiguanqiang1": {
+   "playback": "<Struct 'SequencerScriptingRange' (0x0000020815BB6160) {has_start_value: True, has_end_val",
+   "bindings": [
+    {
+     "raw": "<Struct 'MovieSceneBindingProxy' (0x0000020815BB6B40) {binding_id: {}, sequence: \"/Script/LevelSequence.LevelSequence'/Game/LS_jiguanqiang1.LS_jiguanqiang1'\"}>",
+     "name": "jiguanqiang1",
+     "id": "<Struct 'Guid' (0x000002078675B090) {}>",
+     "possessed_class": "<Object '/Script/Engine.StaticMeshActor' (0x00007FF405D1CE18",
+     "tracks": [
+      {
+       "track": "MovieScene3DTransformTrack",
+       "sections": 0,
+       "ranges": []
+      }
+     ]
+    }
+   ]
+  },
+  "LS_jiguanqiang2": {
+   "playback": "<Struct 'SequencerScriptingRange' (0x0000020815BB6AA0) {has_start_value: True, has_end_val",
+   "bindings": [
+    {
+     "raw": "<Struct 'MovieSceneBindingProxy' (0x0000020815BB64A0) {binding_id: {}, sequence: \"/Script/LevelSequence.LevelSequence'/Game/LS_jiguanqiang2.LS_jiguanqiang2'\"}>",
+     "name": "jiguanqiang2",
+     "id": "<Struct 'Guid' (0x000002078675B570) {}>",
+     "possessed_class": "<Object '/Script/Engine.StaticMeshActor' (0x00007FF405D1CE18",
+     "tracks": [
+      {
+       "track": "MovieScene3DTransformTrack",
+       "sections": 0,
+       "ranges": []
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "fatal": "AttributeError(\"'InteractableComponent' object has no attribute 'is_visible'\")",
+ "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/probe_jiguan2.py\", line 108, in <module>\n    e[\"visible\"] = s(safe(c.is_visible), 10)\n                          ^^^^^^^^^^^^\nAttributeError: 'InteractableComponent' object has no attribute 'is_visible'\n"
+}

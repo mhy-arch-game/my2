@@ -1,0 +1,16 @@
+{
+  "src": "E:/BaiduNetdiskDownload/my2/Content/background.MP3",
+  "dest": "/Game/sound_resources",
+  "imported": [
+    "/Game/sound_resources/background.background"
+  ],
+  "asset_path": "/Game/sound_resources/background",
+  "class": "SoundWave",
+  "duration_before": "213.99510192871094",
+  "bLooping_before": "False",
+  "set_looping": "ok",
+  "bLooping_after": "True",
+  "save_asset": "ok",
+  "ini": "已追加设置段",
+  "ini_tail": "[/Script/EngineSettings.GeneralProjectSettings]\nProjectID=6954D239478D73BBB77A8ABB93399089\nProjectName=First Person BP Game Template\n\n[/Script/MHY_ARCH_GAME.BackgroundMusicSettings]\nMusic=/Game/sound_resources/background.background\nVolume=1.000000\nSpeed=1.000000\nbAutoPlay=True\nbLoop=True\n"
+}

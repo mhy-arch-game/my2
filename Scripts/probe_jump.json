@@ -1,0 +1,90 @@
+{
+ "zones": {
+  "jumping_area": {
+   "class": "jumping_area_C",
+   "loc": "<Struct 'Vector' (0x000001E309C332B0) {x: -7850.00",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "GravityZoneComponent",
+     "GravityScaleInside": "1.2000000476837158",
+     "bScaleJumpVelocity": "False",
+     "TargetJumpHeight": "600.0",
+     "bAffectPawnsOnly": "True",
+     "BoxExtent": "<Struct 'Vector' (0x000001E3228F0608) {x: 774.620066, y: 698",
+     "bHiddenInGame": "True",
+     "overlap": "True",
+     "profile": "Custom",
+     "col": "<CollisionEnabled.QUERY_ONLY: 1>"
+    },
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "jumping_area2": {
+   "class": "jumping_area_C",
+   "loc": "<Struct 'Vector' (0x000001E309C983D0) {x: -7850.00",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "GravityZoneComponent",
+     "GravityScaleInside": "1.2000000476837158",
+     "bScaleJumpVelocity": "False",
+     "TargetJumpHeight": "600.0",
+     "bAffectPawnsOnly": "True",
+     "BoxExtent": "<Struct 'Vector' (0x000001E3228F5A08) {x: 1073.473610, y: 97",
+     "bHiddenInGame": "True",
+     "overlap": "True",
+     "profile": "Custom",
+     "col": "<CollisionEnabled.QUERY_ONLY: 1>"
+    },
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "jumping_area3": {
+   "class": "jumping_area_C",
+   "loc": "<Struct 'Vector' (0x000001E309C98380) {x: -7850.00",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "GravityZoneComponent",
+     "GravityScaleInside": "1.2000000476837158",
+     "bScaleJumpVelocity": "False",
+     "TargetJumpHeight": "600.0",
+     "bAffectPawnsOnly": "True",
+     "BoxExtent": "<Struct 'Vector' (0x000001E3228F6808) {x: 1073.473610, y: 10",
+     "bHiddenInGame": "True",
+     "overlap": "True",
+     "profile": "Custom",
+     "col": "<CollisionEnabled.QUERY_ONLY: 1>"
+    },
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  }
+ },
+ "char": {
+  "JumpMaxCount": "<no:JumpMaxCount>",
+  "JumpMaxHoldTime": "<no:JumpMaxHoldTime>",
+  "class": "BlueprintGeneratedClass"
+ }
+}

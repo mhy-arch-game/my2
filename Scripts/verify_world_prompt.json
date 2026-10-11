@@ -12,11 +12,11 @@
   ],
   "defaults": {
     "bWorldSpacePrompt": "True",
-    "WorldPromptDrawSize": "<Struct 'Vector2D' (0x0000020896A47118) {x: 360.000000, y: 120.000000}>",
+    "WorldPromptDrawSize": "<Struct 'Vector2D' (0x0000022D03165A58) {x: 360.000000, y: 120.000000}>",
     "WorldPromptHeightOffset": "30.0",
     "WorldPromptFrontOffset": "40.0",
     "bWorldPromptFaceCamera": "True",
-    "WorldPromptFacingYaw": "180.0",
+    "WorldPromptFacingYaw": "0.0",
     "bUseBuiltInFallback": "True",
     "bAutoBindDetector": "True"
   }

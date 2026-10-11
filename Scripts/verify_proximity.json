@@ -1,0 +1,58 @@
+{
+ "actors": {
+  "jiguanqiang0": {
+   "comp_count": 0,
+   "comps": [],
+   "hidden": "False",
+   "collision": "True"
+  },
+  "jiguanqiang1": {
+   "comp_count": 1,
+   "comps": [
+    {
+     "name": "ProximitySequence",
+     "class": "ProximitySequenceComponent",
+     "Sequence": "<Object '/Game/LS_jiguanqiang1.LS_jiguanqiang1' (0x000001B707465C80) Class 'LevelSequence'>",
+     "TriggerDistance": "600.0",
+     "bOnce": "True",
+     "bLoop": "False",
+     "PlayRate": "1.0",
+     "bBlockOnFinish": "True",
+     "bApplyInitialStateOnBeginPlay": "False"
+    }
+   ],
+   "hidden": "False",
+   "collision": "True"
+  },
+  "jiguanqiang2": {
+   "comp_count": 1,
+   "comps": [
+    {
+     "name": "ProximitySequence",
+     "class": "ProximitySequenceComponent",
+     "Sequence": "<Object '/Game/LS_jiguanqiang2.LS_jiguanqiang2' (0x000001B707466040) Class 'LevelSequence'>",
+     "TriggerDistance": "600.0",
+     "bOnce": "True",
+     "bLoop": "False",
+     "PlayRate": "1.0",
+     "bBlockOnFinish": "True",
+     "bApplyInitialStateOnBeginPlay": "False"
+    }
+   ],
+   "hidden": "False",
+   "collision": "True"
+  },
+  "jiguanqiang4": {
+   "comp_count": 0,
+   "comps": [],
+   "hidden": "False",
+   "collision": "True"
+  },
+  "jiguanqiang3": {
+   "comp_count": 0,
+   "comps": [],
+   "hidden": "False",
+   "collision": "True"
+  }
+ }
+}

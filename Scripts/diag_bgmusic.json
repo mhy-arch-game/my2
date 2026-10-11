@@ -1,0 +1,42 @@
+{
+  "/Script/MHY_ARCH_GAME.BackgroundMusicSettings": "<Object '/Script/MHY_ARCH_GAME.BackgroundMusicSettings' (0x0000023E832BE380) Class 'Class'>",
+  "/Script/MHY_ARCH_GAME.BackgroundMusicSubsystem": "<Object '/Script/MHY_ARCH_GAME.BackgroundMusicSubsystem' (0x0000023E832BE600) Class 'Class'>",
+  "/Script/MHY_ARCH_GAME.UiCueSubsystem": "<Object '/Script/MHY_ARCH_GAME.UiCueSubsystem' (0x0000023E83415C80) Class 'Class'>",
+  "has_subsystem_attr": true,
+  "dir_background": [
+    "BackgroundBlur",
+    "BackgroundBlurSlot",
+    "BackgroundBlurWidget",
+    "BackgroundMusicSubsystem",
+    "MovementStateMusic",
+    "MusicalNoteName",
+    "MusicalTime",
+    "MusicalTimeFunctionLibrary",
+    "OnBackgroundMusicChanged"
+  ],
+  "dir_uicue": [
+    "OnUiCueBegan",
+    "OnUiCueEnded",
+    "OnUiCueSegmentShown",
+    "SoundCue",
+    "SoundCueFactoryNew",
+    "SoundWaveCuePoint",
+    "SoundWaveCuePointOrigin",
+    "SubtitleCue",
+    "UiCue",
+    "UiCuePresenter",
+    "UiCueSegment",
+    "UiCueSet",
+    "UiCueSubsystem",
+    "UiCueSubtitleWidget",
+    "UiCueTrigger",
+    "UiCueTriggerVolume"
+  ],
+  "settings": {
+    "Music": "<Object '/Game/sound_resources/background.background' (0x0000023EA5542800) Class",
+    "Volume": "1.0",
+    "Speed": "1.0",
+    "bAutoPlay": "True",
+    "bLoop": "True"
+  }
+}

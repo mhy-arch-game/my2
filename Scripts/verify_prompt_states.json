@@ -1,0 +1,96 @@
+{
+  "has_new_field": true,
+  "from_disk": [
+    {
+      "label": "jiguandeng1",
+      "closed_prompt": "开灯",
+      "open_prompt": "关灯",
+      "IsOpen": "False"
+    },
+    {
+      "label": "jiguandeng2",
+      "closed_prompt": "开灯",
+      "open_prompt": "关灯",
+      "IsOpen": "False"
+    },
+    {
+      "label": "jiguandeng3",
+      "closed_prompt": "开灯",
+      "open_prompt": "关灯",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men1",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men10",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men11",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men12",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men13",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men4",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men5",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men6",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men7",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men8",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    },
+    {
+      "label": "men9",
+      "closed_prompt": "开门",
+      "open_prompt": "关门",
+      "IsOpen": "False"
+    }
+  ],
+  "count": 27,
+  "char_prompt_component": {
+    "WorldPromptHeightOffset": "0.0",
+    "WorldPromptDrawSize": "<Struct 'Vector2D' (0x000001998FAB1298) {x: 320.000000, y: 64.000000}>",
+    "WorldPromptFacingYaw": "0.0",
+    "bWorldSpacePrompt": "True"
+  }
+}

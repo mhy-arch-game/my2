@@ -1,0 +1,27 @@
+{
+  "before": {
+    "bWorldSpacePrompt": "True",
+    "bWorldPromptFaceCamera": "True",
+    "WorldPromptFacingYaw": "0.0",
+    "WorldPromptDrawSize": "<Struct 'Vector2D' (0x0000021F6BA57658) {x: 360.000000, y: 120.000000}>",
+    "WorldPromptHeightOffset": "30.0",
+    "WorldPromptFrontOffset": "40.0",
+    "WidgetClass": "None"
+  },
+  "write": {
+    "WorldPromptFacingYaw": "ok",
+    "bWorldPromptFaceCamera": "ok",
+    "bWorldSpacePrompt": "ok"
+  },
+  "after": {
+    "bWorldSpacePrompt": "True",
+    "bWorldPromptFaceCamera": "True",
+    "WorldPromptFacingYaw": "0.0",
+    "WorldPromptDrawSize": "<Struct 'Vector2D' (0x0000021F6BA57658) {x: 360.000000, y: 120.000000}>",
+    "WorldPromptHeightOffset": "30.0",
+    "WorldPromptFrontOffset": "40.0",
+    "WidgetClass": "None"
+  },
+  "compile": "ok",
+  "save": "ok"
+}

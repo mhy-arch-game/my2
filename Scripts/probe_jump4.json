@@ -1,0 +1,29 @@
+{
+ "zones": [
+  {
+   "label": "jumping_area",
+   "editor_only": "False",
+   "hidden_ed": "False",
+   "owner_level": "<Object '/Game/FirstPerson/firstvision.firstvision:Persisten"
+  },
+  {
+   "label": "jumping_area2",
+   "editor_only": "False",
+   "hidden_ed": "False",
+   "owner_level": "<Object '/Game/FirstPerson/firstvision.firstvision:Persisten"
+  },
+  {
+   "label": "jumping_area3",
+   "editor_only": "False",
+   "hidden_ed": "False",
+   "owner_level": "<Object '/Game/FirstPerson/firstvision.firstvision:Persisten"
+  }
+ ],
+ "capsule": {
+  "overlap_events": "True",
+  "profile": "Pawn",
+  "col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+  "obj_type": "<no:CollisionObjectType>",
+  "extent": "96.0"
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "jiguanqiang_assets": [
+    [
+      "/Game/LS_jiguanqiang1.LS_jiguanqiang1",
+      "LevelSequence"
+    ],
+    [
+      "/Game/LS_jiguanqiang2.LS_jiguanqiang2",
+      "LevelSequence"
+    ]
+  ],
+  "fatal": "AttributeError(\"'LevelSequenceActor' object has no attribute 'get_sequence_player'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/probe_ls_walls.py\", line 51, in <module>\n    \"has_player\": str(call(a.get_sequence_player)[1])[:60]})\n                           ^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'LevelSequenceActor' object has no attribute 'get_sequence_player'\n"
+}

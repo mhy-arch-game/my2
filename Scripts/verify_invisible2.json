@@ -1,0 +1,44 @@
+{
+ "after": {
+  "jiguanqiang1": {
+   "loc": "<Struct 'Vector' (0x0000015ECA8132B0) {x: -1500.000000, y:",
+   "scale": "<Struct 'Vector' (0x0000015ECA8132B0) {x: 1.00",
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397",
+   "profile": "BlockAllDynamic",
+   "col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "bHiddenInGame": "False",
+   "bVisible": "True",
+   "actor_bHidden": "False"
+  },
+  "jiguanqiang2": {
+   "loc": "<Struct 'Vector' (0x0000015ECA8132B0) {x: -1500.000000, y:",
+   "scale": "<Struct 'Vector' (0x0000015ECA8132B0) {x: 1.00",
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397",
+   "profile": "BlockAllDynamic",
+   "col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "bHiddenInGame": "False",
+   "bVisible": "True",
+   "actor_bHidden": "False"
+  },
+  "yinxingqiang1": {
+   "loc": "<Struct 'Vector' (0x0000015ECA8132B0) {x: -1800.000000, y:",
+   "scale": "<Struct 'Vector' (0x0000015ECA8132B0) {x: 1.00",
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397",
+   "profile": "InvisibleWall",
+   "col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "bHiddenInGame": "True",
+   "bVisible": "True",
+   "actor_bHidden": "False"
+  },
+  "yinxingqiang2": {
+   "loc": "<Struct 'Vector' (0x0000015ECA8132B0) {x: -1800.000000, y:",
+   "scale": "<Struct 'Vector' (0x0000015ECA8132B0) {x: 1.00",
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397",
+   "profile": "InvisibleWall",
+   "col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "bHiddenInGame": "True",
+   "bVisible": "True",
+   "actor_bHidden": "False"
+  }
+ }
+}

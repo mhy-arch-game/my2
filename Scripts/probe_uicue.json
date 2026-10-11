@@ -1,0 +1,1529 @@
+{
+ "sounds": {
+  "/Game/sound_resources/background": {
+   "class": "SoundWave",
+   "duration": "213.99510192871094",
+   "looping": "True"
+  },
+  "/Game/sound_resources/dragon-studio-light-switch-on-382714": {
+   "class": "SoundWave",
+   "duration": "0.5746938586235046",
+   "looping": "False"
+  },
+  "/Game/sound_resources/freesound_community-door-close-79921": {
+   "class": "SoundWave",
+   "duration": "2.7428572177886963",
+   "looping": "False"
+  },
+  "/Game/sound_resources/freesound_community-jumping-on-wooden-floor-41234": {
+   "class": "SoundWave",
+   "duration": "0.6240000128746033",
+   "looping": "False"
+  },
+  "/Game/sound_resources/freesound_community-light-switch-off-86314": {
+   "class": "SoundWave",
+   "duration": "0.8640000224113464",
+   "looping": "False"
+  },
+  "/Game/sound_resources/freesound_community-running-6358": {
+   "class": "SoundWave",
+   "duration": "5.929795742034912",
+   "looping": "True"
+  },
+  "/Game/sound_resources/freesound_community-switch-100999": {
+   "class": "SoundWave",
+   "duration": "4.007999897003174",
+   "looping": "False"
+  },
+  "/Game/sound_resources/freesound_community-switch-100999_1_": {
+   "class": "SoundWave",
+   "duration": "4.007999897003174",
+   "looping": "False"
+  },
+  "/Game/sound_resources/kongjianzhuanhuanqi1": {
+   "class": "SoundWave",
+   "duration": "2.9760000705718994",
+   "looping": "False"
+  },
+  "/Game/sound_resources/kongjianzhuanhuanqi1_2": {
+   "class": "SoundWave",
+   "duration": "1.5839999914169312",
+   "looping": "False"
+  },
+  "/Game/sound_resources/kongjianzhuanhuanqi2": {
+   "class": "SoundWave",
+   "duration": "4.1519999504089355",
+   "looping": "False"
+  },
+  "/Game/sound_resources/LS12": {
+   "class": "SoundWave",
+   "duration": "4.895999908447266",
+   "looping": "False"
+  },
+  "/Game/sound_resources/men1": {
+   "class": "SoundWave",
+   "duration": "3.1440000534057617",
+   "looping": "False"
+  },
+  "/Game/sound_resources/men2": {
+   "class": "SoundWave",
+   "duration": "4.320000171661377",
+   "looping": "False"
+  },
+  "/Game/sound_resources/men21": {
+   "class": "SoundWave",
+   "duration": "3.5280001163482666",
+   "looping": "False"
+  },
+  "/Game/sound_resources/men21_2": {
+   "class": "SoundWave",
+   "duration": "3.5280001163482666",
+   "looping": "False"
+  },
+  "/Game/sound_resources/men3": {
+   "class": "SoundWave",
+   "duration": "3.671999931335449",
+   "looping": "False"
+  },
+  "/Game/sound_resources/opening": {
+   "class": "SoundWave",
+   "duration": "2.2799999713897705",
+   "looping": "False"
+  },
+  "/Game/sound_resources/opening2": {
+   "class": "SoundWave",
+   "duration": "3.1440000534057617",
+   "looping": "False"
+  },
+  "/Game/sound_resources/opening3": {
+   "class": "SoundWave",
+   "duration": "2.5920000076293945",
+   "looping": "False"
+  },
+  "/Game/sound_resources/soundreality-opening-door-411632": {
+   "class": "SoundWave",
+   "duration": "2.0399999618530273",
+   "looping": "False"
+  }
+ },
+ "dataset": "<Object '/Game/MHY_ARCH_GAME/UI/DA_UiCueSet.DA_UiCueSet' (0x0000029C39B84520) Cl",
+ "cues": [
+  {
+   "id": "demo_spawn",
+   "trigger": "<UiCueTrigger.BOX_VOLUME: 0>",
+   "triggerId": "demo_spawn",
+   "text": "UI Cue 演示：你刚出生就进入了示例触发体积。这条字幕来自 DA_UiCueSet 里的 demo_spawn。多句",
+   "voice": "None",
+   "once": "True"
+  },
+  {
+   "id": "demo_men1",
+   "trigger": "<UiCueTrigger.INTERACT_FIRST_TOGGLE: 1>",
+   "triggerId": "men1",
+   "text": "UI Cue 演示：这是 men1 第一次被切换状态（开或关）。再按一次 E 不会重复触发，因为本触发只认第一次。",
+   "voice": "None",
+   "once": "True"
+  }
+ ],
+ "actors": {
+  "menkuang1": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -1490.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang2": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -1810.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "jiguanqiang0": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: 200.000000, y: -",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "False",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "InteractionOperationReceiverComponent"
+    }
+   ]
+  },
+  "jiguanqiang1": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -1500.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "False",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "ProximitySequenceComponent"
+    }
+   ]
+  },
+  "jiguanqiang2": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -1500.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "ProximitySequenceComponent"
+    }
+   ]
+  },
+  "menkuang3": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -8700.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang4": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2390.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang5": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2710.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang6": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3090.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang7": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2550.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang8": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2550.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang9": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2710.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang10": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3090.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang11": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3250.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang12": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3250.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang13": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3250.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang14": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3410.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang15": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -4430.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang16": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -5430.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang17": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -6430.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "jiguandeng1": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: 220.000000, y: -",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "True",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "InteractionLinkComponent"
+    },
+    {
+     "c": "PointLightComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    }
+   ]
+  },
+  "menkuang18": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -8170.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang19": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7350.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang20": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7210.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "jiguanqiang4": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7120.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "False",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "InteractionOperationReceiverComponent"
+    }
+   ]
+  },
+  "jiguanqiang3": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7220.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "False",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "InteractionOperationReceiverComponent"
+    }
+   ]
+  },
+  "jiguandeng2": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7121.000279, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "True",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "InteractionLinkComponent"
+    },
+    {
+     "c": "PointLightComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    }
+   ]
+  },
+  "menkuang21": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7950.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang23": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7780.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang24": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -8750.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang25": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -11340.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang26": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -11170.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang27": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -11000.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang28": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -11170.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "menkuang29": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -11340.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "jiguankuai1": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7400.000000, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "jiguandeng3": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -6801.000279, y:",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "True",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "InteractionLinkComponent"
+    },
+    {
+     "c": "PointLightComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    }
+   ]
+  },
+  "L3men3": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -20370.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "L3menkuang3": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -20370.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "L3men1": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -20370.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "L3menkuang1": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -20370.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "L3men1.1": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -23845.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "L3menkuang1.1": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -23845.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "L3men2.2": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -23845.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "L3menkuang2.2": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -23845.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "L3men3.3": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -23845.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "L3menkuang3.3": {
+   "class": "StaticMeshActor",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -23845.000000, y",
+   "comps": [
+    {
+     "c": "StaticMeshComponent"
+    }
+   ]
+  },
+  "men1": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -1490.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men2": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -1810.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men3": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -8700.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men4": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2390.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men5": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2710.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men6": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3090.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men7": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2550.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men8": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2550.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men9": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -2710.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men10": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3090.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men11": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3250.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men12": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3250.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men13": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3250.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men14": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -3410.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men15": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -4430.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men16": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -5430.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men17": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -6430.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men18": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -8170.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men19": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7350.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men20": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7210.000000, y:",
+   "comps": [
+    {
+     "c": "InteractionLinkComponent"
+    },
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men21": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7950.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men23": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -7780.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men24": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -8750.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "men25": {
+   "class": "active_door_C",
+   "loc": "<Struct 'Vector' (0x0000029C276932B0) {x: -11340.000000, y",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "True",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    }
+   ]
+  },
+  "kongjianchuansuoqi1": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C39244B50) {x: 620.000000, y: -",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "kongjianchuansuoqi2": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C39244B00) {x: 620.000000, y: -",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "kongjianchuansuoqi3": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C39244D80) {x: -8935.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "kongjianchuansuoqi4": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C39244FB0) {x: -8935.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "kongjianchuansuoqi5": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C392451E0) {x: -9025.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "kongjianchuansuoqi6": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C39245410) {x: -9025.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "kongjianchuansuoqi7": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C39245640) {x: -6945.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "kongjianchuansuoqi8": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C39245870) {x: -6945.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "kongjianchuansuoqi9": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C39245AA0) {x: -22065.000000, y",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "kongjianchuansuoqi10": {
+   "class": "modern_swift_actor_C",
+   "loc": "<Struct 'Vector' (0x0000029C39245CD0) {x: -22065.000000, y",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    },
+    {
+     "c": "StaticMeshComponent"
+    },
+    {
+     "c": "TimeEraComponent"
+    },
+    {
+     "c": "InteractableComponent",
+     "bEnabled": "True",
+     "bTrackOpenState": "False",
+     "bUseBuiltInToggle": "False",
+     "bToggleLights": "False",
+     "bStartOpen": "False"
+    },
+    {
+     "c": "TimeEraPortalComponent"
+    }
+   ]
+  },
+  "UiCueDemo_Volume": {
+   "class": "UiCueTriggerVolume",
+   "loc": "<Struct 'Vector' (0x0000029C39246130) {x: 0.000000, y: 0.0",
+   "comps": [
+    {
+     "c": "BoxComponent"
+    }
+   ]
+  },
+  "LS_jiguanqiang2": {
+   "class": "LevelSequenceActor",
+   "loc": "<Struct 'Vector' (0x0000029C39245CD0) {x: -3976.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    }
+   ]
+  },
+  "LS_jiguanqiang1": {
+   "class": "LevelSequenceActor",
+   "loc": "<Struct 'Vector' (0x0000029C39245CD0) {x: -3203.000000, y:",
+   "comps": [
+    {
+     "c": "SceneComponent"
+    },
+    {
+     "c": "BillboardComponent"
+    }
+   ]
+  }
+ }
+}
