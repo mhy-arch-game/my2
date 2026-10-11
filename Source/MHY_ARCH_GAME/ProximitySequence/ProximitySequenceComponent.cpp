@@ -3,6 +3,8 @@
 #include "ProximitySequenceComponent.h"
 
 #include "Engine/World.h"
+#include "HAL/IConsoleManager.h"
+#include "UObject/Class.h"
 #include "Math/Box.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -11,6 +13,18 @@
 #include "LevelSequenceActor.h"
 #include "LevelSequencePlayer.h"
 #include "MovieSceneSequencePlaybackSettings.h"
+
+#if !UE_BUILD_SHIPPING
+/**
+ * 调试钩子：>0 = 关卡开始 N 秒后，自动对场景里所有 ProximitySequenceComponent 调一次 TriggerNow()。
+ * 用途：headless / 无玩家的环境里也能驱动"播序列 → 播完开碰撞"这整条链路（正常游戏保持 0）。
+ * **Shipping 构建里整段被编译掉**，面向用户的包里不存在这个调试开关。
+ */
+static TAutoConsoleVariable<int32> CVarProximitySequenceAutoTrigger(
+	TEXT("ps.AutoTrigger"), 0,
+	TEXT(">0 = 关卡运行 N 秒后自动对所有 ProximitySequenceComponent 调一次 TriggerNow（调试用）。"),
+	ECVF_Default);
+#endif
 
 UProximitySequenceComponent::UProximitySequenceComponent()
 {
@@ -22,9 +36,16 @@ void UProximitySequenceComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (GetDistanceToTarget() < 0.0f)
+	const float InitialDistance = GetDistanceToTarget();
+	UE_LOG(LogTemp, Log,
+		TEXT("[ProximitySequence] %s: BeginPlay（序列=%s，触发 %.0fcm，慢速区 %.0fcm / %.0f cm/s，初始距离 %.1f，有主控=%d）。"),
+		*GetNameSafe(GetOwner()),
+		Sequence.IsNull() ? TEXT("<未设置>") : *Sequence.ToSoftObjectPath().ToString(),
+		TriggerDistance, SlowZoneDistance, SlowSpeed, InitialDistance, InitialDistance >= 0.0f ? 1 : 0);
+
+	if (InitialDistance < 0.0f)
 	{
-		// 没有本地玩家（例如放在服务器侧）时没必要每帧算。
+		// 没有本地玩家（例如放在服务器侧 / headless 环境）时距离触发不成立，可用 ps.AutoTrigger 调试。
 		UE_LOG(LogTemp, Log, TEXT("[ProximitySequence] %s: 找不到主控角色，距离触发暂不生效。"),
 			*GetNameSafe(GetOwner()));
 	}
@@ -78,8 +99,22 @@ void UProximitySequenceComponent::TickComponent(float DeltaTime, ELevelTick Tick
 
 	const float Distance = GetDistanceToTarget();
 
+#if !UE_BUILD_SHIPPING
+	// 调试钩子：ps.AutoTrigger 秒后自动触发一次（无玩家环境验证 "播序列 → 播完开碰撞" 用）。
+	const int32 AutoTriggerSeconds = CVarProximitySequenceAutoTrigger.GetValueOnGameThread();
+	if (AutoTriggerSeconds > 0 && !bTriggered && GetWorld() && GetWorld()->GetTimeSeconds() >= AutoTriggerSeconds)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[ProximitySequence] %s: ps.AutoTrigger=%d 到点，调试触发。"),
+			*GetNameSafe(GetOwner()), AutoTriggerSeconds);
+		TriggerNow();
+	}
+#endif
+
 	// 慢速区独立于触发：触发过一次之后到"变成实体"之前仍然限速，所以不再在这里停 tick。
 	UpdateSlowZone(Distance);
+
+	// 兜底：运行时创建的播放器万一不回调 OnFinished，也能靠"由播到停"补上。
+	PollSequenceFinished();
 
 	if (bOnce && bTriggered)
 	{
@@ -129,6 +164,10 @@ void UProximitySequenceComponent::TriggerNow()
 void UProximitySequenceComponent::ResetTrigger()
 {
 	bTriggered = false;
+	bFinishedHandled = false;
+	bSequencePlaying = false;
+	bWasPlaying = false;
+	bBlocked = false;
 	SetComponentTickEnabled(true);
 }
 
@@ -139,6 +178,12 @@ bool UProximitySequenceComponent::PlaySequence()
 	{
 		return false;
 	}
+
+	// 播放前记下碰撞状态：序列/其它系统可能把组件碰撞关掉，"开碰撞"时要能精确还原。
+	SnapshotCollisionState();
+	bFinishedHandled = false;
+	bSequencePlaying = true;
+	bWasPlaying = true;
 
 	// 1) 关卡里已经有现成的 LevelSequenceActor 就直接驱动它。
 	if (SequenceActor)
@@ -180,6 +225,14 @@ bool UProximitySequenceComponent::PlaySequence()
 
 void UProximitySequenceComponent::HandleSequenceFinished()
 {
+	if (bFinishedHandled)
+	{
+		return;
+	}
+	bFinishedHandled = true;
+	bSequencePlaying = false;
+	bWasPlaying = false;
+
 	UE_LOG(LogTemp, Log, TEXT("[ProximitySequence] %s: 序列播放结束。"), *GetNameSafe(GetOwner()));
 
 	if (bBlockOnFinish)
@@ -206,10 +259,97 @@ void UProximitySequenceComponent::ApplyBlockedState()
 
 	// 位移由动画资产负责（关卡序列里那 300cm 的关键帧）；这里把"挡路"坐实：显形 + 开碰撞。
 	Owner->SetActorHiddenInGame(false);
+
+	// 关键：AActor::SetActorEnableCollision 只在"actor 级开关发生变化"时才通知组件
+	// （Actor.cpp: 5269 处直接 return），所以它无法恢复被单独关掉的组件碰撞。
+	// 真正可靠的做法是逐个图元组件把碰撞打开——恢复播放前记下的状态。
 	Owner->SetActorEnableCollision(true);
+
+	FString Detail;
+	int32 Count = 0;
+	for (UActorComponent* Comp : Owner->GetComponents())
+	{
+		UPrimitiveComponent* Primitive = Cast<UPrimitiveComponent>(Comp);
+		if (!Primitive)
+		{
+			continue;
+		}
+
+		Primitive->SetHiddenInGame(false);
+
+		ECollisionEnabled::Type Desired = ECollisionEnabled::QueryAndPhysics;
+		const TWeakObjectPtr<UPrimitiveComponent> Key(Primitive);
+		if (const TEnumAsByte<ECollisionEnabled::Type>* Saved = SavedCollision.Find(Key))
+		{
+			Desired = *Saved;
+		}
+		if (Desired == ECollisionEnabled::NoCollision)
+		{
+			// 关卡里这堵墙本来就是 QueryAndPhysics；快照若拿到的是"关"，也按能挡路处理。
+			Desired = ECollisionEnabled::QueryAndPhysics;
+		}
+
+		Primitive->SetCollisionEnabled(Desired);
+
+		Detail += FString::Printf(TEXT("%s=%s/%s "), *Primitive->GetName(),
+			*UEnum::GetValueAsString(Primitive->GetCollisionEnabled()),
+			*Primitive->GetCollisionProfileName().ToString());
+		++Count;
+	}
+
 	bBlocked = true;
 
-	UE_LOG(LogTemp, Log, TEXT("[ProximitySequence] %s: 已显形 + 开启碰撞（阻挡道路）。"), *GetNameSafe(Owner));
+	UE_LOG(LogTemp, Log,
+		TEXT("[ProximitySequence] %s: 已显形 + 开启碰撞（阻挡道路）。actorCollision=%d，图元 %d 个：%s"),
+		*GetNameSafe(Owner), Owner->GetActorEnableCollision() ? 1 : 0, Count, *Detail);
+}
+
+void UProximitySequenceComponent::SnapshotCollisionState()
+{
+	SavedCollision.Reset();
+
+	AActor* Owner = GetOwner();
+	if (!Owner)
+	{
+		return;
+	}
+
+	for (UActorComponent* Comp : Owner->GetComponents())
+	{
+		if (UPrimitiveComponent* Primitive = Cast<UPrimitiveComponent>(Comp))
+		{
+			SavedCollision.Add(TWeakObjectPtr<UPrimitiveComponent>(Primitive), Primitive->GetCollisionEnabled());
+		}
+	}
+}
+
+void UProximitySequenceComponent::PollSequenceFinished()
+{
+	if (!bSequencePlaying)
+	{
+		return;
+	}
+
+	ULevelSequencePlayer* Player = RuntimePlayer;
+	if (!Player && SequenceActor)
+	{
+		Player = SequenceActor->GetSequencePlayer();
+	}
+	if (!Player)
+	{
+		return;
+	}
+
+	const bool bNowPlaying = Player->IsPlaying();
+	if (bWasPlaying && !bNowPlaying)
+	{
+		UE_LOG(LogTemp, Log, TEXT("[ProximitySequence] %s: 播放器已停止但没收到 OnFinished，按结束处理。"),
+			*GetNameSafe(GetOwner()));
+		HandleSequenceFinished();
+		return;
+	}
+
+	bWasPlaying = bNowPlaying;
 }
 
 void UProximitySequenceComponent::ApplyPreBlockState()
@@ -263,8 +403,7 @@ void UProximitySequenceComponent::UpdateSlowZone(float Distance)
 
 	// 每帧只把"水平速度"钳到上限，不写任何持久状态：
 	// 离开区域自然恢复，也不用担心和疾跑抢 MaxWalkSpeed。
-	// 倍率乘的是"当时的 MaxWalkSpeed"，所以疾跑在区域内只是上限更高，仍然被限速。
-	const float Cap = Movement->MaxWalkSpeed * FMath::Clamp(SlowSpeedMultiplier, 0.0f, 1.0f);
+	const float Cap = FMath::Max(0.0f, SlowSpeed);
 	const FVector Velocity = Movement->Velocity;
 	const FVector Horizontal(Velocity.X, Velocity.Y, 0.0f);
 	if (Horizontal.SizeSquared() > Cap * Cap)
@@ -277,8 +416,8 @@ void UProximitySequenceComponent::UpdateSlowZone(float Distance)
 
 	if (bDebugLogSlowZone)
 	{
-		UE_LOG(LogTemp, Log, TEXT("[ProximitySequence] %s: 慢速区 %.1fcm 内（上限 %.0f = %.0f x %.2f）。"),
-			*GetNameSafe(GetOwner()), Distance, Cap, Movement->MaxWalkSpeed, SlowSpeedMultiplier);
+		UE_LOG(LogTemp, Log, TEXT("[ProximitySequence] %s: 慢速区 %.1fcm 内（限速 %.0f cm/s，角色 MaxWalkSpeed %.0f）。"),
+			*GetNameSafe(GetOwner()), Distance, Cap, Movement->MaxWalkSpeed);
 	}
 }
 

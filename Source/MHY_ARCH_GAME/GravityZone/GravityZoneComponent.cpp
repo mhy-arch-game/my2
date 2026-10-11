@@ -5,6 +5,28 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Pawn.h"
 
+namespace
+{
+	/**
+	 * 每个角色一份"纯原始"物理参数 + 当前生效的重力区数量。
+	 *
+	 * 为什么不能各存各的：两个区域盒子重叠时，角色会同时被两边追踪。
+	 * 若各自在进入时快照"当前值"，第二个区快照到的就是第一个区**改过**的值，
+	 * 离开时先后写回，最后会把被改过的值当"原始值"留下 —— 表现就是
+	 * "走出跳跃区域后仍然能超跳"（本项目 jumping_area / jumping_area2 就是重叠的）。
+	 *
+	 * 键是角色自己的 CharacterMovementComponent（弱引用，角色销毁后自然失效）。
+	 */
+	struct FGravityZoneSharedState
+	{
+		float AuthoredGravityScale = 1.0f;
+		float AuthoredJumpZVelocity = 0.0f;
+		int32 ActiveZones = 0;
+	};
+
+	TMap<TWeakObjectPtr<UCharacterMovementComponent>, FGravityZoneSharedState> GGravityZoneShared;
+}
+
 UGravityZoneComponent::UGravityZoneComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
@@ -43,7 +65,8 @@ void UGravityZoneComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	OnComponentBeginOverlap.RemoveDynamic(this, &UGravityZoneComponent::HandleBeginOverlap);
 	OnComponentEndOverlap.RemoveDynamic(this, &UGravityZoneComponent::HandleEndOverlap);
 
-	// Never leave a character floating: restore everyone still tracked.
+	// Never leave a character floating: release everyone still tracked（计数减一，
+	// 只有最后一个区域被销毁时才写回原始值）。
 	TMap<TWeakObjectPtr<AActor>, FGravityZoneEntry> Pending = MoveTemp(Tracked);
 	Tracked.Empty();
 
@@ -51,7 +74,7 @@ void UGravityZoneComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	{
 		if (AActor* Actor = Pair.Key.Get())
 		{
-			RestoreFrom(Actor, Pair.Value);
+			ReleaseFrom(Actor);
 		}
 	}
 
@@ -83,10 +106,9 @@ void UGravityZoneComponent::HandleEndOverlap(UPrimitiveComponent* OverlappedComp
 		return;
 	}
 
-	const FGravityZoneEntry Saved = *Found;
 	Tracked.Remove(OtherActor);
 
-	RestoreFrom(OtherActor, Saved);
+	ReleaseFrom(OtherActor);
 
 	if (UCharacterMovementComponent* Movement = GetMovement(OtherActor))
 	{
@@ -112,11 +134,21 @@ void UGravityZoneComponent::ApplyTo(AActor* Actor)
 		return;
 	}
 
+	FGravityZoneSharedState& Shared = GGravityZoneShared.FindOrAdd(Movement);
+	if (Shared.ActiveZones == 0)
+	{
+		// 第一个影响该角色的重力区：记下**纯原始**值（不是别的区域改过的值）。
+		Shared.AuthoredGravityScale = Movement->GravityScale;
+		Shared.AuthoredJumpZVelocity = Movement->JumpZVelocity;
+	}
+	++Shared.ActiveZones;
+
 	FGravityZoneEntry Entry;
-	Entry.GravityScale = Movement->GravityScale;
-	Entry.JumpZVelocity = Movement->JumpZVelocity;
+	Entry.GravityScale = Shared.AuthoredGravityScale;
+	Entry.JumpZVelocity = Shared.AuthoredJumpZVelocity;
 	Tracked.Add(Actor, Entry);
 
+	// 一律从"纯原始值"出发乘倍率：重叠区不会互相叠乘。
 	Movement->GravityScale = Entry.GravityScale * GravityScaleInside;
 
 	if (TargetJumpHeight > 0.0f)
@@ -138,10 +170,15 @@ void UGravityZoneComponent::ApplyTo(AActor* Actor)
 		Movement->JumpZVelocity = Entry.JumpZVelocity * FMath::Sqrt(FMath::Max(GravityScaleInside, 0.0f));
 	}
 
+	UE_LOG(LogTemp, Log,
+		TEXT("[GravityZone] %s: %s 进入（重力 %.2f -> %.2f，起跳 %.0f -> %.0f，区域内生效区数 %d）。"),
+		*GetName(), *Actor->GetActorNameOrLabel(), Entry.GravityScale, Movement->GravityScale,
+		Entry.JumpZVelocity, Movement->JumpZVelocity, Shared.ActiveZones);
+
 	OnActorEntered.Broadcast(Actor, Movement->GravityScale);
 }
 
-void UGravityZoneComponent::RestoreFrom(AActor* Actor, const FGravityZoneEntry& Entry)
+void UGravityZoneComponent::ReleaseFrom(AActor* Actor)
 {
 	UCharacterMovementComponent* Movement = GetMovement(Actor);
 	if (!Movement)
@@ -149,12 +186,30 @@ void UGravityZoneComponent::RestoreFrom(AActor* Actor, const FGravityZoneEntry& 
 		return;
 	}
 
-	Movement->GravityScale = Entry.GravityScale;
-
-	if (bScaleJumpVelocity || TargetJumpHeight > 0.0f)
+	TWeakObjectPtr<UCharacterMovementComponent> Key(Movement);
+	FGravityZoneSharedState* Shared = GGravityZoneShared.Find(Key);
+	if (!Shared)
 	{
-		Movement->JumpZVelocity = Entry.JumpZVelocity;
+		return;
 	}
+
+	Shared->ActiveZones = FMath::Max(Shared->ActiveZones - 1, 0);
+
+	const bool bLastZone = Shared->ActiveZones == 0;
+	if (bLastZone)
+	{
+		// 最后一个区域也离开了：写回**纯原始**值（不管本区域是否改过起跳速度，
+		// 写回原始值都是安全的；没改过时它是等值操作）。
+		Movement->GravityScale = Shared->AuthoredGravityScale;
+		Movement->JumpZVelocity = Shared->AuthoredJumpZVelocity;
+		GGravityZoneShared.Remove(Key);
+	}
+
+	UE_LOG(LogTemp, Log,
+		TEXT("[GravityZone] %s: %s 离开（剩余生效区数 %d，重力 %.2f，起跳 %.0f%s）。"),
+		*GetName(), *Actor->GetActorNameOrLabel(), Shared ? Shared->ActiveZones : 0,
+		Movement->GravityScale, Movement->JumpZVelocity,
+		bLastZone ? TEXT("，已写回原始值") : TEXT("，仍被其它区影响，暂不写回"));
 }
 
 bool UGravityZoneComponent::IsActorInside(const AActor* Actor) const

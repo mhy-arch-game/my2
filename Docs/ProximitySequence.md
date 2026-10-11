@@ -16,6 +16,7 @@
 | `jiguanqiang2` | StaticMesh + `ProximitySequence`（**无任何联动组件**）|
 | 当前外观 | 两堵墙此刻都是**可见 + 有碰撞**（`BlockAllDynamic`）|
 | 组件挂载 | `jiguanqiang1` / `jiguanqiang2` 各有一个 `ProximitySequence` 实例组件（已保存并跨进程复验）|
+| 隐形阻挡墙 | `yinxingqiang1` / `yinxingqiang2`（复用墙体网格 + `InvisibleWall` 配置 + `bHiddenInGame`），位于动画终点 −1800 |
 
 ### 联动关系（谁让墙消失）
 
@@ -48,7 +49,7 @@ men20                        -> Open  -> "door_group1"   ->  jiguanqiang3  -> Se
 | `bLoop` | ✗ | 循环播放（循环时不会结束，也就不会进入阻挡态）|
 | `bSlowPlayerNearby` | ✔ | 靠近时限速（见下节"慢速区"）|
 | `SlowZoneDistance` | 900 cm | 慢速区半径（到墙体包围盒最近点）；≤0 = 直接用 `TriggerDistance` |
-| `SlowSpeedMultiplier` | 0.4 | **慢速倍率（暴露出来供实测）**：区域内水平速度上限 = 当时的 `MaxWalkSpeed` × 本倍率 |
+| `SlowSpeed` | **250 cm/s** | **区域内减速到的目标速度（暴露出来供实测）**：每帧把玩家水平速度钳到不超过它 |
 | `bDebugLogSlowZone` | ✗ | 调试：限速时每帧打一行日志（会刷屏）|
 | `PlayRate` | 1.0 | 播放速率 |
 | `DebugLogRange` | 0 | >0 时接近过程中打日志，方便调触发线 |
@@ -68,10 +69,10 @@ men20                        -> Open  -> "door_group1"   ->  jiguanqiang3  -> Se
 所以在墙周围放一圈**慢速区**：
 
 - 进入 `SlowZoneDistance`（默认 900cm，比触发距离 600cm 稍大，等于**提前减速**）就开始限速；
-- 实现方式：**每帧把玩家的水平速度钳到 `MaxWalkSpeed × SlowSpeedMultiplier`**（只改速度、不写任何持久状态），
-  所以离开区域自动恢复，也**不会和疾跑抢 `MaxWalkSpeed`**——疾跑在区域内只是上限高一点，照样被限速；
+- 实现方式：**每帧把玩家的水平速度钳到不超过 `SlowSpeed`（当前 250 cm/s）**（只改速度、不写任何持久状态），
+  所以离开区域自动恢复，也**不会和疾跑抢 `MaxWalkSpeed`**——疾跑在区域内同样被钳到 250；
 - 墙**变成实体之后**（`bBlocked`）就不再限速，避免贴着墙走路一直慢；
-- 倍率和半径都在 Details 里暴露，**具体数值由你实测决定**。
+- 目标速度和半径都在 Details 里暴露（角色平时 `MaxWalkSpeed` 约 500，250 ≈ 半速），**具体数值由你实测决定**。
 
 ## 3. 完整时序
 
@@ -100,7 +101,7 @@ OnFinished   bBlockOnFinish ? SetActorHiddenInGame(false) + SetActorEnableCollis
 | `jiguanqiang1` | `ProximitySequence`（+ 哑 Interactable）| `/Game/LS_jiguanqiang1` | 600（沿用默认，待实测）| ✔ | ✔ | ✗ |
 | `jiguanqiang2` | `ProximitySequence` | `/Game/LS_jiguanqiang2` | 600（沿用默认，待实测）| ✔ | ✔ | ✗ |
 
-慢速区两墙都是 `bSlowPlayerNearby=✔ / SlowZoneDistance=900 / SlowSpeedMultiplier=0.4`（待实测调整）。
+慢速区两墙都是 `bSlowPlayerNearby=✔ / SlowZoneDistance=900 / SlowSpeed=250 cm/s`（待实测调整）。
 
 `jiguanqiang0/3/4` 未改动。两面墙原本就是**可见 + 有碰撞**，所以组件默认不去改初始状态。
 
@@ -120,13 +121,13 @@ OnFinished   bBlockOnFinish ? SetActorHiddenInGame(false) + SetActorEnableCollis
 
 ## 6. 调试
 
-> 运行时验证需要在 PIE 里做（headless 命令程没有玩家控制器，距离触发跑不起来）。
-> PIE 时看日志关键字 `[ProximitySequence]`：进入触发距离会打"首次进入距离触发…"，
-> 序列播完会打"已显形 + 开启碰撞（阻挡道路）"。
-
 - `GetProximitySequenceDebugString()` 一行状态（含 distance / triggered / blocking）；
-- 日志关键字 `[ProximitySequence]`（初始状态、触发、播完都会各打一行）；
-- 想立刻看效果：蓝图里调 `TriggerNow()`。
+- 日志关键字 `[ProximitySequence]`：BeginPlay / 触发 / 播完 / 开碰撞各一行，**"开碰撞"那行会直接报告
+  actor 级与每个图元组件的碰撞状态**（复验"墙到底挡不挡路"最快的方式）；
+- `bDebugLogSlowZone` 打开后，限速时每帧打一行；
+- 想立刻看效果：蓝图调 `TriggerNow()`，或在控制台（PIE）输入 `ps.AutoTrigger 3` = 关卡开始 3 秒后自动
+  触发一次（无玩家的 headless 环境也能驱动整条链路）。注意 `-ExecCmds` 里设不了它——命令执行早于游戏
+  模块注册该 CVar（日志会显示 `ps.AutoTrigger = "0" LastSetBy: Constructor`）。
 
 ## 7. 注意
 
@@ -135,3 +136,67 @@ OnFinished   bBlockOnFinish ? SetActorHiddenInGame(false) + SetActorEnableCollis
   若实测仍会卡住，再考虑"落点有人就延后阻挡"；
 - `bApplyInitialStateOnBeginPlay` **默认关**：墙在关卡里摆的就是"可见 + 有碰撞"，组件只在动画播完后把
   "显形 + 开碰撞"再坐实一次（防止中途被别的联动隐藏掉）。
+
+## 8. 运行时实测与"动画播完没碰撞"的根因
+
+用一条 headless 真实游戏会话验过整条链路（`-game -nullrhi -DDC-ForceMemoryCache`，无窗口、无玩家也能跑）：
+
+```
+首次进入距离触发（2941.4cm ≤ 100000cm），开始播放序列      ← 第一次 tick 就点火
+序列播放结束                                              ← 正好 +5.0 秒，OnFinished 有回调
+已显形 + 开启碰撞（阻挡道路）。actorCollision=1，图元 1 个：
+    StaticMeshComponent0=ECollisionEnabled::QueryAndPhysics/BlockAllDynamic
+```
+
+### 为什么"动画播完墙没碰撞"——SetActorEnableCollision 是空操作
+
+`AActor::SetActorEnableCollision` 的实现（`Engine/Source/Runtime/Engine/Private/Actor.cpp:5267`）：
+
+```cpp
+void AActor::SetActorEnableCollision(bool bNewActorEnableCollision)
+{
+    if (bActorEnableCollision != bNewActorEnableCollision)   // ← 没变化就直接 return
+    {
+        bActorEnableCollision = bNewActorEnableCollision;
+        for (UActorComponent* Comp : Components) Comp->OnActorEnableCollisionChanged();
+    }
+}
+```
+
+它**只翻 actor 级开关，不会去改组件的 `CollisionEnabled`**。而本项目的显隐操作恰恰是走 actor 级开关的
+（`InteractionOperationReceiverComponent`：`SetActorHidden` → `Owner->SetActorEnableCollision(!bActive)`）。
+所以只调一句 `SetActorEnableCollision(true)` 并不足以稳定地把"能挡路"坐实。
+
+**修法** —— `ApplyBlockedState()` 现在做四件事：
+
+1. `SetActorHiddenInGame(false)`；
+2. `SetActorEnableCollision(true)`；
+3. **逐个图元组件** `SetCollisionEnabled(...)`，恢复"播放前快照"（`PlaySequence()` 里的
+   `SnapshotCollisionState()` 记录），快照拿到 `NoCollision` 就按 `QueryAndPhysics` 兜底；
+4. 打一行日志把 actor 级 + 每个图元的碰撞状态/配置写出来，方便每次复验。
+
+另外加了**兜底**：万一运行时创建的播放器没回调 `OnFinished`，`PollSequenceFinished()` 会在 tick 里检测
+"播放中 → 已停止"再补一次（结束处理幂等，只做一次）。
+
+## 9. 隐形阻挡墙（世界视图里摆的、永久生效）
+
+需求：在世界视图里、**动画结束后的墙体位置**摆一面**不可见但有碰撞阻挡**的隐形墙来模拟阻挡，
+**永远存在、与互动与否无关**。
+
+已摆好并跨进程复验（标签 `yinxingqiang1` / `yinxingqiang2`）：
+
+| Actor | 位置 | 网格 | 碰撞配置 | 碰撞开关 | 游戏内可见 | 编辑器可见 | Mobility |
+|---|---|---|---|---|---|---|---|
+| `yinxingqiang1` | (-1800, -3355, 296.5) | 与 `jiguanqiang1` **同网格** | `InvisibleWall` | QueryAndPhysics | ✗（`bHiddenInGame=True`）| ✔ | Static |
+| `yinxingqiang2` | (-1800, 3145, 296.5) | 与 `jiguanqiang2` **同网格** | `InvisibleWall` | QueryAndPhysics | ✗ | ✔ | Static |
+
+要点：
+
+- **位置 = 墙体原位置 + (-300, 0, 0)**，正好是 `LS_*` 动画的终点（−1500 → −1800），墙演完到位时与隐形墙重合；
+- **直接复用墙体自己的 StaticMesh**（同网格 / 同旋转 / 同缩放），碰撞形状与可见墙**完全一致**，
+  不需要去估包围盒尺寸；
+- 碰撞配置用引擎自带的 **`InvisibleWall`**（`BaseEngine.ini:3122`）：
+  `QueryAndPhysics` + `ObjectType=WorldStatic` + **`Visibility` 通道 Ignore** ⇒ **挡 Pawn / 物体，但不挡视线与交互射线**；
+- `bHiddenInGame=True` → **游戏里不可见**；编辑器里仍然可见（方便核对位置）。要连编辑器也不显示，
+  把该组件的 `bVisible` 或 Actor 的 `bHidden` 关掉即可；
+- 这两个 Actor 身上**没有任何本项目的组件**，不参与触发、不参与联动，**永远存在**。

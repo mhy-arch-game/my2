@@ -80,11 +80,11 @@ public:
 	float SlowZoneDistance = 900.0f;
 
 	/**
-	 * 慢速倍率（测试用，先给个偏保守的值）：区域内水平速度上限 = 当时的
-	 * CharacterMovement->MaxWalkSpeed × 本倍率。1 = 不限速。
+	 * 区域内减速到的**目标速度**（cm/s）：每帧把玩家水平速度钳到不超过它。
+	 * 角色平时 MaxWalkSpeed 约 500，所以 250 ≈ 半速；具体数值按实测调。
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Proximity Sequence|Slow Zone", meta=(EditCondition="bSlowPlayerNearby", ClampMin="0.05", ClampMax="1.0"))
-	float SlowSpeedMultiplier = 0.4f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Proximity Sequence|Slow Zone", meta=(EditCondition="bSlowPlayerNearby", ClampMin="0.0", ForceUnits="cm/s"))
+	float SlowSpeed = 250.0f;
 
 	/** 调试：限速时每帧打一行日志（默认关，会刷屏）。 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Proximity Sequence|Slow Zone", meta=(EditCondition="bSlowPlayerNearby"))
@@ -161,6 +161,12 @@ private:
 	/** 按当前距离维护慢速区（每帧调用；只钳速度，不留状态，所以和疾跑等系统不打架）。 */
 	void UpdateSlowZone(float Distance);
 
+	/** 播放前记下每个图元组件的碰撞开关，供"开碰撞"时精确恢复。 */
+	void SnapshotCollisionState();
+
+	/** 兜底检测：OnFinished 万一没回调，用"由播到停"补一次。 */
+	void PollSequenceFinished();
+
 	/** 本组件运行时创建的播放器（SequenceActor 为空时用）。 */
 	UPROPERTY(Transient)
 	TObjectPtr<ULevelSequencePlayer> RuntimePlayer;
@@ -172,4 +178,14 @@ private:
 
 	/** 本帧是否对玩家执行了限速。 */
 	bool bSlowingPlayer = false;
+
+	/** 播放前记录的图元碰撞状态（按图元组件）。 */
+	TMap<TWeakObjectPtr<UPrimitiveComponent>, TEnumAsByte<ECollisionEnabled::Type>> SavedCollision;
+
+	/** 序列是否在播 / 上一帧是否在播（兜底轮询用）。 */
+	bool bSequencePlaying = false;
+	bool bWasPlaying = false;
+
+	/** 结束处理只做一次。 */
+	bool bFinishedHandled = false;
 };

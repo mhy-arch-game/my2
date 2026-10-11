@@ -17,14 +17,14 @@
     "ProximitySequenceComponent"
    ],
    "proximity": {
-    "Sequence": "<Object '/Game/LS_jiguanqiang1.LS_jiguanqiang1' (0x000001F6244B2800) Class 'LevelSequence'",
+    "Sequence": "<Object '/Game/LS_jiguanqiang1.LS_jiguanqiang1' (0x000001E8164D2800) Class 'LevelSequence'",
     "TriggerDistance": "600.0",
     "bOnce": "True",
     "bBlockOnFinish": "True",
     "bApplyInitialStateOnBeginPlay": "False",
     "bSlowPlayerNearby": "True",
     "SlowZoneDistance": "900.0",
-    "SlowSpeedMultiplier": "0.4000000059604645"
+    "SlowSpeed": "250.0"
    },
    "hidden": "False",
    "collision": "True"
@@ -35,14 +35,14 @@
     "ProximitySequenceComponent"
    ],
    "proximity": {
-    "Sequence": "<Object '/Game/LS_jiguanqiang2.LS_jiguanqiang2' (0x000001F6244B2940) Class 'LevelSequence'",
+    "Sequence": "<Object '/Game/LS_jiguanqiang2.LS_jiguanqiang2' (0x000001E8164D2940) Class 'LevelSequence'",
     "TriggerDistance": "600.0",
     "bOnce": "True",
     "bBlockOnFinish": "True",
     "bApplyInitialStateOnBeginPlay": "False",
     "bSlowPlayerNearby": "True",
     "SlowZoneDistance": "900.0",
-    "SlowSpeedMultiplier": "0.4000000059604645"
+    "SlowSpeed": "250.0"
    },
    "hidden": "False",
    "collision": "True"

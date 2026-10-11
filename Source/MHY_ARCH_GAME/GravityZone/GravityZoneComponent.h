@@ -29,9 +29,13 @@ struct FGravityZoneEntry
  *
  *  It is query-only and hidden in game, so it never blocks movement.
  *
- *  NOTE on overlapping zones: each zone caches and restores its own values, so
- *  two zones overlapping the same character are NOT additive - the last one to
- *  apply wins, and leaving restores the authored value. Keep zones disjoint.
+ *  NOTE on overlapping zones: safe. Per character a single "pure authored"
+ *  baseline is captured the first time ANY zone affects it, plus a count of how
+ *  many zones are currently active. Zones therefore never compound each other
+ *  (entering a second zone re-applies from the authored values, not from the
+ *  first zone's modified ones) and the authored gravity / jump velocity are
+ *  written back only when the LAST zone is left - so walking out of a group of
+ *  overlapping zones can never leave the character with the boosted jump.
  */
 UCLASS(ClassGroup=(Gravity), meta=(BlueprintSpawnableComponent), Blueprintable, BlueprintType)
 class UGravityZoneComponent : public UBoxComponent
@@ -139,6 +143,9 @@ private:
 	/** Capture + apply reduced gravity (no-op if already tracked or not affected). */
 	void ApplyTo(AActor* Actor);
 
-	/** Write the captured authored values back. */
-	void RestoreFrom(AActor* Actor, const FGravityZoneEntry& Entry);
+	/**
+	 * 本区域不再作用于该角色：共享计数减一，**只有最后一个还生效的区域**才把
+	 * 纯原始的重力 / 起跳速度写回去（这样重叠区域不会互相污染快照）。
+	 */
+	void ReleaseFrom(AActor* Actor);
 };

@@ -27,7 +27,7 @@ try:
                 continue
             for n in ("Sequence", "TriggerDistance", "bOnce", "bBlockOnFinish",
                       "bApplyInitialStateOnBeginPlay", "bSlowPlayerNearby",
-                      "SlowZoneDistance", "SlowSpeedMultiplier"):
+                      "SlowZoneDistance", "SlowSpeed"):
                 ps[n] = str(call(c.get_editor_property, n))[:90]
         res[lbl] = {"components": classes, "proximity": ps,
                     "hidden": str(call(a.get_editor_property, "bHidden")),

@@ -10,6 +10,7 @@
 
 class UInputAction;
 class UInteractableComponent;
+class UMaterialInterface;
 
 /** Broadcast whenever the focused interaction candidate changes (HUD hook). */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnInteractionFocusChanged, AActor*, FocusActor, FText, Prompt);
@@ -23,6 +24,15 @@ struct FInteractionOutlineBackup
 	TWeakObjectPtr<class UPrimitiveComponent> Component;
 	bool bRenderCustomDepth = false;
 	int32 StencilValue = 0;
+
+	/**
+	 * 方案 B（overlay 覆盖材质）：本图元是否真的被我们盖过 overlay。
+	 * 只有为 true 时才去还原 —— 否则会把别人（美术/其它系统）设的 overlay 清掉。
+	 */
+	bool bOverlayApplied = false;
+
+	/** 盖上之前这个图元原本的 overlay 材质（可能为空）。 */
+	TWeakObjectPtr<class UMaterialInterface> OverlayMaterial;
 };
 
 /**
@@ -219,6 +229,26 @@ protected:
 	/** Thickness pushed while nothing is focused (resting / thin). */
 	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
 	float RestingOutlineThickness = 1.5f;
+
+	// -- 方案 B：overlay 覆盖材质（当前使用的"被选中"表现）------------------
+	/**
+	 * 用 Overlay Material 做选中效果：聚焦时给目标所有**可见网格组件**
+	 * （UMeshComponent）盖上 FocusOverlayMaterial，失焦按备份还原。
+	 *
+	 * 与 stencil 描边**二选一**：本项开启且材质有效时优先用 overlay，
+	 * 同一个图元就不再写 custom depth / stencil（省掉一次多余的自定义深度 pass）。
+	 * 网格之外的东西（例如可见的碰撞盒）不受影响，仍走 stencil 那条路。
+	 */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
+	bool bUseOverlayHighlight = true;
+
+	/**
+	 * 盖在聚焦物体上的覆盖材质。
+	 * 默认为 /Game/MHY_ARCH_GAME/UI/M_InteractFocusOverlay（构造时自动填），
+	 * 留空则自动退回 stencil 描边方案。
+	 */
+	UPROPERTY(EditAnywhere, Category="Interaction|Outline")
+	TObjectPtr<UMaterialInterface> FocusOverlayMaterial;
 
 private:
 	/** Currently focused interaction candidate. */

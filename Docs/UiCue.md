@@ -56,7 +56,7 @@ IUiCuePresenter（实现它的 Actor）  或  内置屏幕字幕 + 自己播配�
 | `DefaultSegmentSeconds` | 2.5 | 每条小句的默认显示时长（cue 上可单独覆盖） |
 | `SegmentDelimiters` | `。！？!?.;；换行` | 断句符；标点**保留**在小句末尾 |
 | `bUseBuiltInSubtitle` | ✔ | 没有表现层时用内置屏幕字幕 |
-| `SubtitleBottomOffset` | 140 | 内置字幕离屏幕底边的像素距离 |
+| `SubtitleBottomOffset` | **30**（已下调到屏幕底端；0 = 紧贴底边）| 内置字幕离屏幕底边的像素距离 |
 | `bModulePlaysVoice` | ✔ | 配音由模块播放（不切断）。若表现层自己播配音就关掉，避免播两遍 |
 
 ### 单条 cue（`FUiCue`）
@@ -181,3 +181,65 @@ IUiCuePresenter（实现它的 Actor）  或  内置屏幕字幕 + 自己播配�
 - 体积默认用 `Trigger` 碰撞预设（只判定、不阻挡）。若要它"阻挡"，把预设改成 BlockAll —— 但那样玩家进不去，触发就无法发生；
 - 断句实现保留了标点（不是 `ParseIntoArray` 的丢标点行为）；
 - 字幕控件与交互提示的内置弹窗同风格：**透明底 + 白字 + 深色投影 + 自动换行**。
+## 10. 正式事件表（已落地，演示内容已删除）
+
+演示用的 `demo_spawn` / `demo_men1` 两条 cue 与关卡里的 `UiCueDemo_Volume` 触发体积**都已删除**；
+现在 `DA_UiCueSet` 里是下面 9 条正式元事件（配音全部来自 `Content/sound_resources`）：
+
+| CueId | 触发 | TriggerId | 配音（按数组顺序连播）|
+|---|---|---|---|
+| `ui_opening` | `GameStart` | — | `opening` / `opening2` / `opening3` |
+| `ui_kongjian1` | 首次交互 | `kongjianchuansuoqi1` | `kongjianzhuanhuanqi1` / `kongjianzhuanhuanqi1_2` |
+| `ui_kongjian2` | 首次交互 | `kongjianchuansuoqi2` | `kongjianzhuanhuanqi2` |
+| `ui_men1` | 首次交互 | `men1` | `men1` |
+| `ui_men2` | 首次交互 | `men2` | `men2` |
+| `ui_men3` | 首次交互 | `men3` | `men3` |
+| `ui_men21` | 首次交互 | `men21` | `men21` / `men21_2` |
+| `ui_jiguanqiang1` | 首次靠近 600cm | `jiguanqiang1` | `LS12` |
+| `ui_jiguanqiang2` | 首次靠近 600cm | `jiguanqiang2` | `LS12` |
+
+### 配音 / 字幕的时长规则（一条 cue 多段配音）
+
+- `FUiCue::Voices` 是**有序数组**，模块按顺序**连播**：上一段 `OnAudioFinished` 才播下一段，不重叠、不切断；
+- **配音段数 == 小句数** 时，每句就用它自己那段配音的时长（最准）；
+  否则退回"配音总时长 / 小句数"，保证字幕总流程与配音总流程一致；
+- 于是"同一个元事件里的多句短句"用**一条 cue + 多段音频**表达就够了，不必切成一堆 cue 靠队列间隔串起来。
+
+### 触发源（现在共 4 种）
+
+| 触发 | 说明 |
+|---|---|
+| `BoxVolume` | 玩家进入关卡里摆放的 `UiCueTriggerVolume`（触发后永久失效）|
+| `InteractFirstToggle` | 某个可交互物**首次交互**（**按下交互键** 或 **状态变化**，谁先算谁）|
+| `GameStart` | 进入游戏即触发（世界开始 + 本地玩家就绪后发一次）|
+| `ProximityToActor` | 首次靠近某个 Actor 到 `ProximityDistance`（cm）内；距离 = 玩家到该 Actor 包围盒最近点 |
+
+> `InteractFirstToggle` 之所以同时监听"按下交互键"：`kongjianchuansuoqi*` 这类物体
+> `bUseBuiltInToggle / bTrackOpenState / bToggleLights` 全关，**没有内置状态**，
+> 不会广播 `OnToggleChanged`，只靠状态变化的话永远触发不了。
+
+### 运行时实测（headless `-game`）
+
+```
+[UiCue] 进入游戏 -> cue 'ui_opening' 入队（队列 1）。
+[UiCue] 已绑定 41 个可交互物（首次交互触发）。
+[UiCue] 播放配音 1/3：opening
+[UiCue] 开始 cue 'ui_opening'（3 句，每句时长 [2.3 3.1 2.6]秒，配音 3 段，表现层=内置字幕）。
+[UiCue] 播放配音 2/3：opening2        (+3.7s)
+[UiCue] 播放配音 3/3：opening3        (+3.4s)
+```
+
+逐句时长 2.3 / 3.1 / 2.6 正好等于 `opening` / `opening2` / `opening3` 三段音频各自的时长 —— 规则生效。
+
+### 新增 cue 的做法
+
+1. 内容浏览器打开 `/Game/MHY_ARCH_GAME/UI/DA_UiCueSet`；
+2. `Cues` 里加一条：填 `CueId`（唯一）、`Trigger`、`TriggerId`（物体在关卡里的**标签**）、`Text`（多句用 `.` 断开）、
+   `Voices`（同一命名带数字标号的配音按数字顺序依次添加）；
+3. `ProximityDistance` 只对"首次靠近"有效，默认 600cm。
+### 字幕位置（2026-10 调整）
+
+字幕已移到**屏幕底端**：`DA_UiCueSet` 的 `SubtitleBottomOffset` = **30**（px，距屏幕底边）。
+控件锚点是屏幕底部居中（anchors `(0.5, 1.0)` + alignment `(0.5, 1.0)`），所以这个值就是"离底边多少像素"，
+想让字幕更贴边就调小（0 = 紧贴底边），想抬高就调大。改完直接保存 DataAsset 生效，不用重编译。
+
