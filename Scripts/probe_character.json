@@ -1,0 +1,64 @@
+{
+ "cdo_mesh": "<Object '/Game/FirstPerson/Blueprints/BP_FirstPersonCharacter.Default_",
+ "cdo_mesh_animclass": "<Object '/Game/Characters/Mannequins/Anims/Unarmed/ABP_Unarm",
+ "cdo_mesh_collision": "CharacterMesh",
+ "cdo_mesh_rel_loc": "<Struct 'Vector' (0x0000014F1F5EA180) {x: -20.000000, y: -0.",
+ "capsule": {
+  "half_height": "96.0",
+  "radius": "33.99907684326172",
+  "profile": "Pawn"
+ },
+ "level_instance_components": [
+  {
+   "class": "CapsuleComponent"
+  },
+  {
+   "class": "ArrowComponent"
+  },
+  {
+   "class": "CharacterMovementComponent"
+  },
+  {
+   "class": "SkeletalMeshComponent",
+   "mesh": "<Object '/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple",
+   "anim": "<Object '/Game/Characters/Mannequins/Anims/Unarmed",
+   "visible": "True"
+  },
+  {
+   "class": "SkeletalMeshComponent",
+   "mesh": "<Object '/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple",
+   "anim": "<Object '/Game/FirstPerson/Anims/ABP_FP_Copy.ABP_F",
+   "visible": "True"
+  },
+  {
+   "class": "CameraComponent",
+   "rel_loc": "<Struct 'Vector' (0x0000014F23B0E580) {x: 2.793880, y: 5.880"
+  },
+  {
+   "class": "InteractionDetectorComponent"
+  },
+  {
+   "class": "MotionWarpingComponent"
+  },
+  {
+   "class": "ClimbComponent"
+  },
+  {
+   "class": "MovementAudioComponent"
+  },
+  {
+   "class": "TimeShiftTravelComponent"
+  },
+  {
+   "class": "TimeShiftInputComponent"
+  },
+  {
+   "class": "SprintComponent"
+  },
+  {
+   "class": "InteractionPromptComponent"
+  }
+ ],
+ "anim_sequences_checked": 0,
+ "anims_with_movement_audio_notify": []
+}
