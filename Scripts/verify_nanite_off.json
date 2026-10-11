@@ -1,0 +1,18 @@
+{
+ "material_expr": "8",
+ "material_blend": "<BlendMode.BLEND_TRANSLUCENT: 2>",
+ "enabled_interactable_meshes": {
+  "<Object '/Game/Fab/Wall_light_2/wall_light_2/StaticMeshes/wa": {
+   "nanite": "False",
+   "count": 3
+  },
+  "<Object '/Game/Fab/Modern_Door/Door.Door' (0x0000015753FFE00": {
+   "nanite": "False",
+   "count": 24
+  },
+  "<Object '/Game/models/tripo_convert_a27cf087-650e-439c-80cf-": {
+   "nanite": "False",
+   "count": 10
+  }
+ }
+}

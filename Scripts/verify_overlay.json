@@ -1,0 +1,70 @@
+{
+ "cdo_class": "InteractionDetectorComponent",
+ "cdo_bUseOverlayHighlight": "True",
+ "cdo_FocusOverlayMaterial": "<Object '/Game/MHY_ARCH_GAME/UI/M_InteractFocusOverlay.M_InteractFocusOverlay' (0x000001B1335E7000) Class 'Mat",
+ "cdo_bUseStencilOutline": "True",
+ "mat": "<Object '/Game/MHY_ARCH_GAME/UI/M_InteractFocusOverlay.M_InteractFocusOverlay' (",
+ "mat_domain": "<MaterialDomain.MD_SURFACE: 0>",
+ "mat_blend": "<BlendMode.BLEND_TRANSLUCENT: 2>",
+ "mat_shading": "<MaterialShadingModel.MSM_UNLIT: 0>",
+ "mat_usage_nanite_flag": "['MATUSAGE_NANITE']",
+ "interactables": {
+  "menkuang1": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang2": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "jiguanqiang1": {
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Com",
+   "nanite": "False"
+  },
+  "jiguanqiang2": {
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Com",
+   "nanite": "False"
+  },
+  "menkuang3": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang4": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang5": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang6": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang7": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang8": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang9": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang10": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang11": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  },
+  "menkuang12": {
+   "mesh": "<Object '/Game/Fab/Modern_Door/Door_Frame.Do",
+   "nanite": "True"
+  }
+ },
+ "total_interactable_meshes": 67
+}

@@ -5,6 +5,7 @@
 #include "InteractableComponent.h"
 #include "InteractableInterface.h"
 
+#include "Components/MeshComponent.h"
 #include "Components/PrimitiveComponent.h"
 #include "DrawDebugHelpers.h"
 #include "EnhancedInputComponent.h"
@@ -16,7 +17,9 @@
 #include "InputMappingContext.h"
 #include "Kismet/KismetMaterialLibrary.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Materials/MaterialInterface.h"
 #include "Materials/MaterialParameterCollection.h"
+#include "UObject/ConstructorHelpers.h"
 
 UInteractionDetectorComponent::UInteractionDetectorComponent()
 {
@@ -29,6 +32,15 @@ UInteractionDetectorComponent::UInteractionDetectorComponent()
 	ProbeObjectTypes.Add(EObjectTypeQuery::ObjectTypeQuery1); // WorldStatic
 	ProbeObjectTypes.Add(EObjectTypeQuery::ObjectTypeQuery2); // WorldDynamic
 	ProbeObjectTypes.Add(EObjectTypeQuery::ObjectTypeQuery3); // Pawn
+
+	// 方案 B 的默认材质：放在类默认值里，游戏里生成的 Pawn 直接就有，
+	// 不依赖蓝图/关卡实例上再指一次 —— 这样"所有可交互物"聚焦时都自动生效。
+	static ConstructorHelpers::FObjectFinder<UMaterialInterface> FocusOverlayFinder(
+		TEXT("/Game/MHY_ARCH_GAME/UI/M_InteractFocusOverlay.M_InteractFocusOverlay"));
+	if (FocusOverlayFinder.Succeeded())
+	{
+		FocusOverlayMaterial = FocusOverlayFinder.Object;
+	}
 }
 
 void UInteractionDetectorComponent::BeginPlay()
@@ -715,6 +727,8 @@ void UInteractionDetectorComponent::ApplyFocusOutline(AActor* Target)
 	TArray<UPrimitiveComponent*> Primitives;
 	Target->GetComponents<UPrimitiveComponent>(Primitives);
 
+	int32 OverlayAppliedCount = 0;
+
 	for (UPrimitiveComponent* Primitive : Primitives)
 	{
 		if (!Primitive)
@@ -732,9 +746,23 @@ void UInteractionDetectorComponent::ApplyFocusOutline(AActor* Target)
 		Backup.Component = Primitive;
 		Backup.bRenderCustomDepth = Primitive->bRenderCustomDepth;
 		Backup.StencilValue = Primitive->CustomDepthStencilValue;
+
+		// 方案 B：优先盖 overlay 覆盖材质（只有网格组件能盖）。
+		if (bUseOverlayHighlight && FocusOverlayMaterial)
+		{
+			if (UMeshComponent* Mesh = Cast<UMeshComponent>(Primitive))
+			{
+				Backup.OverlayMaterial = Mesh->GetOverlayMaterial();
+				Mesh->SetOverlayMaterial(FocusOverlayMaterial);
+				Backup.bOverlayApplied = true;
+				++OverlayAppliedCount;
+			}
+		}
+
 		OutlineBackups.Add(Backup);
 
-		if (bUseStencilOutline)
+		// 盖上 overlay 的图元就不再写 stencil：两套机制二选一，避免多余的自定义深度 pass。
+		if (bUseStencilOutline && !Backup.bOverlayApplied)
 		{
 			// Raise to the focused tier: the outline material branches on the
 			// stencil value to draw a thicker line.
@@ -742,6 +770,11 @@ void UInteractionDetectorComponent::ApplyFocusOutline(AActor* Target)
 			Primitive->SetCustomDepthStencilValue(FocusedOutlineStencil);
 		}
 	}
+
+	UE_LOG(LogTemp, Log,
+		TEXT("[Interaction] 聚焦高亮：%s（overlay 图元 %d 个，机制=%s）。"),
+		*Target->GetActorNameOrLabel(), OverlayAppliedCount,
+		OverlayAppliedCount > 0 ? TEXT("Overlay Material") : TEXT("Stencil"));
 
 	PushOutlineThickness(FocusedOutlineThickness);
 }
@@ -752,7 +785,18 @@ void UInteractionDetectorComponent::ClearFocusOutline()
 	{
 		if (UPrimitiveComponent* Primitive = Backup.Component.Get())
 		{
-			if (bUseStencilOutline)
+			// 方案 B：把我们盖上的 overlay 还原成原来那个（没盖过就不动，
+			// 免得把美术/其它系统设的 overlay 清掉）。
+			if (Backup.bOverlayApplied)
+			{
+				if (UMeshComponent* Mesh = Cast<UMeshComponent>(Primitive))
+				{
+					Mesh->SetOverlayMaterial(Backup.OverlayMaterial.Get());
+				}
+			}
+
+			// stencil 一律按备份还原（不再看当前开关：运行中关掉开关也不会留残留）。
+			if (!Backup.bOverlayApplied)
 			{
 				Primitive->SetRenderCustomDepth(Backup.bRenderCustomDepth);
 				Primitive->SetCustomDepthStencilValue(Backup.StencilValue);

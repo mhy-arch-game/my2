@@ -1,0 +1,24 @@
+{
+ "rows": [
+  {
+   "path": "/Game/Fab/Modern_Door/Door",
+   "lods": "1",
+   "tris_lod0": "256",
+   "nanite_before": "True",
+   "set": "None",
+   "nanite_now": "False",
+   "save": "False",
+   "nanite_reloaded": "False"
+  },
+  {
+   "path": "/Game/models/tripo_convert_a27cf087-650e-439c-80cf-d55ede9a4be3",
+   "lods": "1",
+   "tris_lod0": "1766",
+   "nanite_before": "True",
+   "set": "None",
+   "nanite_now": "False",
+   "save": "True",
+   "nanite_reloaded": "False"
+  }
+ ]
+}

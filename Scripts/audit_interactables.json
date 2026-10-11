@@ -1,0 +1,450 @@
+{
+ "total": 41,
+ "enabled_true": [
+  {
+   "label": "jiguandeng1",
+   "class": "StaticMeshActor",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Wall_light_2/wall_lig",
+     "nanite": "False"
+    }
+   ]
+  },
+  {
+   "label": "jiguandeng2",
+   "class": "StaticMeshActor",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Wall_light_2/wall_lig",
+     "nanite": "False"
+    }
+   ]
+  },
+  {
+   "label": "jiguandeng3",
+   "class": "StaticMeshActor",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Wall_light_2/wall_lig",
+     "nanite": "False"
+    }
+   ]
+  },
+  {
+   "label": "men1",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men2",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men3",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men4",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men5",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men6",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men7",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men8",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men9",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men10",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men11",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men12",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men13",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men14",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men15",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men16",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men17",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men18",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men19",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men20",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men21",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men23",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men24",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "men25",
+   "class": "active_door_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Door.Door",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi1",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi2",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi3",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi4",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi5",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi6",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi7",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi8",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi9",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  },
+  {
+   "label": "kongjianchuansuoqi10",
+   "class": "modern_swift_actor_C",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/models/tripo_convert_a27c",
+     "nanite": "True"
+    }
+   ]
+  }
+ ],
+ "enabled_count": 37,
+ "enabled_nanite": [
+  "men1",
+  "men2",
+  "men3",
+  "men4",
+  "men5",
+  "men6",
+  "men7",
+  "men8",
+  "men9",
+  "men10",
+  "men11",
+  "men12",
+  "men13",
+  "men14",
+  "men15",
+  "men16",
+  "men17",
+  "men18",
+  "men19",
+  "men20",
+  "men21",
+  "men23",
+  "men24",
+  "men25",
+  "kongjianchuansuoqi1",
+  "kongjianchuansuoqi2",
+  "kongjianchuansuoqi3",
+  "kongjianchuansuoqi4",
+  "kongjianchuansuoqi5",
+  "kongjianchuansuoqi6",
+  "kongjianchuansuoqi7",
+  "kongjianchuansuoqi8",
+  "kongjianchuansuoqi9",
+  "kongjianchuansuoqi10"
+ ],
+ "enabled_no_mesh": []
+}
