@@ -1,0 +1,300 @@
+{
+ "floors": {
+  "kongjianchuansuoqi1": {
+   "origin_z": 100.0,
+   "floor_candidates": [
+    {
+     "lbl": "PointLight4",
+     "top_z": 300.0,
+     "half_xy": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "lbl": "jiguanqiang0",
+     "top_z": 500.0,
+     "half_xy": [
+      10.0,
+      150.0
+     ]
+    }
+   ]
+  },
+  "kongjianchuansuoqi2": {
+   "origin_z": -4900.0,
+   "floor_candidates": [
+    {
+     "lbl": "PointLight5",
+     "top_z": -4700.0,
+     "half_xy": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "lbl": "jiguandeng1",
+     "top_z": -4644.3,
+     "half_xy": [
+      16.0,
+      10.0
+     ]
+    },
+    {
+     "lbl": "CubeGridToolOutput13",
+     "top_z": -4500.0,
+     "half_xy": [
+      10.0,
+      150.0
+     ]
+    }
+   ]
+  },
+  "kongjianchuansuoqi3": {
+   "origin_z": 1300.0,
+   "floor_candidates": [
+    {
+     "lbl": "BP_FirstPersonCharacter",
+     "top_z": 1377.6,
+     "half_xy": [
+      107.6,
+      60.0
+     ]
+    },
+    {
+     "lbl": "men3",
+     "top_z": 1547.9,
+     "half_xy": [
+      6.0,
+      56.8
+     ]
+    },
+    {
+     "lbl": "menkuang3",
+     "top_z": 1560.0,
+     "half_xy": [
+      7.4,
+      71.1
+     ]
+    },
+    {
+     "lbl": "Pattern_2_2",
+     "top_z": 1563.8,
+     "half_xy": [
+      7.4,
+      71.8
+     ]
+    },
+    {
+     "lbl": "Pattern_3_2",
+     "top_z": 1563.8,
+     "half_xy": [
+      7.4,
+      71.8
+     ]
+    }
+   ]
+  },
+  "kongjianchuansuoqi4": {
+   "origin_z": -3785.0,
+   "floor_candidates": [
+    {
+     "lbl": "CubeGridToolOutput11",
+     "top_z": -3440.0,
+     "half_xy": [
+      10.0,
+      70.0
+     ]
+    },
+    {
+     "lbl": "PointLight8",
+     "top_z": -3390.0,
+     "half_xy": [
+      0.0,
+      0.0
+     ]
+    }
+   ]
+  },
+  "kongjianchuansuoqi5": {
+   "origin_z": 1300.0,
+   "floor_candidates": [
+    {
+     "lbl": "BP_FirstPersonCharacter",
+     "top_z": 1377.6,
+     "half_xy": [
+      107.6,
+      60.0
+     ]
+    },
+    {
+     "lbl": "men3",
+     "top_z": 1547.9,
+     "half_xy": [
+      6.0,
+      56.8
+     ]
+    },
+    {
+     "lbl": "menkuang3",
+     "top_z": 1560.0,
+     "half_xy": [
+      7.4,
+      71.1
+     ]
+    },
+    {
+     "lbl": "Pattern_0_81",
+     "top_z": 1563.8,
+     "half_xy": [
+      71.8,
+      7.4
+     ]
+    },
+    {
+     "lbl": "PointLight18",
+     "top_z": 1630.0,
+     "half_xy": [
+      0.0,
+      0.0
+     ]
+    }
+   ]
+  },
+  "kongjianchuansuoqi6": {
+   "origin_z": -3700.0,
+   "floor_candidates": [
+    {
+     "lbl": "CubeGridToolOutput11",
+     "top_z": -3440.0,
+     "half_xy": [
+      10.0,
+      70.0
+     ]
+    },
+    {
+     "lbl": "PointLight7",
+     "top_z": -3390.0,
+     "half_xy": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "lbl": "PointLight8",
+     "top_z": -3390.0,
+     "half_xy": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "lbl": "wall_light_101",
+     "top_z": -3384.3,
+     "half_xy": [
+      10.0,
+      16.0
+     ]
+    },
+    {
+     "lbl": "CubeGridToolOutput15",
+     "top_z": -3300.0,
+     "half_xy": [
+      150.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  "kongjianchuansuoqi7": {
+   "origin_z": 1700.0,
+   "floor_candidates": [
+    {
+     "lbl": "PointLight19",
+     "top_z": 1830.0,
+     "half_xy": [
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "lbl": "Pattern_0_71",
+     "top_z": 1563.8,
+     "half_xy": [
+      7.4,
+      71.8
+     ]
+    },
+    {
+     "lbl": "Pattern_3_28",
+     "top_z": 1563.8,
+     "half_xy": [
+      71.8,
+      7.4
+     ]
+    },
+    {
+     "lbl": "men20",
+     "top_z": 1947.9,
+     "half_xy": [
+      6.0,
+      56.8
+     ]
+    },
+    {
+     "lbl": "menkuang20",
+     "top_z": 1960.0,
+     "half_xy": [
+      7.4,
+      71.1
+     ]
+    }
+   ]
+  },
+  "kongjianchuansuoqi8": {
+   "origin_z": -3300.0,
+   "floor_candidates": [
+    {
+     "lbl": "jiguandeng2",
+     "top_z": -3094.3,
+     "half_xy": [
+      16.0,
+      10.0
+     ]
+    },
+    {
+     "lbl": "jiguanqiang3",
+     "top_z": -3040.0,
+     "half_xy": [
+      10.0,
+      70.0
+     ]
+    },
+    {
+     "lbl": "CubeGridToolOutput17",
+     "top_z": -2900.0,
+     "half_xy": [
+      10.0,
+      150.0
+     ]
+    },
+    {
+     "lbl": "CubeGridToolOutput18",
+     "top_z": -2900.0,
+     "half_xy": [
+      50.0,
+      150.0
+     ]
+    }
+   ]
+  },
+  "kongjianchuansuoqi9": {
+   "origin_z": -3100.0,
+   "floor_candidates": []
+  },
+  "kongjianchuansuoqi10": {
+   "origin_z": -8100.0,
+   "floor_candidates": []
+  }
+ }
+}
