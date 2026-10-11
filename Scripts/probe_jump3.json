@@ -1,0 +1,152 @@
+{
+ "zones": [
+  {
+   "label": "jumping_area",
+   "actor_loc": [
+    -7850.0,
+    615.0,
+    0.0
+   ],
+   "comp_world": [
+    -7955.0,
+    755.0,
+    3960.0
+   ],
+   "comp_rel": [
+    -105.0,
+    140.0,
+    3960.0
+   ],
+   "ext": [
+    774.6,
+    698.1,
+    3597.8
+   ],
+   "min": [
+    -8729.6,
+    56.9,
+    362.2
+   ],
+   "max": [
+    -7180.4,
+    1453.1,
+    7557.8
+   ],
+   "mesh_profile": "BlockAllDynamic",
+   "mesh_col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>"
+  },
+  {
+   "label": "jumping_area2",
+   "actor_loc": [
+    -7850.0,
+    615.0,
+    0.0
+   ],
+   "comp_world": [
+    -7955.0,
+    755.0,
+    2250.0
+   ],
+   "comp_rel": [
+    -105.0,
+    140.0,
+    2250.0
+   ],
+   "ext": [
+    1073.5,
+    978.5,
+    948.8
+   ],
+   "min": [
+    -9028.5,
+    -223.5,
+    1301.2
+   ],
+   "max": [
+    -6881.5,
+    1733.5,
+    3198.8
+   ],
+   "mesh_profile": "BlockAllDynamic",
+   "mesh_col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>"
+  },
+  {
+   "label": "jumping_area3",
+   "actor_loc": [
+    -7850.0,
+    670.0,
+    -4975.0
+   ],
+   "comp_world": [
+    -7955.0,
+    810.0,
+    -2725.0
+   ],
+   "comp_rel": [
+    -105.0,
+    140.0,
+    2250.0
+   ],
+   "ext": [
+    1073.5,
+    1073.8,
+    948.8
+   ],
+   "min": [
+    -9028.5,
+    -263.8,
+    -3673.8
+   ],
+   "max": [
+    -6881.5,
+    1883.8,
+    -1776.2
+   ],
+   "mesh_profile": "BlockAllDynamic",
+   "mesh_col": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>"
+  }
+ ],
+ "spawn_check": [
+  {
+   "zone": "jumping_area",
+   "pawn_inside": true,
+   "z_range": [
+    362.2,
+    7557.8
+   ],
+   "y_range": [
+    56.9,
+    1453.1
+   ]
+  },
+  {
+   "zone": "jumping_area2",
+   "pawn_inside": false,
+   "z_range": [
+    1301.2,
+    3198.8
+   ],
+   "y_range": [
+    -223.5,
+    1733.5
+   ]
+  },
+  {
+   "zone": "jumping_area3",
+   "pawn_inside": false,
+   "z_range": [
+    -3673.8,
+    -1776.2
+   ],
+   "y_range": [
+    -263.8,
+    1883.8
+   ]
+  }
+ ],
+ "spawn_point": [
+  -7850.0,
+  615.0,
+  900.0
+ ]
+}

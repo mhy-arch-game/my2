@@ -19,6 +19,7 @@
 #include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
+#include "Sound/SoundBase.h"
 
 void UUiCueSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -105,8 +106,10 @@ bool UUiCueSubsystem::HandleTick(float DeltaTime)
 		return true;
 	}
 
-	// 1) 模块自驱：检查触发体积 + 绑定可交互物
+	// 1) 模块自驱：检查所有触发源 + 绑定可交互物
 	CheckTriggerVolumes();
+	CheckGameStartCues();
+	CheckProximityCues();
 
 	InteractBindTimer -= DeltaTime;
 	if (InteractBindTimer <= 0.0f)
@@ -223,6 +226,134 @@ bool UUiCueSubsystem::EnqueueCueByTriggerId(FName TriggerId, EUiCueTrigger Kind,
 	return false;
 }
 
+void UUiCueSubsystem::CheckGameStartCues()
+{
+	if (bGameStartDone)
+	{
+		return;
+	}
+
+	UUiCueSet* Set = ResolveCueSet();
+	if (!Set)
+	{
+		return;
+	}
+
+	// 等本地玩家就绪再发，保证"进入游戏"的配音/字幕玩家能听到看到。
+	if (!GetLocalPlayerController())
+	{
+		return;
+	}
+
+	bGameStartDone = true;
+
+	for (const FUiCue& Cue : Set->Cues)
+	{
+		if (Cue.Trigger != EUiCueTrigger::GameStart)
+		{
+			continue;
+		}
+
+		if (Cue.bOnce && FiredCueIds.Contains(Cue.CueId))
+		{
+			continue;
+		}
+
+		FiredCueIds.Add(Cue.CueId);
+		Queue.Add(Cue);
+		UE_LOG(LogTemp, Log, TEXT("[UiCue] 进入游戏 -> cue '%s' 入队（队列 %d）。"),
+			*Cue.CueId.ToString(), Queue.Num());
+	}
+}
+
+void UUiCueSubsystem::CheckProximityCues()
+{
+	UUiCueSet* Set = ResolveCueSet();
+	if (!Set)
+	{
+		return;
+	}
+
+	APlayerController* PC = GetLocalPlayerController();
+	APawn* Player = PC ? PC->GetPawn() : nullptr;
+	if (!Player)
+	{
+		return;
+	}
+
+	UWorld* World = GetGameInstance() ? GetGameInstance()->GetWorld() : nullptr;
+	if (!World)
+	{
+		return;
+	}
+
+	const FVector PlayerLocation = Player->GetActorLocation();
+
+	for (const FUiCue& Cue : Set->Cues)
+	{
+		if (Cue.Trigger != EUiCueTrigger::ProximityToActor || Cue.TriggerId.IsNone())
+		{
+			continue;
+		}
+
+		if (Cue.bOnce && FiredCueIds.Contains(Cue.CueId))
+		{
+			continue;   // 已经触发过：连距离都不用算了
+		}
+
+		AActor* Target = ResolveActorById(Cue.TriggerId, World);
+		if (!Target)
+		{
+			continue;
+		}
+
+		// 距离 = 玩家到"目标包围盒最近点"，墙再大也是"贴到它 N 厘米"的字面意思。
+		FVector Origin = FVector::ZeroVector;
+		FVector Extent = FVector::ZeroVector;
+		Target->GetActorBounds(/*bOnlyCollidingComponents=*/false, Origin, Extent);
+
+		const FBox Box(Origin - Extent, Origin + Extent);
+		const float Distance = FVector::Dist(PlayerLocation, Box.GetClosestPointTo(PlayerLocation));
+		const float TriggerDistance = FMath::Max(Cue.ProximityDistance, 0.0f);
+
+		if (Distance <= TriggerDistance)
+		{
+			EnqueueCueByTriggerId(Cue.TriggerId, EUiCueTrigger::ProximityToActor,
+				FString::Printf(TEXT("靠近 %s（%.0fcm ≤ %.0fcm）"),
+					*Cue.TriggerId.ToString(), Distance, TriggerDistance));
+		}
+	}
+}
+
+AActor* UUiCueSubsystem::ResolveActorById(FName Id, UWorld* World)
+{
+	if (Id.IsNone() || !World)
+	{
+		return nullptr;
+	}
+
+	if (TWeakObjectPtr<AActor>* Cached = ActorIdCache.Find(Id))
+	{
+		if (Cached->IsValid())
+		{
+			return Cached->Get();
+		}
+		ActorIdCache.Remove(Id);
+	}
+
+	for (TActorIterator<AActor> It(World); It; ++It)
+	{
+		AActor* Actor = *It;
+		if (MatchesActorId(Id, Actor))
+		{
+			ActorIdCache.Add(Id, Actor);
+			return Actor;
+		}
+	}
+
+	return nullptr;
+}
+
 bool UUiCueSubsystem::MatchesActorId(FName TriggerId, const AActor* Actor)
 {
 	if (!Actor || TriggerId.IsNone())
@@ -291,25 +422,36 @@ void UUiCueSubsystem::BindInteractTriggers()
 
 		BoundInteractables.Add(Key);
 		Interactable->OnToggleChanged.AddDynamic(this, &UUiCueSubsystem::HandleInteractableToggled);
+		// 没有内置状态的物体（例如 kongjianchuansuoqi*）不会广播 OnToggleChanged，
+		// 它只能靠"按下交互键"这一路被抓到 —— 两路谁先算谁，"首次交互"即触发。
+		Interactable->OnInteractRequested.AddDynamic(this, &UUiCueSubsystem::HandleInteractRequested);
 		++Bound;
 	}
 
 	if (Bound > 0)
 	{
-		UE_LOG(LogTemp, Log, TEXT("[UiCue] 已绑定 %d 个可交互物（首次切换状态触发）。"), Bound);
+		UE_LOG(LogTemp, Log, TEXT("[UiCue] 已绑定 %d 个可交互物（首次交互触发）。"), Bound);
 	}
 }
 
 void UUiCueSubsystem::HandleInteractableToggled(AActor* Interactable, bool bIsOpen)
 {
-	AActor* Owner = Interactable;
-	if (!Owner)
-	{
-		return;
-	}
+	UInteractableComponent* Component = Interactable
+		? Interactable->FindComponentByClass<UInteractableComponent>() : nullptr;
+	HandleFirstInteract(Component, bIsOpen ? TEXT("开") : TEXT("关"));
+}
 
-	UInteractableComponent* Component = Owner->FindComponentByClass<UInteractableComponent>();
-	if (!Component)
+void UUiCueSubsystem::HandleInteractRequested(AActor* Interactor, AActor* Interactable)
+{
+	UInteractableComponent* Component = Interactable
+		? Interactable->FindComponentByClass<UInteractableComponent>() : nullptr;
+	HandleFirstInteract(Component, TEXT("交互"));
+}
+
+void UUiCueSubsystem::HandleFirstInteract(UInteractableComponent* Component, const FString& Reason)
+{
+	AActor* Owner = Component ? Component->GetOwner() : nullptr;
+	if (!Owner)
 	{
 		return;
 	}
@@ -317,13 +459,13 @@ void UUiCueSubsystem::HandleInteractableToggled(AActor* Interactable, bool bIsOp
 	const TWeakObjectPtr<UInteractableComponent> Key(Component);
 	if (FiredInteractables.Contains(Key))
 	{
-		// 只认"首次切换状态"。
+		// 只认"首次交互"：按下交互键与状态变化谁先发生算谁，之后另一路也不再生效。
 		return;
 	}
 	FiredInteractables.Add(Key);
 
 	const FString Label = Owner->GetActorNameOrLabel();
-	const FString Source = FString::Printf(TEXT("可交互物 %s（首次%s）"), *Label, bIsOpen ? TEXT("开") : TEXT("关"));
+	const FString Source = FString::Printf(TEXT("可交互物 %s（首次%s）"), *Label, *Reason);
 
 	// TriggerId 用物体在关卡里的名字；名字没配上时再试标签（有些物体两者不同名）。
 	if (!EnqueueCueByTriggerId(Owner->GetFName(), EUiCueTrigger::InteractFirstToggle, Source))
@@ -398,32 +540,60 @@ void UUiCueSubsystem::StartCue(const FUiCue& Cue)
 		EnsureSubtitleWidget();
 	}
 
-	// 配音：一条 cue = 一段长文本 + 一段长音频（1:1）。音频存在时由它决定"总流程"：
-	// 总时长 = 音频时长，小句在总时长上均分，于是字幕播完与配音播完基本同时。
-	USoundBase* Voice = Cue.Voice.IsNull() ? nullptr : Cue.Voice.LoadSynchronous();
-	CueSegmentSeconds = 0.0f;
-	if (Voice)
+	// 配音：一条 cue 可以有多段，按数组顺序连播（不重叠）。
+	// 时长分配优先"一段对一句"：段数 == 句数时，每句用它自己那段配音的时长；
+	// 否则退回"配音总时长 / 句数"，保证字幕总流程与配音总流程一致。
+	SegmentSeconds.Reset();
+	SegmentSeconds.SetNumZeroed(Segments.Num());
+
+	float TotalVoiceSeconds = 0.0f;
+	for (const TSoftObjectPtr<USoundBase>& Entry : Cue.Voices)
 	{
-		const float VoiceSeconds = Voice->GetDuration();
-		if (VoiceSeconds > 0.01f && Segments.Num() > 0)
+		if (USoundBase* Loaded = Entry.LoadSynchronous())
 		{
-			CueSegmentSeconds = VoiceSeconds / static_cast<float>(Segments.Num());
+			TotalVoiceSeconds += FMath::Max(Loaded->GetDuration(), 0.0f);
 		}
 	}
 
+	CueSegmentSeconds = 0.0f;
+	if (TotalVoiceSeconds > 0.01f && Segments.Num() > 0)
+	{
+		CueSegmentSeconds = TotalVoiceSeconds / static_cast<float>(Segments.Num());
+
+		if (Cue.Voices.Num() == Segments.Num())
+		{
+			for (int32 VoiceIndex = 0; VoiceIndex < Cue.Voices.Num(); ++VoiceIndex)
+			{
+				if (USoundBase* Loaded = Cue.Voices[VoiceIndex].LoadSynchronous())
+				{
+					SegmentSeconds[VoiceIndex] = Loaded->GetDuration();
+				}
+			}
+		}
+	}
+
+	PrimaryVoice = Cue.Voices.Num() > 0 ? Cue.Voices[0] : TSoftObjectPtr<USoundBase>();
+
 	if (Set && Set->bModulePlaysVoice)
 	{
-		PlayVoice(Voice);
+		PlayVoices(Cue.Voices);
 	}
 
 	OnCueBegan.Broadcast(Cue.CueId);
 	if (PresenterActor)
 	{
-		IUiCuePresenter::Execute_OnUiCueBegin(PresenterActor, Cue.CueId, Cue.Voice);
+		IUiCuePresenter::Execute_OnUiCueBegin(PresenterActor, Cue.CueId, PrimaryVoice);
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("[UiCue] 开始 cue '%s'（%d 句，表现层=%s）。"),
-		*Cue.CueId.ToString(), Segments.Num(),
+	FString SegmentDurations;
+	for (int32 Index = 0; Index < SegmentSeconds.Num(); ++Index)
+	{
+		SegmentDurations += FString::Printf(TEXT("%.1f "), SegmentSeconds[Index]);
+	}
+
+	UE_LOG(LogTemp, Log, TEXT("[UiCue] 开始 cue '%s'（%d 句，每句时长 [%s]秒，配音 %d 段，表现层=%s）。"),
+		*Cue.CueId.ToString(), Segments.Num(), *SegmentDurations.TrimEnd(),
+		Cue.Voices.Num(),
 		PresenterActor ? *PresenterActor->GetName() : TEXT("内置字幕"));
 
 	ShowSegment(0);
@@ -445,12 +615,14 @@ void UUiCueSubsystem::ShowSegment(int32 Index)
 	Segment.Index = Index;
 	Segment.Count = Segments.Num();
 
-	// 有配音时用"音频时长 / 小句数"（总流程一致）；否则用 cue 覆盖值 / 全局默认。
-	const float Requested = CueSegmentSeconds > 0.0f
-		? CueSegmentSeconds
-		: (CurrentCue.SegmentSecondsOverride > 0.0f
-			? CurrentCue.SegmentSecondsOverride
-			: (Set ? Set->DefaultSegmentSeconds : 2.5f));
+	// 优先用"这一段配音自己的时长"，其次"配音总时长 / 句数"，再退到 cue 覆盖值 / 全局默认。
+	const float Requested = (SegmentSeconds.IsValidIndex(Index) && SegmentSeconds[Index] > 0.0f)
+		? SegmentSeconds[Index]
+		: (CueSegmentSeconds > 0.0f
+			? CueSegmentSeconds
+			: (CurrentCue.SegmentSecondsOverride > 0.0f
+				? CurrentCue.SegmentSecondsOverride
+				: (Set ? Set->DefaultSegmentSeconds : 2.5f)));
 	Segment.DurationSeconds = FMath::Max(Requested, 0.05f);
 
 	SegmentIndex = Index;
@@ -501,6 +673,8 @@ void UUiCueSubsystem::FinishCue()
 	// 按需求：不切断配音 —— 一条 cue 的总时长本来就等于它的音频时长，
 	// 所以这里既不 StopVoice 也不需要等它，让音频自然播完即可。
 	CueSegmentSeconds = 0.0f;
+	SegmentSeconds.Reset();
+	PrimaryVoice = nullptr;
 	PresenterActor = nullptr;
 	CurrentCue = FUiCue();
 
@@ -606,18 +780,62 @@ void UUiCueSubsystem::EnsureSubtitleWidget()
 	SubtitleWidget->SetCueText(FText::GetEmpty());
 }
 
-void UUiCueSubsystem::PlayVoice(USoundBase* Voice)
+void UUiCueSubsystem::PlayVoices(const TArray<TSoftObjectPtr<USoundBase>>& Voices)
 {
-	// 不切断上一条：一条 cue 的总时长就等于它的配音时长，正常不会重叠；
-	// 即使音频略长于字幕，也让它自然播完。
-	if (!Voice)
+	PendingVoices = Voices;
+	PendingVoiceIndex = 0;
+	PlayNextVoice();
+}
+
+void UUiCueSubsystem::PlayNextVoice()
+{
+	// 用一个常驻组件 + SetSound + Play 来连播：bAutoDestroy 的组件会在结束时先销毁，
+	// OnAudioFinished 就不可靠了；常驻组件能稳定回调，于是"多段配音"能无缝接上。
+	while (PendingVoices.IsValidIndex(PendingVoiceIndex))
 	{
+		USoundBase* Sound = PendingVoices[PendingVoiceIndex].LoadSynchronous();
+		++PendingVoiceIndex;
+
+		if (!Sound)
+		{
+			continue;   // 跳过空条目
+		}
+
+		if (IsValid(VoiceComponent))
+		{
+			VoiceComponent->SetSound(Sound);
+			VoiceComponent->Play(0.0f);
+		}
+		else
+		{
+			// 第一次播放：**必须传实际音频**建组件（传 nullptr 会建不出来），
+			// 并且要关掉 AutoDestroy，OnAudioFinished 才会在每段结束时可靠回调。
+			VoiceComponent = UGameplayStatics::CreateSound2D(this, Sound,
+				/*VolumeMultiplier=*/1.0f, /*PitchMultiplier=*/1.0f, /*StartTime=*/0.0f,
+				/*Concurrency=*/nullptr, /*bPersistAcrossLevelTransition=*/false, /*bAutoDestroy=*/false);
+
+			if (IsValid(VoiceComponent))
+			{
+				VoiceComponent->OnAudioFinished.AddUniqueDynamic(this, &UUiCueSubsystem::HandleVoiceFinished);
+				VoiceComponent->Play(0.0f);
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning,
+					TEXT("[UiCue] 配音组件创建失败（音频设备不可用？）：%s"), *Sound->GetName());
+			}
+		}
+
+		UE_LOG(LogTemp, Log, TEXT("[UiCue] 播放配音 %d/%d：%s"),
+			PendingVoiceIndex, PendingVoices.Num(), *Sound->GetName());
 		return;
 	}
+}
 
-	VoiceComponent = UGameplayStatics::SpawnSound2D(this, Voice, /*VolumeMultiplier=*/1.0f,
-		/*PitchMultiplier=*/1.0f, /*StartTime=*/0.0f, /*Concurrency=*/nullptr,
-		/*bPersistAcrossLevelTransition=*/false, /*bAutoDestroy=*/true);
+void UUiCueSubsystem::HandleVoiceFinished()
+{
+	// 顺序连播下一段；全部播完就自然结束（需求：不切断任何一段）。
+	PlayNextVoice();
 }
 
 void UUiCueSubsystem::StopVoice()

@@ -1,0 +1,36 @@
+{
+ "existing": [],
+ "created": {
+  "yinxingqiang1": {
+   "mode": "新建",
+   "hide": "None",
+   "label": "yinxingqiang1",
+   "loc": [
+    -1800.0,
+    -3355.0,
+    296.5
+   ],
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397.Combi",
+   "profile": "InvisibleWall",
+   "collision": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "component_visible": "True",
+   "actor_bHidden": "False"
+  },
+  "yinxingqiang2": {
+   "mode": "新建",
+   "hide": "None",
+   "label": "yinxingqiang2",
+   "loc": [
+    -1800.0,
+    3145.0,
+    296.5
+   ],
+   "mesh": "<Object '/Game/FirstPerson/_GENERATED/LB/Combined_E8CDB397.Combi",
+   "profile": "InvisibleWall",
+   "collision": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "component_visible": "True",
+   "actor_bHidden": "False"
+  }
+ },
+ "save": "True"
+}

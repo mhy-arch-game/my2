@@ -20,10 +20,24 @@ enum class EUiCueTrigger : uint8
 
 	/**
 	 * 某个**可交互物**（复用 interact 模块：挂 UInteractableComponent 的物体，
-	 * 例如门 / 灯）**首次**切换开 / 关状态时触发一次，之后不再触发。
+	 * 例如门 / 灯 / 传送器）**首次交互**时触发一次，之后不再触发。
+	 *
+	 * "首次交互" = 首次**按下交互键** 或 首次**状态变化**，谁先发生算谁 ——
+	 * 这样没有内置状态（bUseBuiltInToggle / bTrackOpenState / bToggleLights 全关）
+	 * 的物体（例如 kongjianchuansuoqi*）也能正确触发。
 	 * TriggerId 填该物体在关卡里的名字（或标签），例如 men1。
 	 */
-	InteractFirstToggle	UMETA(DisplayName="Interactable First Toggle (首次切换状态)")
+	InteractFirstToggle	UMETA(DisplayName="Interactable First Interact (首次交互)"),
+
+	/** 进入游戏时触发一次（世界开始 + 本地玩家就绪）。TriggerId 不用填，一般用来播开场 / 引导配音。 */
+	GameStart			UMETA(DisplayName="Game Start (进入游戏即触发)"),
+
+	/**
+	 * 玩家**首次靠近**某个 Actor 到一定距离内时触发。
+	 * TriggerId = 该 Actor 在关卡里的名字 / 标签（例如 jiguanqiang1）；
+	 * ProximityDistance = 触发距离（cm），按"玩家到该 Actor 包围盒最近点"算。
+	 */
+	ProximityToActor	UMETA(DisplayName="Proximity To Actor (首次靠近到一定距离)")
 };
 
 /**
@@ -57,9 +71,20 @@ struct FUiCue
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Ui Cue", meta=(MultiLine=true))
 	FText Text;
 
-	/** 配音（整条 cue 开始时播一次；与字幕速度不绑死）。 */
+	/**
+	 * 配音：按数组顺序**连播**（不重叠）。
+	 * 一条 cue 可以有多段 —— 同一个元事件里的多句短句，就合并成"一条 cue + 多段音频"：
+	 * 同一命名带数字标号的配音（xxx / xxx_2 / xxx_3 …）按数字顺序依次填进来即可。
+	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Ui Cue")
-	TSoftObjectPtr<USoundBase> Voice;
+	TArray<TSoftObjectPtr<USoundBase>> Voices;
+
+	/**
+	 * 触发距离（cm），仅 ProximityToActor 用：
+	 * 玩家到该 Actor 包围盒最近点 ≤ 它就算"靠近了"。
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Ui Cue", meta=(ClampMin="0.0"))
+	float ProximityDistance = 600.0f;
 
 	/** 每条小句的显示时长（秒）；<= 0 时用 CueSet 的 DefaultSegmentSeconds。 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Ui Cue", meta=(ClampMin="0.0"))
