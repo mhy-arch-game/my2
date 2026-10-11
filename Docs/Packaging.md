@@ -82,6 +82,15 @@ Saved\Packaged\Windows\
 > 打完后把 `MHY_PROJ_v0_1.exe` 实际起过一次：**运行 20 秒无崩溃**，且**没有生成任何日志文件** —— 
 > 印证 Shipping 下 `UE_LOG` 确实被裁掉了。
 
+### 发布记录
+
+| 提交 | 出包日期 | 归档目录 | 整包 | 验收 |
+|---|---|---|---|---|
+| `0b953c6 <feat> debug and constructure`（当前版本）| 2026-10-11 | `Saved\Packaged\UserBuild_0b953c6_20261011\Windows` | **895 MB**（Shipping exe 137.4 MB + 资产 pak 10.3 MB）| 启动 20 秒无崩溃 ✓；manifest 含 `M_InteractFocusOverlay` 与 `firstvision` ✓ |
+| `925df4c`（同日的验证包）| 2026-10-11 | `Saved\Packaged\Windows` | 895 MB | 启动 20 秒无崩溃 ✓ |
+
+> 出包命令见 §2.2；把 `-archivedirectory` 指到新文件夹即可为指定版本单独归档（本表第一行就是这么出的）。
+
 整包直接拷贝到目标机器即可运行（目标机需要 **VC++ 2015-2022 运行库**；要在包里附带安装器就加 `-prereqs`）。
 
 ## 3. 打包（编辑器 GUI，偶尔手动出包时用）
