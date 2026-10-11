@@ -1,0 +1,13 @@
+{
+ "loaded": "<Object '/Game/bclass_source/end_of_the_game.end_of_the_game' (0x0000019DE348C000) Class 'Blueprint'>",
+ "class": "Blueprint",
+ "parent": "ERR Exception(\"Blueprint: Failed to find property 'parent_class' for attribute 'parent_class' ",
+ "files": [
+  "bclass_source\\active_door.uasset",
+  "bclass_source\\active_light.uasset",
+  "bclass_source\\end_of_the_game.uasset",
+  "bclass_source\\jumping_area.uasset",
+  "bclass_source\\modern_swift_actor.uasset",
+  "bclass_source\\reveal_wall.uasset"
+ ]
+}

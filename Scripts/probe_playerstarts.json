@@ -1,0 +1,25 @@
+{
+ "playerstarts": [
+  {
+   "class": "PlayerStart",
+   "label": "PlayerStart",
+   "name": "PlayerStart_0",
+   "loc": [
+    0.0,
+    0.0,
+    3182.0
+   ],
+   "rot": "<Struct 'Rotator' (0x0000022A480C32B0) {"
+  }
+ ],
+ "endofthegame": {
+  "class": "endofthegame_C",
+  "label": "endofthegame",
+  "loc": [
+   250.0,
+   0.0,
+   3182.0
+  ]
+ },
+ "external_actors": {}
+}

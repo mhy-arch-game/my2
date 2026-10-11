@@ -1,0 +1,11 @@
+{
+ "before": "endofthegame",
+ "after": "end_of_the_game",
+ "loc": [
+  -20040.0,
+  -665.0,
+  -2890.0
+ ],
+ "save": "True",
+ "save_dirty": "True"
+}

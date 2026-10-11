@@ -1,0 +1,98 @@
+{
+ "stamped": [
+  {
+   "label": "jiguanqiang1",
+   "name": "StaticMeshActor_12",
+   "class": "StaticMeshActor",
+   "before": [],
+   "after": [
+    "UiCue:jiguanqiang1"
+   ],
+   "setErr": "None"
+  },
+  {
+   "label": "jiguanqiang2",
+   "name": "StaticMeshActor_13",
+   "class": "StaticMeshActor",
+   "before": [],
+   "after": [
+    "UiCue:jiguanqiang2"
+   ],
+   "setErr": "None"
+  },
+  {
+   "label": "men1",
+   "name": "active_door_C_0",
+   "class": "active_door_C",
+   "before": [],
+   "after": [
+    "UiCue:men1"
+   ],
+   "setErr": "None"
+  },
+  {
+   "label": "men2",
+   "name": "active_door_C_1",
+   "class": "active_door_C",
+   "before": [],
+   "after": [
+    "UiCue:men2"
+   ],
+   "setErr": "None"
+  },
+  {
+   "label": "men3",
+   "name": "active_door_C_2",
+   "class": "active_door_C",
+   "before": [],
+   "after": [
+    "UiCue:men3"
+   ],
+   "setErr": "None"
+  },
+  {
+   "label": "men21",
+   "name": "active_door_C_20",
+   "class": "active_door_C",
+   "before": [],
+   "after": [
+    "UiCue:men21"
+   ],
+   "setErr": "None"
+  },
+  {
+   "label": "kongjianchuansuoqi1",
+   "name": "modern_swift_actor_C_0",
+   "class": "modern_swift_actor_C",
+   "before": [],
+   "after": [
+    "UiCue:kongjianchuansuoqi1"
+   ],
+   "setErr": "None"
+  },
+  {
+   "label": "kongjianchuansuoqi2",
+   "name": "modern_swift_actor_C_1",
+   "class": "modern_swift_actor_C",
+   "before": [],
+   "after": [
+    "UiCue:kongjianchuansuoqi2"
+   ],
+   "setErr": "None"
+  }
+ ],
+ "skipped": [],
+ "levels": {
+  "save": "True"
+ },
+ "triggerIds": [
+  "kongjianchuansuoqi1",
+  "kongjianchuansuoqi2",
+  "men1",
+  "men2",
+  "men3",
+  "men21",
+  "jiguanqiang1",
+  "jiguanqiang2"
+ ]
+}

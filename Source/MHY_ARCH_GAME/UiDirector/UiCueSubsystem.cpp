@@ -10,6 +10,7 @@
 
 #include "AssetRegistry/ARFilter.h"
 #include "AssetRegistry/AssetRegistryModule.h"
+#include "HAL/PlatformProcess.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/AudioComponent.h"
 #include "Components/CanvasPanelSlot.h"
@@ -19,6 +20,10 @@
 #include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
+#include "Misc/CommandLine.h"
+#include "Misc/FileHelper.h"
+#include "Misc/Parse.h"
+#include "Misc/Paths.h"
 #include "Sound/SoundBase.h"
 
 void UUiCueSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -118,6 +123,9 @@ bool UUiCueSubsystem::HandleTick(float DeltaTime)
 		BindInteractTriggers();
 	}
 
+	// 打包版没有日志（Shipping 默认关掉 UE_LOG）：加一个命令行开关做自检。
+	RunSelfTestIfRequested();
+
 	// 2) 推进当前 cue / 间隔 / 队列
 	if (bPlaying)
 	{
@@ -192,6 +200,21 @@ bool UUiCueSubsystem::EnqueueCueForVolume(AUiCueTriggerVolume* Volume)
 	return bEnqueued;
 }
 
+bool UUiCueSubsystem::EnqueueCue(const FUiCue& Cue, const FString& SourceLabel)
+{
+	if (Cue.bOnce && FiredCueIds.Contains(Cue.CueId))
+	{
+		return false;
+	}
+
+	FiredCueIds.Add(Cue.CueId);
+	Queue.Add(Cue);
+
+	UE_LOG(LogTemp, Log, TEXT("[UiCue] %s -> cue '%s' 入队（队列 %d）。"),
+		*SourceLabel, *Cue.CueId.ToString(), Queue.Num());
+	return true;
+}
+
 bool UUiCueSubsystem::EnqueueCueByTriggerId(FName TriggerId, EUiCueTrigger Kind, const FString& SourceLabel)
 {
 	UUiCueSet* Set = ResolveCueSet();
@@ -207,21 +230,44 @@ bool UUiCueSubsystem::EnqueueCueByTriggerId(FName TriggerId, EUiCueTrigger Kind,
 			continue;
 		}
 
-		if (Cue.bOnce && FiredCueIds.Contains(Cue.CueId))
-		{
-			return false;
-		}
-
-		FiredCueIds.Add(Cue.CueId);
-		Queue.Add(Cue);
-
-		UE_LOG(LogTemp, Log, TEXT("[UiCue] %s -> cue '%s' 入队（队列 %d）。"),
-			*SourceLabel, *Cue.CueId.ToString(), Queue.Num());
-		return true;
+		return EnqueueCue(Cue, SourceLabel);
 	}
 
 	UE_LOG(LogTemp, Warning,
 		TEXT("[UiCue] %s 没有匹配的 cue（检查 DataAsset 里的 FUiCue::Trigger / TriggerId）。"),
+		*SourceLabel);
+	return false;
+}
+
+bool UUiCueSubsystem::EnqueueCueForActor(AActor* Actor, EUiCueTrigger Kind, const FString& SourceLabel)
+{
+	UUiCueSet* Set = ResolveCueSet();
+	if (!Set || !Actor)
+	{
+		return false;
+	}
+
+	for (const FUiCue& Cue : Set->Cues)
+	{
+		if (Cue.Trigger != Kind)
+		{
+			continue;
+		}
+
+		const FString MatchedKey = GetMatchedActorKey(Cue.TriggerId, Actor);
+		if (MatchedKey.IsEmpty())
+		{
+			continue;
+		}
+
+		// 日志里带上"命中的是哪个键"：PIE 下就能确认打包版也一样命中
+		// （打包后 ActorLabel 不存在，能命中的只有对象名 / Actor Tag）。
+		return EnqueueCue(Cue, FString::Printf(TEXT("%s（按 %s 命中 '%s'）"),
+			*SourceLabel, *MatchedKey, *Cue.TriggerId.ToString()));
+	}
+
+	UE_LOG(LogTemp, Warning,
+		TEXT("[UiCue] %s 没有匹配的 cue（TriggerId 要用物件的名字 / 'UiCue:xxx' 标签 / 编辑器标签）。"),
 		*SourceLabel);
 	return false;
 }
@@ -254,15 +300,7 @@ void UUiCueSubsystem::CheckGameStartCues()
 			continue;
 		}
 
-		if (Cue.bOnce && FiredCueIds.Contains(Cue.CueId))
-		{
-			continue;
-		}
-
-		FiredCueIds.Add(Cue.CueId);
-		Queue.Add(Cue);
-		UE_LOG(LogTemp, Log, TEXT("[UiCue] 进入游戏 -> cue '%s' 入队（队列 %d）。"),
-			*Cue.CueId.ToString(), Queue.Num());
+		EnqueueCue(Cue, TEXT("进入游戏"));
 	}
 }
 
@@ -318,7 +356,8 @@ void UUiCueSubsystem::CheckProximityCues()
 
 		if (Distance <= TriggerDistance)
 		{
-			EnqueueCueByTriggerId(Cue.TriggerId, EUiCueTrigger::ProximityToActor,
+			// 已经拿到 Actor：直接按 Actor 命中，发行版里也能对上。
+			EnqueueCueForActor(Target, EUiCueTrigger::ProximityToActor,
 				FString::Printf(TEXT("靠近 %s（%.0fcm ≤ %.0fcm）"),
 					*Cue.TriggerId.ToString(), Distance, TriggerDistance));
 		}
@@ -354,15 +393,46 @@ AActor* UUiCueSubsystem::ResolveActorById(FName Id, UWorld* World)
 	return nullptr;
 }
 
-bool UUiCueSubsystem::MatchesActorId(FName TriggerId, const AActor* Actor)
+FString UUiCueSubsystem::GetMatchedActorKey(FName TriggerId, const AActor* Actor)
 {
 	if (!Actor || TriggerId.IsNone())
 	{
-		return false;
+		return FString();
 	}
 
-	// 关卡里摆放的物体：名字通常就等于标签（men1 / jiguandeng1 …）。
-	return Actor->GetFName() == TriggerId || FName(*Actor->GetActorNameOrLabel()) == TriggerId;
+	// 1) 对象名：打包前后都存在，最稳（把关卡里物件的对象名改成 cue 里的 TriggerId 即可）。
+	if (Actor->GetFName() == TriggerId)
+	{
+		return TEXT("对象名");
+	}
+
+	// 2) Actor Tag：编辑器里给物件贴一个 tag（推荐 'UiCue:men1'），会随关卡一起进包。
+	//    ★ 打包版里 AActor::ActorLabel 是编辑器专有数据（WITH_EDITORONLY_DATA），
+	//      根本不存在，所以"只靠编辑器标签"的匹配在发行版里一定失配 —— 必须走前两条。
+	const FString TaggedId = FString::Printf(TEXT("UiCue:%s"), *TriggerId.ToString());
+	if (Actor->ActorHasTag(TriggerId))
+	{
+		return TEXT("Actor Tag");
+	}
+	if (Actor->ActorHasTag(FName(*TaggedId)))
+	{
+		return FString::Printf(TEXT("Actor Tag '%s'"), *TaggedId);
+	}
+
+#if WITH_EDITORONLY_DATA
+	// 3) 编辑器里顺手用 Label 也能命中；这一段在打包版里不参与编译。
+	if (FName(*Actor->GetActorNameOrLabel()) == TriggerId)
+	{
+		return TEXT("编辑器标签");
+	}
+#endif
+
+	return FString();
+}
+
+bool UUiCueSubsystem::MatchesActorId(FName TriggerId, const AActor* Actor)
+{
+	return !GetMatchedActorKey(TriggerId, Actor).IsEmpty();
 }
 
 void UUiCueSubsystem::BindInteractTriggers()
@@ -467,11 +537,9 @@ void UUiCueSubsystem::HandleFirstInteract(UInteractableComponent* Component, con
 	const FString Label = Owner->GetActorNameOrLabel();
 	const FString Source = FString::Printf(TEXT("可交互物 %s（首次%s）"), *Label, *Reason);
 
-	// TriggerId 用物体在关卡里的名字；名字没配上时再试标签（有些物体两者不同名）。
-	if (!EnqueueCueByTriggerId(Owner->GetFName(), EUiCueTrigger::InteractFirstToggle, Source))
-	{
-		EnqueueCueByTriggerId(FName(*Label), EUiCueTrigger::InteractFirstToggle, Source);
-	}
+	// TriggerId 依次按"对象名 / 'UiCue:xxx' 标签 / 编辑器标签"匹配：
+	// 发行版里没有编辑器标签，所以关卡里的物件要么带 'UiCue:xxx' 标签，要么对象名就是 TriggerId。
+	EnqueueCueForActor(Owner, EUiCueTrigger::InteractFirstToggle, Source);
 }
 
 bool UUiCueSubsystem::TriggerCueById(FName CueId)
@@ -489,14 +557,7 @@ bool UUiCueSubsystem::TriggerCueById(FName CueId)
 			continue;
 		}
 
-		if (Cue.bOnce && FiredCueIds.Contains(CueId))
-		{
-			return false;
-		}
-
-		FiredCueIds.Add(CueId);
-		Queue.Add(Cue);
-		return true;
+		return EnqueueCue(Cue, FString::Printf(TEXT("手动触发 %s"), *CueId.ToString()));
 	}
 
 	return false;
@@ -845,6 +906,74 @@ void UUiCueSubsystem::StopVoice()
 		VoiceComponent->Stop();
 	}
 	VoiceComponent = nullptr;
+}
+
+void UUiCueSubsystem::RunSelfTestIfRequested()
+{
+	if (bSelfTestDone)
+	{
+		return;
+	}
+
+	// 发行版默认把 UE_LOG 全部编掉（USE_LOGGING_IN_SHIPPING=0），出问题没法看日志。
+	// 所以留一个**只在显式传开关时**工作的自检：把每条 cue 的触发 id 在包里能否对上物件写进文本文件。
+	//   MHY_PROJ_v0_1.exe -UiCueSelfTest
+	if (!FParse::Param(FCommandLine::Get(), TEXT("UiCueSelfTest")))
+	{
+		return;
+	}
+
+	UUiCueSet* Set = ResolveCueSet();
+	UWorld* World = GetGameInstance() ? GetGameInstance()->GetWorld() : nullptr;
+	if (!Set || !World || !GetLocalPlayerController())
+	{
+		return;   // 等 cue 表 / 世界 / 本地玩家都就绪
+	}
+
+	bSelfTestDone = true;
+
+	TArray<FString> Lines;
+	Lines.Add(TEXT("MHY UiCue 自检 —— 检查每条 cue 的触发 id 在【发行版】里能否对上关卡物件"));
+#if UE_BUILD_SHIPPING
+	Lines.Add(TEXT("配置：Shipping（编辑器专有的 ActorLabel 已不存在，只能靠对象名 / Actor Tag）"));
+#else
+	Lines.Add(TEXT("配置：非 Shipping（带编辑器数据，仅供参考）"));
+#endif
+	Lines.Add(TEXT(""));
+
+	for (const FUiCue& Cue : Set->Cues)
+	{
+		FString Result;
+		if (Cue.Trigger == EUiCueTrigger::GameStart)
+		{
+			Result = TEXT("N/A（进入游戏触发，不需要物件）");
+		}
+		else
+		{
+			AActor* Found = ResolveActorById(Cue.TriggerId, World);
+			Result = Found
+				? FString::Printf(TEXT("OK   actor=%s  key=%s"), *Found->GetName(),
+					*GetMatchedActorKey(Cue.TriggerId, Found))
+				: TEXT("UNRESOLVED —— 这条 cue 在发行版里不会触发！");
+		}
+
+		Lines.Add(FString::Printf(TEXT("%-16s %-28s %s"),
+			*Cue.CueId.ToString(), *Cue.TriggerId.ToString(), *Result));
+	}
+
+	const FString FileName = TEXT("UiCueSelfTest.txt");
+	TArray<FString> CandidatePaths;
+	CandidatePaths.Add(FPaths::GetPath(FPlatformProcess::ExecutablePath()) / FileName);   // 包根，最好找
+	CandidatePaths.Add(FPaths::ProjectSavedDir() / FileName);
+
+	for (const FString& Candidate : CandidatePaths)
+	{
+		if (FFileHelper::SaveStringArrayToFile(Lines, *Candidate, FFileHelper::EEncodingOptions::ForceUTF8))
+		{
+			UE_LOG(LogTemp, Log, TEXT("[UiCue] 自检报告已写入：%s"), *Candidate);
+			break;
+		}
+	}
 }
 
 FString UUiCueSubsystem::GetUiCueDebugString() const

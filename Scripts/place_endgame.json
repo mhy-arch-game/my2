@@ -1,0 +1,41 @@
+{
+ "characters": [
+  {
+   "class": "BP_FirstPersonCharacter_C",
+   "label": "BP_FirstPersonCharacter",
+   "name": "BP_FirstPersonCharacter_C_1",
+   "loc": [
+    416.7,
+    -263.0,
+    110.6
+   ],
+   "yaw": 0.0,
+   "auto_possess": "<AutoReceiveInput.PLAYER0: 1>"
+  }
+ ],
+ "picked": {
+  "class": "BP_FirstPersonCharacter_C",
+  "label": "BP_FirstPersonCharacter",
+  "name": "BP_FirstPersonCharacter_C_1",
+  "loc": [
+   416.7,
+   -263.0,
+   110.6
+  ],
+  "yaw": 0.0,
+  "auto_possess": "<AutoReceiveInput.PLAYER0: 1>"
+ },
+ "spot": [
+  596.7,
+  -263.0,
+  238.6
+ ],
+ "mode": "\u79fb\u52a8\u5df2\u6709",
+ "after_move": [
+  596.7,
+  -263.0,
+  238.6
+ ],
+ "save_level": "True",
+ "save_dirty": "True"
+}

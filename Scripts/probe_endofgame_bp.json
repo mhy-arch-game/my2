@@ -1,0 +1,32 @@
+{
+ "/Game/bclass_source/end_of_the_game": {
+  "path": "/Game/bclass_source/end_of_the_game",
+  "bp": "end_of_the_game",
+  "generated": "end_of_the_game_C",
+  "parent_chain": [],
+  "parent_tag": "/Script/CoreUObject.Class'/Script/Engine.Actor'",
+  "native_parent": "/Script/CoreUObject.Class'/Script/Engine.Actor'",
+  "cdo_components": [],
+  "scs_err": "TypeError(\"'SubobjectDataHandle' object is not iterable\")"
+ },
+ "/Game/bclass_source/active_door": {
+  "path": "/Game/bclass_source/active_door",
+  "bp": "active_door",
+  "generated": "active_door_C",
+  "parent_chain": [],
+  "parent_tag": "/Script/CoreUObject.Class'/Script/Engine.Actor'",
+  "native_parent": "/Script/CoreUObject.Class'/Script/Engine.Actor'",
+  "cdo_components": [],
+  "scs_err": "TypeError(\"'SubobjectDataHandle' object is not iterable\")"
+ },
+ "/Game/bclass_source/modern_swift_actor": {
+  "path": "/Game/bclass_source/modern_swift_actor",
+  "bp": "modern_swift_actor",
+  "generated": "modern_swift_actor_C",
+  "parent_chain": [],
+  "parent_tag": "/Script/CoreUObject.Class'/Script/Engine.Actor'",
+  "native_parent": "/Script/CoreUObject.Class'/Script/Engine.Actor'",
+  "cdo_components": [],
+  "scs_err": "TypeError(\"'SubobjectDataHandle' object is not iterable\")"
+ }
+}

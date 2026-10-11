@@ -1,0 +1,68 @@
+{
+ "blueprint": "exists",
+ "bp_parent": "<ERR Exception(\"Blueprint: Failed to find property 'parent_class' for attribute ",
+ "bp_gen_class": "<Object '/Game/MHY_ARCH_GAME/GameFlow/endofthegame.endofthegame_C' (0x000001982D",
+ "actor_count": 594,
+ "player_start": {
+  "loc": [
+   0.0,
+   0.0,
+   3182.0
+  ],
+  "yaw": 0.0,
+  "label": "PlayerStart"
+ },
+ "spot": [
+  180.0,
+  0.0,
+  3182.0
+ ],
+ "spot_inside_bounds_of": [
+  "SM_SkySphere [StaticMeshActor]",
+  "Pattern_0_43 [StaticMeshActor]",
+  "Pattern_0_44 [StaticMeshActor]",
+  "Pattern_0_48 [StaticMeshActor]",
+  "Pattern_0_59 [StaticMeshActor]",
+  "Pattern_0_60 [StaticMeshActor]",
+  "Pattern_0_61 [StaticMeshActor]",
+  "Pattern_0_62 [StaticMeshActor]",
+  "Pattern_0_63 [StaticMeshActor]",
+  "Pattern_0_64 [StaticMeshActor]",
+  "SM_SkySphere2 [StaticMeshActor]",
+  "SM_SkySphere3 [StaticMeshActor]"
+ ],
+ "spot_inside_count": 14,
+ "mode": "\u590d\u7528\u5df2\u6709\u5b9e\u4f8b",
+ "placed": {
+  "label": "endofthegame",
+  "class": "endofthegame_C",
+  "loc": [
+   180.0,
+   0.0,
+   3182.0
+  ],
+  "rot": "<Struct 'Rotator' (0x000001982FF10D30) {"
+ },
+ "components": [
+  {
+   "class": "StaticMeshComponent",
+   "mesh": "<Object '/Engine/BasicShapes/Cube.Cube' (0x0000019809D21800) Class 'St",
+   "collision": "<CollisionEnabled.QUERY_AND_PHYSICS: 3>",
+   "profile": "BlockAll",
+   "scale": [
+    0.4,
+    0.4,
+    0.4
+   ]
+  },
+  {
+   "class": "InteractableComponent",
+   "prompt": "\u89e6\u78b0",
+   "prompt_open": "",
+   "enabled": "True",
+   "builtin_toggle": "False",
+   "track_state": "False"
+  }
+ ],
+ "save": "True"
+}

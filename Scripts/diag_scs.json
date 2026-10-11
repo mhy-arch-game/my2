@@ -1,0 +1,23 @@
+{
+ "/Game/bclass_source/end_of_the_game": {
+  "scs_nodes": [],
+  "subobjects": [
+   "()",
+   "()",
+   "()",
+   "()",
+   "()",
+   "()"
+  ]
+ },
+ "/Game/bclass_source/active_door": {
+  "scs_nodes": [],
+  "subobjects": [
+   "()",
+   "()",
+   "()",
+   "()",
+   "()"
+  ]
+ }
+}

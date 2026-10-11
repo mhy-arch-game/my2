@@ -1,0 +1,11 @@
+init_unreal 已在 -game 会话中执行
+=== runtime spin test 已加载 ===
+已加载 runtime_spin_test.py
+找到 end_of_the_game_C
+  Spin 组件=True  tick_enabled=True  rotation_rate=<Struct 'Rotator' (0x00000235029BD898) {pitch: 0.000000, yaw: 45.000000, roll: 0.000000}>  is_spinning=True
+t=1.0 rotation yaw=53.4 pitch=0.0 roll=0.0
+t=3.0 rotation yaw=143.7 pitch=0.0 roll=0.0
+t=5.0 rotation yaw=-126.0 pitch=0.0 roll=0.0
+t=7.0 rotation yaw=-36.1 pitch=0.0 roll=0.0
+每 2 秒的 yaw 增量: [90.3, 90.3, 90.0]
+结论: 持续旋转 OK

@@ -1,0 +1,49 @@
+{
+ "referencers": [
+  "/Game/FirstPerson/firstvision"
+ ],
+ "parent_class": "<Object '/Script/MHY_ARCH_GAME.EndOfTheGameActor' (0x000001B65A51F000) Class 'Class'>",
+ "reparent": "None",
+ "generated": "<Object '/Game/bclass_source/end_of_the_game.end_of_the_game_C' (0x000001B681D77E00) Class 'Blueprin",
+ "gen_parent_tag": "/Script/CoreUObject.Class'/Script/MHY_ARCH_GAME.EndOfTheGameActor'",
+ "dropped": [
+  {
+   "class": "end_of_the_game_C",
+   "loc": [
+    -20040.0,
+    -665.0,
+    -2890.0
+   ]
+  },
+  {
+   "class": "endofthegame_C",
+   "loc": [
+    596.7,
+    -263.0,
+    238.6
+   ]
+  }
+ ],
+ "placed": {
+  "class": "end_of_the_game_C",
+  "label": "endofthegame",
+  "loc": [
+   -20040.0,
+   -665.0,
+   -2890.0
+  ]
+ },
+ "components": [
+  {
+   "class": "StaticMeshComponent"
+  },
+  {
+   "class": "InteractableComponent",
+   "prompt": "\u89e6\u78b0",
+   "enabled": "True"
+  }
+ ],
+ "save_level": "True",
+ "save_dirty": "True",
+ "delete_old_bp": "True"
+}

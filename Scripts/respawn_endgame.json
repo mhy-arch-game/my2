@@ -1,0 +1,30 @@
+{
+ "old_count": 1,
+ "old_locs": [
+  [
+   250.0,
+   0.0,
+   3182.0
+  ]
+ ],
+ "char_loc": [
+  416.7,
+  -263.0,
+  110.6
+ ],
+ "spot": [
+  596.7,
+  -263.0,
+  238.6
+ ],
+ "destroyed": 1,
+ "root_mobility": "<ComponentMobility.MOVABLE: 2>",
+ "new_loc": [
+  596.7,
+  -263.0,
+  238.6
+ ],
+ "new_label": "endofthegame",
+ "save_level": "True",
+ "save_dirty": "True"
+}
