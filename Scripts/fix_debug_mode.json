@@ -1,0 +1,7 @@
+{
+ "cdo_bDrawDebug": "None",
+ "turned_off": [
+  "BP_FirstPersonCharacter / InteractionDetectorComponent"
+ ],
+ "save_level": "True"
+}

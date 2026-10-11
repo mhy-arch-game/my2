@@ -1,0 +1,12 @@
+{
+ "/Game/Fab/Modern_Door/Door_Frame": {
+  "nanite": "True",
+  "tris": "58",
+  "lods": "1"
+ },
+ "/Game/Fab/Modern_Door/modern_door": {
+  "nanite": "False",
+  "tris": "3025",
+  "lods": "1"
+ }
+}

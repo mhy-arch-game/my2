@@ -1,0 +1,35 @@
+import json, os, traceback
+import unreal
+OUT = os.path.join("E:/BaiduNetdiskDownload/my2", "Scripts", "nanite_off3.json")
+TARGETS = ["/Game/Fab/Modern_Door/Door",
+           "/Game/models/tripo_convert_a27cf087-650e-439c-80cf-d55ede9a4be3"]
+report = {}
+def call(fn, *a, **kw):
+    try: return fn(*a, **kw)
+    except Exception as exc: return "ERR " + repr(exc)[:80]
+def gp(o, n):
+    try: return o.get_editor_property(n)
+    except Exception: return None
+try:
+    rows = []
+    for p in TARGETS:
+        sm = unreal.EditorAssetLibrary.load_asset(p)
+        info = {"path": p,
+                "lods": str(call(sm.get_num_lods)),
+                "tris_lod0": str(call(sm.get_num_triangles, 0)),
+                "nanite_before": str(gp(gp(sm, "nanite_settings"), "enabled"))}
+        ns = gp(sm, "nanite_settings")
+        if ns is not None:
+            call(ns.set_editor_property, "enabled", False)
+            info["set"] = str(call(sm.set_editor_property, "nanite_settings", ns))[:20]
+            info["nanite_now"] = str(gp(gp(sm, "nanite_settings"), "enabled"))
+            info["save"] = str(call(unreal.EditorAssetLibrary.save_loaded_asset, sm))[:20]
+            sm2 = unreal.EditorAssetLibrary.load_asset(p)
+            info["nanite_reloaded"] = str(gp(gp(sm2, "nanite_settings"), "enabled"))
+        rows.append(info)
+    report["rows"] = rows
+except Exception as exc:
+    report["fatal"] = repr(exc)
+    report["tb"] = traceback.format_exc()[-400:]
+with open(OUT, "w", encoding="utf-8") as fh: json.dump(report, fh, indent=1, ensure_ascii=False)
+print("NANITE OFF3 done")

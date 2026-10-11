@@ -1,0 +1,5 @@
+{
+ "subsystem": "None",
+ "fatal": "AttributeError(\"'NoneType' object has no attribute 'set_nanite_settings'\")",
+ "tb": "Traceback (most recent call last):\n  File \"E:/BaiduNetdiskDownload/my2/Scripts/nanite_off.py\", line 29, in <module>\n    info[\"set_result\"] = str(call(sub.set_nanite_settings, sm, ns, True))[:20]\n                                  ^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'NoneType' object has no attribute 'set_nanite_settings'\n"
+}

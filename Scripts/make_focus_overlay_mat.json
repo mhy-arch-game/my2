@@ -1,0 +1,42 @@
+{
+ "existed": false,
+ "nodes": [
+  "<Object '/Game/MHY_ARCH_GAME/UI/M_InteractFocusOverlay.M_InteractFocusOverlay:MaterialExpressionFresnel_0' (0x000002373CC2CA80) Class 'MaterialExpressionFresnel'>",
+  "<Object '/Game/MHY_ARCH_GAME/UI/M_InteractFocusOverlay.M_InteractFocusOverlay:MaterialExpressionVectorParameter_0' (0x000002373CC2CC00) Class 'MaterialExpressionVectorParameter'>",
+  "<Object '/Game/MHY_ARCH_GAME/UI/M_InteractFocusOverlay.M_InteractFocusOverlay:MaterialExpressionScalarParameter_0' (0x000002373CC88480) Class 'MaterialExpressionScalarParameter'>"
+ ],
+ "link1": "True",
+ "link2": "True",
+ "link3": "True",
+ "link4": "True",
+ "emit": "True",
+ "opacity": "True",
+ "usages": [
+  "MATUSAGE_SKELETAL_MESH:True",
+  "MATUSAGE_INSTANCED_STATIC_MESHES:True",
+  "MATUSAGE_STATIC_LIGHTING:True"
+ ],
+ "recompile": "None",
+ "save": "True",
+ "verify": {
+  "path": "/Game/MHY_ARCH_GAME/UI/M_InteractFocusOverlay",
+  "domain": "<MaterialDomain.MD_SURFACE: 0>",
+  "blend": "<BlendMode.BLEND_TRANSLUCENT: 2>",
+  "shading": "<MaterialShadingModel.MSM_UNLIT: 0>",
+  "expr_count": "5"
+ },
+ "nanite": {
+  "menkuang1": "<Struct 'MeshNaniteSettings' (0x000002373EF713A0) {enabled: True, explicit_tangents: False",
+  "menkuang2": "<Struct 'MeshNaniteSettings' (0x000002373EF713A0) {enabled: True, explicit_tangents: False",
+  "jiguanqiang0": "<Struct 'MeshNaniteSettings' (0x000002373F288BA0) {enabled: False, explicit_tangents: Fals",
+  "jiguanqiang1": "<Struct 'MeshNaniteSettings' (0x000002373F2883A0) {enabled: False, explicit_tangents: Fals",
+  "jiguanqiang2": "<Struct 'MeshNaniteSettings' (0x000002373F2883A0) {enabled: False, explicit_tangents: Fals",
+  "menkuang3": "<Struct 'MeshNaniteSettings' (0x000002373EF713A0) {enabled: True, explicit_tangents: False",
+  "menkuang4": "<Struct 'MeshNaniteSettings' (0x000002373EF713A0) {enabled: True, explicit_tangents: False",
+  "menkuang5": "<Struct 'MeshNaniteSettings' (0x000002373EF713A0) {enabled: True, explicit_tangents: False",
+  "menkuang6": "<Struct 'MeshNaniteSettings' (0x000002373EF713A0) {enabled: True, explicit_tangents: False",
+  "menkuang7": "<Struct 'MeshNaniteSettings' (0x000002373EF713A0) {enabled: True, explicit_tangents: False",
+  "menkuang8": "<Struct 'MeshNaniteSettings' (0x000002373EF713A0) {enabled: True, explicit_tangents: False",
+  "menkuang9": "<Struct 'MeshNaniteSettings' (0x000002373EF713A0) {enabled: True, explicit_tangents: False"
+ }
+}

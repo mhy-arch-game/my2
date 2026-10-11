@@ -1,0 +1,381 @@
+{
+ "deleted": "True",
+ "links": [
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True",
+  "True"
+ ],
+ "usages": [
+  "MATUSAGE_SKELETAL_MESH:True",
+  "MATUSAGE_INSTANCED_STATIC_MESHES:True",
+  "MATUSAGE_NANITE:True"
+ ],
+ "expr_count": "8",
+ "recompile": "None",
+ "save": "True",
+ "verify": {
+  "blend": "<BlendMode.BLEND_TRANSLUCENT: 2>",
+  "shading": "<MaterialShadingModel.MSM_UNLIT: 0>"
+ },
+ "interactables": [
+  {
+   "label": "menkuang1",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang2",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "jiguanqiang0",
+   "enabled": "False",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/FirstPerson/_GENERA",
+     "nanite": "False"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "jiguanqiang1",
+   "enabled": "False",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/FirstPerson/_GENERA",
+     "nanite": "False"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "jiguanqiang2",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/FirstPerson/_GENERA",
+     "nanite": "False"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang3",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang4",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang5",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang6",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang7",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang8",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang9",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang10",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang11",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang12",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang13",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang14",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang15",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang16",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang17",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "jiguandeng1",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Wall_light_2/wa",
+     "nanite": "False"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang18",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang19",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang20",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "jiguanqiang4",
+   "enabled": "False",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/FirstPerson/_GENERA",
+     "nanite": "False"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "jiguanqiang3",
+   "enabled": "False",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/FirstPerson/_GENERA",
+     "nanite": "False"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "jiguandeng2",
+   "enabled": "True",
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Wall_light_2/wa",
+     "nanite": "False"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang21",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang23",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  },
+  {
+   "label": "menkuang24",
+   "enabled": null,
+   "meshes": [
+    {
+     "mesh": "<Object '/Game/Fab/Modern_Door/Doo",
+     "nanite": "True"
+    }
+   ],
+   "class": "StaticMeshActor"
+  }
+ ],
+ "interactable_count": 71,
+ "nanite_on": [
+  "menkuang1",
+  "menkuang2",
+  "menkuang3",
+  "menkuang4",
+  "menkuang5",
+  "menkuang6",
+  "menkuang7",
+  "menkuang8",
+  "menkuang9",
+  "menkuang10",
+  "menkuang11",
+  "menkuang12",
+  "menkuang13",
+  "menkuang14",
+  "menkuang15",
+  "menkuang16",
+  "menkuang17",
+  "menkuang18",
+  "menkuang19",
+  "menkuang20"
+ ]
+}
