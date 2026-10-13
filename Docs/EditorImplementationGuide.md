@@ -538,6 +538,7 @@
 | `Docs/TimeEraPortal.md` | 跨时空传送（配对、落点、过场接口、落点偏移根因与修复、`TeleportOffset` 微调） |
 | `Docs/GravityZone.md` | 重力区（最高点不变提速、`TargetJumpHeight` 绝对高度） |
 | `Docs/InteractionImplementation.md` | 交互实现 + **★ 聚焦视觉表现完善指南（弹框做精致、描边后期材质 5 步）** |
+| `Docs/PROJECT_SUMMARY.md` | **★ 项目总览**（提交历史与功能开发路径 · 技术栈 · 工程与设计知识点总结）|
 | `Docs/EndGame.md` | **结束游戏**（接口 `EndGameWithFade` · 关卡物件 `endofthegame` 提示词「触碰」· 渐黑后退出进程 · one-file-per-actor 踩坑）|
 | `Docs/UiCue.md` | **★ UI 活动导演模块**（模块自驱 · 盒体触发 · 屏幕字幕 · 断句顺序播放 · 事件队列 · DataAsset 全局配置）· **§11 发行版必须看的触发 id 约定**（编辑器标签不进包）|
 | `Docs/BackgroundMusic.md` | **★ 全局背景音乐**（循环播放 · 暴露音量与倍速 · Project Settings 里改，运行时可变） |

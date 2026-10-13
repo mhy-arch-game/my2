@@ -93,9 +93,9 @@ Saved\Packaged\Windows\
 
 | `e6c3ded <fix> 打包时强制收 UiCue 表与配音`| 2026-10-11 | `Saved\Packaged\UserBuild_e6c3ded_20261011\Windows` | **895.7 MB**（pak 10.3 MB）| 启动 20 秒无崩溃 ✓；manifest **3110** 条，含 `DA_UiCueSet` 与全部 12 段 UiCue 配音（对比上一版新增 58 个文件）✓ |
 | `ffd9867 + 工作区改动 <fix> 修复发行版 UiCue 只触发第一条`| 2026-10-11 | `Saved\Packaged\Release_20261011\Windows` | **695.3 MB**（删 pdb 前 896.3 MB；Shipping exe 137.5 MB + pak 10.3 MB）| 真 Shipping 包自检 `-UiCueSelfTest`：**9/9 条 cue 全部对上物件**（8 条按 `UiCue:xxx` 标签命中，`ui_opening` 是 GameStart）✓；双击启动 22 秒无崩溃 ✓ |
-| `工作区改动 <feat> 结束游戏物件 end_of_the_game + 永续自转`（**当前版本**）| 2026-10-11 | `Saved\Packaged\Release_20261011\Windows` | **721.4 MB**（删 pdb 前 932.4 MB：exe 144.1 MB + pak 10.8 MB + ucas 536.2 MB）| 打包 `BUILD SUCCESSFUL` ✓；archive 与 staging 逐文件一致（只少故意删掉的 pdb）✓；cook 出的 `bclass_source/end_of_the_game` 存在、cooked `firstvision.umap/.uexp` 里能搜到 `end_of_the_game` ✓；发行版 `-UiCueSelfTest` **9/9 OK** ✓；双击启动 120 秒无崩溃 ✓ |
+| `工作区改动 <feat> 结束游戏物件 end_of_the_game + 永续自转`（**当前版本**）| 2026-10-11 | `Saved\Packaged\Release_20261011\Windows` | **710.9 MB**（删 pdb 前 921.9 MB：exe 144.1 MB + ucas 525.1 MB）| 打包 `BUILD SUCCESSFUL` ✓；archive 与 staging 逐文件一致（只少故意删掉的 pdb）✓；cook 出的 `bclass_source/end_of_the_game` 存在、cooked `firstvision.umap/.uexp` 里能搜到 `end_of_the_game` ✓；新贴图/材质 `concrete_wall_009_diff_4k` / `_disp_4k` / `_rough_4k`（含各自 `_Mat`）已进包 ✓；发行版 `-UiCueSelfTest` 8 条 OK / 0 条 UNRESOLVED（第 9 条 `ui_opening` 是 GameStart）✓；双击启动 25 秒无崩溃 ✓；**本次为"改了关卡与贴图后再打一遍"**（`firstvision.umap` 20:56:51、两张 `_Mat` 20:57）|
 
-> ⚠️ `Release_20261011` 是**原地重新打包**（目录名没变，里面 exe/pak 的时间戳 18:57 / 19:07 都是最新版）：只触发第一条 cue 的旧版、以及"还没有结束游戏物件"的版本都已被覆盖，不要再单独分发旧副本。
+> ⚠️ `Release_20261011` 是**原地重新打包**（目录名没变，里面 exe 18:57、pak/ucas 20:59 都是最新版）：只触发第一条 cue 的旧版、以及"还没有结束游戏物件"的版本都已被覆盖，不要再单独分发旧副本。
 >
 > 出包后手工删掉了 `Windows\MHY_PROJ_v0_1\Binaries\Win64\MHY_PROJ_v0_1-Win64-Shipping.pdb`（**210.8 MB**，发行给玩家的包不需要符号文件）。
 > **不要**改用 `-nodebuginfo` 来代替这一步：UAT 会把 `Engine\Content\SlateDebug\Fonts\LastResort.*` 也当成调试文件一起剔掉
@@ -169,7 +169,7 @@ UiCue 的 cue 表 `/Game/MHY_ARCH_GAME/UI/DA_UiCueSet` 是模块在运行时扫�
 | UiCue 事件表 | `/Game/MHY_ARCH_GAME/UI/DA_UiCueSet`（9 条正式 cue，字幕偏移 30）✓ |
 | UiCue 触发 id 能进包 | 被 cue 引用的 8 个物件都带 `UiCue:xxx` 标签；出包前跑 `Scripts/verify_uicue_ids_shipping.py` 应为 **9/9** ✓ |
 | 关卡里的临时状态 | 已还原：PlayerStart 在 `(0,0,3182)`、隐形墙 `yinxingqiang1/2` 在场、传送器 3/4 双向正常 ✓ |
-| 已知缺失资产 | `/Game/texture/concrete_wall_009_nor_gl_4k` 缺失（`M_wall3` 的依赖）→ cook 会打警告并用默认材质；要干净就补回这个贴图 |
+| 已知缺失资产 | `/Game/texture/concrete_wall_009_nor_gl_4k`（`M_wall3` 依赖的**法线**）仍缺失 —— 2026-10-11 20:57 已补 `_diff_4k` / `_disp_4k` / `_rough_4k` 及各自 `_Mat` 并已进包，但 cook 仍报 `M_wall3 has a dependency on /Game/texture/concrete_wall_009_nor_gl_4k which does not exist`，游戏里 `M_wall3` 用默认材质。补回这张法线贴图即可消除 |
 | 可选瘦身 | `PythonScriptPlugin` 的 `PythonScriptPluginPreload` 是 **Runtime** 模块会被打进包（很小）。想彻底排除，在 `.uproject` 里给它加 `"TargetAllowList": ["Editor"]`（不影响编辑器/命令行 Python 工具）|
 
 ## 5. 出包后的验收（拿成品跑一遍）
